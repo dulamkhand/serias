@@ -1,0 +1,1 @@
+<a href="<?php echo url_for($module.'/edit?id='.$id)?>" title="Edit" class="action">Edit</a>

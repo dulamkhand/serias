@@ -1,0 +1,17 @@
+<?php
+
+require_once 'c://wamp//www//symfony14//lib/autoload/sfCoreAutoload.class.php';
+//require_once dirname(__FILE__).'/../lib/vendor/symfony14/lib/autoload/sfCoreAutoload.class.php';
+sfCoreAutoload::register();
+
+class ProjectConfiguration extends sfProjectConfiguration
+{
+  public function setup()
+  {
+      $this->enablePlugins('sfDoctrinePlugin', 'sfThumbnailPlugin');
+      sfConfig::set('sf_web_dir', 'C:\wamp\www\serias\web');
+      sfConfig::set('sf_upload_dir', 'C:\wamp\www\serias\web\u');
+      sfConfig::set('rich_text_fck_js_dir', 'C:\wamp\www\serias\web\js');
+  }
+
+}
