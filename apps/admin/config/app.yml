@@ -1,0 +1,10 @@
+# You can find more information about this file on the symfony website:
+# http://www.symfony-project.org/reference/1_4/en/11-App
+
+# default values
+all:
+  #host: http://sport
+  #host: http://localhost/sport/web
+  host: http://urin-essence.com/sport
+  pager: 20
+  limit: 20
