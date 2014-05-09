@@ -10,7 +10,22 @@
  */
 class SeriasForm extends BaseSeriasForm
 {
-  public function configure()
-  {
-  }
+    public function configure()
+    {
+        # WIDGETS
+        $this->widgetSchema['title'] 	     = new sfWidgetFormInputText(array(), array());
+        $this->widgetSchema['image']       = new sfWidgetFormInputFile(array(), array());
+        $choices = GlobalTools::getArray('type');
+      	$this->widgetSchema['type']        = new sfWidgetFormChoice(array('choices'=>$choices), array());
+      	$this->widgetSchema['summary']     = new sfWidgetFormTextarea(array(), array());
+      	$this->widgetSchema['body']        = new sfWidgetFormTextarea(array(), array());
+      	  	
+      	# VALIDATORS
+      	$this->validatorSchema['title']    = new sfValidatorString(array(), array());
+      	$this->validatorSchema['image']    = new sfValidatorFile($this->getFileAttrs('serias'), $this->getFileOpts());
+      	
+      	$this->validatorSchema['type']     = new sfValidatorPass();
+      	$this->validatorSchema['summary']  = new sfValidatorPass();
+      	$this->validatorSchema['body']     = new sfValidatorPass();
+    }
 }

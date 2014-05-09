@@ -2,7 +2,7 @@
 
 class GlobalTools 
 {
-    public static $playerDraft = array('nodraft'=>'No draft', '2013'=>'2013', '2014'=>'2014', '2015'=>'2015', '2016'=>'2016');
+    public static $type = array('movie'=>'Movie', 'serias'=>'Serias', 'tvshow'=>'TV-Show');
     public static $bannerPosition = array(
                         'header'=>'Header 300px65px', 
                         'home-featured'=>'Home featured 450px', 
@@ -33,7 +33,7 @@ class GlobalTools
     public static function getArray($type)
     {
         switch ($type) {
-          	case 'playerDraft': return self::$playerDraft;
+          	case 'type': return self::$type;
           	case 'bannerPosition': return self::$bannerPosition;
             case 'alphaEn': return self::$alphaEn;
           	case 'alphaMn': return self::$alphaMn;
@@ -90,16 +90,7 @@ class GlobalTools
         return myTools::clearReservedWords($text);
     }
     
-    static public function slugify($text)
-    {
-        // replace all non letters or digits by -
-        $text = preg_replace('/\W+/', '-', $text);
-     
-        // trim and lowercase
-        $text = strtolower(trim($text, '-'));
-     
-        return $text;
-    }
+    
     
     
     ################################################################################################################################################################
