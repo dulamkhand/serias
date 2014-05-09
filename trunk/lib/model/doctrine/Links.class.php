@@ -12,5 +12,8 @@
  */
 class Links extends BaseLinks
 {
+    public function getSeasonEpisode() {
+        return 's'.$this->getSeason().'e'.$this->getEpisode();
+    }
 
 }

@@ -6,9 +6,9 @@ default:
     content-type: text/html
 
   metas:
-    title:        mnba
-    description:  mnba
-    keywords:     mnba
+    title:        movie
+    description:  movie
+    keywords:     movie
     language:     en
     robots:       index, follow
 
