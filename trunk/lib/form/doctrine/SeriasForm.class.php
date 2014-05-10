@@ -15,16 +15,17 @@ class SeriasForm extends BaseSeriasForm
         # WIDGETS
         $this->widgetSchema['title'] 	     = new sfWidgetFormInputText(array(), array());
         $this->widgetSchema['image']       = new sfWidgetFormInputFile(array(), array());
-        $choices = GlobalTools::getArray('type');
+        $choices = GlobalLib::getArray('type');
       	$this->widgetSchema['type']        = new sfWidgetFormChoice(array('choices'=>$choices), array());
+      	$this->widgetSchema['year']        = new sfWidgetFormInputText(array(), array('width'=>20));
       	$this->widgetSchema['summary']     = new sfWidgetFormTextarea(array(), array());
       	$this->widgetSchema['body']        = new sfWidgetFormTextarea(array(), array());
       	  	
       	# VALIDATORS
       	$this->validatorSchema['title']    = new sfValidatorString(array(), array());
-      	$this->validatorSchema['image']    = new sfValidatorFile($this->getFileAttrs('serias'), $this->getFileOpts());
-      	
+      	$this->validatorSchema['image']    = new sfValidatorFile($this->getFileAttrs('m'), $this->getFileOpts());
       	$this->validatorSchema['type']     = new sfValidatorPass();
+      	$this->validatorSchema['year']     = new sfValidatorPass();
       	$this->validatorSchema['summary']  = new sfValidatorPass();
       	$this->validatorSchema['body']     = new sfValidatorPass();
     }

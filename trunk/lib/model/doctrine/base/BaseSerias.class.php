@@ -12,6 +12,7 @@ Doctrine_Manager::getInstance()->bindComponent('Serias', 'doctrine');
  * @property string $title
  * @property string $route
  * @property string $image
+ * @property integer $year
  * @property string $summary
  * @property string $body
  * @property integer $sort
@@ -29,6 +30,7 @@ Doctrine_Manager::getInstance()->bindComponent('Serias', 'doctrine');
  * @method string              getTitle()       Returns the current record's "title" value
  * @method string              getRoute()       Returns the current record's "route" value
  * @method string              getImage()       Returns the current record's "image" value
+ * @method integer             getYear()        Returns the current record's "year" value
  * @method string              getSummary()     Returns the current record's "summary" value
  * @method string              getBody()        Returns the current record's "body" value
  * @method integer             getSort()        Returns the current record's "sort" value
@@ -45,6 +47,7 @@ Doctrine_Manager::getInstance()->bindComponent('Serias', 'doctrine');
  * @method Serias              setTitle()       Sets the current record's "title" value
  * @method Serias              setRoute()       Sets the current record's "route" value
  * @method Serias              setImage()       Sets the current record's "image" value
+ * @method Serias              setYear()        Sets the current record's "year" value
  * @method Serias              setSummary()     Sets the current record's "summary" value
  * @method Serias              setBody()        Sets the current record's "body" value
  * @method Serias              setSort()        Sets the current record's "sort" value
@@ -110,6 +113,15 @@ abstract class BaseSerias extends sfDoctrineRecord
              'notnull' => true,
              'autoincrement' => false,
              'length' => 500,
+             ));
+        $this->hasColumn('year', 'integer', 4, array(
+             'type' => 'integer',
+             'fixed' => 0,
+             'unsigned' => false,
+             'primary' => false,
+             'notnull' => true,
+             'autoincrement' => false,
+             'length' => 4,
              ));
         $this->hasColumn('summary', 'string', 500, array(
              'type' => 'string',

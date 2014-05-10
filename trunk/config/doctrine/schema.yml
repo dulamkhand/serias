@@ -362,6 +362,13 @@ Serias:
       primary: false
       notnull: true
       autoincrement: false
+    year:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
     summary:
       type: string(500)
       fixed: false

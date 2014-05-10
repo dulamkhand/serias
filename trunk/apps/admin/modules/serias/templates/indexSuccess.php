@@ -22,11 +22,11 @@
         <td><?php echo ++$i?></td>
         <td>
             <a href="<?php echo url_for('serias/edit?id='.$rs->getId())?>">
-               <?php if($rs->getImage()) echo image_tag('/u/serias/t200-'.$rs->getImage(), array('style'=>'max-width:00px;border:2px solid '.($rs->getType() == 'movie' ? 'green' : 'orange')))?>
+               <?php if($rs->getImage()) echo image_tag('/u/m/t140-'.$rs->getImage(), array('style'=>'max-width:00px;border:2px solid '.(GlobalLib::getValue('colors', $rs->getType()))))?>
             </a>
         </td>
         <td>
-            <a href="<?php echo url_for('serias/edit?id='.$rs->getId())?>" class="action"><b><?php echo $rs->getTitle() ?></b></a><br>
+            <a href="<?php echo url_for('serias/edit?id='.$rs->getId())?>" class="action"><b><?php echo $rs ?></b></a><br>
             <?php echo $rs->getSummary() ?>            
         </td>
         <td>

@@ -3,10 +3,9 @@
 class GlobalLib
 {
   
-    public static $player_draft = array('nodraft'=>'No draft', '2013'=>'2013', '2014'=>'2014', '2015'=>'2015', '2016'=>'2016');
-    public static $player_number = array('nodraft'=>'No draft', '2013'=>'2013', '2014'=>'2014', '2015'=>'2015', '2016'=>'2016');
-    public static $gender = array('M'=>'Эр', 'F'=>'Эм');
-    public static $state = array('willbegin'=>'willbegin', 'ongoing'=>'ongoing', 'ended'=>'ended');
+    public static $type   = array('movie'=>'Movie', 'serias'=>'Serias', 'tvshow'=>'TV show', 'mn'=>'MN films', 'nonfiction'=>'Non fiction');
+    public static $colors = array('movie'=>'#4D9804', 'serias'=>'#067FF9', 'tvshow'=>'#FA3F06', 'mn'=>'#CB1D6B', 'nonfiction'=>'#5F1DCB');
+    public static $state  = array('willbegin'=>'willbegin', 'ongoing'=>'ongoing', 'ended'=>'ended');
 
     public static $banner_position = array(
                         'header'=>'Header 300px65px', 
@@ -37,7 +36,8 @@ class GlobalLib
     public static function getArray($type)
     {
         switch ($type) {
-          	case 'state': return self::$state;
+          	case 'type'  : return self::$type;
+          	case 'colors': return self::$colors;
           	case 'gender': return self::$gender;
           	case 'player_draft': return self::$player_draft;
           	case 'player_number': return self::getNumbers(1, 1000);
@@ -51,10 +51,24 @@ class GlobalLib
         return array();
     }
     
-    public static function getArrayValues($type)
+    public static function getValues($type)
     {
         return array_values(self::getArray($type));
+    }    
+    
+    public static function getKeys($type)
+    {
+        return array_keys(self::getArray($type));
     }
+    
+    public static function getValue($type, $key)
+    {
+        $array = self::getArray($type);
+        return $array[$key];
+    }
+    
+    
+    ################################################################################################################################################################
     
     public static function getNumbers($min=1, $max=1000)
     {
@@ -64,8 +78,6 @@ class GlobalLib
         }
         return $a;
     }
-    
-    
     
     
     
@@ -81,20 +93,7 @@ class GlobalLib
         return $text;
     }
     
-    public static function getArrayKeys($type)
-    {
-        return array_keys(self::getArray($type));
-    }
-    
-    public static function getValueByKey($type, $key)
-    {
-        $array = self::getArray($type);
-        return $array[$key];
-    }
-    
-    
-    ################################################################################################################################################################
-    
+
     public static function utf8_substr($str,$from,$len) {
         # utf8 substr
         $str = preg_replace('#^(?:[\x00-\x7F]|[\xC0-\xFF][\x80-\xBF]+){0,'.$from.'}'.
@@ -136,7 +135,7 @@ class GlobalLib
                 if (sizeof($thumbs) && $filename && file_exists($uploadDir.$filename)) {
                     // create thumbs
                     foreach ($thumbs as $thumb) {
-                        $thumbnail = new sfThumbnail($thumb, null, true, false, 75);
+                        $thumbnail = new sfThumbnail($thumb, null, true, false, 100);
                         $thumbnail->loadFile($uploadDir.$filename);
                         $thumbnail->save($uploadDir."t".$thumb."-".$filename);
                     }
