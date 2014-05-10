@@ -22,10 +22,13 @@
     <tr <?php if($i%2 != 0) echo 'class="odd"'?>>
         <td><?php echo ++$i?></td>
         <td>
-            <a href="<?php echo url_for('link/edit?id='.$rs->getId())?>">
-               <?php echo ($rs)?>
-            </a><br>
-            <a href="<?php echo ($rs->getLink())?>" target="_blank">
+            <?php if($rs):?>
+                <a href="<?php echo url_for('link/edit?id='.$rs->getId())?>">
+                   <?php echo ($rs)?>
+                </a>
+                <br>
+            <?php endif?>
+            <a href="<?php echo ($rs->getLink())?>" target="_blank" style="color:#000;">
                <?php echo ($rs->getLink())?>
             </a>
         </td>

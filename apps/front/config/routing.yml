@@ -59,10 +59,13 @@ promote:
 post:
   url:   /post.htm
   param: { module: page, action: post }
-patriot:
-  url:   /patriot.htm
-  param: { module: page, action: patriot }
-  
+
+# 
+item:
+  url:   /i/:route.htm
+  param: { module: page, action: show }
+
+
 # main
 404:
   url:   /404.htm
@@ -70,6 +73,7 @@ patriot:
 search:
   url:   /s/:keyword.htm
   param: { module: main, action: search }
+
 
 # default rules
 homepage:
