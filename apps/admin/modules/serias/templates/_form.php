@@ -42,6 +42,13 @@
         </td>
       </tr>
       <tr>          
+        <th><?php echo $form['year']->renderLabel() ?></th>
+        <td>
+          <?php echo $form['year']->renderError() ?>
+          <?php echo $form['year'] ?>
+        </td>
+      </tr>
+      <tr>          
         <th><?php echo $form['summary']->renderLabel() ?></th>
         <td>
           <?php echo $form['summary']->renderError() ?>

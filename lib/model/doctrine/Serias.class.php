@@ -12,5 +12,7 @@
  */
 class Serias extends BaseSerias
 {
-
+  public function __toString() {
+      return $this->getTitle().' ('.$this->getYear().')';
+  }
 }

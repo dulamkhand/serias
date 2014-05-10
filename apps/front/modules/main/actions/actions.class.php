@@ -18,8 +18,7 @@ class mainActions extends sfActions
   
     public function executeHome(sfWebRequest $request)
     {
-      // home
-    }    
+    }   
     
     public function execute404(sfWebRequest $request)
     {

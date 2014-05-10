@@ -72,7 +72,7 @@ class seriasActions extends sfActions
                 $rs->save();
             }
             
-            GlobalLib::createThumbs($rs->getImage(), 'serias', array(200), true);
+            GlobalLib::createThumbs($rs->getImage(), 'm', array(140));
 
             $this->getUser()->setFlash('flash', 'Successfully saved.', true);
             $this->redirect('serias/index');

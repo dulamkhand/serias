@@ -6,9 +6,9 @@ default:
     content-type: text/html
 
   metas:
-    title:        ДАГИНА &hearts; Зөвхөн бүсгүйчүүдийн ертөнц
-    description:  ДАГИНА &hearts; Зөвхөн бүсгүйчүүдийн ертөнц
-    keywords:     ДАГИНА &hearts; Зөвхөн бүсгүйчүүдийн ертөнц
+    title:        movie
+    description:  movie
+    keywords:     movie
     language:     en
     robots:       index, follow
 
