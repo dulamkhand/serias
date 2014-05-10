@@ -92,8 +92,8 @@ class GlobalTable extends Doctrine_Table
 
             
         # parentId
-        if(isset($params['parentId']) && $params['parentId'] != null)
-            $q->andWhere('parent_id = ? ', $params['parentId']);
+        if(isset($params['itemId']) && $params['itemId'] != null)
+            $q->andWhere('item_id = ? ', $params['itemId']);
             
         if(isset($params['categoryId']) && $params['categoryId'] != null)
             $q->andWhere('category_id = ?', $params['categoryId']);

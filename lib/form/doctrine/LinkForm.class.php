@@ -13,12 +13,19 @@ class LinkForm extends BaseLinkForm
     public function configure()
     {
         # WIDGETS
-        $this->widgetSchema['item_id'] 	   = new sfWidgetFormInputHidden(array(), array('value'=>$this->getObject('item_id')));
+        $this->widgetSchema['title'] 	     = new sfWidgetFormInputText(array(), array());
+        $this->widgetSchema['item_id'] 	   = new sfWidgetFormInputHidden(array(), array('value'=>$this->getOption('itemId')));
         $this->widgetSchema['link']        = new sfWidgetFormInputText(array(), array());
-      	$this->widgetSchema['season']      = new sfWidgetFormChoice(array('choices'=>array(1, 2, 3, 4, 5)), array('class'=>'w50px'));
-      	$this->widgetSchema['episode']     = new sfWidgetFormChoice(array('choices'=>array(1, 2, 3, 4, 5)), array('class'=>'w50px'));
-      	  	
+        $choices = GlobalLib::getNumbers(1, 20);
+        $choices[0] = '-';
+        $choices[100000] = 'Special';
+      	$this->widgetSchema['season']      = new sfWidgetFormChoice(array('choices'=>$choices), array('class'=>'w50px'));
+      	$choices = GlobalLib::getNumbers(1, 200);
+        $choices[0] = '-';
+      	$this->widgetSchema['episode']     = new sfWidgetFormChoice(array('choices'=>$choices), array('class'=>'w50px'));
+      	
       	# VALIDATORS
+      	$this->validatorSchema['title']    = new sfValidatorPass();
       	$this->validatorSchema['item_id']  = new sfValidatorPass();
       	$this->validatorSchema['link']     = new sfValidatorString(array(), array());
       	$this->validatorSchema['season']   = new sfValidatorPass();
