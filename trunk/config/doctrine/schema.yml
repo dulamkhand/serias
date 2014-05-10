@@ -217,6 +217,108 @@ Banner:
       primary: false
       notnull: true
       autoincrement: false
+Episode:
+  connection: doctrine
+  tableName: episode
+  columns:
+    id:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: true
+      autoincrement: true
+    item_id:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    season:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    episode:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    title:
+      type: string(500)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    route:
+      type: string(500)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    sort:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    nb_views:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    is_active:
+      type: integer(1)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    is_featured:
+      type: integer(1)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    created_aid:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    updated_aid:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    created_at:
+      type: timestamp(25)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    updated_at:
+      type: timestamp(25)
+      fixed: false
+      unsigned: false
+      primary: false
+      default: '0000-00-00 00:00:00'
+      notnull: true
+      autoincrement: false
 Item:
   connection: doctrine
   tableName: item
@@ -333,11 +435,6 @@ Item:
       default: '0000-00-00 00:00:00'
       notnull: true
       autoincrement: false
-  relations:
-    Link:
-      local: id
-      foreign: item_id
-      type: many
 Link:
   connection: doctrine
   tableName: link
@@ -348,15 +445,15 @@ Link:
       unsigned: false
       primary: true
       autoincrement: true
-    item_id:
+    object_id:
       type: integer(4)
       fixed: false
       unsigned: false
       primary: false
       notnull: true
       autoincrement: false
-    title:
-      type: string(500)
+    object_type:
+      type: string(50)
       fixed: false
       unsigned: false
       primary: false
@@ -364,27 +461,6 @@ Link:
       autoincrement: false
     link:
       type: string(5000)
-      fixed: false
-      unsigned: false
-      primary: false
-      notnull: true
-      autoincrement: false
-    route:
-      type: string(500)
-      fixed: false
-      unsigned: false
-      primary: false
-      notnull: true
-      autoincrement: false
-    season:
-      type: integer(4)
-      fixed: false
-      unsigned: false
-      primary: false
-      notnull: true
-      autoincrement: false
-    episode:
-      type: integer(4)
       fixed: false
       unsigned: false
       primary: false
@@ -447,8 +523,3 @@ Link:
       default: '0000-00-00 00:00:00'
       notnull: true
       autoincrement: false
-  relations:
-    Item:
-      local: item_id
-      foreign: id
-      type: one

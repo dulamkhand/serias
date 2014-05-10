@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: May 10, 2014 at 05:36 AM
+-- Generation Time: May 10, 2014 at 09:17 AM
 -- Server version: 5.5.8
 -- PHP Version: 5.3.5
 
@@ -87,6 +87,35 @@ CREATE TABLE IF NOT EXISTS `banner` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `episode`
+--
+
+CREATE TABLE IF NOT EXISTS `episode` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `item_id` int(11) NOT NULL,
+  `season` int(11) NOT NULL,
+  `episode` int(11) NOT NULL,
+  `title` varchar(500) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `route` varchar(500) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `sort` int(11) NOT NULL,
+  `nb_views` int(11) NOT NULL,
+  `is_active` tinyint(1) NOT NULL,
+  `is_featured` tinyint(1) NOT NULL,
+  `created_aid` int(11) NOT NULL,
+  `updated_aid` int(11) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci AUTO_INCREMENT=1 ;
+
+--
+-- Dumping data for table `episode`
+--
+
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `item`
 --
 
@@ -139,11 +168,9 @@ INSERT INTO `item` (`id`, `type`, `title`, `route`, `image`, `year`, `summary`, 
 
 CREATE TABLE IF NOT EXISTS `link` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `serias_id` int(11) NOT NULL,
-  `link` varchar(5000) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'serias|movie|?',
-  `route` varchar(500) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `season` int(11) NOT NULL,
-  `episode` int(11) NOT NULL,
+  `object_id` int(11) NOT NULL,
+  `object_type` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `link` varchar(5000) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'embed url',
   `sort` int(11) NOT NULL,
   `nb_views` int(11) NOT NULL,
   `is_active` tinyint(4) NOT NULL,
@@ -153,20 +180,16 @@ CREATE TABLE IF NOT EXISTS `link` (
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   PRIMARY KEY (`id`),
-  KEY `serias_id` (`serias_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci AUTO_INCREMENT=1 ;
+  KEY `item_id` (`object_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci AUTO_INCREMENT=6 ;
 
 --
 -- Dumping data for table `link`
 --
 
-
---
--- Constraints for dumped tables
---
-
---
--- Constraints for table `link`
---
-ALTER TABLE `link`
-  ADD CONSTRAINT `link_ibfk_1` FOREIGN KEY (`serias_id`) REFERENCES `item` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+INSERT INTO `link` (`id`, `object_id`, `object_type`, `link`, `sort`, `nb_views`, `is_active`, `is_featured`, `created_aid`, `updated_aid`, `created_at`, `updated_at`) VALUES
+(1, 10, '', 'http://vodlocker.com/embed-86xwcxbad8uw-900x600.html', 0, 0, 1, 1, 0, 0, '2014-05-10 15:38:46', '0000-00-00 00:00:00'),
+(2, 10, '', 'http://embed.novamov.com/embed.php?v=427c4ebf082b3&height=&width=', 1, 0, 1, 0, 0, 0, '2014-05-10 15:59:24', '0000-00-00 00:00:00'),
+(3, 10, '', 'http://www.novamov.com/embed.php?v=1ffacb613dee8', 0, 0, 1, 0, 0, 0, '2014-05-10 16:04:12', '0000-00-00 00:00:00'),
+(4, 1, '', 'http://vodlocker.com/embed-86xwcxbad8uw-900x600.html', 0, 0, 1, 0, 0, 0, '2014-05-10 16:14:26', '0000-00-00 00:00:00'),
+(5, 1, '', 'http://vodlocker.com/embed-86xwcxbad8uw-900x600.html ', 0, 0, 1, 0, 0, 0, '2014-05-10 17:33:13', '0000-00-00 00:00:00');
