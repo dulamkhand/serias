@@ -1,24 +1,26 @@
 <?php
 
 /**
- * Link form base class.
+ * Episode form base class.
  *
- * @method Link getObject() Returns the current form's model object
+ * @method Episode getObject() Returns the current form's model object
  *
  * @package    imdb
  * @subpackage form
  * @author     Your name here
  * @version    SVN: $Id: sfDoctrineFormGeneratedTemplate.php 29553 2010-05-20 14:33:00Z Kris.Wallsmith $
  */
-abstract class BaseLinkForm extends BaseFormDoctrine
+abstract class BaseEpisodeForm extends BaseFormDoctrine
 {
   public function setup()
   {
     $this->setWidgets(array(
       'id'          => new sfWidgetFormInputHidden(),
-      'object_id'   => new sfWidgetFormInputText(),
-      'object_type' => new sfWidgetFormInputText(),
-      'link'        => new sfWidgetFormTextarea(),
+      'item_id'     => new sfWidgetFormInputText(),
+      'season'      => new sfWidgetFormInputText(),
+      'episode'     => new sfWidgetFormInputText(),
+      'title'       => new sfWidgetFormTextarea(),
+      'route'       => new sfWidgetFormTextarea(),
       'sort'        => new sfWidgetFormInputText(),
       'nb_views'    => new sfWidgetFormInputText(),
       'is_active'   => new sfWidgetFormInputText(),
@@ -31,9 +33,11 @@ abstract class BaseLinkForm extends BaseFormDoctrine
 
     $this->setValidators(array(
       'id'          => new sfValidatorChoice(array('choices' => array($this->getObject()->get('id')), 'empty_value' => $this->getObject()->get('id'), 'required' => false)),
-      'object_id'   => new sfValidatorInteger(),
-      'object_type' => new sfValidatorString(array('max_length' => 50)),
-      'link'        => new sfValidatorString(array('max_length' => 5000)),
+      'item_id'     => new sfValidatorInteger(),
+      'season'      => new sfValidatorInteger(),
+      'episode'     => new sfValidatorInteger(),
+      'title'       => new sfValidatorString(array('max_length' => 500)),
+      'route'       => new sfValidatorString(array('max_length' => 500)),
       'sort'        => new sfValidatorInteger(),
       'nb_views'    => new sfValidatorInteger(),
       'is_active'   => new sfValidatorInteger(),
@@ -44,7 +48,7 @@ abstract class BaseLinkForm extends BaseFormDoctrine
       'updated_at'  => new sfValidatorDateTime(array('required' => false)),
     ));
 
-    $this->widgetSchema->setNameFormat('link[%s]');
+    $this->widgetSchema->setNameFormat('episode[%s]');
 
     $this->errorSchema = new sfValidatorErrorSchema($this->validatorSchema);
 
@@ -55,7 +59,7 @@ abstract class BaseLinkForm extends BaseFormDoctrine
 
   public function getModelName()
   {
-    return 'Link';
+    return 'Episode';
   }
 
 }
