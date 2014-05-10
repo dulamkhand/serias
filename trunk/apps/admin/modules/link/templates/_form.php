@@ -9,7 +9,7 @@
     <tfoot>
       <tr>
         <td colspan="2">
-          <?php echo $form->renderHiddenFields(false) ?>
+          <?php echo $form->renderHiddenFields(true) ?>
           &nbsp;<a href="<?php echo url_for('link/index') ?>">Back to list</a>
           <?php if (!$form->getObject()->isNew()): ?>
             &nbsp;<?php echo link_to('Delete', 'link/delete?id='.$form->getObject()->getId(), array('method' => 'delete', 'confirm' => 'Are you sure?')) ?>
@@ -19,7 +19,14 @@
       </tr>
     </tfoot>
     <tbody>
-      <?php echo $form->renderGlobalErrors() ?>
+      <?php echo $form->renderGlobalErrors()?>
+      <tr>
+        <th><?php echo $form['title']->renderLabel() ?></th>
+        <td>
+          <?php echo $form['title']->renderError() ?>
+          <?php echo $form['title'] ?>
+        </td>
+      </tr>
       <tr>
         <th><?php echo $form['link']->renderLabel() ?></th>
         <td>

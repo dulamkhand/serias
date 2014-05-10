@@ -355,6 +355,13 @@ Link:
       primary: false
       notnull: true
       autoincrement: false
+    title:
+      type: string(500)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
     link:
       type: string(5000)
       fixed: false

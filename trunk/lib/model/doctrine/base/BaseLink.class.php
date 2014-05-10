@@ -9,6 +9,7 @@ Doctrine_Manager::getInstance()->bindComponent('Link', 'doctrine');
  * 
  * @property integer $id
  * @property integer $item_id
+ * @property string $title
  * @property string $link
  * @property string $route
  * @property integer $season
@@ -25,6 +26,7 @@ Doctrine_Manager::getInstance()->bindComponent('Link', 'doctrine');
  * 
  * @method integer   getId()          Returns the current record's "id" value
  * @method integer   getItemId()      Returns the current record's "item_id" value
+ * @method string    getTitle()       Returns the current record's "title" value
  * @method string    getLink()        Returns the current record's "link" value
  * @method string    getRoute()       Returns the current record's "route" value
  * @method integer   getSeason()      Returns the current record's "season" value
@@ -40,6 +42,7 @@ Doctrine_Manager::getInstance()->bindComponent('Link', 'doctrine');
  * @method Item      getItem()        Returns the current record's "Item" value
  * @method Link      setId()          Sets the current record's "id" value
  * @method Link      setItemId()      Sets the current record's "item_id" value
+ * @method Link      setTitle()       Sets the current record's "title" value
  * @method Link      setLink()        Sets the current record's "link" value
  * @method Link      setRoute()       Sets the current record's "route" value
  * @method Link      setSeason()      Sets the current record's "season" value
@@ -80,6 +83,15 @@ abstract class BaseLink extends sfDoctrineRecord
              'notnull' => true,
              'autoincrement' => false,
              'length' => 4,
+             ));
+        $this->hasColumn('title', 'string', 500, array(
+             'type' => 'string',
+             'fixed' => 0,
+             'unsigned' => false,
+             'primary' => false,
+             'notnull' => true,
+             'autoincrement' => false,
+             'length' => 500,
              ));
         $this->hasColumn('link', 'string', 5000, array(
              'type' => 'string',

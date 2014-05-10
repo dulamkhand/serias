@@ -17,6 +17,7 @@ abstract class BaseLinkForm extends BaseFormDoctrine
     $this->setWidgets(array(
       'id'          => new sfWidgetFormInputHidden(),
       'item_id'     => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('Item'), 'add_empty' => false)),
+      'title'       => new sfWidgetFormTextarea(),
       'link'        => new sfWidgetFormTextarea(),
       'route'       => new sfWidgetFormTextarea(),
       'season'      => new sfWidgetFormInputText(),
@@ -34,6 +35,7 @@ abstract class BaseLinkForm extends BaseFormDoctrine
     $this->setValidators(array(
       'id'          => new sfValidatorChoice(array('choices' => array($this->getObject()->get('id')), 'empty_value' => $this->getObject()->get('id'), 'required' => false)),
       'item_id'     => new sfValidatorDoctrineChoice(array('model' => $this->getRelatedModelName('Item'))),
+      'title'       => new sfValidatorString(array('max_length' => 500)),
       'link'        => new sfValidatorString(array('max_length' => 5000)),
       'route'       => new sfValidatorString(array('max_length' => 500)),
       'season'      => new sfValidatorInteger(),

@@ -68,7 +68,7 @@ class itemActions extends sfActions
             $rs = $form->save();
             
             if($rs->getTitle()) {
-                $rs->setRoute(GlobalLib::slugify($rs->getTitle()));
+                $rs->setRoute(GlobalLib::slugify(GlobalLib::mn2en($rs->getTitle().'-'.$rs->getYear())));
                 $rs->save();
             }
             

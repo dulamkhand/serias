@@ -12,8 +12,24 @@
  */
 class Link extends BaseLink
 {
-    public function getSeasonEpisode() {
-        return 's'.$this->getSeason().'e'.$this->getEpisode();
+    public function __toString() {
+        $str = '';
+        if($this->getSeason() == 100000) {
+            $str .= 'Special';
+        } else if($this->getSeason()) {
+            $str .= 'S'.$this->getSeason();
+        }
+        
+        if($this->getEpisode()) {
+            $str .= $str == 'Special' ? ' ' : '';
+            $str .= $str ? 'E'.$this->getEpisode() : '';
+        }
+        
+        if($this->getTitle()) {
+            $str .= $str ? ' ' : '';
+            $str .= $this->getTitle();
+        }
+        return $str;
     }
 
 }

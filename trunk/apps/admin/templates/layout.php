@@ -21,6 +21,9 @@
             		<li <?php echo $tab == 'item' ? 'class="current"' : '' ?>>
                   <?php echo link_to('Item', 'item/index')?>
                 </li>
+                <li <?php echo $tab == 'link' ? 'class="current"' : '' ?>>
+                  <?php echo link_to('Link', 'link/index')?>
+                </li>
                 <li <?php echo $tab == 'admin' ? 'class="current"' : '' ?>>
                     <?php echo link_to('Admin', 'admin/index')?>
                 </li>
@@ -30,13 +33,9 @@
         <br clear="all">   
         <div id="submenu">
             <?php 
-            if(in_array($tab, array('item'))) { 
-                echo link_to('+ Add', 'item/new');
-                echo link_to('List all', 'item/index');
-            } else if($tab == 'admin' && $sf_user->hasCredential('admin')) { 
-                # admin
-                echo link_to('+ Add', 'admin/new');
-                echo link_to('List all', 'admin/index');
+            if($tab == 'link') { 
+                echo link_to('+ new', 'link/new?itemId='.$sf_params->get('itemId'));
+                echo link_to('list', 'link/index?itemId='.$sf_params->get('itemId'));
             } else {
             		include_partial('partial/sublink', array('tab'=>$tab));
             }

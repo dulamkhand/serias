@@ -73,7 +73,7 @@ class GlobalLib
     public static function getNumbers($min=1, $max=1000)
     {
         $a = array();
-        for($i=0; $i <= 1000; $i++) {
+        for($i=$min; $i <= $max; $i++) {
             $a[$i] = $i;
         }
         return $a;
