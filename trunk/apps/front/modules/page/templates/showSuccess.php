@@ -10,18 +10,29 @@
     <br clear="all">
 </div>
 
+
 <div class="box-home" style="background:#dedede;border:1px solid #ccc;">
-  
     <?php $links = Doctrine::getTable('Link')->createQuery()
                       ->where('item_id =?', $rs->getId())
                       ->orderBy('season ASC, episode ASC, created_at DESC, updated_at DESC')
                       ->fetchArray();?>
-    <?php foreach($links as $rs):?>
-        <h2 style="color:#666"><?php echo 'S'.$rs['season'].'E'.$rs['episode'].' '.$rs['title']?></h2>
-        <a href="<?php echo $rs['link']?>" target="_blank" style="color:#000;">
-            <?php echo $rs['link']?>
-        </a>
-        <br clear="all">
-    <?php endforeach;?>  
+    <?php $i = 0?>
+    <?php foreach($links as $link):?>
+        <?php if(++$i == 0 && ($link['season'] && $link['episode'] && $link['title'])):?>
+            <h2 style="color:#666"><?php echo 'S'.$link['season'].'E'.$link['episode'].' '.$link['title']?></h2>    
+        <?php endif?>
+
+        <span onclick="$('#frame<?php echo $link['id']?>').toggle();return false;" class="left"
+              style="color:#000;text-decoration:underline;cursor:pointer;margin:0 5px 0 0;">
+             link<?php echo $i?>
+        </span>
+
+        <div id="frame<?php echo $link['id']?>" style="display:none;">
+            <iframe width="900" height="640" scrolling="no" frameborder="0" src="<?php echo $link['link']?>" 
+                framespacing="0" id="hmovie" style="display: inline;"></iframe>
+        </div>
+    <?php endforeach;?>
     <br clear="all">
 </div>
+
+
