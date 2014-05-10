@@ -3,8 +3,7 @@
 
 # default values
 all:
-  #host: http://sport
-  #host: http://localhost/sport/web
-  host: http://urin-essence.com/sport
+  #host: http://urin-essence.com/imdb
+  host: http://localhost:88/imdb/web/
   pager: 20
   limit: 20

@@ -3,8 +3,8 @@
 class GlobalLib
 {
   
-    public static $type   = array('movie'=>'Movie', 'serias'=>'Serias', 'tvshow'=>'TV show', 'mn'=>'MN films', 'nonfiction'=>'Non fiction');
-    public static $colors = array('movie'=>'#4D9804', 'serias'=>'#067FF9', 'tvshow'=>'#FA3F06', 'mn'=>'#CB1D6B', 'nonfiction'=>'#5F1DCB');
+    public static $type   = array('movie'=>'Movie', 'series'=>'Series', 'tvshow'=>'TV show', 'mn'=>'MN films', 'nonfiction'=>'Non fiction');
+    public static $colors = array('movie'=>'#4D9804', 'series'=>'#067FF9', 'tvshow'=>'#FA3F06', 'mn'=>'#CB1D6B', 'nonfiction'=>'#5F1DCB');
     public static $state  = array('willbegin'=>'willbegin', 'ongoing'=>'ongoing', 'ended'=>'ended');
 
     public static $banner_position = array(

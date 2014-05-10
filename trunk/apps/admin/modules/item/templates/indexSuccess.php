@@ -1,6 +1,6 @@
 <?php $host = sfConfig::get('app_host')?>
 
-<form action="<?php echo url_for('serias/index')?>" method="GET">
+<form action="<?php echo url_for('item/index')?>" method="GET">
     <?php include_partial('partial/search', array());?>
 </form>
 
@@ -11,7 +11,7 @@
     <tr>
       <th>#</th>
       <th>Image</th>
-      <th>Serias</th>
+      <th>Item</th>
       <th>Details</th>
       <th></th>
     </tr>
@@ -21,12 +21,12 @@
     <tr <?php if($i%2 != 0) echo 'class="odd"'?>>
         <td><?php echo ++$i?></td>
         <td>
-            <a href="<?php echo url_for('serias/edit?id='.$rs->getId())?>">
+            <a href="<?php echo url_for('item/edit?id='.$rs->getId())?>">
                <?php if($rs->getImage()) echo image_tag('/u/m/t140-'.$rs->getImage(), array('style'=>'max-width:00px;border:2px solid '.(GlobalLib::getValue('colors', $rs->getType()))))?>
             </a>
         </td>
         <td>
-            <a href="<?php echo url_for('serias/edit?id='.$rs->getId())?>" class="action"><b><?php echo $rs ?></b></a><br>
+            <a href="<?php echo url_for('item/edit?id='.$rs->getId())?>" class="action"><b><?php echo $rs ?></b></a><br>
             <?php echo $rs->getSummary() ?>            
         </td>
         <td>
@@ -38,10 +38,10 @@
             <b>Featured: </b><?php if($rs->getIsFeatured()) echo image_tag('icons/ok.png', array('align'=>'absmiddle')) ?>
         </td>
         <td nowrap>
-            <?php include_partial('partial/editDelete', array('module'=>'serias', 'id'=>$rs->getId()));?>
+            <?php include_partial('partial/editDelete', array('module'=>'item', 'id'=>$rs->getId()));?>
         </td> 
     </tr>
     <?php endforeach; ?>
   </tbody>
 </table>
-<?php echo pager($pager, 'serias/index?s='.$sf_params->get('s'))?>
+<?php echo pager($pager, 'item/index?s='.$sf_params->get('s'))?>

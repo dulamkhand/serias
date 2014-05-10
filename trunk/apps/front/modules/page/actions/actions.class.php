@@ -18,7 +18,7 @@ class mainActions extends sfActions
   
     public function executeShow(sfWebRequest $request)
     {
-        $this->rs = $rs = Doctrine::getTable('Serias')->find($request->getParameter('route'));
+        $this->rs = $rs = Doctrine::getTable('Item')->find($request->getParameter('route'));
         $this->forward404Unless($rs);
     }   
     

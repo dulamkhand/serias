@@ -6,9 +6,9 @@ default:
     content-type: text/html
 
   metas:
-    title:        movie
-    description:  movie
-    keywords:     movie
+    title:        imdb
+    description:  imdb
+    keywords:     imdb
     language:     en
     robots:       index, follow
 

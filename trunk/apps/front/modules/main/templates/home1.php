@@ -1,7 +1,7 @@
 <br clear="all">
 
 <h2 style="color:#4D9804;">КИНО</h2>
-<?php echo image_tag('serias.png')?>
+<?php echo image_tag('items.png')?>
 <br clear="all">
 <br clear="all">
 
