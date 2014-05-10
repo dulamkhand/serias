@@ -18,7 +18,7 @@ banner:
 # default rules
 homepage:
   url:   /
-  param: { module: serias, action: index }
+  param: { module: item, action: index }
 
 # generic rules
 # please, remove them by adding more specific rules

@@ -3,8 +3,8 @@
 
 # default values
 all:
-  host: http://localhost:88/serias/web/
-  webname: movie
+  host: http://localhost:88/imdb/web/
+  webname: imdb
   feedbackmail: handaa.1224@gmail.com
   pager: 10
   limit: 10

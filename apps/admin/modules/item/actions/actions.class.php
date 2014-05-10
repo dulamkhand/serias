@@ -1,33 +1,33 @@
 <?php
 
 /**
- * links actions.
+ * item actions.
  *
  * @package    vogue
- * @subpackage links
+ * @subpackage item
  * @author     Your name here
  * @version    SVN: $Id: actions.class.php 23810 2009-11-12 11:07:44Z Kris.Wallsmith $
  */
-class linksActions extends sfActions
+class itemActions extends sfActions
 {
     public function executeIndex(sfWebRequest $request)
     {
         $params = array();
-        if($request->getParameter('s')) $params['sLinks'] = $request->getParameter('s');
-        $this->pager = GlobalTable::getPager('Links', $params, $request->getParameter('page'));
+        if($request->getParameter('s')) $params['sItem'] = $request->getParameter('s');
+        $this->pager = GlobalTable::getPager('Item', $params, $request->getParameter('page'));
         
     }
   
     public function executeNew(sfWebRequest $request)
     {
-        $this->form = new LinksForm();
+        $this->form = new ItemForm();
     }
   
     public function executeCreate(sfWebRequest $request)
     {        
         $this->forward404Unless($request->isMethod(sfRequest::POST));
 
-        $this->form = new LinksForm();
+        $this->form = new ItemForm();
     
         $this->processForm($request, $this->form);
     
@@ -36,15 +36,15 @@ class linksActions extends sfActions
   
     public function executeEdit(sfWebRequest $request)
     {
-        $this->forward404Unless($rs = Doctrine::getTable('Links')->find(array($request->getParameter('id'))), sprintf('Object page does not exist (%s).', $request->getParameter('id')));
-        $this->form = new LinksForm($rs);
+        $this->forward404Unless($rs = Doctrine::getTable('Item')->find(array($request->getParameter('id'))), sprintf('Object page does not exist (%s).', $request->getParameter('id')));
+        $this->form = new ItemForm($rs);
     }
   
     public function executeUpdate(sfWebRequest $request)
     {
         $this->forward404Unless($request->isMethod(sfRequest::POST) || $request->isMethod(sfRequest::PUT));
-        $this->forward404Unless($rs = Doctrine::getTable('Links')->find(array($request->getParameter('id'))), sprintf('Object page does not exist (%s).', $request->getParameter('id')));
-        $this->form = new LinksForm($rs);
+        $this->forward404Unless($rs = Doctrine::getTable('Item')->find(array($request->getParameter('id'))), sprintf('Object page does not exist (%s).', $request->getParameter('id')));
+        $this->form = new ItemForm($rs);
     
         $this->processForm($request, $this->form);
     
@@ -53,10 +53,10 @@ class linksActions extends sfActions
   
     public function executeDelete(sfWebRequest $request)
     {
-        $this->forward404Unless($rs = Doctrine::getTable('Links')->find(array($request->getParameter('id'))), sprintf('Object page does not exist (%s).', $request->getParameter('id')));
+        $this->forward404Unless($rs = Doctrine::getTable('Item')->find(array($request->getParameter('id'))), sprintf('Object page does not exist (%s).', $request->getParameter('id')));
         $rs->delete();
         $this->getUser()->setFlash('flash', 'Successfully deleted.', true);
-        $this->redirect($request->getReferer() ? $request->getReferer() : 'links/index');
+        $this->redirect($request->getReferer() ? $request->getReferer() : 'item/index');
     }
     
 
@@ -68,12 +68,14 @@ class linksActions extends sfActions
             $rs = $form->save();
             
             if($rs->getTitle()) {
-                $rs->setRoute(GlobalLib::mn2en($rs->getTitle()));
+                $rs->setRoute(GlobalLib::slugify($rs->getTitle()));
                 $rs->save();
             }
+            
+            GlobalLib::createThumbs($rs->getImage(), 'm', array(140));
 
             $this->getUser()->setFlash('flash', 'Successfully saved.', true);
-            $this->redirect('links/index');
+            $this->redirect('item/index');
         }
     }
 

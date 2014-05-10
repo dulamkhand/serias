@@ -10,7 +10,7 @@
 </div>
 
 <div class="box-home" style="background:#dedede;border:1px solid #ccc;">
-    <?php $links = Doctrine::getTable('Links')->createQuery()->where('serias_id', $rs->getId());?>
+    <?php $links = Doctrine::getTable('Link')->createQuery()->where('item_id', $rs->getId());?>
     <?php foreach($links as $link):?>  
       <a href="<?php echo $link?>" target="_blank">
           <?php echo $link?>

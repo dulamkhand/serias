@@ -18,8 +18,8 @@
         <div id="topmenu"><ul>
             <?php $tab = isset($tab) ? $tab : $sf_request->getParameter('module'); ?>
             <?php $act = isset($act) ? $act : $sf_request->getParameter('action'); ?>
-            		<li <?php echo $tab == 'season' ? 'class="current"' : '' ?>>
-                  <?php echo link_to('Season', 'season/index')?>
+            		<li <?php echo $tab == 'item' ? 'class="current"' : '' ?>>
+                  <?php echo link_to('Item', 'item/index')?>
                 </li>
                 <li <?php echo $tab == 'admin' ? 'class="current"' : '' ?>>
                     <?php echo link_to('Admin', 'admin/index')?>
@@ -30,9 +30,9 @@
         <br clear="all">   
         <div id="submenu">
             <?php 
-            if(in_array($tab, array('serias'))) { 
-                echo link_to('+ Add', 'serias/new');
-                echo link_to('List all', 'serias/index');
+            if(in_array($tab, array('item'))) { 
+                echo link_to('+ Add', 'item/new');
+                echo link_to('List all', 'item/index');
             } else if($tab == 'admin' && $sf_user->hasCredential('admin')) { 
                 # admin
                 echo link_to('+ Add', 'admin/new');
@@ -57,7 +57,7 @@
     
     <?php if($sf_user->isAuthenticated()):?>
         <div id="footer">
-          2013 - 2015 &copy;  <a href="http://www.movie.mn" target="_blank">www.movie.mn</a>
+          2013 - 2015 &copy;  <a href="http://www.imdb.mn" target="_blank">www.imdb.mn</a>
           <br clear="all">
         </div>
     <?php endif;?>

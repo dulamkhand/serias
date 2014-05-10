@@ -9,9 +9,9 @@ class ProjectConfiguration extends sfProjectConfiguration
   public function setup()
   {
       $this->enablePlugins('sfDoctrinePlugin', 'sfThumbnailPlugin');
-      sfConfig::set('sf_web_dir', 'C:\wamp\www\serias\web');
-      sfConfig::set('sf_upload_dir', 'C:\wamp\www\serias\web\u');
-      sfConfig::set('rich_text_fck_js_dir', 'C:\wamp\www\serias\web\js');
+      sfConfig::set('sf_web_dir', 'C:\wamp\www\imdb\web');
+      sfConfig::set('sf_upload_dir', 'C:\wamp\www\imdb\web\u');
+      sfConfig::set('rich_text_fck_js_dir', 'C:\wamp\www\imdb\web\js');
   }
 
 }

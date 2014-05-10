@@ -1,6 +1,6 @@
 <?php $host = sfConfig::get('app_host')?>
 
-<form action="<?php echo url_for('links/index')?>" method="GET">
+<form action="<?php echo url_for('link/index')?>" method="GET">
     <?php include_partial('partial/search', array());?>
 </form>
 
@@ -21,7 +21,7 @@
     <tr <?php if($i%2 != 0) echo 'class="odd"'?>>
         <td><?php echo ++$i?></td>
         <td>
-            <a href="<?php echo url_for('links/edit?id='.$rs->getId())?>">
+            <a href="<?php echo url_for('link/edit?id='.$rs->getId())?>">
                <?php echo ($s->getLink())?>
             </a>
         </td>
@@ -35,10 +35,10 @@
             <b>Featured: </b><?php if($rs->getIsFeatured()) echo image_tag('icons/ok.png', array('align'=>'absmiddle')) ?>
         </td>
         <td nowrap>
-            <?php include_partial('partial/editDelete', array('module'=>'links', 'id'=>$rs->getId()));?>
+            <?php include_partial('partial/editDelete', array('module'=>'link', 'id'=>$rs->getId()));?>
         </td> 
     </tr>
     <?php endforeach; ?>
   </tbody>
 </table>
-<?php echo pager($pager, 'links/index?s='.$sf_params->get('s'))?>
+<?php echo pager($pager, 'link/index?s='.$sf_params->get('s'))?>

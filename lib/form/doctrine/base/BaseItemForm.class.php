@@ -1,16 +1,16 @@
 <?php
 
 /**
- * Serias form base class.
+ * Item form base class.
  *
- * @method Serias getObject() Returns the current form's model object
+ * @method Item getObject() Returns the current form's model object
  *
- * @package    vogue
+ * @package    imdb
  * @subpackage form
  * @author     Your name here
  * @version    SVN: $Id: sfDoctrineFormGeneratedTemplate.php 29553 2010-05-20 14:33:00Z Kris.Wallsmith $
  */
-abstract class BaseSeriasForm extends BaseFormDoctrine
+abstract class BaseItemForm extends BaseFormDoctrine
 {
   public function setup()
   {
@@ -52,7 +52,7 @@ abstract class BaseSeriasForm extends BaseFormDoctrine
       'updated_at'  => new sfValidatorDateTime(array('required' => false)),
     ));
 
-    $this->widgetSchema->setNameFormat('serias[%s]');
+    $this->widgetSchema->setNameFormat('item[%s]');
 
     $this->errorSchema = new sfValidatorErrorSchema($this->validatorSchema);
 
@@ -63,7 +63,7 @@ abstract class BaseSeriasForm extends BaseFormDoctrine
 
   public function getModelName()
   {
-    return 'Serias';
+    return 'Item';
   }
 
 }

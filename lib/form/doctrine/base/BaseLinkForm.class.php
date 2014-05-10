@@ -1,22 +1,22 @@
 <?php
 
 /**
- * Links form base class.
+ * Link form base class.
  *
- * @method Links getObject() Returns the current form's model object
+ * @method Link getObject() Returns the current form's model object
  *
- * @package    vogue
+ * @package    imdb
  * @subpackage form
  * @author     Your name here
  * @version    SVN: $Id: sfDoctrineFormGeneratedTemplate.php 29553 2010-05-20 14:33:00Z Kris.Wallsmith $
  */
-abstract class BaseLinksForm extends BaseFormDoctrine
+abstract class BaseLinkForm extends BaseFormDoctrine
 {
   public function setup()
   {
     $this->setWidgets(array(
       'id'          => new sfWidgetFormInputHidden(),
-      'serias_id'   => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('Serias'), 'add_empty' => false)),
+      'item_id'     => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('Item'), 'add_empty' => false)),
       'link'        => new sfWidgetFormTextarea(),
       'route'       => new sfWidgetFormTextarea(),
       'season'      => new sfWidgetFormInputText(),
@@ -33,7 +33,7 @@ abstract class BaseLinksForm extends BaseFormDoctrine
 
     $this->setValidators(array(
       'id'          => new sfValidatorChoice(array('choices' => array($this->getObject()->get('id')), 'empty_value' => $this->getObject()->get('id'), 'required' => false)),
-      'serias_id'   => new sfValidatorDoctrineChoice(array('model' => $this->getRelatedModelName('Serias'))),
+      'item_id'     => new sfValidatorDoctrineChoice(array('model' => $this->getRelatedModelName('Item'))),
       'link'        => new sfValidatorString(array('max_length' => 5000)),
       'route'       => new sfValidatorString(array('max_length' => 500)),
       'season'      => new sfValidatorInteger(),
@@ -48,7 +48,7 @@ abstract class BaseLinksForm extends BaseFormDoctrine
       'updated_at'  => new sfValidatorDateTime(array('required' => false)),
     ));
 
-    $this->widgetSchema->setNameFormat('links[%s]');
+    $this->widgetSchema->setNameFormat('link[%s]');
 
     $this->errorSchema = new sfValidatorErrorSchema($this->validatorSchema);
 
@@ -59,7 +59,7 @@ abstract class BaseLinksForm extends BaseFormDoctrine
 
   public function getModelName()
   {
-    return 'Links';
+    return 'Link';
   }
 
 }
