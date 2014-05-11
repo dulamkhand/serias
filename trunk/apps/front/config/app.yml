@@ -3,7 +3,8 @@
 
 # default values
 all:
-  host: http://localhost:88/imdb/web/
+  #host: http://urin-essence.com/imdb
+  host: http://imdb/
   webname: imdb
   feedbackmail: handaa.1224@gmail.com
   pager: 10

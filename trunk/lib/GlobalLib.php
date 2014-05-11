@@ -4,9 +4,10 @@ class GlobalLib
 {
   
     public static $type   = array('movie'=>'Movie', 'series'=>'Series', 'tvshow'=>'TV show', 'mn'=>'MN films', 'nonfiction'=>'Non fiction');
+    public static $typeMN   = array('movie'=>'Кино', 'series'=>'Цуврал', 'tvshow'=>'ТВ Шоу', 'mn'=>'Монгол кино', 'nonfiction'=>'Баримтат кино');
     public static $colors = array('movie'=>'#4D9804', 'series'=>'#067FF9', 'tvshow'=>'#FA3F06', 'mn'=>'#CB1D6B', 'nonfiction'=>'#5F1DCB');
-    public static $state  = array('willbegin'=>'willbegin', 'ongoing'=>'ongoing', 'ended'=>'ended');
 
+    public static $state  = array('willbegin'=>'willbegin', 'ongoing'=>'ongoing', 'ended'=>'ended');
     public static $banner_position = array(
                         'header'=>'Header 300px65px', 
                         'home-featured'=>'Home featured 450px', 
@@ -37,16 +38,8 @@ class GlobalLib
     {
         switch ($type) {
           	case 'type'  : return self::$type;
+          	case 'typeMN'  : return self::$typeMN;
           	case 'colors': return self::$colors;
-          	case 'gender': return self::$gender;
-          	case 'player_draft': return self::$player_draft;
-          	case 'player_number': return self::getNumbers(1, 1000);
-            case 'alpha_en': return self::$alpha_en;
-          	case 'alpha_mn': return self::$alpha_mn;
-          	case 'bad_words': return self::$bad_words;
-          	case 'reserved_words': return self::$reserved_words;
-          	case 'mod_permissions': return self::$mod_permissions;
-          	case 'days': return self::$days;
         }
         return array();
     }

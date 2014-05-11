@@ -70,8 +70,8 @@ class linkActions extends sfActions
         if ($form->isValid())
         {
             $rs = $form->save();
-            $rs->setRoute(GlobalLib::slugify(GlobalLib::mn2en($rs->getTitle().'-'.$rs->getSeason().'-'.$rs->getEpisode().'-'.$rs->getId())));
-            $rs->save();
+            //$rs->setRoute(GlobalLib::slugify(GlobalLib::mn2en($rs->getTitle().'-'.$rs->getSeason().'-'.$rs->getEpisode().'-'.$rs->getId())));
+            //$rs->save();
 
             $this->getUser()->setFlash('flash', 'Successfully saved.', true);
             $this->redirect('link/index?itemId='.$rs->getItemId());

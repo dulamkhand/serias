@@ -445,15 +445,15 @@ Link:
       unsigned: false
       primary: true
       autoincrement: true
-    object_id:
+    item_id:
       type: integer(4)
       fixed: false
       unsigned: false
       primary: false
       notnull: true
       autoincrement: false
-    object_type:
-      type: string(50)
+    title:
+      type: string(100)
       fixed: false
       unsigned: false
       primary: false
@@ -461,6 +461,20 @@ Link:
       autoincrement: false
     link:
       type: string(5000)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    season:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    episode:
+      type: integer(4)
       fixed: false
       unsigned: false
       primary: false
