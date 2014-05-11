@@ -9,30 +9,66 @@
     </div>
     <br clear="all">
 </div>
-
+<br clear="all">
 
 <div class="box-home" style="background:#dedede;border:1px solid #ccc;">
     <?php $links = Doctrine::getTable('Link')->createQuery()
                       ->where('item_id =?', $rs->getId())
                       ->orderBy('season ASC, episode ASC, created_at DESC, updated_at DESC')
-                      ->fetchArray();?>
-    <?php $i = 0?>
+                      ->execute();?>
+    <?php if(!sizeof($links)):?>
+        Линк оруулаагүй байна. Та хэсэг хугацааны дараа дахин хандаарай.
+    <?php endif?>
+
+    <?php $season=null; $episode=null; $l=0; $first=0;?>
     <?php foreach($links as $link):?>
-        <?php if(++$i == 0 && ($link['season'] && $link['episode'] && $link['title'])):?>
-            <h2 style="color:#666"><?php echo 'S'.$link['season'].'E'.$link['episode'].' '.$link['title']?></h2>    
+        <!--series-->
+        <?php if($rs->getType() == 'series'):?>
+            <!--season endline-->
+            <?php if($season != $link->getSeason()):?>
+                <?php if($first != 0) echo '<br clear="all">'?>
+                <hr style="border:0;border:2px solid #fff;margin:20px 0;">
+                <?php $season = $link->getSeason(); $first = 0;?>
+            <?php endif?>
+            
+            <!--title-->
+            <?php if($episode != $link->getEpisode()):?>
+                <?php if($first++ != 0) echo '<br clear="all"><br clear="all">'?>
+                <h2 style="color:<?php echo $color?>">
+                    <?php echo $link?>
+                </h2>
+                <?php $l=0; $episode = $link->getEpisode();?>
+            <?php endif?>
         <?php endif?>
-
-        <span onclick="$('#frame<?php echo $link['id']?>').toggle();return false;" class="left"
-              style="color:#000;text-decoration:underline;cursor:pointer;margin:0 5px 0 0;">
-             link<?php echo $i?>
-        </span>
-
-        <div id="frame<?php echo $link['id']?>" style="display:none;">
-            <iframe width="900" height="640" scrolling="no" frameborder="0" src="<?php echo $link['link']?>" 
-                framespacing="0" id="hmovie" style="display: inline;"></iframe>
-        </div>
+        <!--links-->
+        <h3 onclick="iframe('<?php echo $link->getLink()?>')" class="left">
+             линк<?php echo ++$l?>
+        </h3>
     <?php endforeach;?>
+
     <br clear="all">
+    <?php echo image_tag('http://www.utah.gov/transparency/images/icons/loading_large.gif', array('style'=>'margin:0 auto;display:none;', 'id'=>'loading'))?>
+
+    <div id="iframe"></div>
 </div>
 
 
+<script type="text/javascript">
+function iframe(link)
+{
+  $.ajax({
+    url: "<?php echo url_for('page/iframe')?>", 
+    type: "POST",
+    data: {link:link},
+    beforeSend: function(){
+      $('#loading').show();
+    },
+    success: function(data)        
+    {
+      $('#loading').hide();
+      $("#iframe").html(data);
+    }
+  });
+  return false;
+}
+</script>

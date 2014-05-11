@@ -11,7 +11,7 @@ outline:0;background:none;text-rendering:optimizelegibility;position:relative;fo
 body {background:#fff;}
 
 #leftside{float:left;margin:0;width:130px;border-right:1px solid #ccc;box-shadow:0 3px 5px #ededed;padding:0 10px 0 10px;height:1000px;}
-#center{float:left;margin:0;width:950px;border:0;padding:5px 15px;}
+#center{float:left;margin:0;width:825px;border:0;padding:5px 15px;}
 
 input {padding:2px;height:18px;border:1px solid #4E99E4;}
 input[type=submit]{cursor:pointer;font-weight:bold;padding:0;height:25px;background:#FF6600;color:#fff;border:1px solid #FF6600;}
@@ -19,8 +19,8 @@ input[type=button]{cursor:pointer;font-weight:bold;padding:5px 10px;text-decorat
 input[type=checkbox]{margin:-2px 5px 0 0;width:16px;padding:0;float:left;}
 
 ul#mainmenu {list-style-type:none;margin:0;padding:0;}
-ul#mainmenu li a{font-size:12px;text-transform:uppercase;color:#333;line-height:22px;font-weight:bold;
-font-family:Open Sans;}
+ul#mainmenu li a{font-size:15px;text-transform:uppercase;color:#444;line-height:26px;
+font-weight:bold;font-family:Open Sans Condensed;letter-spacing:-1px;}
 ul#mainmenu li a.active{color:#000;}
 
 
@@ -44,7 +44,10 @@ ol.none, ul.none{list-style-type:none;padding:0;margin:0;}
 
 h2{font-size:22px;text-transform:uppercase;color:#fff;line-height:22px;
 font-weight:bold;font-family:Roboto Condensed;letter-spacing:-2px;margin:0 0 5px 0;}
-
+h3{color:#444;text-decoration:underline;cursor:pointer;margin:0 7px 0 0;
+font-size:16px;text-transform:uppercase;font-weight:bold;letter-spacing:0px;
+font-family:Roboto Condensed;
+}
 
 cufon {height:17px!important;}
 
@@ -134,6 +137,6 @@ strong,b{font-weight:bold!important;}
 .p10px{padding:10px;}
 
 
-.box-home{float:left;margin:0 0 15px 0;padding:10px;width:980px;
+.box-home{float:left;margin:0 0 15px 0;padding:10px;width:100%;
 border-radius:2px;-moz-border-radius:2px;-webkit-border-radius:2px;-o-border-radius:2px;}
 .box-home a.toggle{float:right;margin:-6px -6px 0 0;}

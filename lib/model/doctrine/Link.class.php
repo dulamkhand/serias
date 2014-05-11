@@ -17,12 +17,12 @@ class Link extends BaseLink
         if($this->getSeason() == 100000) {
             $str .= 'Special';
         } else if($this->getSeason()) {
-            $str .= 'S'.$this->getSeason();
+            $str .= 'S'.(strlen($this->getSeason()) == 1 ? '0' : '').$this->getSeason();
         }
         
         if($this->getEpisode()) {
             $str .= $str == 'Special' ? ' ' : '';
-            $str .= $str ? 'E'.$this->getEpisode() : '';
+            $str .= $str ? 'E'.(strlen($this->getSeason()) == 1 ? '0' : '').$this->getEpisode() : '';
         }
         
         if($this->getTitle()) {

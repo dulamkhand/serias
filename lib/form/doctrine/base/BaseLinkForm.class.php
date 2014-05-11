@@ -16,9 +16,11 @@ abstract class BaseLinkForm extends BaseFormDoctrine
   {
     $this->setWidgets(array(
       'id'          => new sfWidgetFormInputHidden(),
-      'object_id'   => new sfWidgetFormInputText(),
-      'object_type' => new sfWidgetFormInputText(),
+      'item_id'     => new sfWidgetFormInputText(),
+      'title'       => new sfWidgetFormInputText(),
       'link'        => new sfWidgetFormTextarea(),
+      'season'      => new sfWidgetFormInputText(),
+      'episode'     => new sfWidgetFormInputText(),
       'sort'        => new sfWidgetFormInputText(),
       'nb_views'    => new sfWidgetFormInputText(),
       'is_active'   => new sfWidgetFormInputText(),
@@ -31,9 +33,11 @@ abstract class BaseLinkForm extends BaseFormDoctrine
 
     $this->setValidators(array(
       'id'          => new sfValidatorChoice(array('choices' => array($this->getObject()->get('id')), 'empty_value' => $this->getObject()->get('id'), 'required' => false)),
-      'object_id'   => new sfValidatorInteger(),
-      'object_type' => new sfValidatorString(array('max_length' => 50)),
+      'item_id'     => new sfValidatorInteger(),
+      'title'       => new sfValidatorString(array('max_length' => 100)),
       'link'        => new sfValidatorString(array('max_length' => 5000)),
+      'season'      => new sfValidatorInteger(),
+      'episode'     => new sfValidatorInteger(),
       'sort'        => new sfValidatorInteger(),
       'nb_views'    => new sfValidatorInteger(),
       'is_active'   => new sfValidatorInteger(),
