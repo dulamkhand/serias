@@ -17,6 +17,8 @@ class ItemForm extends BaseItemForm
         $this->widgetSchema['image']       = new sfWidgetFormInputFile(array(), array());
         $choices = GlobalLib::getArray('type');
       	$this->widgetSchema['type']        = new sfWidgetFormChoice(array('choices'=>$choices), array());
+      	$choices = GlobalLib::getArray('genre');
+      	$this->widgetSchema['genre']       = new sfWidgetFormChoice(array('choices'=>$choices), array());
       	$this->widgetSchema['year']        = new sfWidgetFormInputText(array(), array('width'=>20));
       	$this->widgetSchema['summary']     = new sfWidgetFormTextarea(array(), array());
       	$this->widgetSchema['body']        = new sfWidgetFormTextarea(array(), array());
@@ -25,6 +27,7 @@ class ItemForm extends BaseItemForm
       	$this->validatorSchema['title']    = new sfValidatorString(array(), array());
       	$this->validatorSchema['image']    = new sfValidatorFile($this->getFileAttrs('m'), $this->getFileOpts());
       	$this->validatorSchema['type']     = new sfValidatorPass();
+      	$this->validatorSchema['genre']    = new sfValidatorPass();
       	$this->validatorSchema['year']     = new sfValidatorPass();
       	$this->validatorSchema['summary']  = new sfValidatorPass();
       	$this->validatorSchema['body']     = new sfValidatorPass();

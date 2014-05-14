@@ -70,13 +70,10 @@ class GlobalTable extends Doctrine_Table
         # id
         if(isset($params['id']) && $params['id'] != null)
             $q->andWhere('id = ?', $params['id']);
-            
         if(isset($params['idO']) && $params['idO'] != null)
             $q->andWhere('id <> ?', $params['idO']);
-
         if(isset($params['ids']) && sizeof($params['ids']))
             $q->andWhereIn('id', $params['ids']);
-
         if(isset($params['idsO']) && sizeof($params['idsO']))
             $q->andWhereNotIn('id', $params['idsO']);
             
@@ -84,27 +81,29 @@ class GlobalTable extends Doctrine_Table
         if(isset($params['route']) && $params['route'] != null)
             $q->andWhere('route= ?', $params['route']);
 
+        # type
         if(isset($params['type']) && $params['type'] != null)
             $q->andWhere('type= ?', $params['type']);
-            
         if(isset($params['typeO']) && $params['typeO'] != null)
             $q->andWhere('type <> ?', $params['typeO']);
 
-            
-        # parentId
+        # itemId
         if(isset($params['itemId']) && $params['itemId'] != null)
             $q->andWhere('item_id = ? ', $params['itemId']);
-            
-        if(isset($params['categoryId']) && $params['categoryId'] != null)
-            $q->andWhere('category_id = ?', $params['categoryId']);
 
+        # filters
+        if(isset($params['y']) && $params['y'] != null)
+            $q->andWhere('year = ? ', $params['y']);
+        if(isset($params['g']) && $params['g'] != null)
+            $q->andWhere('genre = ? ', $params['g']);
+        if(isset($params['l']) && $params['l'] != null)
+            $q->andWhere('title like ?', $params['l'].'%');
+            
         # categoryId
         if(isset($params['categoryId']) && $params['categoryId'] != null)
             $q->andWhere('category_id = ?', $params['categoryId']);
-            
         if(isset($params['categoryIdO']) && $params['categoryIdO'] != null)
             $q->andWhere('category_id <> ?', $params['categoryIdO']);
-            
         if(isset($params['categoryIds']) && $params['categoryIds'] != null)
             $q->andWhereIn('category_id', $params['categoryIds']);
 

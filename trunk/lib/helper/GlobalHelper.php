@@ -37,7 +37,7 @@ function pager($pager, $uri)
   }
 
   if ($pager->getNbResults() > 0) {
-    $navigation .= '<span class="total">Нийт <b>'.$pager->getNbResults().'</b> үр дүнгээс энэ хуудсанд <b>'.$pager->getFirstIndice().'-'.$pager->getLastIndice().'</b> харагдаж байна.</span>';
+    $navigation .= '<span class="total">Нийт: <b>'.$pager->getNbResults().'</b>. Энэ хуудсанд: <b>'.$pager->getFirstIndice().'-'.$pager->getLastIndice().'</b>.</span>';
   }
   $navigation .= '</div>';
 

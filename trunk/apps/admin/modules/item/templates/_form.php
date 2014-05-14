@@ -34,6 +34,13 @@
           <?php echo $form['title'] ?>
         </td>
       </tr>
+      <tr>
+        <th><?php echo $form['genre']->renderLabel() ?></th>
+        <td>
+          <?php echo $form['genre']->renderError() ?>
+          <?php echo $form['genre'] ?>
+        </td>
+      </tr>
       <tr>          
         <th><?php echo $form['image']->renderLabel() ?></th>
         <td>

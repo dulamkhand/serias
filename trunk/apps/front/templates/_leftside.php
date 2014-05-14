@@ -9,11 +9,11 @@
   <br clear="all">
 
   <ul id="mainmenu">
-      <li><a href="">КИНО</a></li>
-      <li><a href="">ЦУВРАЛ</a></li>
-      <li><a href="">МОНГОЛ КИНО</a></li>
-      <li><a href="">TВ ШОУ</a></li>
-      <li><a href="">БАРИМТАТ КИНО</a></li>
+      <li><a href="<?php echo url_for('page/index?type=movie')?>">КИНО</a></li>
+      <li><a href="<?php echo url_for('page/index?type=series')?>">ЦУВРАЛ</a></li>
+      <li><a href="<?php echo url_for('page/index?type=tvshow')?>">TВ ШОУ</a></li>
+      <li><a href="<?php echo url_for('page/index?type=mn')?>">МОНГОЛ КИНО</a></li>
+      <li><a href="<?php echo url_for('page/index?type=nonfiction')?>">БАРИМТАТ КИНО</a></li>
   </ul>
 
   <br clear="all">

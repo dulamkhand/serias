@@ -336,6 +336,13 @@ Item:
       primary: false
       notnull: true
       autoincrement: false
+    genre:
+      type: string(50)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
     title:
       type: string(50)
       fixed: false

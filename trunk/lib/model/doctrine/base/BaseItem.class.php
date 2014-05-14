@@ -9,6 +9,7 @@ Doctrine_Manager::getInstance()->bindComponent('Item', 'doctrine');
  * 
  * @property integer $id
  * @property string $type
+ * @property string $genre
  * @property string $title
  * @property string $route
  * @property string $image
@@ -26,6 +27,7 @@ Doctrine_Manager::getInstance()->bindComponent('Item', 'doctrine');
  * 
  * @method integer   getId()          Returns the current record's "id" value
  * @method string    getType()        Returns the current record's "type" value
+ * @method string    getGenre()       Returns the current record's "genre" value
  * @method string    getTitle()       Returns the current record's "title" value
  * @method string    getRoute()       Returns the current record's "route" value
  * @method string    getImage()       Returns the current record's "image" value
@@ -42,6 +44,7 @@ Doctrine_Manager::getInstance()->bindComponent('Item', 'doctrine');
  * @method timestamp getUpdatedAt()   Returns the current record's "updated_at" value
  * @method Item      setId()          Sets the current record's "id" value
  * @method Item      setType()        Sets the current record's "type" value
+ * @method Item      setGenre()       Sets the current record's "genre" value
  * @method Item      setTitle()       Sets the current record's "title" value
  * @method Item      setRoute()       Sets the current record's "route" value
  * @method Item      setImage()       Sets the current record's "image" value
@@ -76,6 +79,15 @@ abstract class BaseItem extends sfDoctrineRecord
              'length' => 4,
              ));
         $this->hasColumn('type', 'string', 50, array(
+             'type' => 'string',
+             'fixed' => 0,
+             'unsigned' => false,
+             'primary' => false,
+             'notnull' => true,
+             'autoincrement' => false,
+             'length' => 50,
+             ));
+        $this->hasColumn('genre', 'string', 50, array(
              'type' => 'string',
              'fixed' => 0,
              'unsigned' => false,

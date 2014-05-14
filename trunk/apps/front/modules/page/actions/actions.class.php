@@ -17,7 +17,7 @@ class pageActions extends sfActions
     
     public function executeIndex(sfWebRequest $request)
     {
-        $this->forward404Unless(in_array($type = $request->getParameter('type'), GlobalLib::getKeys('type')));
+        $this->forward404Unless(in_array($this->type = $type = $request->getParameter('type'), GlobalLib::getKeys('type')));
         $this->pager = GlobalTable::getPager('Item', array('type'=>$type), $request->getParameter('page'));
     }
   
