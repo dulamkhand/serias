@@ -161,12 +161,6 @@ a.join:hover{background:green;}
 #footer .gothic, #footer a.gothic{font:0.75em "AvantGardeGothic-Medium",sans-serif;color:#fff;}
 
 
-/* pager */
-.pager{}
-.pager a{float:left;margin:2px;padding:0px 10px;background:#fff;color:#000;border:1px solid green;}
-.pager a.current{background:green;color:#fff;border:1px solid green;}
-.pager a:hover{background:green;color:#fff;border:1px solid green;}
-
 /* search */ 
 form.search{margin:0 0 0 0;display:block;}
 form.search .submit{background:green;display:block;padding:0 3px 3px 3px;height:26px;float:left;cursor:pointer;

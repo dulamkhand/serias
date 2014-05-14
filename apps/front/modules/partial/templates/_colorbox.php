@@ -1,4 +1,4 @@
-<?php $color = GlobalLib::getValue('colors', $type)?>
+<?php $color = GlobalLib::getValue('colors', $type);?>
 <div class="box-home" style="background:<?php echo $color?>;">
     <a href="#" class="toggle"><?php echo image_tag('icons/toggle.png', array())?></a>
     <h2><?php echo GlobalLib::getValue('typeMN', $type)?></h2>
@@ -15,5 +15,10 @@
         <?php endforeach;?>
         <br clear="all">
     </div><!--box-333-->
+    
+    <?php if(isset($more) && $more):?>
+        <a href="<?php echo url_for('page/index?type='.$type)?>" class="right" style="margin:10px 0 0 0;">
+          <h3 style="color:#fff;">Цааш &raquo;</h3></a>
+    <?php endif?>
 </div><!--box-home-->
 <br clear="all">

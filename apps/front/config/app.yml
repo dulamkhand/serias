@@ -7,5 +7,5 @@ all:
   host: http://imdb/
   webname: imdb
   feedbackmail: handaa.1224@gmail.com
-  pager: 10
+  pager: 4
   limit: 10

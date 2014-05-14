@@ -1,7 +1,7 @@
 *, html,body,div,span,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,abbr,address,cite,code,del,dfn,em,img,ins,kbd,q,samp,small,strong,sub,sup,var,
 b,i,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,figcaption,figure,footer,header,
 hgroup,menu,nav,section,summary,time,mark,audio,a 
-{font-family:Tahoma;line-height:20px;font-size:11px;color:#333;margin:0;padding:0;border:0;letter-spacing:1px;
+{font-family:Tahoma;line-height:20px;font-size:11px;color:#444;margin:0;padding:0;border:0;letter-spacing:1px;
 outline:0;background:none;text-rendering:optimizelegibility;position:relative;font-weight:normal;text-align:left;
 -webkit-touch-callout: none;-webkit-user-select: none;-khtml-user-select: none;-moz-user-select: -moz-none;-moz-user-select: none;-ms-user-select: none;user-select: none;
 }
@@ -140,3 +140,12 @@ strong,b{font-weight:bold!important;}
 .box-home{float:left;margin:0 0 15px 0;padding:10px;width:100%;
 border-radius:2px;-moz-border-radius:2px;-webkit-border-radius:2px;-o-border-radius:2px;}
 .box-home a.toggle{float:right;margin:-6px -6px 0 0;}
+
+
+/*********************** pager **********************/
+.pager {margin:0;padding:0;width:100%;}
+.pager a {float:left;margin:1px;padding:5px 12px;border:1px solid #dedede;border-radius:2px;}
+.pager a:hover {background:#dedede;color:#000;}
+.pager a.selected {background:#dedede;color:#000;font-weight:bold;}
+.pager .total{float:right;margin:5px 0 0 0;font-style:italic;}
+

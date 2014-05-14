@@ -1,10 +1,6 @@
 # You can find more information about this file on the symfony website:
 # http://www.symfony-project.org/reference/1_4/en/10-Routing
 
-# pages
-#pageByRoute:
-#  url:   /go/page/:route.htm
-#  param: { module: page, action: detail }
 contact:
   url:   /contact.htm
   param: { module: page, action: contact }
@@ -27,7 +23,7 @@ post:
   url:   /post.htm
   param: { module: page, action: post }
 
-# 
+# page
 index:
   url:   /i/:type.html/:page
   param: { module: page, action: index }
@@ -41,10 +37,6 @@ show:
 404:
   url:   /404.htm
   param: { module: main, action: 404 }
-search:
-  url:   /s/:keyword.htm
-  param: { module: main, action: search }
-
 
 # default rules
 homepage:

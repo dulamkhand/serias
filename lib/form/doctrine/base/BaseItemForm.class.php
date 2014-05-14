@@ -17,6 +17,7 @@ abstract class BaseItemForm extends BaseFormDoctrine
     $this->setWidgets(array(
       'id'          => new sfWidgetFormInputHidden(),
       'type'        => new sfWidgetFormInputText(),
+      'genre'       => new sfWidgetFormInputText(),
       'title'       => new sfWidgetFormInputText(),
       'route'       => new sfWidgetFormTextarea(),
       'image'       => new sfWidgetFormTextarea(),
@@ -36,6 +37,7 @@ abstract class BaseItemForm extends BaseFormDoctrine
     $this->setValidators(array(
       'id'          => new sfValidatorChoice(array('choices' => array($this->getObject()->get('id')), 'empty_value' => $this->getObject()->get('id'), 'required' => false)),
       'type'        => new sfValidatorString(array('max_length' => 50)),
+      'genre'       => new sfValidatorString(array('max_length' => 50)),
       'title'       => new sfValidatorString(array('max_length' => 50)),
       'route'       => new sfValidatorString(array('max_length' => 500)),
       'image'       => new sfValidatorString(array('max_length' => 500)),
