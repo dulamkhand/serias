@@ -7,62 +7,6 @@
  */
 class GlobalTable extends Doctrine_Table
 {
-    public static function doExecute($tableName, $params = array())
-    {
-        $q = Doctrine_Query::create()->select('*');
-        $q = self::params($tableName, $q, $params);
-        return $q->execute();
-    }
-    
-  
-    public static function doFetchArray($tableName, $params = array())
-    {
-        $q = Doctrine_Query::create()->select('*');
-        $q = self::params($tableName, $q, $params);
-        return $q->fetchArray();
-    }
-    
-    
-    public static function doFetchSelection($tableName, $fieldName, $params = array())
-    {
-        $res = array();
-        $rss = self::doFetchArray($tableName, $params);
-        foreach ($rss as $rs) 
-        {
-            $res[$rs['id']] = $fieldName;
-        }
-        return $res;
-    }
-  
-    
-    public static function doFetchOne($tableName, $params = array())
-    {
-        $q = Doctrine_Query::create()->select('*');
-        $q = self::params($tableName, $q, $params);
-        return $q->fetchOne();
-    }
-    
-    
-    public static function getPager($tableName, $params = array(), $page=1)
-    {
-        $q = Doctrine_Query::create()->select('*');
-        $q = self::params($tableName, $q, $params);
-
-        $pager = new sfDoctrinePager($tableName, sfConfig::get('app_pager', 30));
-        $pager->setPage($page);
-        $pager->setQuery($q);
-        $pager->init();
-        
-        return $pager;
-    }
-    
-    public static function doCount($tableName, $params = array())
-    {
-        $q = Doctrine_Query::create()->select('count(id)');
-        $q = self::params($tableName, $q, $params);
-        return $q->count();
-    }
-    
     private static function params($tableName, $q, $params = array())
     {
         $q->from($tableName);
@@ -148,5 +92,62 @@ class GlobalTable extends Doctrine_Table
 
         return $q;
     }
+    
 
+    public static function doExecute($tableName, $params = array())
+    {
+        $q = Doctrine_Query::create()->select('*');
+        $q = self::params($tableName, $q, $params);
+        return $q->execute();
+    }
+    
+  
+    public static function doFetchArray($tableName, $params = array())
+    {
+        $q = Doctrine_Query::create()->select('*');
+        $q = self::params($tableName, $q, $params);
+        return $q->fetchArray();
+    }
+    
+    
+    public static function doFetchSelection($tableName, $fieldName, $params = array())
+    {
+        $res = array();
+        $rss = self::doFetchArray($tableName, $params);
+        foreach ($rss as $rs) 
+        {
+            $res[$rs['id']] = $fieldName;
+        }
+        return $res;
+    }
+  
+    
+    public static function doFetchOne($tableName, $params = array())
+    {
+        $q = Doctrine_Query::create()->select('*');
+        $q = self::params($tableName, $q, $params);
+        return $q->fetchOne();
+    }
+    
+    
+    public static function getPager($tableName, $params = array(), $page=1)
+    {
+        $q = Doctrine_Query::create()->select('*');
+        $q = self::params($tableName, $q, $params);
+
+        $pager = new sfDoctrinePager($tableName, sfConfig::get('app_pager', 30));
+        $pager->setPage($page);
+        $pager->setQuery($q);
+        $pager->init();
+        
+        return $pager;
+    }
+    
+    public static function doCount($tableName, $params = array())
+    {
+        $q = Doctrine_Query::create()->select('count(id)');
+        $q = self::params($tableName, $q, $params);
+        return $q->count();
+    }
+    
 }
