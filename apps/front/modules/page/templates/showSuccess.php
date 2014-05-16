@@ -4,8 +4,10 @@
 <div class="box-home" style="background:<?php echo $color?>;">
     <h2><?php echo $rs?></h2>
     <?php echo image_tag('/u/m/'.$rs->getImage(), array('class'=>'left'))?>
-    <div class="left ml10px" style="color:#fff;">
+    <div class="left ml10px" style="color:#fff;width:584px;">
         <?php echo $rs->getSummary();?>
+        <br clear="all">
+        <?php echo $rs->getRating();?>
     </div>
     <br clear="all">
 </div>

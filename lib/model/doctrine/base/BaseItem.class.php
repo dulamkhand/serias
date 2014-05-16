@@ -16,10 +16,18 @@ Doctrine_Manager::getInstance()->bindComponent('Item', 'doctrine');
  * @property integer $year
  * @property string $summary
  * @property string $body
+ * @property string $trailer
+ * @property string $rating
+ * @property integer $duration
+ * @property string $director
+ * @property string $writer
  * @property integer $sort
  * @property integer $nb_views
- * @property integer $is_active
- * @property integer $is_featured
+ * @property boolean $is_active
+ * @property boolean $is_featured
+ * @property boolean $boxoffice
+ * @property boolean $thisweek
+ * @property boolean $comingsoon
  * @property integer $created_aid
  * @property integer $updated_aid
  * @property timestamp $created_at
@@ -34,10 +42,18 @@ Doctrine_Manager::getInstance()->bindComponent('Item', 'doctrine');
  * @method integer   getYear()        Returns the current record's "year" value
  * @method string    getSummary()     Returns the current record's "summary" value
  * @method string    getBody()        Returns the current record's "body" value
+ * @method string    getTrailer()     Returns the current record's "trailer" value
+ * @method string    getRating()      Returns the current record's "rating" value
+ * @method integer   getDuration()    Returns the current record's "duration" value
+ * @method string    getDirector()    Returns the current record's "director" value
+ * @method string    getWriter()      Returns the current record's "writer" value
  * @method integer   getSort()        Returns the current record's "sort" value
  * @method integer   getNbViews()     Returns the current record's "nb_views" value
- * @method integer   getIsActive()    Returns the current record's "is_active" value
- * @method integer   getIsFeatured()  Returns the current record's "is_featured" value
+ * @method boolean   getIsActive()    Returns the current record's "is_active" value
+ * @method boolean   getIsFeatured()  Returns the current record's "is_featured" value
+ * @method boolean   getBoxoffice()   Returns the current record's "boxoffice" value
+ * @method boolean   getThisweek()    Returns the current record's "thisweek" value
+ * @method boolean   getComingsoon()  Returns the current record's "comingsoon" value
  * @method integer   getCreatedAid()  Returns the current record's "created_aid" value
  * @method integer   getUpdatedAid()  Returns the current record's "updated_aid" value
  * @method timestamp getCreatedAt()   Returns the current record's "created_at" value
@@ -51,10 +67,18 @@ Doctrine_Manager::getInstance()->bindComponent('Item', 'doctrine');
  * @method Item      setYear()        Sets the current record's "year" value
  * @method Item      setSummary()     Sets the current record's "summary" value
  * @method Item      setBody()        Sets the current record's "body" value
+ * @method Item      setTrailer()     Sets the current record's "trailer" value
+ * @method Item      setRating()      Sets the current record's "rating" value
+ * @method Item      setDuration()    Sets the current record's "duration" value
+ * @method Item      setDirector()    Sets the current record's "director" value
+ * @method Item      setWriter()      Sets the current record's "writer" value
  * @method Item      setSort()        Sets the current record's "sort" value
  * @method Item      setNbViews()     Sets the current record's "nb_views" value
  * @method Item      setIsActive()    Sets the current record's "is_active" value
  * @method Item      setIsFeatured()  Sets the current record's "is_featured" value
+ * @method Item      setBoxoffice()   Sets the current record's "boxoffice" value
+ * @method Item      setThisweek()    Sets the current record's "thisweek" value
+ * @method Item      setComingsoon()  Sets the current record's "comingsoon" value
  * @method Item      setCreatedAid()  Sets the current record's "created_aid" value
  * @method Item      setUpdatedAid()  Sets the current record's "updated_aid" value
  * @method Item      setCreatedAt()   Sets the current record's "created_at" value
@@ -150,6 +174,51 @@ abstract class BaseItem extends sfDoctrineRecord
              'autoincrement' => false,
              'length' => '',
              ));
+        $this->hasColumn('trailer', 'string', 1000, array(
+             'type' => 'string',
+             'fixed' => 0,
+             'unsigned' => false,
+             'primary' => false,
+             'notnull' => true,
+             'autoincrement' => false,
+             'length' => 1000,
+             ));
+        $this->hasColumn('rating', 'string', 1000, array(
+             'type' => 'string',
+             'fixed' => 0,
+             'unsigned' => false,
+             'primary' => false,
+             'notnull' => true,
+             'autoincrement' => false,
+             'length' => 1000,
+             ));
+        $this->hasColumn('duration', 'integer', 4, array(
+             'type' => 'integer',
+             'fixed' => 0,
+             'unsigned' => false,
+             'primary' => false,
+             'notnull' => true,
+             'autoincrement' => false,
+             'length' => 4,
+             ));
+        $this->hasColumn('director', 'string', 100, array(
+             'type' => 'string',
+             'fixed' => 0,
+             'unsigned' => false,
+             'primary' => false,
+             'notnull' => true,
+             'autoincrement' => false,
+             'length' => 100,
+             ));
+        $this->hasColumn('writer', 'string', 100, array(
+             'type' => 'string',
+             'fixed' => 0,
+             'unsigned' => false,
+             'primary' => false,
+             'notnull' => true,
+             'autoincrement' => false,
+             'length' => 100,
+             ));
         $this->hasColumn('sort', 'integer', 4, array(
              'type' => 'integer',
              'fixed' => 0,
@@ -168,23 +237,45 @@ abstract class BaseItem extends sfDoctrineRecord
              'autoincrement' => false,
              'length' => 4,
              ));
-        $this->hasColumn('is_active', 'integer', 1, array(
-             'type' => 'integer',
+        $this->hasColumn('is_active', 'boolean', null, array(
+             'type' => 'boolean',
              'fixed' => 0,
              'unsigned' => false,
              'primary' => false,
              'notnull' => true,
              'autoincrement' => false,
-             'length' => 1,
              ));
-        $this->hasColumn('is_featured', 'integer', 1, array(
-             'type' => 'integer',
+        $this->hasColumn('is_featured', 'boolean', null, array(
+             'type' => 'boolean',
              'fixed' => 0,
              'unsigned' => false,
              'primary' => false,
              'notnull' => true,
              'autoincrement' => false,
-             'length' => 1,
+             ));
+        $this->hasColumn('boxoffice', 'boolean', null, array(
+             'type' => 'boolean',
+             'fixed' => 0,
+             'unsigned' => false,
+             'primary' => false,
+             'notnull' => true,
+             'autoincrement' => false,
+             ));
+        $this->hasColumn('thisweek', 'boolean', null, array(
+             'type' => 'boolean',
+             'fixed' => 0,
+             'unsigned' => false,
+             'primary' => false,
+             'notnull' => true,
+             'autoincrement' => false,
+             ));
+        $this->hasColumn('comingsoon', 'boolean', null, array(
+             'type' => 'boolean',
+             'fixed' => 0,
+             'unsigned' => false,
+             'primary' => false,
+             'notnull' => true,
+             'autoincrement' => false,
              ));
         $this->hasColumn('created_aid', 'integer', 4, array(
              'type' => 'integer',

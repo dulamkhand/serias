@@ -16,16 +16,16 @@ abstract class BaseFormDoctrine extends sfFormDoctrine
           $this['created_at'],$this['updated_at'],$this['created_aid'],$this['updated_aid']);
           
           # WIDGETS
-          $this->widgetSchema['sort']  = new sfWidgetFormInputText(array(), array('style'=>'width:40px;'));
-          $this->widgetSchema['is_active'] = new sfWidgetFormInputCheckbox(array(), array('value'=>1));
+          $this->widgetSchema['sort']        = new sfWidgetFormInputText(array(), array('style'=>'width:40px;'));
+          $this->widgetSchema['is_active']   = new sfWidgetFormInputCheckbox(array(), array('value'=>1));
           $this->widgetSchema['is_featured'] = new sfWidgetFormInputCheckbox(array(), array('value'=>1));
   
           # DEFUALTS
           $this->setDefault('is_active', 1);
           
           # VALIDATORS
-          $this->validatorSchema['sort']      = new sfValidatorPass();
-          $this->validatorSchema['is_active'] = new sfValidatorPass();
+          $this->validatorSchema['sort']        = new sfValidatorPass();
+          $this->validatorSchema['is_active']   = new sfValidatorPass();
           $this->validatorSchema['is_featured'] = new sfValidatorPass();
                         
           # HELPS  

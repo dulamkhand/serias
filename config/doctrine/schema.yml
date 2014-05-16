@@ -51,14 +51,14 @@ Admin:
       notnull: true
       autoincrement: false
     is_active:
-      type: integer(1)
+      type: boolean
       fixed: false
       unsigned: false
       primary: false
       notnull: true
       autoincrement: false
     is_featured:
-      type: integer(1)
+      type: boolean
       fixed: false
       unsigned: false
       primary: false
@@ -132,7 +132,7 @@ Banner:
       notnull: true
       autoincrement: false
     target:
-      type: integer(1)
+      type: boolean
       fixed: false
       unsigned: false
       primary: false
@@ -175,14 +175,14 @@ Banner:
       notnull: true
       autoincrement: false
     is_active:
-      type: integer(1)
+      type: boolean
       fixed: false
       unsigned: false
       primary: false
       notnull: true
       autoincrement: false
     is_featured:
-      type: integer(1)
+      type: boolean
       fixed: false
       unsigned: false
       primary: false
@@ -277,14 +277,14 @@ Episode:
       notnull: true
       autoincrement: false
     is_active:
-      type: integer(1)
+      type: boolean
       fixed: false
       unsigned: false
       primary: false
       notnull: true
       autoincrement: false
     is_featured:
-      type: integer(1)
+      type: boolean
       fixed: false
       unsigned: false
       primary: false
@@ -385,6 +385,41 @@ Item:
       primary: false
       notnull: true
       autoincrement: false
+    trailer:
+      type: string(1000)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    rating:
+      type: string(1000)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    duration:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    director:
+      type: string(100)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    writer:
+      type: string(100)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
     sort:
       type: integer(4)
       fixed: false
@@ -400,14 +435,35 @@ Item:
       notnull: true
       autoincrement: false
     is_active:
-      type: integer(1)
+      type: boolean
       fixed: false
       unsigned: false
       primary: false
       notnull: true
       autoincrement: false
     is_featured:
-      type: integer(1)
+      type: boolean
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    boxoffice:
+      type: boolean
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    thisweek:
+      type: boolean
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    comingsoon:
+      type: boolean
       fixed: false
       unsigned: false
       primary: false
@@ -502,14 +558,14 @@ Link:
       notnull: true
       autoincrement: false
     is_active:
-      type: integer(1)
+      type: boolean
       fixed: false
       unsigned: false
       primary: false
       notnull: true
       autoincrement: false
     is_featured:
-      type: integer(1)
+      type: boolean
       fixed: false
       unsigned: false
       primary: false
