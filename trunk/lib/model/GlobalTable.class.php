@@ -50,6 +50,9 @@ class GlobalTable extends Doctrine_Table
             $q->andWhere('category_id <> ?', $params['categoryIdO']);
         if(isset($params['categoryIds']) && $params['categoryIds'] != null)
             $q->andWhereIn('category_id', $params['categoryIds']);
+            
+        if(isset($params['rightside']) && $params['rightside'] != null)
+            $q->andWhere('boxoffice > 0 OR thisweek > 0 OR comingsoon > 0');
 
         # isActive
         if(isset($params['isActive'])) {

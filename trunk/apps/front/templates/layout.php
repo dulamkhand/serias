@@ -39,8 +39,10 @@
           <div class="flash"><?php echo $sf_user->getFlash('flash')?></div>
       <?php endif; ?>
       
-      <?php echo $sf_content ?>    
+      <?php echo $sf_content ?>
   </div><!--center-->
+  
+  <?php include_partial("global/rightside", array());?>
   
   <br clear="all">
   <?php include_partial("global/footer", array());?>  

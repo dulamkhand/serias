@@ -5,7 +5,7 @@
 <?php if (!$form->getObject()->isNew()): ?>
 <input type="hidden" name="sf_method" value="put" />
 <?php endif; ?>
-  <table>
+  <table class="left">
     <tfoot>
       <tr>
         <td colspan="2">
@@ -27,14 +27,7 @@
           <?php echo $form['type'] ?>
         </td>
       </tr>
-      <tr>          
-        <th><?php echo $form['title']->renderLabel() ?></th>
-        <td>
-          <?php echo $form['title']->renderError() ?>
-          <?php echo $form['title'] ?>
-        </td>
-      </tr>
-      <tr>
+       <tr>
         <th><?php echo $form['genre']->renderLabel() ?></th>
         <td>
           <?php echo $form['genre']->renderError() ?>
@@ -42,10 +35,10 @@
         </td>
       </tr>
       <tr>          
-        <th><?php echo $form['image']->renderLabel() ?></th>
+        <th><?php echo $form['title']->renderLabel() ?></th>
         <td>
-          <?php echo $form['image']->renderError() ?>
-          <?php echo $form['image'] ?>
+          <?php echo $form['title']->renderError() ?>
+          <?php echo $form['title'] ?>
         </td>
       </tr>
       <tr>          
@@ -53,6 +46,13 @@
         <td>
           <?php echo $form['year']->renderError() ?>
           <?php echo $form['year'] ?>
+        </td>
+      </tr>
+      <tr>          
+        <th><?php echo $form['image']->renderLabel() ?></th>
+        <td>
+          <?php echo $form['image']->renderError() ?>
+          <?php echo $form['image'] ?>
         </td>
       </tr>
       <tr>          
@@ -70,11 +70,65 @@
         </td>
       </tr>
       <tr>
+        <th><?php echo $form['trailer']->renderLabel() ?></th>
+        <td>
+          <?php echo $form['trailer']->renderError() ?>
+          <?php echo $form['trailer'] ?>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <table class="left">
+      <tr>
+        <th><?php echo $form['duration']->renderLabel() ?></th>
+        <td>
+          <?php echo $form['duration']->renderError() ?>
+          <?php echo $form['duration'] ?>
+          <?php echo $form['duration']->renderHelp() ?>
+        </td>
+      </tr>
+      <tr>
+        <th><?php echo $form['director']->renderLabel() ?></th>
+        <td>
+          <?php echo $form['director']->renderError() ?>
+          <?php echo $form['director'] ?>
+        </td>
+      </tr>
+      <tr>
+        <th><?php echo $form['writer']->renderLabel() ?></th>
+        <td>
+          <?php echo $form['writer']->renderError() ?>
+          <?php echo $form['writer'] ?>
+        </td>
+      </tr>
+      <tr>
         <th><?php echo $form['sort']->renderLabel() ?></th>
         <td>
           <?php echo $form['sort']->renderError() ?>
           <?php echo $form['sort'] ?>
-          <div class="description"><?php echo $form['sort']->renderHelp() ?></div>
+          <?php echo $form['sort']->renderHelp() ?>
+        </td>
+      </tr>
+      <tr>
+        <th><?php echo $form['boxoffice']->renderLabel() ?></th>
+        <td>
+          <?php echo $form['boxoffice']->renderError() ?>
+          <?php echo $form['boxoffice'] ?>
+          <?php echo $form['boxoffice']->renderHelp() ?>
+        </td>
+      </tr>
+      <tr>
+        <th><?php echo $form['thisweek']->renderLabel() ?></th>
+        <td>
+          <?php echo $form['thisweek']->renderError() ?>
+          <?php echo $form['thisweek'] ?>
+        </td>
+      </tr>
+      <tr>
+        <th><?php echo $form['comingsoon']->renderLabel() ?></th>
+        <td>
+          <?php echo $form['comingsoon']->renderError() ?>
+          <?php echo $form['comingsoon'] ?>
         </td>
       </tr>
       <tr>
@@ -91,6 +145,12 @@
           <?php echo $form['is_active'] ?>
         </td>
       </tr>
-    </tbody>
+      <tr>
+        <th><?php echo $form['rating']->renderLabel() ?></th>
+        <td>
+          <?php echo $form['rating']->renderError() ?>
+          <?php echo $form['rating'] ?>
+        </td>
+      </tr>
   </table>
 </form>

@@ -46,8 +46,12 @@ class GlobalLib
                   'comment'=>'comment', 'discuss'=>'discuss', 'banner'=>'banner', 'coupon'=>'coupon', 'quote'=>'quote', 
                   'quiz'=>'quiz', 'poll'=>'poll', 'subscriber'=>'subscriber', 'admin'=>'admin', 'user'=>'user');
 
-    public static $alpha_en = array('A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z');
-    public static $alpha_mn = array('A','Б','В','Г','Д','Е','Ё','Ж','З','И','Й','К','Л','М','Н','О','Ө','П','Р','С','Т','У','Ү','Х','Ц','Ч','Ш','Щ','Ъ','Ь','Э','Ю','Я','','');
+    public static $alpha_en = array('A'=>'A','B'=>'B','C'=>'C','D'=>'D','E'=>'E','F'=>'F','G'=>'G','H'=>'H','I'=>'I',
+                  'J'=>'J','K'=>'K','L'=>'L','M'=>'M','N'=>'N','O'=>'O','P'=>'P','Q'=>'Q','R'=>'R','S'=>'S','T'=>'T',
+                  'U'=>'U','V'=>'V','W'=>'W','X'=>'X','Y'=>'Y','Z'=>'Z');
+    public static $alpha_mn = array('A'=>'A','Б'=>'Б','В'=>'В','Г'=>'Г','Д'=>'Д','Е'=>'Е','Ё'=>'Ё','Ж'=>'Ж','З'=>'З','И'=>'И',
+                  'Й'=>'Й','К'=>'К','Л'=>'Л','М'=>'М','Н'=>'Н','О'=>'О','Ө'=>'Ө','П'=>'П','Р'=>'Р','С'=>'С','Т'=>'Т','У'=>'У',
+                  'Ү'=>'Ү','Х'=>'Х','Ц'=>'Ц','Ч'=>'Ч','Ш'=>'Ш','Щ'=>'Щ','Ъ'=>'Ъ','Ь'=>'Ь','Э'=>'Э','Ю'=>'Ю','Я'=>'Я');
     public static $years = array(2014=>2014,2013=>2013,2011=>2011,2010=>2010,
                   2009=>2009,2008=>2008,2007=>2007,2006=>2006,2005=>2005,
                   2004=>2004,2003=>2003,2002=>2002,2001=>2001,2000=>2000,
@@ -117,9 +121,30 @@ class GlobalLib
     public static function utf8_substr($str,$from,$len) {
         # utf8 substr
         $str = preg_replace('#^(?:[\x00-\x7F]|[\xC0-\xFF][\x80-\xBF]+){0,'.$from.'}'.
-                '((?:[\x00-\x7F]|[\xC0-\xFF][\x80-\xBF]+){0,'.$len.'}).*#s',
-                '$1',$str);
+        '((?:[\x00-\x7F]|[\xC0-\xFF][\x80-\xBF]+){0,'.$len.'}).*#s',
+        '$1',$str);
         return GlobalLib::clearOutput($str);
+    }
+  
+    public static function getFileName($fileName) {
+        try {
+          return substr($fileName, strrpos($fileName,'/')+1,strlen($fileName)-strrpos($fileName,'/'));
+        }catch (Exception $e) {
+    
+        }
+        return ;
+    }
+  
+    public static function getFileExtension($fileName) {
+        return strtolower(substr(strrchr($fileName, '.'), 1));
+    }
+  
+    public static function get3FileExtension($fileName) {
+        $ext = strtolower(substr(strrchr($fileName, '.'), 1));
+        if(in_array($ext, array('doc','docx','xls','xlsx','pdf','pdfx'))) {
+          return $ext;
+        }
+        return 'pdf';
     }
     
     
@@ -148,7 +173,7 @@ class GlobalLib
     public static function createThumbs($filename, $folder, $thumbs=array(), $removeOrg=false) 
     {
         try {
-            $ext = myTools::getFileExtension($filename);
+            $ext = GlobalLib::getFileExtension($filename);
             if(in_array($ext, array('jpg', 'jpeg', 'png', 'gif', 'JPG', 'JPEG', 'PNG', 'GIF'))) 
             {
                 $uploadDir = sfConfig::get('sf_upload_dir').'/'.$folder.'/';
@@ -173,7 +198,7 @@ class GlobalLib
     public static function createQualities($filename, $folder, $qualities=array(), $removeOrg=false) 
     {
         try {
-            $ext = myTools::getFileExtension($filename);
+            $ext = GlobalLib::getFileExtension($filename);
             if(in_array($ext, array('jpg', 'jpeg', 'png', 'gif', 'JPG', 'JPEG', 'PNG', 'GIF'))) 
             {
                 $uploadDir = sfConfig::get('sf_upload_dir').'/'.$folder.'/';

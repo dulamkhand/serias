@@ -15,8 +15,8 @@ Doctrine_Manager::getInstance()->bindComponent('Episode', 'doctrine');
  * @property string $route
  * @property integer $sort
  * @property integer $nb_views
- * @property integer $is_active
- * @property integer $is_featured
+ * @property boolean $is_active
+ * @property boolean $is_featured
  * @property integer $created_aid
  * @property integer $updated_aid
  * @property timestamp $created_at
@@ -30,8 +30,8 @@ Doctrine_Manager::getInstance()->bindComponent('Episode', 'doctrine');
  * @method string    getRoute()       Returns the current record's "route" value
  * @method integer   getSort()        Returns the current record's "sort" value
  * @method integer   getNbViews()     Returns the current record's "nb_views" value
- * @method integer   getIsActive()    Returns the current record's "is_active" value
- * @method integer   getIsFeatured()  Returns the current record's "is_featured" value
+ * @method boolean   getIsActive()    Returns the current record's "is_active" value
+ * @method boolean   getIsFeatured()  Returns the current record's "is_featured" value
  * @method integer   getCreatedAid()  Returns the current record's "created_aid" value
  * @method integer   getUpdatedAid()  Returns the current record's "updated_aid" value
  * @method timestamp getCreatedAt()   Returns the current record's "created_at" value
@@ -132,23 +132,21 @@ abstract class BaseEpisode extends sfDoctrineRecord
              'autoincrement' => false,
              'length' => 4,
              ));
-        $this->hasColumn('is_active', 'integer', 1, array(
-             'type' => 'integer',
+        $this->hasColumn('is_active', 'boolean', null, array(
+             'type' => 'boolean',
              'fixed' => 0,
              'unsigned' => false,
              'primary' => false,
              'notnull' => true,
              'autoincrement' => false,
-             'length' => 1,
              ));
-        $this->hasColumn('is_featured', 'integer', 1, array(
-             'type' => 'integer',
+        $this->hasColumn('is_featured', 'boolean', null, array(
+             'type' => 'boolean',
              'fixed' => 0,
              'unsigned' => false,
              'primary' => false,
              'notnull' => true,
              'autoincrement' => false,
-             'length' => 1,
              ));
         $this->hasColumn('created_aid', 'integer', 4, array(
              'type' => 'integer',
