@@ -3,9 +3,9 @@
 
 # default values
 all:
-  #host: http://urin-essence.com/imdb
+  #host: http://urin-essence.com/girasole/imdb/web/
+  #host: http://localhost:88/imdb/web/
   #host: http://imdb/
-  host: http://localhost:88/imdb/web/
   webname: imdb
   feedbackmail: handaa.1224@gmail.com
   pager: 4
