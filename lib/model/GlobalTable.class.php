@@ -73,8 +73,8 @@ class GlobalTable extends Doctrine_Table
             $q->andWhere('is_discuss = ?', 1);
 
         # keyword
-        if(isset($params['sTeam']) && $params['sTeam'] != null)
-            $q->andWhere('name LIKE ? ', array('%'.$params['teamKeyword'].'%'));
+        if(isset($params['sItem']) && $params['sItem'] != null)
+            $q->andWhere('title LIKE ? ', array('%'.$params['sItem'].'%'));
         if(isset($params['sPlayer']) && $params['sPlayer'] != null)
             $q->andWhere('fullname LIKE ? ', array('%'.$params['playerKeyword'].'%'));
         if(isset($params['sNews']) && $params['sNews'] != null)
