@@ -6,7 +6,6 @@
   <?php include_title() ?>
   <?php $host = sfConfig::get('app_host')?>
   <link rel="shortcut icon" href="<?php echo $host?>/favicon.ico" />
- 
 
   <!-- JQUIRY -->
   <!--<script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>-->
@@ -33,6 +32,8 @@
 
   <div id="center">
       <?php include_partial("partial/bannerTop", array());?>
+      
+      <?php include_partial("partial/search", array());?>
 
       <!--flash message-->
       <?php if ($sf_user->hasFlash('flash')): ?>

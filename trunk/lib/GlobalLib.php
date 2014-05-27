@@ -4,7 +4,7 @@ class GlobalLib
 {
   
     public static $type   = array('movie'=>'Movie', 'series'=>'Series', 'tvshow'=>'TV show', 'mn'=>'MN films', 'nonfiction'=>'Non fiction');
-    public static $typeMN = array('movie'=>'Кино', 'series'=>'Цуврал', 'tvshow'=>'ТВ Шоу', 'mn'=>'Монгол кино', 'nonfiction'=>'Баримтат кино');
+    public static $type_mn = array('movie'=>'Кино', 'series'=>'Цуврал', 'tvshow'=>'ТВ Шоу', 'mn'=>'Монгол кино', 'nonfiction'=>'Баримтат кино');
     public static $colors = array('movie'=>'#4D9804', 'series'=>'#067FF9', 'tvshow'=>'#FA3F06', 'mn'=>'#CB1D6B', 'nonfiction'=>'#5F1DCB');
     public static $genre  = array(
                   'action'=>'Action', 
@@ -63,7 +63,7 @@ class GlobalLib
     {
         switch ($type) {
           	case 'type'  : return self::$type;
-          	case 'typeMN'  : return self::$typeMN;
+          	case 'type_mn'  : return self::$type_mn;
           	case 'colors': return self::$colors;
           	case 'genre': return self::$genre;
           	case 'alpha_en': return self::$alpha_en;
@@ -117,14 +117,7 @@ class GlobalLib
         return $text;
     }
     
-
-    public static function utf8_substr($str,$from,$len) {
-        # utf8 substr
-        $str = preg_replace('#^(?:[\x00-\x7F]|[\xC0-\xFF][\x80-\xBF]+){0,'.$from.'}'.
-        '((?:[\x00-\x7F]|[\xC0-\xFF][\x80-\xBF]+){0,'.$len.'}).*#s',
-        '$1',$str);
-        return GlobalLib::clearOutput($str);
-    }
+    
   
     public static function getFileName($fileName) {
         try {

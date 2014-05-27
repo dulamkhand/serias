@@ -22,7 +22,7 @@
 </div>
 <br clear="all">
 
-<?php include_partial('partial/colorbox', array('rss'=>$pager->getResults(), 'type'=>$type));?>
+<?php include_partial('partial/colorbox', array('rss'=>$pager->getResults(), 'type'=>$type, 'width'=>140, 'height'=>250));?>
 
 <br clear="all">
 <?php echo pager($pager, 'page/index?type='.$type)?>
