@@ -6,9 +6,9 @@ default:
     content-type: text/html
 
   metas:
-    title:        imdb
-    description:  imdb
-    keywords:     imdb
+    title:        Монголын нэгдсэн кино сан
+    description:  Монголын нэгдсэн кино сан
+    keywords:     Монголын нэгдсэн кино сан
     language:     en
     robots:       index, follow
 

@@ -57,25 +57,25 @@ class ItemForm extends BaseItemForm
       	$this->validatorSchema['year']         = new sfValidatorInteger();
       	$this->validatorSchema['year_end']     = new sfValidatorInteger(array('required'=>false));
       	$this->validatorSchema['release_date'] = new sfValidatorDate();
-      	$this->validatorSchema['summary']      = new sfValidatorPass();
+      	$this->validatorSchema['summary']      = new sfValidatorString();
       	$this->validatorSchema['body']         = new sfValidatorPass();
-      	$this->validatorSchema['trailer']      = new sfValidatorPass();
+      	$this->validatorSchema['trailer']      = new sfValidatorString();
       	$this->validatorSchema['rating']       = new sfValidatorPass();
       	
-      	$this->validatorSchema['casts']        = new sfValidatorPass();
-      	$this->validatorSchema['studios']      = new sfValidatorPass();
+      	$this->validatorSchema['casts']        = new sfValidatorString();
+      	$this->validatorSchema['studios']      = new sfValidatorString();
       	$this->validatorSchema['director']     = new sfValidatorPass();
       	$this->validatorSchema['writer']       = new sfValidatorPass();
-      	$this->validatorSchema['duration']     = new sfValidatorPass();
-      	$this->validatorSchema['age']          = new sfValidatorPass();
+      	$this->validatorSchema['duration']     = new sfValidatorInteger();
+      	$this->validatorSchema['age']          = new sfValidatorInteger();
       	$this->validatorSchema['nb_seasons']   = new sfValidatorPass();
       	$this->validatorSchema['nb_episodes']  = new sfValidatorPass();
       	$this->validatorSchema['boxoffice']    = new sfValidatorPass();
       	$this->validatorSchema['thisweek']     = new sfValidatorPass();
       	$this->validatorSchema['comingsoon']   = new sfValidatorPass();
-      	$this->validatorSchema['official_link1'] = new sfValidatorPass();
-      	$this->validatorSchema['official_link2'] = new sfValidatorPass();
-      	$this->validatorSchema['source']         = new sfValidatorPass();
+      	$this->validatorSchema['official_link1'] = new sfValidatorString();
+      	$this->validatorSchema['official_link2'] = new sfValidatorString();
+      	$this->validatorSchema['source']         = new sfValidatorString();
       	
       	#HELP
       	$this->widgetSchema->setHelp('duration', 'min');
