@@ -33,6 +33,8 @@ class ItemForm extends BaseItemForm
       	$this->widgetSchema['thisweek']       = new sfWidgetFormInputCheckbox(array(), array('value'=>1));
       	$this->widgetSchema['comingsoon']     = new sfWidgetFormInputCheckbox(array(), array('value'=>1));
       	$this->widgetSchema['duration']       = new sfWidgetFormInputText(array(), array('style'=>'width:40px;'));
+      	$choices = GlobalLib::getNumbers(0, 50);
+      	$this->widgetSchema['age']            = new sfWidgetFormInputText(array(), array('style'=>'width:40px;'));
       	$this->widgetSchema['director']       = new sfWidgetFormInputText(array(), array());
       	$this->widgetSchema['writer']         = new sfWidgetFormInputText(array(), array());
       	
@@ -61,6 +63,7 @@ class ItemForm extends BaseItemForm
       	$this->validatorSchema['director']     = new sfValidatorPass();
       	$this->validatorSchema['writer']       = new sfValidatorPass();
       	$this->validatorSchema['duration']     = new sfValidatorPass();
+      	$this->validatorSchema['age']          = new sfValidatorPass();
       	$this->validatorSchema['nb_seasons']   = new sfValidatorPass();
       	$this->validatorSchema['nb_episodes']  = new sfValidatorPass();
       	$this->validatorSchema['boxoffice']    = new sfValidatorPass();
@@ -71,6 +74,7 @@ class ItemForm extends BaseItemForm
       	
       	#HELP
       	$this->widgetSchema->setHelp('duration', 'min');
+      	$this->widgetSchema->setHelp('age', '+');
       	
     }
 }

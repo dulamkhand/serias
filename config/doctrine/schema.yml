@@ -500,6 +500,13 @@ Item:
       primary: false
       notnull: true
       autoincrement: false
+    age:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
     director:
       type: string(100)
       fixed: false

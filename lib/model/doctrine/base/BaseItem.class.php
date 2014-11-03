@@ -20,6 +20,7 @@ Doctrine_Manager::getInstance()->bindComponent('Item', 'doctrine');
  * @property string $trailer
  * @property string $rating
  * @property integer $duration
+ * @property integer $age
  * @property string $director
  * @property string $writer
  * @property integer $nb_seasons
@@ -53,6 +54,7 @@ Doctrine_Manager::getInstance()->bindComponent('Item', 'doctrine');
  * @method string    getTrailer()        Returns the current record's "trailer" value
  * @method string    getRating()         Returns the current record's "rating" value
  * @method integer   getDuration()       Returns the current record's "duration" value
+ * @method integer   getAge()            Returns the current record's "age" value
  * @method string    getDirector()       Returns the current record's "director" value
  * @method string    getWriter()         Returns the current record's "writer" value
  * @method integer   getNbSeasons()      Returns the current record's "nb_seasons" value
@@ -85,6 +87,7 @@ Doctrine_Manager::getInstance()->bindComponent('Item', 'doctrine');
  * @method Item      setTrailer()        Sets the current record's "trailer" value
  * @method Item      setRating()         Sets the current record's "rating" value
  * @method Item      setDuration()       Sets the current record's "duration" value
+ * @method Item      setAge()            Sets the current record's "age" value
  * @method Item      setDirector()       Sets the current record's "director" value
  * @method Item      setWriter()         Sets the current record's "writer" value
  * @method Item      setNbSeasons()      Sets the current record's "nb_seasons" value
@@ -223,6 +226,15 @@ abstract class BaseItem extends sfDoctrineRecord
              'length' => 1000,
              ));
         $this->hasColumn('duration', 'integer', 4, array(
+             'type' => 'integer',
+             'fixed' => 0,
+             'unsigned' => false,
+             'primary' => false,
+             'notnull' => true,
+             'autoincrement' => false,
+             'length' => 4,
+             ));
+        $this->hasColumn('age', 'integer', 4, array(
              'type' => 'integer',
              'fixed' => 0,
              'unsigned' => false,

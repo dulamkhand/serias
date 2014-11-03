@@ -127,6 +127,14 @@
         </td>
       </tr>
       <tr>
+        <th><?php echo $form['age']->renderLabel() ?></th>
+        <td>
+          <?php echo $form['age']->renderError() ?>
+          <?php echo $form['age'] ?>
+          <?php echo $form['age']->renderHelp() ?>
+        </td>
+      </tr>
+      <tr>
         <th><?php echo $form['nb_seasons']->renderLabel() ?></th>
         <td>
           <?php echo $form['nb_seasons']->renderError() ?>
