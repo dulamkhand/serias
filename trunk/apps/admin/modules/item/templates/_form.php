@@ -76,6 +76,13 @@
           <?php echo $form['trailer'] ?>
         </td>
       </tr>
+      <tr>
+        <th><?php echo $form['rating']->renderLabel() ?></th>
+        <td>
+          <?php echo $form['rating']->renderError() ?>
+          <?php echo $form['rating'] ?>
+        </td>
+      </tr>
     </tbody>
   </table>
   <table class="left">
@@ -143,13 +150,6 @@
         <td>
           <?php echo $form['is_active']->renderError() ?>
           <?php echo $form['is_active'] ?>
-        </td>
-      </tr>
-      <tr>
-        <th><?php echo $form['rating']->renderLabel() ?></th>
-        <td>
-          <?php echo $form['rating']->renderError() ?>
-          <?php echo $form['rating'] ?>
         </td>
       </tr>
   </table>

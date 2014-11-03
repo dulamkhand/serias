@@ -1,18 +1,37 @@
 <?php $host = sfConfig::get('app_host')?>
 
+<a href="#" class="h3" style="font-size:13px;color:#555;"><?php echo GlobalLib::getValue('type_mn', $rs->getType())?></a> &raquo;
+<a href="#" class="h3" style="font-size:13px;color:#555;"><?php echo $rs->getGenre()?></a>
+<br clear="all">
+
 <?php $color = GlobalLib::getValue('colors', $rs->getType()) ?>
 <div class="box-home" style="background:<?php echo $color?>;">
     <h2><?php echo $rs?></h2>
-    <?php echo image_tag('/u/m/'.$rs->getImage(), array('class'=>'left'))?>
-    <div class="left ml10px" style="color:#fff;width:584px;">
+    <?php echo image_tag('/u/m/'.$rs->getImage(), array('class'=>'left', 'style'=>'margin:0 0 10px 0;'))?>
+    <div class="left ml10px" style="color:#fff;width:575px;">
         <?php echo $rs->getSummary();?>
         <br clear="all">
         <?php echo $rs->getRating();?>
-    </div>
-    <br clear="all">
+        <br clear="all">
+        <b>Year:</b>
+        <?php echo $rs->getYear();?>        
+        <br clear="all">
+        <b>Director:</b>
+        <?php echo $rs->getDirector();?>
+        <br clear="all">
+        <b>Writer:</b>
+        <?php echo $rs->getWriter();?>
+        <br clear="all">
+        <b>Duration:</b>
+        <?php echo $rs->getDuration();?>min
+        <br clear="all">
+        <?php echo $rs->getBody();?>
+    </div>    
 </div>
 <br clear="all">
-
+    <?php echo $rs->getTrailer();?>
+<br clear="all">
+<br clear="all">
 <div class="box-home" style="background:#dedede;border:1px solid #ccc;">
     <?php $links = Doctrine::getTable('Link')->createQuery()
                       ->where('item_id =?', $rs->getId())
