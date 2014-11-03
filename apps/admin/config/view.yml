@@ -1,4 +1,4 @@
-# You can find more information about this file on the symfony website:
+Монголын нэгдсэн кино сан# You can find more information about this file on the symfony website:
 # http://www.symfony-project.org/reference/1_4/en/13-View
 
 default:
@@ -6,9 +6,9 @@ default:
     content-type: text/html
 
   metas:
-    title:        imdb
-    description:  imdb
-    keywords:     imdb
+    title:        Монголын нэгдсэн кино сан
+    description:  Монголын нэгдсэн кино сан
+    keywords:     Монголын нэгдсэн кино сан
     language:     en
     robots:       index, follow
 
