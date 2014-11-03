@@ -3,10 +3,10 @@
 
 # default values
 all:
-  #host: http://urin-essence.com/girasole/imdb/web/
-  host: http://localhost:88/imdb/web/
+  host: http://urin-essence.com/girasole/imdb/web/
+  #host: http://localhost:88/imdb/web/
   #host: http://imdb/
-  webname: imdb
+  webname: online-tv
   feedbackmail: handaa.1224@gmail.com
-  pager: 4
+  pager: 10
   limit: 10

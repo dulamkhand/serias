@@ -51,14 +51,14 @@ Admin:
       notnull: true
       autoincrement: false
     is_active:
-      type: boolean
+      type: integer(1)
       fixed: false
       unsigned: false
       primary: false
       notnull: true
       autoincrement: false
     is_featured:
-      type: boolean
+      type: integer(1)
       fixed: false
       unsigned: false
       primary: false
@@ -132,7 +132,7 @@ Banner:
       notnull: true
       autoincrement: false
     target:
-      type: boolean
+      type: integer(1)
       fixed: false
       unsigned: false
       primary: false
@@ -175,14 +175,14 @@ Banner:
       notnull: true
       autoincrement: false
     is_active:
-      type: boolean
+      type: integer(1)
       fixed: false
       unsigned: false
       primary: false
       notnull: true
       autoincrement: false
     is_featured:
-      type: boolean
+      type: integer(1)
       fixed: false
       unsigned: false
       primary: false
@@ -212,6 +212,93 @@ Banner:
       autoincrement: false
     updated_aid:
       type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+Category:
+  connection: doctrine
+  tableName: category
+  columns:
+    id:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: true
+      autoincrement: true
+    type:
+      type: string(255)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    parent_id:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    parent_name:
+      type: string(255)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    name:
+      type: string(255)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    route:
+      type: string(255)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    position:
+      type: string(255)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    sort:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    backcolor:
+      type: string(255)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    forecolor:
+      type: string(255)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    is_active:
+      type: integer(1)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    updated_at:
+      type: timestamp(25)
       fixed: false
       unsigned: false
       primary: false
@@ -277,14 +364,14 @@ Episode:
       notnull: true
       autoincrement: false
     is_active:
-      type: boolean
+      type: integer(1)
       fixed: false
       unsigned: false
       primary: false
       notnull: true
       autoincrement: false
     is_featured:
-      type: boolean
+      type: integer(1)
       fixed: false
       unsigned: false
       primary: false
@@ -435,35 +522,35 @@ Item:
       notnull: true
       autoincrement: false
     is_active:
-      type: boolean
+      type: integer(1)
       fixed: false
       unsigned: false
       primary: false
       notnull: true
       autoincrement: false
     is_featured:
-      type: boolean
+      type: integer(1)
       fixed: false
       unsigned: false
       primary: false
       notnull: true
       autoincrement: false
     boxoffice:
-      type: boolean
+      type: integer(1)
       fixed: false
       unsigned: false
       primary: false
       notnull: true
       autoincrement: false
     thisweek:
-      type: boolean
+      type: integer(1)
       fixed: false
       unsigned: false
       primary: false
       notnull: true
       autoincrement: false
     comingsoon:
-      type: boolean
+      type: integer(1)
       fixed: false
       unsigned: false
       primary: false
@@ -558,14 +645,14 @@ Link:
       notnull: true
       autoincrement: false
     is_active:
-      type: boolean
+      type: integer(1)
       fixed: false
       unsigned: false
       primary: false
       notnull: true
       autoincrement: false
     is_featured:
-      type: boolean
+      type: integer(1)
       fixed: false
       unsigned: false
       primary: false

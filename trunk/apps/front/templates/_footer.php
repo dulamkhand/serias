@@ -1,16 +1,14 @@
 <div id="footer">
-    <div class="left">
-        Quick links: 
+    <div class="left" style="margin:0 0 0 5px;">
         <ul>
-            <li class="left"><a href="#">as</a></li>
-            <li class="left"><a href="#">dsfgh</a></li>
-            <li class="left"><a href="#">re</a></li>
-            <li class="left"><a href="#">wet</a></li>
+            <li class="left"><a href="#">Вэбийн тухай</a> |&nbsp;</li>
+            <li class="left"><a href="#">Сурталчилгаа байршуулах</a> |&nbsp;</li>
+            <li class="left"><a href="#">Холбоо барих</a></li>
         </ul>
     </div>
-    <div class="right">
-        Copyright © 2010-2016 imdb.mn<br>
-        Conditions of Use | Privacy Policy
+    <div class="right" style="margin:0 5px 0 0;">
+        Copyright © 2013-2016 www.online-tv.mn
+        <!--<a href="#">Сайтад тавигдсан мэдээллийг ашигласан тохиолдолд сайтын нэрийг заавал дурдана уу.</a>-->
     </div>
     <br clear="all">
 </div>
