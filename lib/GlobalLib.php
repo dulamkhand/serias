@@ -22,7 +22,24 @@ class GlobalLib
                   'thriller'=>'Thriller', 
                   'western'=>'Western', 
     );
+    public static $genre_mn  = array(
+                  'action'=>'Акшн', 
+                  'adventure'=>'Адал явдалт', 
+                  'animation'=>'Анимэшн', 
+                  'biography'=>'Намтарчилсан', 
+                  'comedy'=>'Инээдмийн', 
+                  'crime'=>'Гэмт хэргийн', 
+                  'documentary'=>'Docum.', 
+                  'drama'=>'Drama', 
+                  'fantasy'=>'Fantasy', 
+                  'horror'=>'Аймшгийн',
+                  'romance'=>'Хайр дурлалын', 
+                  'scifi'=>'SciFi', 
+                  'thriller'=>'Thriller', 
+                  'western'=>'Барууны', 
+    );
 
+    
     public static $alpha_en = array('A'=>'A','B'=>'B','C'=>'C','D'=>'D','E'=>'E','F'=>'F','G'=>'G','H'=>'H','I'=>'I',
                   'J'=>'J','K'=>'K','L'=>'L','M'=>'M','N'=>'N','O'=>'O','P'=>'P','Q'=>'Q','R'=>'R','S'=>'S','T'=>'T',
                   'U'=>'U','V'=>'V','W'=>'W','X'=>'X','Y'=>'Y','Z'=>'Z');
@@ -58,10 +75,11 @@ class GlobalLib
     public static function getArray($type)
     {
         switch ($type) {
+            case 'colors': return self::$colors;
           	case 'type'  : return self::$type;
           	case 'type_mn'  : return self::$type_mn;
-          	case 'colors': return self::$colors;
           	case 'genre': return self::$genre;
+          	case 'genre_mn': return self::$genre_mn;
           	case 'alpha_en': return self::$alpha_en;
           	case 'alpha_mn': return self::$alpha_mn;
           	case 'years': return self::$years;

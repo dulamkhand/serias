@@ -46,6 +46,16 @@
         <td>
           <?php echo $form['year']->renderError() ?>
           <?php echo $form['year'] ?>
+          - 
+          <?php echo $form['year_end']->renderError() ?>
+          <?php echo $form['year_end'] ?>
+        </td>
+      </tr>
+      <tr>
+        <th><?php echo $form['release_date']->renderLabel() ?></th>
+        <td>
+          <?php echo $form['release_date']->renderError() ?>
+          <?php echo $form['release_date'] ?>
         </td>
       </tr>
       <tr>          
@@ -87,11 +97,11 @@
   </table>
   <table class="left">
       <tr>
-        <th><?php echo $form['duration']->renderLabel() ?></th>
+        <th><?php echo $form['casts']->renderLabel() ?></th>
         <td>
-          <?php echo $form['duration']->renderError() ?>
-          <?php echo $form['duration'] ?>
-          <?php echo $form['duration']->renderHelp() ?>
+          <?php echo $form['casts']->renderError() ?>
+          <?php echo $form['casts'] ?>
+          <?php echo $form['casts']->renderHelp() ?>
         </td>
       </tr>
       <tr>
@@ -107,13 +117,27 @@
           <?php echo $form['writer']->renderError() ?>
           <?php echo $form['writer'] ?>
         </td>
+      </tr> 
+      <tr>
+        <th><?php echo $form['duration']->renderLabel() ?></th>
+        <td>
+          <?php echo $form['duration']->renderError() ?>
+          <?php echo $form['duration'] ?>
+          <?php echo $form['duration']->renderHelp() ?>
+        </td>
       </tr>
       <tr>
-        <th><?php echo $form['sort']->renderLabel() ?></th>
+        <th><?php echo $form['nb_seasons']->renderLabel() ?></th>
         <td>
-          <?php echo $form['sort']->renderError() ?>
-          <?php echo $form['sort'] ?>
-          <?php echo $form['sort']->renderHelp() ?>
+          <?php echo $form['nb_seasons']->renderError() ?>
+          <?php echo $form['nb_seasons'] ?>
+        </td>
+      </tr>
+      <tr>
+        <th><?php echo $form['nb_episodes']->renderLabel() ?></th>
+        <td>
+          <?php echo $form['nb_episodes']->renderError() ?>
+          <?php echo $form['nb_episodes'] ?>
         </td>
       </tr>
       <tr>
@@ -136,6 +160,29 @@
         <td>
           <?php echo $form['comingsoon']->renderError() ?>
           <?php echo $form['comingsoon'] ?>
+        </td>
+      </tr>
+      <tr>
+        <th><?php echo $form['official_link1']->renderLabel() ?></th>
+        <td>
+          <?php echo $form['official_link1']->renderError() ?>
+          <?php echo $form['official_link1'] ?>
+        </td>
+      </tr>
+      <tr>
+        <th><?php echo $form['official_link2']->renderLabel() ?></th>
+        <td>
+          <?php echo $form['official_link2']->renderError() ?>
+          <?php echo $form['official_link2'] ?>
+        </td>
+      </tr>
+      <tr><td colspan="2" style="color:#ccc;"><?php echo str_repeat('-', 120)?></td></tr>
+      <tr>
+        <th><?php echo $form['sort']->renderLabel() ?></th>
+        <td>
+          <?php echo $form['sort']->renderError() ?>
+          <?php echo $form['sort'] ?>
+          <?php echo $form['sort']->renderHelp() ?>
         </td>
       </tr>
       <tr>

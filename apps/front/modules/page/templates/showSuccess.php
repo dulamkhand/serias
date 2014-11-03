@@ -13,25 +13,53 @@
         <br clear="all">
         <?php echo $rs->getRating();?>
         <br clear="all">
-        <b>Year:</b>
-        <?php echo $rs->getYear();?>        
+        <span class="bold">Нээлт хийсэн:</span>
+        <?php echo $rs->getReleaseDate()?>
         <br clear="all">
-        <b>Director:</b>
+        <span class="bold">Бүтээгдсэн он:</span>
+        <?php echo $rs->getYear().($rs->getYearEnd() != '0000' ? " - ".$rs->getYearEnd() : "");?>
+        <br clear="all">
+        <span class="bold">Дүрүүдэд:</span>
         <?php echo $rs->getDirector();?>
         <br clear="all">
-        <b>Writer:</b>
+        <span class="bold">Найруулагч:</span>
+        <?php echo $rs->getDirector();?>
+        <br clear="all">
+        <span class="bold">Зохиолч:</span>
         <?php echo $rs->getWriter();?>
         <br clear="all">
-        <b>Duration:</b>
+        <span class="bold">Үргэлжлэх хугацаа:</span>
         <?php echo $rs->getDuration();?>min
         <br clear="all">
-        <?php echo $rs->getBody();?>
+        
+        <?php if($rs->getNbSeasons()):?>
+            <span class="bold">Анги:</span>
+            <?php echo $rs->getNbSeasons();?> seasons, <?php echo $rs->getNbEpisodes();?> episodes
+            <br clear="all">
+        <?php endif?>
+        
+        <?php if($rs->getBoxoffice()):?>
+            <span class="bold">Boxoffice:</span>
+            <?php echo $rs->getBoxoffice();?>
+            <br clear="all">    
+        <?php endif?>
+        
+        <span class="bold">Албан ёсны хуудас:</span>
+        <a href="<?php echo $rs->getOfficialLink1();?>">Facebok official</a>, 
+        <a href="<?php echo $rs->getOfficialLink2();?>">Official website</a>        
     </div>    
 </div>
+
 <br clear="all">
-    <?php echo $rs->getTrailer();?>
+<?php echo $rs->getTrailer();?>
+<div class="right" style="width:250px;">
+    <h2 style="color:<?php echo $color?>;">Үйл явдал</h2>
+    <?php echo $rs->getBody();?>
+</div>
 <br clear="all">
 <br clear="all">
+
+
 <div class="box-home" style="background:#dedede;border:1px solid #ccc;">
     <?php $links = Doctrine::getTable('Link')->createQuery()
                       ->where('item_id =?', $rs->getId())
@@ -40,6 +68,22 @@
     <?php if(!sizeof($links)):?>
         Линк оруулаагүй байна. Та хэсэг хугацааны дараа дахин хандаарай.
     <?php endif?>
+    
+    <?php 
+    $season=null; $episode=null;
+    $nbSeasons = 0; $nbEpisodes = 0;
+    foreach($links as $link) {
+        if($season != $link->getSeason()) {
+            $season = $link->getSeason();
+            $nbSeasons++;
+        }
+        if($episode != $link->getEpisode()) {
+            $episode = $link->getEpisode();
+            $nbEpisodes++;
+        }
+    }?>
+    Season: <?php echo $nbSeasons?>, 
+    Episode: <?php echo $nbEpisodes?>
 
     <?php $season=null; $episode=null; $l=0; $first=0;?>
     <?php foreach($links as $link):?>
