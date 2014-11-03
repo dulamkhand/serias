@@ -30,6 +30,12 @@ class pageActions extends sfActions
     {
         $this->rs = $rs = Doctrine::getTable('Item')->findOneBy('route', $request->getParameter('route'));
         $this->forward404Unless($rs);
+        
+        // META
+        $meta = sfConfig::get('app_webname').' | '.$rs;
+        $this->getResponse()->setTitle($meta);
+        $this->getResponse()->addMeta('description', $meta);
+        $this->getResponse()->addMeta('keywords', $meta);
     }
     
     public function executeIframe(sfWebRequest $request)

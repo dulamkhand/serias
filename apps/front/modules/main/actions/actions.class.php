@@ -18,7 +18,12 @@ class mainActions extends sfActions
     public function executeHome(sfWebRequest $request)
     {
         $arr = array();
-        $rss = Doctrine::getTable('Item')->createQuery()->orderBy('sort ASC, created_at DESC')->fetchArray();
+        $arr['movie'] = array();
+        $arr['series'] = array();
+        $arr['tvshow'] = array();
+        $arr['mn'] = array();
+        $arr['nonfiction'] = array();
+        $rss = Doctrine::getTable('Item')->createQuery()->orderBy('sort ASC, created_at DESC')->limit(100)->fetchArray();
         foreach ($rss as $rs) {
             $arr[$rs['type']][] = $rs;
         }
@@ -27,13 +32,14 @@ class mainActions extends sfActions
     
     public function execute404(sfWebRequest $request)
     {
+        
     }
     
     public function executeSearch(sfWebRequest $request)
     {
         $this->setLayout(false);
         $arr = array();
-        $rss = GlobalTable::doFetchArray('Item', array('sItem'=>GlobalLib::clearInput($request->getParameter('a'))));
+        $rss = GlobalTable::doFetchArray('Item', array('sItem'=>GlobalLib::clearInput($request->getParameter('search'))));
         foreach ($rss as $rs) {
             $arr[$rs['type']][] = $rs;
         }

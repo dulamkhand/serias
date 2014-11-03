@@ -29,7 +29,7 @@
   }(document, 'script', 'facebook-jssdk'));</script> 
 -->
 
-  <?php include_partial("global/leftside", array());?>  
+  <?php include_component("partial", "leftside", array());?>  
 
   <div id="center">
       <?php include_partial("partial/bannerTop", array());?>
@@ -44,7 +44,7 @@
       <?php echo $sf_content ?>
   </div><!--center-->
   
-  <?php include_partial("global/rightside", array());?>
+  <?php include_component("partial", "rightside", array());?>
   
   <br clear="all">
   <?php include_partial("global/footer", array());?>  

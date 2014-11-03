@@ -12,7 +12,8 @@
     </ul>
   
     <br clear="all">
-    <div class="fb-like" data-href="http://imdb/index.php" data-layout="button" data-action="like" data-show-faces="false" data-share="true"></div>
+    <div class="fb-like" data-href="http://mmdb/index.php" data-layout="button" data-action="like" data-show-faces="false" 
+        data-share="true"></div>
   
     <br clear="all">
     <div style="margin:0 0 0 10px;">
@@ -58,9 +59,7 @@
         <?php endforeach?>
         </ul>
     </div>
-    
     <br clear="all">
     <br clear="all">
     
 </div><!--leftside-->
-
