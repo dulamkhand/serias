@@ -22,7 +22,7 @@ class ItemForm extends BaseItemForm
       	$this->widgetSchema['year']           = new sfWidgetFormInputText(array(), array('style'=>'width:40px;'));
       	$this->widgetSchema['year_end']       = new sfWidgetFormInputText(array(), array('style'=>'width:40px;'));
       	$years = range(date('Y') - 20, date('Y') + 1);
-      	$this->widgetSchema['release_date']   = new sfWidgetFormDate(array('years'=>$years, 'format'=>'%year%/%month%/%day%'), array('style'=>'width:46px;'));
+      	$this->widgetSchema['release_date']   = new sfWidgetFormDate(array('years'=>$years, 'format'=>'%month%/%day%/%year%'), array('style'=>'width:50px;'));
       	$this->widgetSchema['summary']        = new sfWidgetFormTextarea(array(), array());
       	$this->widgetSchema['body']           = new sfWidgetFormTextarea(array(), array());
       	$this->widgetSchema['trailer']        = new sfWidgetFormTextarea(array(), array());
