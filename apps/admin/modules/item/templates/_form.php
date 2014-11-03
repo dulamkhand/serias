@@ -105,6 +105,13 @@
         </td>
       </tr>
       <tr>
+        <th><?php echo $form['studios']->renderLabel() ?></th>
+        <td>
+          <?php echo $form['studios']->renderError() ?>
+          <?php echo $form['studios'] ?>
+        </td>
+      </tr>
+      <tr>
         <th><?php echo $form['director']->renderLabel() ?></th>
         <td>
           <?php echo $form['director']->renderError() ?>
@@ -185,6 +192,14 @@
         </td>
       </tr>
       <tr><td colspan="2" style="color:#ccc;"><?php echo str_repeat('-', 120)?></td></tr>
+      <tr>
+        <th><?php echo $form['source']->renderLabel() ?></th>
+        <td>
+          <?php echo $form['source']->renderError() ?>
+          <?php echo $form['source'] ?>
+          <?php echo $form['source']->renderHelp() ?>
+        </td>
+      </tr>
       <tr>
         <th><?php echo $form['sort']->renderLabel() ?></th>
         <td>

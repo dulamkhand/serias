@@ -12,7 +12,7 @@
 <?php $color = GlobalLib::getValue('colors', $rs->getType()) ?>
 <div class="box-home" style="background:<?php echo $color?>;">
     <h2><?php echo $rs?></h2>
-    <?php echo image_tag('/u/m/'.$rs->getImage(), array('class'=>'left', 'style'=>'margin:0 0 10px 0;'))?>
+    <?php echo image_tag('/u/m/'.$rs->getImage(), array('class'=>'left', 'style'=>'margin:0 0 10px 0;max-width:215px;'))?>
     <div class="left ml10px" style="color:#fff;width:575px;">
         <?php echo $rs->getSummary();?>
         <br clear="all">
@@ -28,6 +28,12 @@
         <span class="bold">Дүрүүдэд:</span>
         <?php echo $rs->getCasts();?>
         <br clear="all">
+        
+        <?php if($rs->getStudios()):?>
+            <span class="bold">Бүтээсэн:</span>
+            <?php echo $rs->getStudios();?>
+            <br clear="all">
+        <?php endif?>
         
         <?php if($rs->getDirector()):?>
             <span class="bold">Найруулагч:</span>
@@ -65,7 +71,14 @@
         
         <span class="bold">Албан ёсны хуудас:</span>
         <a href="<?php echo $rs->getOfficialLink1();?>" style="color:#fff;">Facebok official</a>, 
-        <a href="<?php echo $rs->getOfficialLink2();?>" style="color:#fff;">Official website</a>        
+        <a href="<?php echo $rs->getOfficialLink2();?>" style="color:#fff;">Official website</a>
+        <br clear="all">
+        
+        <?php if($rs->getSource()):?>
+            <span class="bold">Эх сурвалж:</span>
+            <?php echo $rs->getSource();?>
+            <br clear="all">    
+        <?php endif?>
     </div>    
 </div>
 
