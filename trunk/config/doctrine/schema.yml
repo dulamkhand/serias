@@ -466,7 +466,7 @@ Item:
       notnull: true
       autoincrement: false
     summary:
-      type: string(500)
+      type: string(1000)
       fixed: false
       unsigned: false
       primary: false
@@ -502,6 +502,13 @@ Item:
       autoincrement: false
     age:
       type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    studios:
+      type: string(500)
       fixed: false
       unsigned: false
       primary: false
@@ -607,6 +614,13 @@ Item:
       autoincrement: false
     comingsoon:
       type: integer(1)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    source:
+      type: string(500)
       fixed: false
       unsigned: false
       primary: false

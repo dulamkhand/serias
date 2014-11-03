@@ -1,6 +1,17 @@
 <?php $host = sfConfig::get('app_host')?>
 
 <form action="<?php echo url_for('item/index')?>" method="GET">
+    <b>Type</b>&nbsp;
+    <?php $types = GlobalLib::getArray('type_mn')?>
+    <select name="type" style="width:100px;">
+        <option value="">Бүгд</option>
+        <?php foreach ($types as $k=>$v):?>
+            <option value="<?php echo $k?>" <?php if($k == $sf_params->get('type')) echo 'selected'?>>
+                <?php echo $v?>
+            </option>
+        <?php endforeach?>
+    </select>
+    &nbsp; 
     <?php include_partial('partial/search', array());?>
 </form>
 
@@ -29,7 +40,7 @@
             <a href="<?php echo url_for('item/edit?id='.$rs->getId())?>" class="action"><b><?php echo $rs ?></b></a><br>
             <?php echo $rs->getSummary() ?>            
         </td>
-        <td>
+        <td nowrap>
             <b>View: </b><?php echo $rs->getNbViews() ?><br/>
             <b>Sort: </b><?php echo $rs->getSort() ?><br/>
             <b>Created: </b><?php echo time_ago($rs->getCreatedAt()) ?><br/>

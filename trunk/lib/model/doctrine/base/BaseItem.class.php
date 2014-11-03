@@ -21,6 +21,7 @@ Doctrine_Manager::getInstance()->bindComponent('Item', 'doctrine');
  * @property string $rating
  * @property integer $duration
  * @property integer $age
+ * @property string $studios
  * @property string $director
  * @property string $writer
  * @property integer $nb_seasons
@@ -36,6 +37,7 @@ Doctrine_Manager::getInstance()->bindComponent('Item', 'doctrine');
  * @property integer $boxoffice
  * @property integer $thisweek
  * @property integer $comingsoon
+ * @property string $source
  * @property integer $created_aid
  * @property integer $updated_aid
  * @property timestamp $created_at
@@ -55,6 +57,7 @@ Doctrine_Manager::getInstance()->bindComponent('Item', 'doctrine');
  * @method string    getRating()         Returns the current record's "rating" value
  * @method integer   getDuration()       Returns the current record's "duration" value
  * @method integer   getAge()            Returns the current record's "age" value
+ * @method string    getStudios()        Returns the current record's "studios" value
  * @method string    getDirector()       Returns the current record's "director" value
  * @method string    getWriter()         Returns the current record's "writer" value
  * @method integer   getNbSeasons()      Returns the current record's "nb_seasons" value
@@ -70,6 +73,7 @@ Doctrine_Manager::getInstance()->bindComponent('Item', 'doctrine');
  * @method integer   getBoxoffice()      Returns the current record's "boxoffice" value
  * @method integer   getThisweek()       Returns the current record's "thisweek" value
  * @method integer   getComingsoon()     Returns the current record's "comingsoon" value
+ * @method string    getSource()         Returns the current record's "source" value
  * @method integer   getCreatedAid()     Returns the current record's "created_aid" value
  * @method integer   getUpdatedAid()     Returns the current record's "updated_aid" value
  * @method timestamp getCreatedAt()      Returns the current record's "created_at" value
@@ -88,6 +92,7 @@ Doctrine_Manager::getInstance()->bindComponent('Item', 'doctrine');
  * @method Item      setRating()         Sets the current record's "rating" value
  * @method Item      setDuration()       Sets the current record's "duration" value
  * @method Item      setAge()            Sets the current record's "age" value
+ * @method Item      setStudios()        Sets the current record's "studios" value
  * @method Item      setDirector()       Sets the current record's "director" value
  * @method Item      setWriter()         Sets the current record's "writer" value
  * @method Item      setNbSeasons()      Sets the current record's "nb_seasons" value
@@ -103,6 +108,7 @@ Doctrine_Manager::getInstance()->bindComponent('Item', 'doctrine');
  * @method Item      setBoxoffice()      Sets the current record's "boxoffice" value
  * @method Item      setThisweek()       Sets the current record's "thisweek" value
  * @method Item      setComingsoon()     Sets the current record's "comingsoon" value
+ * @method Item      setSource()         Sets the current record's "source" value
  * @method Item      setCreatedAid()     Sets the current record's "created_aid" value
  * @method Item      setUpdatedAid()     Sets the current record's "updated_aid" value
  * @method Item      setCreatedAt()      Sets the current record's "created_at" value
@@ -189,14 +195,14 @@ abstract class BaseItem extends sfDoctrineRecord
              'autoincrement' => false,
              'length' => 8,
              ));
-        $this->hasColumn('summary', 'string', 500, array(
+        $this->hasColumn('summary', 'string', 1000, array(
              'type' => 'string',
              'fixed' => 0,
              'unsigned' => false,
              'primary' => false,
              'notnull' => true,
              'autoincrement' => false,
-             'length' => 500,
+             'length' => 1000,
              ));
         $this->hasColumn('body', 'string', null, array(
              'type' => 'string',
@@ -242,6 +248,15 @@ abstract class BaseItem extends sfDoctrineRecord
              'notnull' => true,
              'autoincrement' => false,
              'length' => 4,
+             ));
+        $this->hasColumn('studios', 'string', 500, array(
+             'type' => 'string',
+             'fixed' => 0,
+             'unsigned' => false,
+             'primary' => false,
+             'notnull' => true,
+             'autoincrement' => false,
+             'length' => 500,
              ));
         $this->hasColumn('director', 'string', 100, array(
              'type' => 'string',
@@ -377,6 +392,15 @@ abstract class BaseItem extends sfDoctrineRecord
              'notnull' => true,
              'autoincrement' => false,
              'length' => 1,
+             ));
+        $this->hasColumn('source', 'string', 500, array(
+             'type' => 'string',
+             'fixed' => 0,
+             'unsigned' => false,
+             'primary' => false,
+             'notnull' => true,
+             'autoincrement' => false,
+             'length' => 500,
              ));
         $this->hasColumn('created_aid', 'integer', 4, array(
              'type' => 'integer',

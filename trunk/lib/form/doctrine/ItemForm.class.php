@@ -21,7 +21,8 @@ class ItemForm extends BaseItemForm
       	$this->widgetSchema['genre']          = new sfWidgetFormChoice(array('choices'=>$choices), array());
       	$this->widgetSchema['year']           = new sfWidgetFormInputText(array(), array('style'=>'width:40px;'));
       	$this->widgetSchema['year_end']       = new sfWidgetFormInputText(array(), array('style'=>'width:40px;'));
-      	$this->widgetSchema['release_date']   = new sfWidgetFormDate(array(), array('style'=>'width:46px;'));
+      	$years = range(date('Y') - 20, date('Y') + 1);
+      	$this->widgetSchema['release_date']   = new sfWidgetFormDate(array('years'=>$years, 'format'=>'%year%/%month%/%day%'), array('style'=>'width:46px;'));
       	$this->widgetSchema['summary']        = new sfWidgetFormTextarea(array(), array());
       	$this->widgetSchema['body']           = new sfWidgetFormTextarea(array(), array());
       	$this->widgetSchema['trailer']        = new sfWidgetFormTextarea(array(), array());
@@ -35,6 +36,7 @@ class ItemForm extends BaseItemForm
       	$this->widgetSchema['duration']       = new sfWidgetFormInputText(array(), array('style'=>'width:40px;'));
       	$choices = GlobalLib::getNumbers(0, 50);
       	$this->widgetSchema['age']            = new sfWidgetFormInputText(array(), array('style'=>'width:40px;'));
+      	$this->widgetSchema['studios']        = new sfWidgetFormInputText(array(), array());
       	$this->widgetSchema['director']       = new sfWidgetFormInputText(array(), array());
       	$this->widgetSchema['writer']         = new sfWidgetFormInputText(array(), array());
       	
@@ -44,6 +46,7 @@ class ItemForm extends BaseItemForm
       	$this->widgetSchema['nb_episodes']    = new sfWidgetFormChoice(array('choices'=>$choices), array('style'=>'width:46px;'));
       	$this->widgetSchema['official_link1'] = new sfWidgetFormInputText(array(), array());
       	$this->widgetSchema['official_link2'] = new sfWidgetFormInputText(array(), array());
+      	$this->widgetSchema['source']         = new sfWidgetFormInputText(array(), array());
       	
       	  	
       	# VALIDATORS
@@ -60,6 +63,7 @@ class ItemForm extends BaseItemForm
       	$this->validatorSchema['rating']       = new sfValidatorPass();
       	
       	$this->validatorSchema['casts']        = new sfValidatorPass();
+      	$this->validatorSchema['studios']      = new sfValidatorPass();
       	$this->validatorSchema['director']     = new sfValidatorPass();
       	$this->validatorSchema['writer']       = new sfValidatorPass();
       	$this->validatorSchema['duration']     = new sfValidatorPass();
@@ -71,6 +75,7 @@ class ItemForm extends BaseItemForm
       	$this->validatorSchema['comingsoon']   = new sfValidatorPass();
       	$this->validatorSchema['official_link1'] = new sfValidatorPass();
       	$this->validatorSchema['official_link2'] = new sfValidatorPass();
+      	$this->validatorSchema['source']         = new sfValidatorPass();
       	
       	#HELP
       	$this->widgetSchema->setHelp('duration', 'min');
