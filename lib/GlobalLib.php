@@ -66,10 +66,10 @@ class GlobalLib
           	case 'alpha_mn': return self::$alpha_mn;
           	case 'years': return self::$years;
           	case 'days': return self::$days;
-          	case 'modPermissions': return self::$mod_permissions;
-          	case 'bannerPosition': return self::$banner_position;
+          	case 'mod_permissions': return self::$mod_permissions;
+          	case 'banner_position': return self::$banner_position;
         }
-        return array();
+       return array();
     }
     
     public static function getValues($type)
