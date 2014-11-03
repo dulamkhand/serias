@@ -14,6 +14,7 @@ Doctrine_Manager::getInstance()->bindComponent('Item', 'doctrine');
  * @property string $route
  * @property string $image
  * @property integer $year
+ * @property integer $year_end
  * @property string $summary
  * @property string $body
  * @property string $trailer
@@ -21,6 +22,12 @@ Doctrine_Manager::getInstance()->bindComponent('Item', 'doctrine');
  * @property integer $duration
  * @property string $director
  * @property string $writer
+ * @property integer $nb_seasons
+ * @property integer $nb_episodes
+ * @property string $official_link1
+ * @property string $official_link2
+ * @property date $release_date
+ * @property string $casts
  * @property integer $sort
  * @property integer $nb_views
  * @property integer $is_active
@@ -33,56 +40,70 @@ Doctrine_Manager::getInstance()->bindComponent('Item', 'doctrine');
  * @property timestamp $created_at
  * @property timestamp $updated_at
  * 
- * @method integer   getId()          Returns the current record's "id" value
- * @method string    getType()        Returns the current record's "type" value
- * @method string    getGenre()       Returns the current record's "genre" value
- * @method string    getTitle()       Returns the current record's "title" value
- * @method string    getRoute()       Returns the current record's "route" value
- * @method string    getImage()       Returns the current record's "image" value
- * @method integer   getYear()        Returns the current record's "year" value
- * @method string    getSummary()     Returns the current record's "summary" value
- * @method string    getBody()        Returns the current record's "body" value
- * @method string    getTrailer()     Returns the current record's "trailer" value
- * @method string    getRating()      Returns the current record's "rating" value
- * @method integer   getDuration()    Returns the current record's "duration" value
- * @method string    getDirector()    Returns the current record's "director" value
- * @method string    getWriter()      Returns the current record's "writer" value
- * @method integer   getSort()        Returns the current record's "sort" value
- * @method integer   getNbViews()     Returns the current record's "nb_views" value
- * @method integer   getIsActive()    Returns the current record's "is_active" value
- * @method integer   getIsFeatured()  Returns the current record's "is_featured" value
- * @method integer   getBoxoffice()   Returns the current record's "boxoffice" value
- * @method integer   getThisweek()    Returns the current record's "thisweek" value
- * @method integer   getComingsoon()  Returns the current record's "comingsoon" value
- * @method integer   getCreatedAid()  Returns the current record's "created_aid" value
- * @method integer   getUpdatedAid()  Returns the current record's "updated_aid" value
- * @method timestamp getCreatedAt()   Returns the current record's "created_at" value
- * @method timestamp getUpdatedAt()   Returns the current record's "updated_at" value
- * @method Item      setId()          Sets the current record's "id" value
- * @method Item      setType()        Sets the current record's "type" value
- * @method Item      setGenre()       Sets the current record's "genre" value
- * @method Item      setTitle()       Sets the current record's "title" value
- * @method Item      setRoute()       Sets the current record's "route" value
- * @method Item      setImage()       Sets the current record's "image" value
- * @method Item      setYear()        Sets the current record's "year" value
- * @method Item      setSummary()     Sets the current record's "summary" value
- * @method Item      setBody()        Sets the current record's "body" value
- * @method Item      setTrailer()     Sets the current record's "trailer" value
- * @method Item      setRating()      Sets the current record's "rating" value
- * @method Item      setDuration()    Sets the current record's "duration" value
- * @method Item      setDirector()    Sets the current record's "director" value
- * @method Item      setWriter()      Sets the current record's "writer" value
- * @method Item      setSort()        Sets the current record's "sort" value
- * @method Item      setNbViews()     Sets the current record's "nb_views" value
- * @method Item      setIsActive()    Sets the current record's "is_active" value
- * @method Item      setIsFeatured()  Sets the current record's "is_featured" value
- * @method Item      setBoxoffice()   Sets the current record's "boxoffice" value
- * @method Item      setThisweek()    Sets the current record's "thisweek" value
- * @method Item      setComingsoon()  Sets the current record's "comingsoon" value
- * @method Item      setCreatedAid()  Sets the current record's "created_aid" value
- * @method Item      setUpdatedAid()  Sets the current record's "updated_aid" value
- * @method Item      setCreatedAt()   Sets the current record's "created_at" value
- * @method Item      setUpdatedAt()   Sets the current record's "updated_at" value
+ * @method integer   getId()             Returns the current record's "id" value
+ * @method string    getType()           Returns the current record's "type" value
+ * @method string    getGenre()          Returns the current record's "genre" value
+ * @method string    getTitle()          Returns the current record's "title" value
+ * @method string    getRoute()          Returns the current record's "route" value
+ * @method string    getImage()          Returns the current record's "image" value
+ * @method integer   getYear()           Returns the current record's "year" value
+ * @method integer   getYearEnd()        Returns the current record's "year_end" value
+ * @method string    getSummary()        Returns the current record's "summary" value
+ * @method string    getBody()           Returns the current record's "body" value
+ * @method string    getTrailer()        Returns the current record's "trailer" value
+ * @method string    getRating()         Returns the current record's "rating" value
+ * @method integer   getDuration()       Returns the current record's "duration" value
+ * @method string    getDirector()       Returns the current record's "director" value
+ * @method string    getWriter()         Returns the current record's "writer" value
+ * @method integer   getNbSeasons()      Returns the current record's "nb_seasons" value
+ * @method integer   getNbEpisodes()     Returns the current record's "nb_episodes" value
+ * @method string    getOfficialLink1()  Returns the current record's "official_link1" value
+ * @method string    getOfficialLink2()  Returns the current record's "official_link2" value
+ * @method date      getReleaseDate()    Returns the current record's "release_date" value
+ * @method string    getCasts()          Returns the current record's "casts" value
+ * @method integer   getSort()           Returns the current record's "sort" value
+ * @method integer   getNbViews()        Returns the current record's "nb_views" value
+ * @method integer   getIsActive()       Returns the current record's "is_active" value
+ * @method integer   getIsFeatured()     Returns the current record's "is_featured" value
+ * @method integer   getBoxoffice()      Returns the current record's "boxoffice" value
+ * @method integer   getThisweek()       Returns the current record's "thisweek" value
+ * @method integer   getComingsoon()     Returns the current record's "comingsoon" value
+ * @method integer   getCreatedAid()     Returns the current record's "created_aid" value
+ * @method integer   getUpdatedAid()     Returns the current record's "updated_aid" value
+ * @method timestamp getCreatedAt()      Returns the current record's "created_at" value
+ * @method timestamp getUpdatedAt()      Returns the current record's "updated_at" value
+ * @method Item      setId()             Sets the current record's "id" value
+ * @method Item      setType()           Sets the current record's "type" value
+ * @method Item      setGenre()          Sets the current record's "genre" value
+ * @method Item      setTitle()          Sets the current record's "title" value
+ * @method Item      setRoute()          Sets the current record's "route" value
+ * @method Item      setImage()          Sets the current record's "image" value
+ * @method Item      setYear()           Sets the current record's "year" value
+ * @method Item      setYearEnd()        Sets the current record's "year_end" value
+ * @method Item      setSummary()        Sets the current record's "summary" value
+ * @method Item      setBody()           Sets the current record's "body" value
+ * @method Item      setTrailer()        Sets the current record's "trailer" value
+ * @method Item      setRating()         Sets the current record's "rating" value
+ * @method Item      setDuration()       Sets the current record's "duration" value
+ * @method Item      setDirector()       Sets the current record's "director" value
+ * @method Item      setWriter()         Sets the current record's "writer" value
+ * @method Item      setNbSeasons()      Sets the current record's "nb_seasons" value
+ * @method Item      setNbEpisodes()     Sets the current record's "nb_episodes" value
+ * @method Item      setOfficialLink1()  Sets the current record's "official_link1" value
+ * @method Item      setOfficialLink2()  Sets the current record's "official_link2" value
+ * @method Item      setReleaseDate()    Sets the current record's "release_date" value
+ * @method Item      setCasts()          Sets the current record's "casts" value
+ * @method Item      setSort()           Sets the current record's "sort" value
+ * @method Item      setNbViews()        Sets the current record's "nb_views" value
+ * @method Item      setIsActive()       Sets the current record's "is_active" value
+ * @method Item      setIsFeatured()     Sets the current record's "is_featured" value
+ * @method Item      setBoxoffice()      Sets the current record's "boxoffice" value
+ * @method Item      setThisweek()       Sets the current record's "thisweek" value
+ * @method Item      setComingsoon()     Sets the current record's "comingsoon" value
+ * @method Item      setCreatedAid()     Sets the current record's "created_aid" value
+ * @method Item      setUpdatedAid()     Sets the current record's "updated_aid" value
+ * @method Item      setCreatedAt()      Sets the current record's "created_at" value
+ * @method Item      setUpdatedAt()      Sets the current record's "updated_at" value
  * 
  * @package    imdb
  * @subpackage model
@@ -147,14 +168,23 @@ abstract class BaseItem extends sfDoctrineRecord
              'autoincrement' => false,
              'length' => 500,
              ));
-        $this->hasColumn('year', 'integer', 4, array(
+        $this->hasColumn('year', 'integer', 8, array(
              'type' => 'integer',
              'fixed' => 0,
              'unsigned' => false,
              'primary' => false,
              'notnull' => true,
              'autoincrement' => false,
-             'length' => 4,
+             'length' => 8,
+             ));
+        $this->hasColumn('year_end', 'integer', 8, array(
+             'type' => 'integer',
+             'fixed' => 0,
+             'unsigned' => false,
+             'primary' => false,
+             'notnull' => true,
+             'autoincrement' => false,
+             'length' => 8,
              ));
         $this->hasColumn('summary', 'string', 500, array(
              'type' => 'string',
@@ -218,6 +248,60 @@ abstract class BaseItem extends sfDoctrineRecord
              'notnull' => true,
              'autoincrement' => false,
              'length' => 100,
+             ));
+        $this->hasColumn('nb_seasons', 'integer', 4, array(
+             'type' => 'integer',
+             'fixed' => 0,
+             'unsigned' => false,
+             'primary' => false,
+             'notnull' => true,
+             'autoincrement' => false,
+             'length' => 4,
+             ));
+        $this->hasColumn('nb_episodes', 'integer', 4, array(
+             'type' => 'integer',
+             'fixed' => 0,
+             'unsigned' => false,
+             'primary' => false,
+             'notnull' => true,
+             'autoincrement' => false,
+             'length' => 4,
+             ));
+        $this->hasColumn('official_link1', 'string', 500, array(
+             'type' => 'string',
+             'fixed' => 0,
+             'unsigned' => false,
+             'primary' => false,
+             'notnull' => true,
+             'autoincrement' => false,
+             'length' => 500,
+             ));
+        $this->hasColumn('official_link2', 'string', 500, array(
+             'type' => 'string',
+             'fixed' => 0,
+             'unsigned' => false,
+             'primary' => false,
+             'notnull' => true,
+             'autoincrement' => false,
+             'length' => 500,
+             ));
+        $this->hasColumn('release_date', 'date', 25, array(
+             'type' => 'date',
+             'fixed' => 0,
+             'unsigned' => false,
+             'primary' => false,
+             'notnull' => true,
+             'autoincrement' => false,
+             'length' => 25,
+             ));
+        $this->hasColumn('casts', 'string', null, array(
+             'type' => 'string',
+             'fixed' => 0,
+             'unsigned' => false,
+             'primary' => false,
+             'notnull' => true,
+             'autoincrement' => false,
+             'length' => '',
              ));
         $this->hasColumn('sort', 'integer', 4, array(
              'type' => 'integer',

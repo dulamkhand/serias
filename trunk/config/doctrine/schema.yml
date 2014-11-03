@@ -452,7 +452,14 @@ Item:
       notnull: true
       autoincrement: false
     year:
-      type: integer(4)
+      type: integer(8)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    year_end:
+      type: integer(8)
       fixed: false
       unsigned: false
       primary: false
@@ -502,6 +509,48 @@ Item:
       autoincrement: false
     writer:
       type: string(100)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    nb_seasons:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    nb_episodes:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    official_link1:
+      type: string(500)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    official_link2:
+      type: string(500)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    release_date:
+      type: date(25)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    casts:
+      type: string()
       fixed: false
       unsigned: false
       primary: false

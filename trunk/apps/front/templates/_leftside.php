@@ -14,7 +14,6 @@
     <br clear="all">
     <div class="fb-like" data-href="http://imdb/index.php" data-layout="button" data-action="like" data-show-faces="false" data-share="true"></div>
   
-    
     <br clear="all">
     <div style="margin:0 0 0 10px;">
         <h3 style="font-size:13px;">Төрөл жанр</h3>
@@ -59,6 +58,9 @@
         <?php endforeach?>
         </ul>
     </div>
+    
+    <br clear="all">
+    <br clear="all">
     
 </div><!--leftside-->
 
