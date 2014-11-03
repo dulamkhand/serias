@@ -29,21 +29,21 @@
         <?php echo $rs->getCasts();?>
         <br clear="all">
         
-        <?php if($rs->getStudios()):?>
+        <?php if($tmp = $rs->getStudios()):?>
             <span class="bold">Бүтээсэн:</span>
-            <?php echo $rs->getStudios();?>
+            <?php echo $tmp?>
             <br clear="all">
         <?php endif?>
         
-        <?php if($rs->getDirector()):?>
+        <?php if($tmp = $rs->getDirector()):?>
             <span class="bold">Найруулагч:</span>
-            <?php echo $rs->getDirector();?>
+            <?php echo $tmp?>
             <br clear="all">
         <?php endif?>
         
-        <?php if($rs->getWriter()):?>
+        <?php if($tmp = $rs->getWriter()):?>
             <span class="bold">Зохиолч:</span>
-            <?php echo $rs->getWriter();?>
+            <?php echo $tmp?>
             <br clear="all">
         <?php endif?>
         
@@ -51,104 +51,49 @@
         <?php echo $rs->getDuration();?>min
         <br clear="all">
         
-        <?php if($rs->getAge()):?>
+        <?php if($tmp = $rs->getAge()):?>
             <span class="bold">Насны ангилал:</span>
-            <?php echo $rs->getAge();?>+
+            <?php echo $tmp?>+
             <br clear="all">
         <?php endif?>
         
-        <?php if($rs->getNbSeasons()):?>
+        <?php if($tmp = $rs->getNbSeasons()):?>
             <span class="bold">Анги:</span>
-            <?php echo $rs->getNbSeasons();?> seasons, <?php echo $rs->getNbEpisodes();?> episodes
+            <?php echo $tmp?> seasons, <?php echo $rs->getNbEpisodes();?> episodes
             <br clear="all">
         <?php endif?>
         
-        <?php if($rs->getBoxoffice()):?>
+        <?php if($tmp = $rs->getBoxoffice()):?>
             <span class="bold">Boxoffice:</span>
-            <?php echo $rs->getBoxoffice();?>
+            <?php echo $tmp?>
             <br clear="all">    
         <?php endif?>
         
         <span class="bold">Албан ёсны хуудас:</span>
-        <a href="<?php echo $rs->getOfficialLink1();?>" style="color:#fff;">Facebok official</a>, 
-        <a href="<?php echo $rs->getOfficialLink2();?>" style="color:#fff;">Official website</a>
+        <a href="<?php echo $rs->getOfficialLink1();?>" target="_blank" style="color:#fff;">Facebok official</a>, 
+        <a href="<?php echo $rs->getOfficialLink2();?>" target="_blank" style="color:#fff;">Official website</a>
         <br clear="all">
         
-        <?php if($rs->getSource()):?>
+        <?php if($tmp = $rs->getSource()):?>
             <span class="bold">Эх сурвалж:</span>
-            <?php echo $rs->getSource();?>
+            <?php echo $tmp?>
             <br clear="all">    
         <?php endif?>
-    </div>    
+    </div>
 </div>
 
 <br clear="all">
 <?php echo $rs->getTrailer();?>
-<div class="right" style="width:250px;text-align:justify;">
-    <h2 style="color:<?php echo $color?>;font-weight:bold;">Үйл явдал</h2>
-    <?php echo $rs->getBody();?>
-</div>
+<?php if($tmp = $rs->getBody()):?>
+    <div class="right" style="width:250px;text-align:justify;">
+        <h2 style="color:<?php echo $color?>;font-weight:bold;">Үйл явдал</h2>
+        <?php echo $tmp;?>
+    </div>
+<?php endif?>
 <br clear="all">
 <br clear="all">
 
-
-<div class="box-home" style="background:#dedede;border:1px solid #ccc;">
-    <?php $links = Doctrine::getTable('Link')->createQuery()
-                      ->where('item_id =?', $rs->getId())
-                      ->orderBy('season ASC, episode ASC, created_at DESC, updated_at DESC')
-                      ->execute();?>
-    <?php if(!sizeof($links)):?>
-        Линк оруулаагүй байна. Та хэсэг хугацааны дараа дахин хандаарай.
-    <?php endif?>
-    
-    <?php 
-    $season=null; $episode=null;
-    $nbSeasons = 0; $nbEpisodes = 0;
-    foreach($links as $link) {
-        if($season != $link->getSeason()) {
-            $season = $link->getSeason();
-            $nbSeasons++;
-        }
-        if($episode != $link->getEpisode()) {
-            $episode = $link->getEpisode();
-            $nbEpisodes++;
-        }
-    }?>
-    Season: <?php echo $nbSeasons?>, 
-    Episode: <?php echo $nbEpisodes?>
-
-    <?php $season=null; $episode=null; $l=0; $first=0;?>
-    <?php foreach($links as $link):?>
-        <!--series-->
-        <?php if($rs->getType() == 'series'):?>
-            <!--season endline-->
-            <?php if($season != $link->getSeason()):?>
-                <?php if($first != 0) echo '<br clear="all">'?>
-                <hr style="border:0;border:2px solid #fff;margin:20px 0;">
-                <?php $season = $link->getSeason(); $first = 0;?>
-            <?php endif?>
-            
-            <!--title-->
-            <?php if($episode != $link->getEpisode()):?>
-                <?php if($first++ != 0) echo '<br clear="all"><br clear="all">'?>
-                <h2 style="color:<?php echo $color?>">
-                    <?php echo $link?>
-                </h2>
-                <?php $l=0; $episode = $link->getEpisode();?>
-            <?php endif?>
-        <?php endif?>
-        <!--links-->
-        <h3 onclick="iframe('<?php echo $link->getLink()?>')" class="left">
-             линк<?php echo ++$l?>
-        </h3>
-    <?php endforeach;?>
-
-    <br clear="all">
-    <?php echo image_tag('http://www.utah.gov/transparency/images/icons/loading_large.gif', array('style'=>'margin:0 auto;display:none;', 'id'=>'loading'))?>
-
-    <div id="iframe"></div>
-</div>
-
+<?php include_partial('links', array('rs'=>$rs));?>
 
 <script type="text/javascript">
 function iframe(link)

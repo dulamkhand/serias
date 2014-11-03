@@ -1,16 +1,14 @@
 <div id="rightside">
-    
-  
-    <br clear="all">
     <h3 style="font-size:13px;">Манай санд шинээр нэмэгдсэн</h3>
     <ul>
-    <?php foreach ($rss as $rs):?>
-        <?php if($rs['comingsoon'] > 0):?>
-            <li><a href="<?php echo url_for('page/show?route='.$rs['route'])?>">
-                <?php echo $rs['title']?>
-            </a></li>
-        <?php endif?>
-    <?php endforeach?>
+        <?php $rss = array();?>
+        <?php foreach ($rss as $rs):?>
+            <?php if($rs['comingsoon'] > 0):?>
+                <li><a href="<?php echo url_for('page/show?route='.$rs['route'])?>">
+                    <?php echo $rs['title']?>
+                </a></li>
+            <?php endif?>
+        <?php endforeach?>
     </ul>
     
     <br clear="all">
@@ -20,9 +18,21 @@
     </div>
     
     <br clear="all">
+    <br clear="all">
     <div style="color:#666;">
         Сурталчилгаа
-        <?php echo image_tag('/u/b/dagina.png', array('width'=>200))?>
+        <a href="http://www.dagina.mn/index.php" target="_blank">
+            <?php echo image_tag('/u/b/dagina.png', array('width'=>200))?>
+        </a>
+    </div>
+    
+    <br clear="all">
+    <br clear="all">
+    <div style="color:#666;">
+        Сурталчилгаа
+        <a href="http://www.urin-essence.com/girasole/firewall/web/index.php" target="_blank">
+            <?php echo image_tag('/u/b/firewall.png', array('width'=>180))?>
+        </a>
     </div>
     
     <br clear="all">

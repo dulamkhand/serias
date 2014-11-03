@@ -6,7 +6,7 @@ all:
   host: http://urin-essence.com/girasole/imdb/web/
   #host: http://localhost:88/imdb/web/
   #host: http://imdb/
-  webname: online-tv
+  webname: Монголын нэгдсэн кино сан
   feedbackmail: handaa.1224@gmail.com
   pager: 20
   limit: 20
