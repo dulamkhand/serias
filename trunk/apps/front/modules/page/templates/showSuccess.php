@@ -16,7 +16,9 @@
     <div class="left ml10px" style="color:#fff;width:575px;">
         <?php echo $rs->getSummary();?>
         <br clear="all">
-        <?php echo $rs->getRating();?>
+		<div class="left" style="width:125px;">
+			<?php echo $rs->getRating();?>
+		</div>
         <?php include_partial('partial/share', array('url'=>$host."/page/show?route=".$rs->getRoute(),
                                        'via'=>sfConfig::get('app_webname'), 'text'=>$rs));?>
         <br clear="all">

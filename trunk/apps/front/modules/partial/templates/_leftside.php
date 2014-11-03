@@ -16,7 +16,7 @@
         data-share="true"></div>
   
     <br clear="all">
-    <div style="margin:0 0 0 10px;">
+    <div style="margin:15px 0 0 10px;">
         <h3 style="font-size:13px;">Төрөл жанр</h3>
         <?php foreach (GlobalLib::getArray('genre_mn') as $k=>$v):?>
             <a href="<?php echo url_for('page/index?type=movie&g='.$k)?>"><?php echo $v?></a><br>
