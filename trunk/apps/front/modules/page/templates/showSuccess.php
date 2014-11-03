@@ -17,6 +17,8 @@
         <?php echo $rs->getSummary();?>
         <br clear="all">
         <?php echo $rs->getRating();?>
+        <?php include_partial('partial/share', array('url'=>$host."/page/show?route=".$rs->getRoute(),
+                                       'via'=>sfConfig::get('app_webname'), 'text'=>$rs));?>
         <br clear="all">
         
         <span class="bold">Нээлт хийсэн:</span>
