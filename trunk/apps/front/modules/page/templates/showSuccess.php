@@ -1,7 +1,12 @@
 <?php $host = sfConfig::get('app_host')?>
 
-<a href="#" class="h3" style="font-size:13px;color:#555;"><?php echo GlobalLib::getValue('type_mn', $rs->getType())?></a> &raquo;
-<a href="#" class="h3" style="font-size:13px;color:#555;"><?php echo $rs->getGenre()?></a>
+<a href="<?php echo url_for('page/index?type='.$rs->getType())?>" class="h3" style="font-size:13px;color:#555;">
+    <?php echo GlobalLib::getValue('type_mn', $rs->getType())?>
+</a> &raquo;
+<a href="<?php echo url_for('page/index?type='.$rs->getType().'&g='.$rs->getGenre())?>" class="h3" 
+                                                                style="font-size:13px;color:#555;">
+    <?php echo $rs->getGenre()?>
+</a>
 <br clear="all">
 
 <?php $color = GlobalLib::getValue('colors', $rs->getType()) ?>
@@ -13,6 +18,7 @@
         <br clear="all">
         <?php echo $rs->getRating();?>
         <br clear="all">
+        
         <span class="bold">Нээлт хийсэн:</span>
         <?php echo $rs->getReleaseDate()?>
         <br clear="all">
@@ -20,17 +26,30 @@
         <?php echo $rs->getYear().($rs->getYearEnd() != '0000' ? " - ".$rs->getYearEnd() : "");?>
         <br clear="all">
         <span class="bold">Дүрүүдэд:</span>
-        <?php echo $rs->getDirector();?>
+        <?php echo $rs->getCasts();?>
         <br clear="all">
-        <span class="bold">Найруулагч:</span>
-        <?php echo $rs->getDirector();?>
-        <br clear="all">
-        <span class="bold">Зохиолч:</span>
-        <?php echo $rs->getWriter();?>
-        <br clear="all">
+        
+        <?php if($rs->getDirector()):?>
+            <span class="bold">Найруулагч:</span>
+            <?php echo $rs->getDirector();?>
+            <br clear="all">
+        <?php endif?>
+        
+        <?php if($rs->getWriter()):?>
+            <span class="bold">Зохиолч:</span>
+            <?php echo $rs->getWriter();?>
+            <br clear="all">
+        <?php endif?>
+        
         <span class="bold">Үргэлжлэх хугацаа:</span>
         <?php echo $rs->getDuration();?>min
         <br clear="all">
+        
+        <?php if($rs->getAge()):?>
+            <span class="bold">Насны ангилал:</span>
+            <?php echo $rs->getAge();?>+
+            <br clear="all">
+        <?php endif?>
         
         <?php if($rs->getNbSeasons()):?>
             <span class="bold">Анги:</span>
@@ -45,15 +64,15 @@
         <?php endif?>
         
         <span class="bold">Албан ёсны хуудас:</span>
-        <a href="<?php echo $rs->getOfficialLink1();?>">Facebok official</a>, 
-        <a href="<?php echo $rs->getOfficialLink2();?>">Official website</a>        
+        <a href="<?php echo $rs->getOfficialLink1();?>" style="color:#fff;">Facebok official</a>, 
+        <a href="<?php echo $rs->getOfficialLink2();?>" style="color:#fff;">Official website</a>        
     </div>    
 </div>
 
 <br clear="all">
 <?php echo $rs->getTrailer();?>
-<div class="right" style="width:250px;">
-    <h2 style="color:<?php echo $color?>;">Үйл явдал</h2>
+<div class="right" style="width:250px;text-align:justify;">
+    <h2 style="color:<?php echo $color?>;font-weight:bold;">Үйл явдал</h2>
     <?php echo $rs->getBody();?>
 </div>
 <br clear="all">
