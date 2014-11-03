@@ -23,6 +23,19 @@ class GlobalLib
                   'western'=>'Western', 
     );
 
+    public static $alpha_en = array('A'=>'A','B'=>'B','C'=>'C','D'=>'D','E'=>'E','F'=>'F','G'=>'G','H'=>'H','I'=>'I',
+                  'J'=>'J','K'=>'K','L'=>'L','M'=>'M','N'=>'N','O'=>'O','P'=>'P','Q'=>'Q','R'=>'R','S'=>'S','T'=>'T',
+                  'U'=>'U','V'=>'V','W'=>'W','X'=>'X','Y'=>'Y','Z'=>'Z');
+    public static $alpha_mn = array('A'=>'A','Б'=>'Б','В'=>'В','Г'=>'Г','Д'=>'Д','Е'=>'Е','Ё'=>'Ё','Ж'=>'Ж','З'=>'З','И'=>'И',
+                  'Й'=>'Й','К'=>'К','Л'=>'Л','М'=>'М','Н'=>'Н','О'=>'О','Ө'=>'Ө','П'=>'П','Р'=>'Р','С'=>'С','Т'=>'Т','У'=>'У',
+                  'Ү'=>'Ү','Х'=>'Х','Ц'=>'Ц','Ч'=>'Ч','Ш'=>'Ш','Щ'=>'Щ','Ъ'=>'Ъ','Ь'=>'Ь','Э'=>'Э','Ю'=>'Ю','Я'=>'Я');
+    public static $years = array(2014=>2014,2013=>2013,2011=>2011,2010=>2010,
+                  2009=>2009,2008=>2008,2007=>2007,2006=>2006,2005=>2005,
+                  2004=>2004,2003=>2003,2002=>2002,2001=>2001,2000=>2000,
+                  1990=>1990,1980=>1980,1970=>1970,1960=>'1960-с өмнө');
+    public static $days = array(1=>1,2=>2,3=>3,4=>4,5=>5,6=>6,7=>7,8=>8,9=>9,10=>10,11=>11,12=>12,13=>13,14=>14,15=>15,16=>16,
+            17=>17,18=>18,19=>19,20=>20,21=>21,22=>22,23=>23,24=>24,25=>25,26=>26,27=>27,28=>28,29=>29,30=>30,31=>31);
+
     public static $banner_position = array(
                   'header'=>'Header 300px65px', 
                   'home-featured'=>'Home featured 450px', 
@@ -40,24 +53,7 @@ class GlobalLib
                   'sideright'=>'Sideright',
                   'search'=>'Search 1000px');
 
-    public static $bad_words = array('shit','crap','damn','bugger','jerk','asshole','bastard','douche','slut','fucking','fuck','bitch','cock','dick','darn','fag','piss','penis','pussy');
-    public static $reserved_words = array('whats the reserved words');
-    public static $mod_permissions = array('news'=>'news', 
-                  'comment'=>'comment', 'discuss'=>'discuss', 'banner'=>'banner', 'coupon'=>'coupon', 'quote'=>'quote', 
-                  'quiz'=>'quiz', 'poll'=>'poll', 'subscriber'=>'subscriber', 'admin'=>'admin', 'user'=>'user');
-
-    public static $alpha_en = array('A'=>'A','B'=>'B','C'=>'C','D'=>'D','E'=>'E','F'=>'F','G'=>'G','H'=>'H','I'=>'I',
-                  'J'=>'J','K'=>'K','L'=>'L','M'=>'M','N'=>'N','O'=>'O','P'=>'P','Q'=>'Q','R'=>'R','S'=>'S','T'=>'T',
-                  'U'=>'U','V'=>'V','W'=>'W','X'=>'X','Y'=>'Y','Z'=>'Z');
-    public static $alpha_mn = array('A'=>'A','Б'=>'Б','В'=>'В','Г'=>'Г','Д'=>'Д','Е'=>'Е','Ё'=>'Ё','Ж'=>'Ж','З'=>'З','И'=>'И',
-                  'Й'=>'Й','К'=>'К','Л'=>'Л','М'=>'М','Н'=>'Н','О'=>'О','Ө'=>'Ө','П'=>'П','Р'=>'Р','С'=>'С','Т'=>'Т','У'=>'У',
-                  'Ү'=>'Ү','Х'=>'Х','Ц'=>'Ц','Ч'=>'Ч','Ш'=>'Ш','Щ'=>'Щ','Ъ'=>'Ъ','Ь'=>'Ь','Э'=>'Э','Ю'=>'Ю','Я'=>'Я');
-    public static $years = array(2014=>2014,2013=>2013,2011=>2011,2010=>2010,
-                  2009=>2009,2008=>2008,2007=>2007,2006=>2006,2005=>2005,
-                  2004=>2004,2003=>2003,2002=>2002,2001=>2001,2000=>2000,
-                  1990=>1990,1980=>1980,1970=>1970,1960=>'1960-с өмнө');
-    public static $days = array(1=>1,2=>2,3=>3,4=>4,5=>5,6=>6,7=>7,8=>8,9=>9,10=>10,11=>11,12=>12,13=>13,14=>14,15=>15,16=>16,
-            17=>17,18=>18,19=>19,20=>20,21=>21,22=>22,23=>23,24=>24,25=>25,26=>26,27=>27,28=>28,29=>29,30=>30,31=>31);
+    public static $mod_permissions = array('item'=>'Item', 'link'=>'Link', 'admin'=>'admin');   
 
     public static function getArray($type)
     {
@@ -70,6 +66,8 @@ class GlobalLib
           	case 'alpha_mn': return self::$alpha_mn;
           	case 'years': return self::$years;
           	case 'days': return self::$days;
+          	case 'modPermissions': return self::$mod_permissions;
+          	case 'bannerPosition': return self::$banner_position;
         }
         return array();
     }

@@ -56,7 +56,9 @@
     
     <?php if($sf_user->isAuthenticated()):?>
         <div id="footer">
-          2013 - 2015 &copy;  <a href="http://www.imdb.mn" target="_blank">www.imdb.mn</a>
+          <div class="right" style="margin:0 5px 0 0;">
+              Copyright © 2013-2016 www.online-tv.mn
+          </div>
           <br clear="all">
         </div>
     <?php endif;?>

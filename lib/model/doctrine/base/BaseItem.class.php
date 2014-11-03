@@ -23,11 +23,11 @@ Doctrine_Manager::getInstance()->bindComponent('Item', 'doctrine');
  * @property string $writer
  * @property integer $sort
  * @property integer $nb_views
- * @property boolean $is_active
- * @property boolean $is_featured
- * @property boolean $boxoffice
- * @property boolean $thisweek
- * @property boolean $comingsoon
+ * @property integer $is_active
+ * @property integer $is_featured
+ * @property integer $boxoffice
+ * @property integer $thisweek
+ * @property integer $comingsoon
  * @property integer $created_aid
  * @property integer $updated_aid
  * @property timestamp $created_at
@@ -49,11 +49,11 @@ Doctrine_Manager::getInstance()->bindComponent('Item', 'doctrine');
  * @method string    getWriter()      Returns the current record's "writer" value
  * @method integer   getSort()        Returns the current record's "sort" value
  * @method integer   getNbViews()     Returns the current record's "nb_views" value
- * @method boolean   getIsActive()    Returns the current record's "is_active" value
- * @method boolean   getIsFeatured()  Returns the current record's "is_featured" value
- * @method boolean   getBoxoffice()   Returns the current record's "boxoffice" value
- * @method boolean   getThisweek()    Returns the current record's "thisweek" value
- * @method boolean   getComingsoon()  Returns the current record's "comingsoon" value
+ * @method integer   getIsActive()    Returns the current record's "is_active" value
+ * @method integer   getIsFeatured()  Returns the current record's "is_featured" value
+ * @method integer   getBoxoffice()   Returns the current record's "boxoffice" value
+ * @method integer   getThisweek()    Returns the current record's "thisweek" value
+ * @method integer   getComingsoon()  Returns the current record's "comingsoon" value
  * @method integer   getCreatedAid()  Returns the current record's "created_aid" value
  * @method integer   getUpdatedAid()  Returns the current record's "updated_aid" value
  * @method timestamp getCreatedAt()   Returns the current record's "created_at" value
@@ -237,45 +237,50 @@ abstract class BaseItem extends sfDoctrineRecord
              'autoincrement' => false,
              'length' => 4,
              ));
-        $this->hasColumn('is_active', 'boolean', null, array(
-             'type' => 'boolean',
+        $this->hasColumn('is_active', 'integer', 1, array(
+             'type' => 'integer',
              'fixed' => 0,
              'unsigned' => false,
              'primary' => false,
              'notnull' => true,
              'autoincrement' => false,
+             'length' => 1,
              ));
-        $this->hasColumn('is_featured', 'boolean', null, array(
-             'type' => 'boolean',
+        $this->hasColumn('is_featured', 'integer', 1, array(
+             'type' => 'integer',
              'fixed' => 0,
              'unsigned' => false,
              'primary' => false,
              'notnull' => true,
              'autoincrement' => false,
+             'length' => 1,
              ));
-        $this->hasColumn('boxoffice', 'boolean', null, array(
-             'type' => 'boolean',
+        $this->hasColumn('boxoffice', 'integer', 1, array(
+             'type' => 'integer',
              'fixed' => 0,
              'unsigned' => false,
              'primary' => false,
              'notnull' => true,
              'autoincrement' => false,
+             'length' => 1,
              ));
-        $this->hasColumn('thisweek', 'boolean', null, array(
-             'type' => 'boolean',
+        $this->hasColumn('thisweek', 'integer', 1, array(
+             'type' => 'integer',
              'fixed' => 0,
              'unsigned' => false,
              'primary' => false,
              'notnull' => true,
              'autoincrement' => false,
+             'length' => 1,
              ));
-        $this->hasColumn('comingsoon', 'boolean', null, array(
-             'type' => 'boolean',
+        $this->hasColumn('comingsoon', 'integer', 1, array(
+             'type' => 'integer',
              'fixed' => 0,
              'unsigned' => false,
              'primary' => false,
              'notnull' => true,
              'autoincrement' => false,
+             'length' => 1,
              ));
         $this->hasColumn('created_aid', 'integer', 4, array(
              'type' => 'integer',

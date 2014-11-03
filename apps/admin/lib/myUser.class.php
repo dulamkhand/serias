@@ -11,7 +11,6 @@ class myUser extends sfBasicSecurityUser
         foreach ($rss as $rs){
             $this->addCredential($rs);  
         }
-        
         $this->setAttribute('id', $admin->getId());
         $this->setAttribute('email', $admin->getEmail());
     }

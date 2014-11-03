@@ -25,8 +25,8 @@
       <td nowrap><?php echo $rs->getUpdatedAt() ?></td>
       <td nowrap><?php echo $rs->getCreatedAt() ?></td>
       <td nowrap>
-          <?php include_partial('partial/activate', array('module'=>'admin', 'rs'=>$rs));?>
-          <?php include_partial('partial/actions', array('module'=>'admin', 'id'=>$rs->getId()));?>
+          <?php include_partial('partial/isActive', array('module'=>'admin', 'rs'=>$rs));?>
+          <?php include_partial('partial/editDelete', array('module'=>'admin', 'id'=>$rs->getId()));?>
       </td>
     </tr>
     <?php endforeach; ?>
