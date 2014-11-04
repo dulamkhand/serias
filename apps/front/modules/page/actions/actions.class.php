@@ -23,12 +23,14 @@ class pageActions extends sfActions
         $params['y'] = $request->getParameter('y');
         $params['l'] = $request->getParameter('l');
         $params['g'] = $request->getParameter('g');
-        $this->pager = GlobalTable::getPager('Item', $params, $request->getParameter('page'));
+        $this->pager = GlobalTable::getPager('Item', array('type, route, image, title, year'), 
+                                              $params, $request->getParameter('page'));
     }
   
     public function executeShow(sfWebRequest $request)
     {
-        $this->rs = $rs = Doctrine::getTable('Item')->findOneBy('route', $request->getParameter('route'));
+        //$this->rs = $rs = Doctrine::getTable('Item')->findOneBy('route', $request->getParameter('route'));
+        $this->rs = $rs = GlobalTable::doFetchOne('Item', array('*'), array('route'=>$request->getParameter('route')));
         $this->forward404Unless($rs);
         
         // META

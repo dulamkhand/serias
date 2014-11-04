@@ -16,4 +16,6 @@ class ItemTable extends Doctrine_Table
     {
         return Doctrine_Core::getTable('Item');
     }
+    
+    
 }

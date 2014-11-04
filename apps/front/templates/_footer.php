@@ -7,7 +7,7 @@
         </ul>
     </div>
     <div class="right" style="margin:0 5px 0 0;">
-        Copyright © 2013-2016 www.online-tv.mn
+        Copyright © 2013-2016 www.mmdb.mn
         <!--<a href="#">Сайтад тавигдсан мэдээллийг ашигласан тохиолдолд сайтын нэрийг заавал дурдана уу.</a>-->
     </div>
     <br clear="all">

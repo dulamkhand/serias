@@ -1,7 +1,7 @@
 <div id="leftside">
 
     <a href="<?php echo url_for('@homepage')?>">
-        <?php echo image_tag('logo-150.png', array('style'=>'margin:10px 0 5px 0;'))?>
+        <?php echo image_tag('logo-200x130.png', array('style'=>'margin:10px 0 5px 0;max-width:150px;'))?>
     </a>
   
     <ul id="mainmenu">
@@ -23,7 +23,8 @@
         <?php endforeach?>  
         
         <br clear="all">
-        <?php $rss = GlobalTable::doFetchArray('Item', array('rightside'=>1, 'limit'=>30, 'orderBy'=>'boxoffice ASC, title ASC'))?>
+        <?php $rss = GlobalTable::doFetchArray('Item', array('type, route, image, title, year, boxoffice, thisweek, comingsoon'), 
+                                              array('rightside'=>1, 'limit'=>30, 'orderBy'=>'boxoffice ASC, title ASC'))?>
         <h3 style="font-size:13px;">Box Office</h3>
         <ul>
           <?php foreach ($rss as $rs):?>
