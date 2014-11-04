@@ -57,7 +57,7 @@
     <?php if($sf_user->isAuthenticated()):?>
         <div id="footer">
           <div class="right" style="margin:0 5px 0 0;">
-              Copyright © 2013-2016 www.online-tv.mn
+              Copyright © 2013-2016 www.mmdb.mn
           </div>
           <br clear="all">
         </div>

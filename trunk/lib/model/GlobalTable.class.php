@@ -30,6 +30,12 @@ class GlobalTable extends Doctrine_Table
             $q->andWhere('type= ?', $params['type']);
         if(isset($params['typeO']) && $params['typeO'] != null)
             $q->andWhere('type <> ?', $params['typeO']);
+            
+        # genre
+        if(isset($params['genre']) && $params['genre'] != null)
+            $q->andWhere('genre= ?', $params['genre']);
+        if(isset($params['genreO']) && $params['genreO'] != null)
+            $q->andWhere('genre <> ?', $params['genreO']);
 
         # itemId
         if(isset($params['itemId']) && $params['itemId'] != null)
@@ -42,14 +48,6 @@ class GlobalTable extends Doctrine_Table
             $q->andWhere('genre = ? ', $params['g']);
         if(isset($params['l']) && $params['l'] != null)
             $q->andWhere('title like ?', $params['l'].'%');
-            
-        # categoryId
-        if(isset($params['categoryId']) && $params['categoryId'] != null)
-            $q->andWhere('category_id = ?', $params['categoryId']);
-        if(isset($params['categoryIdO']) && $params['categoryIdO'] != null)
-            $q->andWhere('category_id <> ?', $params['categoryIdO']);
-        if(isset($params['categoryIds']) && $params['categoryIds'] != null)
-            $q->andWhereIn('category_id', $params['categoryIds']);
             
         if(isset($params['rightside']) && $params['rightside'] != null)
             $q->andWhere('boxoffice > 0 OR thisweek > 0 OR comingsoon > 0');
@@ -97,26 +95,26 @@ class GlobalTable extends Doctrine_Table
     }
     
 
-    public static function doExecute($tableName, $params = array())
+    public static function doExecute($tableName, $columns = array(), $params = array())
     {
-        $q = Doctrine_Query::create()->select('*');
+        $q = Doctrine_Query::create()->select(join(',', $columns));
         $q = self::params($tableName, $q, $params);
         return $q->execute();
     }
     
   
-    public static function doFetchArray($tableName, $params = array())
+    public static function doFetchArray($tableName, $columns = array(), $params = array())
     {
-        $q = Doctrine_Query::create()->select('*');
+        $q = Doctrine_Query::create()->select(join(',', $columns));
         $q = self::params($tableName, $q, $params);
         return $q->fetchArray();
     }
     
     
-    public static function doFetchSelection($tableName, $fieldName, $params = array())
+    public static function doFetchSelection($tableName, $fieldName, $columns = array(), $params = array())
     {
         $res = array();
-        $rss = self::doFetchArray($tableName, $params);
+        $rss = self::doFetchArray($tableName, $columns, $params);
         foreach ($rss as $rs) 
         {
             $res[$rs['id']] = $fieldName;
@@ -125,17 +123,17 @@ class GlobalTable extends Doctrine_Table
     }
   
     
-    public static function doFetchOne($tableName, $params = array())
+    public static function doFetchOne($tableName, $columns = array(), $params = array())
     {
-        $q = Doctrine_Query::create()->select('*');
+        $q = Doctrine_Query::create()->select(join(',', $columns));
         $q = self::params($tableName, $q, $params);
         return $q->fetchOne();
     }
     
     
-    public static function getPager($tableName, $params = array(), $page=1)
+    public static function getPager($tableName, $columns = array(), $params = array(), $page=1)
     {
-        $q = Doctrine_Query::create()->select('*');
+        $q = Doctrine_Query::create()->select(join(',', $columns));
         $q = self::params($tableName, $q, $params);
 
         $pager = new sfDoctrinePager($tableName, sfConfig::get('app_pager', 30));

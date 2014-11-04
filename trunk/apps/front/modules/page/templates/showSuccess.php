@@ -99,6 +99,11 @@
 
 <?php include_partial('links', array('rs'=>$rs));?>
 
+<br clear="all">
+<br clear="all">
+
+<?php include_partial('similars', array('rs'=>$rs));?>
+
 <script type="text/javascript">
 function iframe(link)
 {
