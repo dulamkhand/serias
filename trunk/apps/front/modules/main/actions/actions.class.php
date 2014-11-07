@@ -60,6 +60,35 @@ class mainActions extends sfActions
 
     public function executeTmp(sfWebRequest $request)
     {
+        //echo 
+        $rs = new Item();
+        $rs->setType();
+        $rs->setGenre();
+        $rs->setTitle();
+        $rs->setYear();
+        $rs->setYearEnd();
+        $rs->setRoute(GlobalLib::slugify(GlobalLib::mn2en($rs->getTitle().'-'.$rs->getYear())));
+        $rs->setImage();
+        $rs->setSummary();
+        $rs->setBody();
+        $rs->setTrailer();
+        $rs->setRating();
+        $rs->setDuration();
+        $rs->setAge();
+        $rs->setStudios();
+        $rs->setDirector();
+        $rs->setWriter();
+        $rs->setOfficialLink1();
+        $rs->setOfficialLink2();
+        $rs->setReleaseDate();
+        $rs->setCasts();
+        $rs->setBoxoffice();
+        $rs->setThisweek();
+        $rs->setComingsoon();
+        $rs->setSource('imdb.com');
+        $rs->setIsActive(1);
+        $rs->setCreatedAid(1);
+        $rs->save();
         echo 'success'; die();
     }
 

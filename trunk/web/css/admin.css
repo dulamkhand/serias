@@ -17,13 +17,13 @@ a.action{font-style:italic;}
 
 img{border:0;margin:1px;}
 
-input {padding:2px;height:22px;border:1px solid #FF6600;width:294px;}
+input {padding:2px;height:22px;border:1px solid #FF6600;width:406px;}
 input[type=submit]{cursor:pointer;font-weight:bold;padding:0;height:28px;background:#FF6600;color:#fff;width:85px;}
 input[type=button]{cursor:pointer;font-weight:bold;padding:5px 10px;text-decoration:none;background:#FF6600;color:#fff;}
 input[type=checkbox]{margin:-2px 5px 0 0;width:16px;padding:0;float:left;}
 textarea {padding:5px;width:400px;height:120px;overflow:auto;border:1px solid #FF6600;}
 
-select {width:300px;height:28px;padding:2px;border:1px solid #FF6600;}
+select {width:411px;height:28px;padding:2px;border:1px solid #FF6600;}
 select optgroup{text-transform:uppercase;padding:0;}
 select option{text-transform:;padding:2px 0px;background:#FFF;}
 

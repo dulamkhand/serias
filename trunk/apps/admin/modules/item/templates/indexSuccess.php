@@ -57,4 +57,4 @@
     <?php endforeach; ?>
   </tbody>
 </table>
-<?php echo pager($pager, 'item/index?s='.$sf_params->get('s'))?>
+<?php echo pager($pager, 'item/index?type='.$sf_params->get('type').'&s='.$sf_params->get('s'))?>

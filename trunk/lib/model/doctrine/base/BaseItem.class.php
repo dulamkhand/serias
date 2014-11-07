@@ -11,12 +11,15 @@ Doctrine_Manager::getInstance()->bindComponent('Item', 'doctrine');
  * @property string $type
  * @property string $genre
  * @property string $title
+ * @property string $title_mn
  * @property string $route
  * @property string $image
  * @property integer $year
  * @property integer $year_end
  * @property string $summary
  * @property string $body
+ * @property string $summary_mn
+ * @property string $body_mn
  * @property string $trailer
  * @property string $rating
  * @property integer $duration
@@ -30,6 +33,7 @@ Doctrine_Manager::getInstance()->bindComponent('Item', 'doctrine');
  * @property string $official_link2
  * @property date $release_date
  * @property string $casts
+ * @property string $kickass
  * @property integer $sort
  * @property integer $nb_views
  * @property integer $is_active
@@ -47,12 +51,15 @@ Doctrine_Manager::getInstance()->bindComponent('Item', 'doctrine');
  * @method string    getType()           Returns the current record's "type" value
  * @method string    getGenre()          Returns the current record's "genre" value
  * @method string    getTitle()          Returns the current record's "title" value
+ * @method string    getTitleMn()        Returns the current record's "title_mn" value
  * @method string    getRoute()          Returns the current record's "route" value
  * @method string    getImage()          Returns the current record's "image" value
  * @method integer   getYear()           Returns the current record's "year" value
  * @method integer   getYearEnd()        Returns the current record's "year_end" value
  * @method string    getSummary()        Returns the current record's "summary" value
  * @method string    getBody()           Returns the current record's "body" value
+ * @method string    getSummaryMn()      Returns the current record's "summary_mn" value
+ * @method string    getBodyMn()         Returns the current record's "body_mn" value
  * @method string    getTrailer()        Returns the current record's "trailer" value
  * @method string    getRating()         Returns the current record's "rating" value
  * @method integer   getDuration()       Returns the current record's "duration" value
@@ -66,6 +73,7 @@ Doctrine_Manager::getInstance()->bindComponent('Item', 'doctrine');
  * @method string    getOfficialLink2()  Returns the current record's "official_link2" value
  * @method date      getReleaseDate()    Returns the current record's "release_date" value
  * @method string    getCasts()          Returns the current record's "casts" value
+ * @method string    getKickass()        Returns the current record's "kickass" value
  * @method integer   getSort()           Returns the current record's "sort" value
  * @method integer   getNbViews()        Returns the current record's "nb_views" value
  * @method integer   getIsActive()       Returns the current record's "is_active" value
@@ -82,12 +90,15 @@ Doctrine_Manager::getInstance()->bindComponent('Item', 'doctrine');
  * @method Item      setType()           Sets the current record's "type" value
  * @method Item      setGenre()          Sets the current record's "genre" value
  * @method Item      setTitle()          Sets the current record's "title" value
+ * @method Item      setTitleMn()        Sets the current record's "title_mn" value
  * @method Item      setRoute()          Sets the current record's "route" value
  * @method Item      setImage()          Sets the current record's "image" value
  * @method Item      setYear()           Sets the current record's "year" value
  * @method Item      setYearEnd()        Sets the current record's "year_end" value
  * @method Item      setSummary()        Sets the current record's "summary" value
  * @method Item      setBody()           Sets the current record's "body" value
+ * @method Item      setSummaryMn()      Sets the current record's "summary_mn" value
+ * @method Item      setBodyMn()         Sets the current record's "body_mn" value
  * @method Item      setTrailer()        Sets the current record's "trailer" value
  * @method Item      setRating()         Sets the current record's "rating" value
  * @method Item      setDuration()       Sets the current record's "duration" value
@@ -101,6 +112,7 @@ Doctrine_Manager::getInstance()->bindComponent('Item', 'doctrine');
  * @method Item      setOfficialLink2()  Sets the current record's "official_link2" value
  * @method Item      setReleaseDate()    Sets the current record's "release_date" value
  * @method Item      setCasts()          Sets the current record's "casts" value
+ * @method Item      setKickass()        Sets the current record's "kickass" value
  * @method Item      setSort()           Sets the current record's "sort" value
  * @method Item      setNbViews()        Sets the current record's "nb_views" value
  * @method Item      setIsActive()       Sets the current record's "is_active" value
@@ -132,50 +144,59 @@ abstract class BaseItem extends sfDoctrineRecord
              'autoincrement' => true,
              'length' => 4,
              ));
-        $this->hasColumn('type', 'string', 50, array(
+        $this->hasColumn('type', 'string', 100, array(
              'type' => 'string',
              'fixed' => 0,
              'unsigned' => false,
              'primary' => false,
              'notnull' => true,
              'autoincrement' => false,
-             'length' => 50,
+             'length' => 100,
              ));
-        $this->hasColumn('genre', 'string', 50, array(
+        $this->hasColumn('genre', 'string', 1000, array(
              'type' => 'string',
              'fixed' => 0,
              'unsigned' => false,
              'primary' => false,
              'notnull' => true,
              'autoincrement' => false,
-             'length' => 50,
+             'length' => 1000,
              ));
-        $this->hasColumn('title', 'string', 50, array(
+        $this->hasColumn('title', 'string', 1000, array(
              'type' => 'string',
              'fixed' => 0,
              'unsigned' => false,
              'primary' => false,
              'notnull' => true,
              'autoincrement' => false,
-             'length' => 50,
+             'length' => 1000,
              ));
-        $this->hasColumn('route', 'string', 500, array(
+        $this->hasColumn('title_mn', 'string', 1000, array(
              'type' => 'string',
              'fixed' => 0,
              'unsigned' => false,
              'primary' => false,
              'notnull' => true,
              'autoincrement' => false,
-             'length' => 500,
+             'length' => 1000,
              ));
-        $this->hasColumn('image', 'string', 500, array(
+        $this->hasColumn('route', 'string', 1000, array(
              'type' => 'string',
              'fixed' => 0,
              'unsigned' => false,
              'primary' => false,
              'notnull' => true,
              'autoincrement' => false,
-             'length' => 500,
+             'length' => 1000,
+             ));
+        $this->hasColumn('image', 'string', 1000, array(
+             'type' => 'string',
+             'fixed' => 0,
+             'unsigned' => false,
+             'primary' => false,
+             'notnull' => true,
+             'autoincrement' => false,
+             'length' => 1000,
              ));
         $this->hasColumn('year', 'integer', 8, array(
              'type' => 'integer',
@@ -205,6 +226,24 @@ abstract class BaseItem extends sfDoctrineRecord
              'length' => 1000,
              ));
         $this->hasColumn('body', 'string', null, array(
+             'type' => 'string',
+             'fixed' => 0,
+             'unsigned' => false,
+             'primary' => false,
+             'notnull' => true,
+             'autoincrement' => false,
+             'length' => '',
+             ));
+        $this->hasColumn('summary_mn', 'string', 1000, array(
+             'type' => 'string',
+             'fixed' => 0,
+             'unsigned' => false,
+             'primary' => false,
+             'notnull' => true,
+             'autoincrement' => false,
+             'length' => 1000,
+             ));
+        $this->hasColumn('body_mn', 'string', null, array(
              'type' => 'string',
              'fixed' => 0,
              'unsigned' => false,
@@ -249,32 +288,32 @@ abstract class BaseItem extends sfDoctrineRecord
              'autoincrement' => false,
              'length' => 4,
              ));
-        $this->hasColumn('studios', 'string', 500, array(
+        $this->hasColumn('studios', 'string', 1000, array(
              'type' => 'string',
              'fixed' => 0,
              'unsigned' => false,
              'primary' => false,
              'notnull' => true,
              'autoincrement' => false,
-             'length' => 500,
+             'length' => 1000,
              ));
-        $this->hasColumn('director', 'string', 100, array(
+        $this->hasColumn('director', 'string', 1000, array(
              'type' => 'string',
              'fixed' => 0,
              'unsigned' => false,
              'primary' => false,
              'notnull' => true,
              'autoincrement' => false,
-             'length' => 100,
+             'length' => 1000,
              ));
-        $this->hasColumn('writer', 'string', 100, array(
+        $this->hasColumn('writer', 'string', 1000, array(
              'type' => 'string',
              'fixed' => 0,
              'unsigned' => false,
              'primary' => false,
              'notnull' => true,
              'autoincrement' => false,
-             'length' => 100,
+             'length' => 1000,
              ));
         $this->hasColumn('nb_seasons', 'integer', 4, array(
              'type' => 'integer',
@@ -294,23 +333,23 @@ abstract class BaseItem extends sfDoctrineRecord
              'autoincrement' => false,
              'length' => 4,
              ));
-        $this->hasColumn('official_link1', 'string', 500, array(
+        $this->hasColumn('official_link1', 'string', 1000, array(
              'type' => 'string',
              'fixed' => 0,
              'unsigned' => false,
              'primary' => false,
              'notnull' => true,
              'autoincrement' => false,
-             'length' => 500,
+             'length' => 1000,
              ));
-        $this->hasColumn('official_link2', 'string', 500, array(
+        $this->hasColumn('official_link2', 'string', 1000, array(
              'type' => 'string',
              'fixed' => 0,
              'unsigned' => false,
              'primary' => false,
              'notnull' => true,
              'autoincrement' => false,
-             'length' => 500,
+             'length' => 1000,
              ));
         $this->hasColumn('release_date', 'date', 25, array(
              'type' => 'date',
@@ -329,6 +368,15 @@ abstract class BaseItem extends sfDoctrineRecord
              'notnull' => true,
              'autoincrement' => false,
              'length' => '',
+             ));
+        $this->hasColumn('kickass', 'string', 1000, array(
+             'type' => 'string',
+             'fixed' => 0,
+             'unsigned' => false,
+             'primary' => false,
+             'notnull' => true,
+             'autoincrement' => false,
+             'length' => 1000,
              ));
         $this->hasColumn('sort', 'integer', 4, array(
              'type' => 'integer',
@@ -393,14 +441,14 @@ abstract class BaseItem extends sfDoctrineRecord
              'autoincrement' => false,
              'length' => 1,
              ));
-        $this->hasColumn('source', 'string', 500, array(
+        $this->hasColumn('source', 'string', 1000, array(
              'type' => 'string',
              'fixed' => 0,
              'unsigned' => false,
              'primary' => false,
              'notnull' => true,
              'autoincrement' => false,
-             'length' => 500,
+             'length' => 1000,
              ));
         $this->hasColumn('created_aid', 'integer', 4, array(
              'type' => 'integer',

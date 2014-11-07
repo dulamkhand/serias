@@ -33,6 +33,10 @@ class pageActions extends sfActions
         $this->rs = $rs = GlobalTable::doFetchOne('Item', array('*'), array('route'=>$request->getParameter('route')));
         $this->forward404Unless($rs);
         
+        // set nb_views
+        $rs->setNbViews($rs->getNbViews()+1);
+        $rs->save();
+        
         // META
         $meta = sfConfig::get('app_webname').' | '.$rs;
         $this->getResponse()->setTitle($meta);
