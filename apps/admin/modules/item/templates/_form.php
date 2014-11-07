@@ -27,11 +27,17 @@
           <?php echo $form['type'] ?>
         </td>
       </tr>
-       <tr>
+      <tr>
         <th><?php echo $form['genre']->renderLabel() ?></th>
         <td>
-          <?php echo $form['genre']->renderError() ?>
-          <?php echo $form['genre'] ?>
+            <?php $params = $sf_params->get('genres') ? $sf_params->get('genres') : explode(";", $form->getObject()->getGenre());?>
+            <?php $choices = GlobalLib::getArray('genre');?>
+            <select id="item_genre" name="genres[]" style="height:300px;width:200px;" multiple="1">
+                <?php foreach ($choices as $k=>$v):?>
+                    <option value="<?php echo $k?>" <?php echo in_array($k, $params) ? 'selected': ''?>><?php echo $v?></option>
+                <?php endforeach;?>
+            </select><br>
+            <?php echo $form['genre']->renderHelp() ?>
         </td>
       </tr>
       <tr>          
@@ -39,6 +45,13 @@
         <td>
           <?php echo $form['title']->renderError() ?>
           <?php echo $form['title'] ?>
+        </td>
+      </tr>
+      <tr>          
+        <th><?php echo $form['title_mn']->renderLabel() ?></th>
+        <td>
+          <?php echo $form['title_mn']->renderError() ?>
+          <?php echo $form['title_mn'] ?>
         </td>
       </tr>
       <tr>          
@@ -72,6 +85,13 @@
           <?php echo $form['summary'] ?>
         </td>
       </tr>
+      <tr>          
+        <th><?php echo $form['summary_mn']->renderLabel() ?></th>
+        <td>
+          <?php echo $form['summary_mn']->renderError() ?>
+          <?php echo $form['summary_mn'] ?>
+        </td>
+      </tr>
       <tr>
         <th><?php echo $form['body']->renderLabel() ?></th>
         <td>
@@ -79,6 +99,14 @@
           <?php echo $form['body'] ?>
         </td>
       </tr>
+      <tr>
+        <th><?php echo $form['body_mn']->renderLabel() ?></th>
+        <td>
+          <?php echo $form['body_mn']->renderError() ?>
+          <?php echo $form['body_mn'] ?>
+        </td>
+      </tr>
+      <tr><td colspan="2" style="color:#ccc;"><?php echo str_repeat('-', 120)?></td></tr>
       <tr>
         <th><?php echo $form['trailer']->renderLabel() ?></th>
         <td>
@@ -91,6 +119,13 @@
         <td>
           <?php echo $form['rating']->renderError() ?>
           <?php echo $form['rating'] ?>
+        </td>
+      </tr>
+      <tr>
+        <th><?php echo $form['kickass']->renderLabel() ?></th>
+        <td>
+          <?php echo $form['kickass']->renderError() ?>
+          <?php echo $form['kickass'] ?>
         </td>
       </tr>
     </tbody>

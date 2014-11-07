@@ -13,22 +13,26 @@ class ItemForm extends BaseItemForm
     public function configure()
     {
         # WIDGETS
-        $this->widgetSchema['title'] 	        = new sfWidgetFormInputText(array(), array());
-        $this->widgetSchema['image']          = new sfWidgetFormInputFile(array(), array());
         $choices = GlobalLib::getArray('type_mn');
-      	$this->widgetSchema['type']           = new sfWidgetFormChoice(array('choices'=>$choices), array());
-      	$choices = GlobalLib::getArray('genre');
-      	$this->widgetSchema['genre']          = new sfWidgetFormChoice(array('choices'=>$choices), array());
+        $this->widgetSchema['type']           = new sfWidgetFormChoice(array('choices'=>$choices), array('style'=>'width:200px;'));
+        // genre is in template
+        $this->widgetSchema['title'] 	        = new sfWidgetFormInputText(array(), array());
+        $this->widgetSchema['title_mn'] 	    = new sfWidgetFormInputText(array(), array());
+        // route
+        $this->widgetSchema['image']          = new sfWidgetFormInputFile(array(), array());
       	$this->widgetSchema['year']           = new sfWidgetFormInputText(array(), array('style'=>'width:40px;'));
       	$this->widgetSchema['year_end']       = new sfWidgetFormInputText(array(), array('style'=>'width:40px;'));
-      	$years = range(date('Y') - 20, date('Y') + 1);
-      	$this->widgetSchema['release_date']   = new sfWidgetFormDate(array('years'=>$years, 'format'=>'%month%/%day%/%year%'), array('style'=>'width:50px;'));
+      	$years = range(date('Y') + 2, date('Y') - 20);
+      	$this->widgetSchema['release_date']   = new sfWidgetFormDate(array('years'=>array_combine($years, $years), 'format'=>'%year%/%month%/%day%'), array('style'=>'width:55px;'));
       	$this->widgetSchema['summary']        = new sfWidgetFormTextarea(array(), array());
+      	$this->widgetSchema['summary_mn']     = new sfWidgetFormTextarea(array(), array());
       	$this->widgetSchema['body']           = new sfWidgetFormTextarea(array(), array());
+      	$this->widgetSchema['body_mn']        = new sfWidgetFormTextarea(array(), array());
       	$this->widgetSchema['trailer']        = new sfWidgetFormTextarea(array(), array());
       	$this->widgetSchema['rating']         = new sfWidgetFormTextarea(array(), array());
+      	$this->widgetSchema['kickass']        = new sfWidgetFormInputText(array(), array());
       	$this->widgetSchema['casts']          = new sfWidgetFormInputText(array(), array());
-      	
+
       	$choices = GlobalLib::getNumbers(0, 30);
       	$this->widgetSchema['boxoffice']      = new sfWidgetFormChoice(array('choices'=>$choices), array('style'=>'width:46px;'));
       	$this->widgetSchema['thisweek']       = new sfWidgetFormInputCheckbox(array(), array('value'=>1));
@@ -50,24 +54,27 @@ class ItemForm extends BaseItemForm
       	
       	  	
       	# VALIDATORS
-      	$this->validatorSchema['title']        = new sfValidatorString(array(), array());
-      	$this->validatorSchema['image']        = new sfValidatorFile($this->getFileAttrs('m'), $this->getFileOpts());
       	$this->validatorSchema['type']         = new sfValidatorString();
-      	$this->validatorSchema['genre']        = new sfValidatorString();
+      	$this->validatorSchema['genre']        = new sfValidatorPass();
+      	$this->validatorSchema['title']        = new sfValidatorString(array(), array());
+      	$this->validatorSchema['title_mn']     = new sfValidatorPass();
+      	$this->validatorSchema['image']        = new sfValidatorFile($this->getFileAttrs('m'), $this->getFileOpts());
       	$this->validatorSchema['year']         = new sfValidatorInteger();
       	$this->validatorSchema['year_end']     = new sfValidatorInteger(array('required'=>false));
       	$this->validatorSchema['release_date'] = new sfValidatorDate();
       	$this->validatorSchema['summary']      = new sfValidatorString();
+      	$this->validatorSchema['summary_mn']   = new sfValidatorPass();
       	$this->validatorSchema['body']         = new sfValidatorPass();
+      	$this->validatorSchema['body_mn']      = new sfValidatorPass();
       	$this->validatorSchema['trailer']      = new sfValidatorString();
       	$this->validatorSchema['rating']       = new sfValidatorPass();
-      	
+      	$this->validatorSchema['kickass']      = new sfValidatorPass();
       	$this->validatorSchema['casts']        = new sfValidatorString();
+      	$this->validatorSchema['age']          = new sfValidatorInteger();
       	$this->validatorSchema['studios']      = new sfValidatorString();
       	$this->validatorSchema['director']     = new sfValidatorPass();
       	$this->validatorSchema['writer']       = new sfValidatorPass();
       	$this->validatorSchema['duration']     = new sfValidatorInteger();
-      	$this->validatorSchema['age']          = new sfValidatorInteger();
       	$this->validatorSchema['nb_seasons']   = new sfValidatorPass();
       	$this->validatorSchema['nb_episodes']  = new sfValidatorPass();
       	$this->validatorSchema['boxoffice']    = new sfValidatorPass();
@@ -78,8 +85,13 @@ class ItemForm extends BaseItemForm
       	$this->validatorSchema['source']         = new sfValidatorString();
       	
       	#HELP
+      	$this->widgetSchema->setHelp('genre', 'Ctrl + Mouse left click дарж зэрэг сонгоно уу.');      	
       	$this->widgetSchema->setHelp('duration', 'min');
       	$this->widgetSchema->setHelp('age', '+');
+      	
+      	#LABEL
+      	$this->widgetSchema->setLabel('official_link1', 'Official facebook');
+      	$this->widgetSchema->setLabel('official_link2', 'Official website');
       	
     }
 }

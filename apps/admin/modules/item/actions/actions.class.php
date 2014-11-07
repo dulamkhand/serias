@@ -15,7 +15,7 @@ class itemActions extends sfActions
         $params = array();
         if($request->getParameter('type')) $params['type'] = $request->getParameter('type');
         if($request->getParameter('s')) $params['sItem'] = $request->getParameter('s');
-        $this->pager = GlobalTable::getPager('Item', $params, $request->getParameter('page'));
+        $this->pager = GlobalTable::getPager('Item', array('*'), $params, $request->getParameter('page'));
         
     }
   
@@ -67,12 +67,12 @@ class itemActions extends sfActions
         if ($form->isValid())
         {
             $rs = $form->save();
+            $rs->setGenre(join(";", $request->getParameter('genres')));
             
             if($rs->getTitle()) {
                 $rs->setRoute(GlobalLib::slugify(GlobalLib::mn2en($rs->getTitle().'-'.$rs->getYear())));
                 $rs->save();
             }
-            
             GlobalLib::createThumbs($rs->getImage(), 'm', array(140));
 
             $this->getUser()->setFlash('flash', 'Successfully saved.', true);

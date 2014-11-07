@@ -83,6 +83,12 @@
             <?php echo $tmp?>
             <br clear="all">    
         <?php endif?>
+        
+        <?php if($tmp = $rs->getNbViews()):?>
+            <span class="bold">Үзсэн:</span>
+            <?php echo $tmp?> удаа
+            <br clear="all">    
+        <?php endif?>
     </div>
 </div>
 

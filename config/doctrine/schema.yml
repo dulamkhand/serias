@@ -417,35 +417,42 @@ Item:
       primary: true
       autoincrement: true
     type:
-      type: string(50)
+      type: string(100)
       fixed: false
       unsigned: false
       primary: false
       notnull: true
       autoincrement: false
     genre:
-      type: string(50)
+      type: string(1000)
       fixed: false
       unsigned: false
       primary: false
       notnull: true
       autoincrement: false
     title:
-      type: string(50)
+      type: string(1000)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    title_mn:
+      type: string(1000)
       fixed: false
       unsigned: false
       primary: false
       notnull: true
       autoincrement: false
     route:
-      type: string(500)
+      type: string(1000)
       fixed: false
       unsigned: false
       primary: false
       notnull: true
       autoincrement: false
     image:
-      type: string(500)
+      type: string(1000)
       fixed: false
       unsigned: false
       primary: false
@@ -473,6 +480,20 @@ Item:
       notnull: true
       autoincrement: false
     body:
+      type: string()
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    summary_mn:
+      type: string(1000)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    body_mn:
       type: string()
       fixed: false
       unsigned: false
@@ -508,21 +529,21 @@ Item:
       notnull: true
       autoincrement: false
     studios:
-      type: string(500)
+      type: string(1000)
       fixed: false
       unsigned: false
       primary: false
       notnull: true
       autoincrement: false
     director:
-      type: string(100)
+      type: string(1000)
       fixed: false
       unsigned: false
       primary: false
       notnull: true
       autoincrement: false
     writer:
-      type: string(100)
+      type: string(1000)
       fixed: false
       unsigned: false
       primary: false
@@ -543,14 +564,14 @@ Item:
       notnull: true
       autoincrement: false
     official_link1:
-      type: string(500)
+      type: string(1000)
       fixed: false
       unsigned: false
       primary: false
       notnull: true
       autoincrement: false
     official_link2:
-      type: string(500)
+      type: string(1000)
       fixed: false
       unsigned: false
       primary: false
@@ -565,6 +586,13 @@ Item:
       autoincrement: false
     casts:
       type: string()
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    kickass:
+      type: string(1000)
       fixed: false
       unsigned: false
       primary: false
@@ -620,7 +648,7 @@ Item:
       notnull: true
       autoincrement: false
     source:
-      type: string(500)
+      type: string(1000)
       fixed: false
       unsigned: false
       primary: false

@@ -6,9 +6,9 @@ default:
     content-type: text/html
 
   metas:
-    title:        Монголын нэгдсэн кино сан
-    description:  Монголын нэгдсэн кино сан
-    keywords:     Монголын нэгдсэн кино сан
+    title:        Монголын кино мэдээллийн нэгдсэн сан
+    description:  Монголын кино мэдээллийн нэгдсэн сан
+    keywords:     Монголын кино мэдээллийн нэгдсэн сан
     language:     en
     robots:       index, follow
 
