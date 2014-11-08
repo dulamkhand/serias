@@ -10,7 +10,7 @@ outline:0;background:none;text-rendering:optimizelegibility;position:relative;fo
 /* LAYOUT */
 body {background:#fff;position:relative;}
 
-#leftside{float:left;margin:0;padding:0 0 0 1px;width:150px;min-height:600px;
+#leftside{float:left;margin:0;padding:0 0 0 1px;width:170px;min-height:600px;
           border-right:1px solid #ccc;box-shadow:0 3px 5px #ededed;}
 #rightside{float:left;margin:0;padding:0 10px;width:200px;min-height:600px;
           border-left:1px solid #ccc;box-shadow:0 3px 5px #ededed;}
@@ -25,7 +25,7 @@ textarea{padding:2px;height:80px;border:1px solid #dedede;border-radius:1px;-moz
 input:focus, textarea:focus{border:1px solid #4779B8;}
 
 
-ul#mainmenu {list-style-type:none;margin:0;padding:0;width:150px;border-top:1px solid #ccc;}
+ul#mainmenu {list-style-type:none;margin:0;padding:0;width:170px;border-top:1px solid #ccc;}
 ul#mainmenu li a{font-size:13px;text-transform:uppercase;font-family:Roboto Condensed;
                  line-height:26px;margin:0;padding:5px 15px;display:block;border-bottom:1px solid #dedede;
                  background:#fff;font-weight:bold;}

@@ -26,6 +26,13 @@ class pageActions extends sfActions
         $this->pager = GlobalTable::getPager('Item', array('type, route, image, title, year'), 
                                               $params, $request->getParameter('page'));
     }
+    
+    public function executeBests(sfWebRequest $request)
+    {
+        $this->forward404Unless(in_array($this->type = $type = $request->getParameter('type'), GlobalLib::getKeys('type')));
+        $params = array();
+        $params['type'] = $type;
+    }
   
     public function executeShow(sfWebRequest $request)
     {

@@ -17,28 +17,58 @@ class GlobalLib
                   'drama'=>'Drama', 
                   'fantasy'=>'Fantasy', 
                   'horror'=>'Horror',
+                  'mystery'=>'Mystery',
+                  'musical'=>'Musical',
                   'romance'=>'Romance', 
                   'scifi'=>'SciFi', 
                   'thriller'=>'Thriller', 
                   'western'=>'Western', 
+                  'war'=>'War', 
     );
     public static $genre_mn  = array(
-                  'thriller'=>'Адал явдалт/Аймшгийн', 
+                  'thriller'=>'Акшн', 
                   'adventure'=>'Адал явдалт', 
                   'horror'=>'Аймшгийн',
                   'action'=>'Акшн', 
                   'animation'=>'Анимэшн', 
                   'western'=>'Барууны', 
+                  'war'=>'Дайн тулаан',
                   'crime'=>'Гэмт хэргийн', 
                   'fantasy'=>'Зөгнөлт', 
                   'comedy'=>'Инээдмийн', 
                   'biography'=>'Намтарчилсан', 
+                  'mystery'=>'Нууцлаг, учир битүүлэг',
                   'children'=>'Хүүхдийн', 
                   'romance'=>'Хайр дурлалын', 
-                  'drama'=>'Уянгын', 
+                  'musical'=>'Хөгжимт',
+                  'drama'=>'Уянгын',                  
                   'scifi'=>'Шинжлэх ухааны уран зөгнөлт', 
     );
-
+    
+		public static $bests  = array(
+                  'imdb250'=>'IMDB шилдэг 250', 
+                  'oscar2014'=>'Оскар 2014 шилдэгүүд',
+                  'series10'=>'Шилдэг 10 цуврал', 
+                  'mn10'=>'Шилдэг 10 монгол кино', 
+                  'doc10'=>'Шилдэг 10 баримтат кино', 
+                  'thriller10'=>'Шилдэг 10 акшн', 
+                  'adventure10'=>'Шилдэг 10 адал явдалт', 
+                  'horror10'=>'Шилдэг 10 аймшгийн',
+                  'action10'=>'Шилдэг 10 акшн', 
+                  'animation10'=>'Шилдэг 10 анимэшн', 
+                  'western10'=>'Шилдэг 10 барууны кино', 
+                  'war10'=>'Шилдэг 10 дайн тулаантай',
+                  'crime10'=>'Шилдэг 10 гэмт хэргийн', 
+                  'fantasy10'=>'Шилдэг 10 зөгнөлт', 
+                  'comedy10'=>'Шилдэг 10 инээдмийн', 
+                  'biography10'=>'Шилдэг 10 намтарчилсан', 
+                  'mystery10'=>'Шилдэг 10 нууцлаг, учир битүүлэг',
+                  'children10'=>'Шилдэг 10 хүүхдийн', 
+                  'romance10'=>'Шилдэг 10 хайр дурлалын', 
+                  'musical10'=>'Шилдэг 10 хөгжимт',
+                  'drama10'=>'Шилдэг 10 уянгын',                  
+                  'scifi10'=>'Шилдэг 10 шинжлэх ухааны уран зөгнөлт', 
+    );
     
     public static $alpha_en = array('A'=>'A','B'=>'B','C'=>'C','D'=>'D','E'=>'E','F'=>'F','G'=>'G','H'=>'H','I'=>'I',
                   'J'=>'J','K'=>'K','L'=>'L','M'=>'M','N'=>'N','O'=>'O','P'=>'P','Q'=>'Q','R'=>'R','S'=>'S','T'=>'T',
@@ -80,6 +110,7 @@ class GlobalLib
           	case 'type_mn'  : return self::$type_mn;
           	case 'genre': return self::$genre;
           	case 'genre_mn': return self::$genre_mn;
+          	case 'bests': return self::$bests;
           	case 'alpha_en': return self::$alpha_en;
           	case 'alpha_mn': return self::$alpha_mn;
           	case 'years': return self::$years;

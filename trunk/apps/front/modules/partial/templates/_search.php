@@ -1,5 +1,5 @@
 <div style="position:relative;margin:10px 0;float:left;">
-    <input type="text" name="search" id="search" class="left" style="width:300px;height:26px;padding:0 5px;" 
+    <input type="text" name="search" id="search" class="left" style="width:300px;height:26px;padding:0 5px;" autocomplete="off"
           value="<?php echo $sf_params->get('search') ? $sf_params->get('search') : 'Хайлт'?>"/>
     <?php echo image_tag('icons/loading-blue.gif', array('style'=>'margin:5px 0 0 3px;display:none;', 'id'=>'search-loader'))?>
     <div id="search-result" style="display:none;position:absolute;z-index:1000;top:27px;left:0;padding:5px;
