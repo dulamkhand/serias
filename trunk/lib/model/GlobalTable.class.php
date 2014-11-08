@@ -45,7 +45,7 @@ class GlobalTable extends Doctrine_Table
         if(isset($params['y']) && $params['y'] != null)
             $q->andWhere('year = ? ', $params['y']);
         if(isset($params['g']) && $params['g'] != null)
-            $q->andWhere('genre = ? ', $params['g']);
+            $q->andWhere('genre like ? ', '%'.$params['g'].'%');
         if(isset($params['l']) && $params['l'] != null)
             $q->andWhere('title like ?', $params['l'].'%');
             

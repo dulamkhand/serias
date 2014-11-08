@@ -1,5 +1,7 @@
 <div id="rightside">
-    <h3 style="font-size:13px;">Манай санд шинээр нэмэгдсэн</h3>
+		<?php include_partial('user/fblogin', array())?>
+
+    <h3>Манай санд шинээр нэмэгдсэн</h3>
     <ul>
         <?php $rss = array();?>
         <?php foreach ($rss as $rs):?>
@@ -37,12 +39,12 @@
     
     <br clear="all">
     <br clear="all">
-    <h3 style="font-size:13px;">Сурталчилгаа байршуулах</h3>
+    <h3>Сурталчилгаа байршуулах</h3>
     99258807, 99071053
     
     <br clear="all">
     <br clear="all">
-    <h3 style="font-size:13px;">Холбоо барих</h3>
+    <h3>Холбоо барих</h3>
     БЗД, 14-р хороо, Энхтайваны өргөн чөлөө, 
     Apple төв 1 тоот<br>
     99258807, 99071053

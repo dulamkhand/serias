@@ -1,3 +1,4 @@
+<?php $host = sfConfig::get('app_host')?>
 <div id="leftside">
 
     <a href="<?php echo url_for('@homepage')?>">
@@ -12,20 +13,20 @@
     </ul>
   
     <br clear="all">
-    <div class="fb-like" data-href="http://mmdb/index.php" data-layout="button" data-action="like" data-show-faces="false" 
-        data-share="true"></div>
+    <div style="float:left;margin:0 0 0 10px;" class="fb-like" data-href="<?php echo $host?>" data-layout="box_count" data-action="like" data-show-faces="false" data-share="true"></div>
+    <div style="float:left;margin:0 0 0 10px;" class="fb-follow" data-href="<?php echo $host?>" data-layout="box_count" data-colorscheme="light" data-show-faces="false"></div>
   
     <br clear="all">
     <div style="margin:15px 0 0 10px;">
-        <h3 style="font-size:13px;">Төрөл жанр</h3>
+        <h3>Төрөл жанр</h3>
         <?php foreach (GlobalLib::getArray('genre_mn') as $k=>$v):?>
             <a href="<?php echo url_for('page/index?type=movie&g='.$k)?>"><?php echo $v?></a><br>
-        <?php endforeach?>  
+        <?php endforeach?>
         
         <br clear="all">
         <?php $rss = GlobalTable::doFetchArray('Item', array('type, route, image, title, year, boxoffice, thisweek, comingsoon'), 
                                               array('rightside'=>1, 'limit'=>30, 'orderBy'=>'boxoffice ASC, title ASC'))?>
-        <h3 style="font-size:13px;">Box Office</h3>
+        <h3>Box Office</h3>
         <ul>
           <?php foreach ($rss as $rs):?>
               <?php if($rs['boxoffice'] > 0):?>
@@ -37,7 +38,7 @@
         </ul>
       
         <br clear="all">
-        <h3 style="font-size:13px;">Энэ 7 хоногт нээлт хийх</h3>
+        <h3>Энэ 7 хоногт нээлт хийх</h3>
         <ul>
         <?php foreach ($rss as $rs):?>
             <?php if($rs['thisweek'] > 0):?>
@@ -49,7 +50,7 @@
         </ul>
       
         <br clear="all">
-        <h3 style="font-size:13px;">Тун удахгүй</h3>
+        <h3>Тун удахгүй</h3>
         <ul>
         <?php foreach ($rss as $rs):?>
             <?php if($rs['comingsoon'] > 0):?>

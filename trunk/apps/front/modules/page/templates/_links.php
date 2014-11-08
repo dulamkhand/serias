@@ -1,4 +1,4 @@
-<div class="box-home" style="background:#dedede;border:1px solid #ccc;">
+<div class="box-home" style="background:#dedede;border:1px solid #ccc;margin-top:0px;">
 		<?php if($tmp = $rs->getKickass()):?>
 				<a href="<?php echo $tmp?>" target="_blank" style="text-decoration:underline;">KICKASS TORRENT ТАТАХ</a> &nbsp; |&nbsp;
 				<a onclick="$('#kickass-help').toggle();" style="text-decoration:underline;cursor:pointer;">ХЭРХЭН ТАТАХ ВЭ?</a>
@@ -11,8 +11,7 @@
 		<?php endif?>
 </div>
 
-
-<div class="box-home" style="background:#dedede;border:1px solid #ccc;">
+<div class="box-home" style="background:#dedede;border:1px solid #ccc;margin-top:0px;">
     <?php $links = Doctrine::getTable('Link')->createQuery()
                       ->where('item_id =?', $rs->getId())
                       ->orderBy('season ASC, episode ASC, created_at DESC, updated_at DESC')
