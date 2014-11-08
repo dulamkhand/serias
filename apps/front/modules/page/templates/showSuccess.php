@@ -1,13 +1,15 @@
 <?php $host = sfConfig::get('app_host')?>
 
-<a href="<?php echo url_for('page/index?type='.$rs->getType())?>" class="h3" style="font-size:13px;color:#555;">
+<!--breadcrumb-->
+<a href="<?php echo url_for('page/index?type='.$rs->getType())?>" class="h3">
     <?php echo GlobalLib::getValue('type_mn', $rs->getType())?>
 </a> &raquo;
-<a href="<?php echo url_for('page/index?type='.$rs->getType().'&g='.$rs->getGenre())?>" class="h3" style="font-size:13px;color:#555;">
+<a href="<?php echo url_for('page/index?type='.$rs->getType().'&g='.$rs->getGenre())?>" class="h3">
     <?php echo $rs->getGenre()?>
 </a>
 <br clear="all">
 
+<!--image & info-->
 <?php $color = GlobalLib::getValue('colors', $rs->getType()) ?>
 <div class="box-home" style="background:<?php echo $color?>;">
 		<div style="float:left;margin:0 0 10px 0;width:215px;">
@@ -20,96 +22,39 @@
     		<div class="left" style="width:125px;">
 					<?php echo $rs->getRating();?>
 				</div>
-    		<?php include_partial('partial/share', array('url'=>$host."/page/show?route=".$rs->getRoute(),
+    		<?php include_partial('page/share', array('url'=>$host."/page/show?route=".$rs->getRoute(),
                                        'via'=>sfConfig::get('app_webname'), 'text'=>$rs));?>
 				<br clear="all">
-        <?php echo $rs->getSummaryMn();?>
-        <br clear="all">
-        <span class="bold">Нээлт хийсэн:</span>
-        <?php echo $rs->getReleaseDate()?>
-        <br clear="all">
-        <span class="bold">Бүтээгдсэн он:</span>
-        <?php echo $rs->getYear().($rs->getYearEnd() != '0000' ? " - ".$rs->getYearEnd() : "");?>
-        <br clear="all">
-        <span class="bold">Дүрүүдэд:</span>
-        <?php echo $rs->getCasts();?>
-        <br clear="all">
-        
-        <?php if($tmp = $rs->getStudios()):?>
-            <span class="bold">Бүтээсэн:</span>
-            <?php echo $tmp?>
-            <br clear="all">
-        <?php endif?>
-        
-        <?php if($tmp = $rs->getDirector()):?>
-            <span class="bold">Найруулагч:</span>
-            <?php echo $tmp?>
-            <br clear="all">
-        <?php endif?>
-        
-        <?php if($tmp = $rs->getWriter()):?>
-            <span class="bold">Зохиолч:</span>
-            <?php echo $tmp?>
-            <br clear="all">
-        <?php endif?>
-        
-        <span class="bold">Үргэлжлэх хугацаа:</span>
-        <?php echo $rs->getDuration();?>min
-        <br clear="all">
-        
-        <?php if($tmp = $rs->getAge()):?>
-            <span class="bold">Насны ангилал:</span>
-            <?php echo $tmp?>+
-            <br clear="all">
-        <?php endif?>
-        
-        <?php if($tmp = $rs->getNbSeasons()):?>
-            <span class="bold">Анги:</span>
-            <?php echo $tmp?> seasons, <?php echo $rs->getNbEpisodes();?> episodes
-            <br clear="all">
-        <?php endif?>
-        
-        <?php if($tmp = $rs->getBoxoffice()):?>
-            <span class="bold">Boxoffice:</span>
-            <?php echo $tmp?>
-            <br clear="all">    
-        <?php endif?>
-        
-        <span class="bold">Албан ёсны хуудас:</span>
-        <a href="<?php echo $rs->getOfficialLink1();?>" target="_blank" style="color:#fff;">Facebok official</a>, 
-        <a href="<?php echo $rs->getOfficialLink2();?>" target="_blank" style="color:#fff;">Official website</a>
-        <br clear="all">
-        
-        <?php if($tmp = $rs->getSource()):?>
-            <span class="bold">Эх сурвалж:</span>
-            <?php echo $tmp?>
-            <br clear="all">    
-        <?php endif?>
-        
-        <?php if($tmp = $rs->getNbViews()):?>
-            <span class="bold">Үзсэн:</span>
-            <?php echo $tmp?> удаа
-            <br clear="all">    
-        <?php endif?>
+        <?php include_partial('page/info', array('rs'=>$rs))?>
     </div>
 </div>
-
 <br clear="all">
+
+<!--trailer & body-->
 <?php echo $rs->getTrailer();?>
 <?php if($tmp = $rs->getBodyMn()):?>
     <div class="right" style="width:250px;text-align:justify;">
         <h2 style="color:<?php echo $color?>;font-weight:bold;">Үйл явдал</h2>
         <?php echo $tmp;?>
     </div>
+    <br clear="all">
+		<br clear="all">
 <?php endif?>
-<br clear="all">
-<br clear="all">
 
+<!--links-->
 <?php include_partial('links', array('rs'=>$rs));?>
+<br clear="all">
 
+<!--share-->
+<?php include_partial('page/share', array('url'=>$host."/page/show?route=".$rs->getRoute(), 'via'=>sfConfig::get('app_webname'), 'text'=>$rs));?>
+<br clear="all">
+<div class="fb-comments" data-href="<?php echo $host."/page/show?route=".$rs->getRoute()?>" data-numposts="10" data-colorscheme="light" data-width="560"></div>
+<br clear="all">
+<br clear="all">
 <br clear="all">
 <br clear="all">
 
+<!--similars-->
 <?php include_partial('similars', array('rs'=>$rs));?>
 
 <script type="text/javascript">
