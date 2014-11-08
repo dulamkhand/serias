@@ -37,8 +37,10 @@
             </a>
         </td>
         <td>
-            <a href="<?php echo url_for('item/edit?id='.$rs->getId())?>" class="action"><b><?php echo $rs ?></b></a><br>
-            <?php echo $rs->getSummary() ?>            
+            <a href="<?php echo url_for('item/edit?id='.$rs->getId())?>" class="action">
+            		<b><?php echo $rs ?></b><br>
+            		<?php echo $rs->getSummaryMn() ? $rs->getSummaryMn() : $rs->getSummary() ?>
+            </a>
         </td>
         <td nowrap>
             <b>View: </b><?php echo $rs->getNbViews() ?><br/>

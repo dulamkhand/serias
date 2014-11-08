@@ -3,26 +3,28 @@
 <a href="<?php echo url_for('page/index?type='.$rs->getType())?>" class="h3" style="font-size:13px;color:#555;">
     <?php echo GlobalLib::getValue('type_mn', $rs->getType())?>
 </a> &raquo;
-<a href="<?php echo url_for('page/index?type='.$rs->getType().'&g='.$rs->getGenre())?>" class="h3" 
-                                                                style="font-size:13px;color:#555;">
+<a href="<?php echo url_for('page/index?type='.$rs->getType().'&g='.$rs->getGenre())?>" class="h3" style="font-size:13px;color:#555;">
     <?php echo $rs->getGenre()?>
 </a>
 <br clear="all">
 
 <?php $color = GlobalLib::getValue('colors', $rs->getType()) ?>
 <div class="box-home" style="background:<?php echo $color?>;">
-    <h2><?php echo $rs?></h2>
-    <?php echo image_tag('/u/m/'.$rs->getImage(), array('class'=>'left', 'style'=>'margin:0 0 10px 0;max-width:215px;'))?>
-    <div class="left ml10px" style="color:#fff;width:575px;">
-        <?php echo $rs->getSummary();?>
-        <br clear="all">
-		<div class="left" style="width:125px;">
-			<?php echo $rs->getRating();?>
+		<div style="float:left;margin:0 0 10px 0;width:215px;">
+				<h2 style="margin:0;"><?php echo $rs?></h2>
+		    (<b><?php echo $rs->getTitleMn()?></b>)
+		    <br clear="all">
+		    <?php echo image_tag('/u/m/'.$rs->getImage(), array('style'=>'max-width:215px;'))?>
 		</div>
-        <?php include_partial('partial/share', array('url'=>$host."/page/show?route=".$rs->getRoute(),
+    <div class="left ml10px" style="color:#fff;width:575px;">    		
+    		<div class="left" style="width:125px;">
+					<?php echo $rs->getRating();?>
+				</div>
+    		<?php include_partial('partial/share', array('url'=>$host."/page/show?route=".$rs->getRoute(),
                                        'via'=>sfConfig::get('app_webname'), 'text'=>$rs));?>
+				<br clear="all">
+        <?php echo $rs->getSummaryMn();?>
         <br clear="all">
-        
         <span class="bold">Нээлт хийсэн:</span>
         <?php echo $rs->getReleaseDate()?>
         <br clear="all">
@@ -94,7 +96,7 @@
 
 <br clear="all">
 <?php echo $rs->getTrailer();?>
-<?php if($tmp = $rs->getBody()):?>
+<?php if($tmp = $rs->getBodyMn()):?>
     <div class="right" style="width:250px;text-align:justify;">
         <h2 style="color:<?php echo $color?>;font-weight:bold;">Үйл явдал</h2>
         <?php echo $tmp;?>
