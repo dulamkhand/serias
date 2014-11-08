@@ -2,13 +2,15 @@
 <div id="leftside">
 
     <a href="<?php echo url_for('@homepage')?>">
-        <?php echo image_tag('logo-200x130.png', array('style'=>'margin:10px 0 5px 0;max-width:150px;'))?>
+        <?php echo image_tag('logo-200x130.png', array('style'=>'margin:10px 0 5px 0;max-width:170px;'))?>
     </a>
   
     <ul id="mainmenu">
         <?php $rss = GlobalLib::getArray('type_mn')?>
         <?php foreach ($rss as $k=>$v):?>
-            <li><a href="<?php echo url_for('page/index?type='.$k)?>"><?php echo $v?></a></li>    
+            <li><a href="<?php echo url_for('page/index?type='.$k)?>" class="<?php echo ($k == $sf_params->get('type')) ? 'active' : ''?>">
+            		<?php echo $v?>
+        		</a></li>
         <?php endforeach;?>
     </ul>
   
@@ -17,10 +19,11 @@
     <div style="float:left;margin:0 0 0 10px;" class="fb-follow" data-href="<?php echo $host?>" data-layout="box_count" data-colorscheme="light" data-show-faces="false"></div>
   
     <br clear="all">
-    <div style="margin:15px 0 0 10px;">
-        <h3>Төрөл жанр</h3>
-        <?php foreach (GlobalLib::getArray('genre_mn') as $k=>$v):?>
-            <a href="<?php echo url_for('page/index?type=movie&g='.$k)?>"><?php echo $v?></a><br>
+    <div style="margin:0px 0 0 10px;">
+    		<br clear="all">
+        <h3>Шилдэгүүд</h3>
+        <?php foreach (GlobalLib::getArray('bests') as $k=>$v):?>
+            <a href="<?php echo url_for('page/bests?g='.$k)?>"><?php echo $v?></a><br>
         <?php endforeach?>
         
         <br clear="all">

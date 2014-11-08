@@ -17,18 +17,12 @@ class mainActions extends sfActions
   
     public function executeHome(sfWebRequest $request)
     {
-        $rss = GlobalTable::doFetchArray('Item', array('type, route, image, title, year'), 
-              array('limit'=>60));
-              
-        $arr = array();
-        $arr['movie'] = array();
-        $arr['series'] = array();
-        $arr['tvshow'] = array();
-        $arr['mn'] = array();
-        $arr['nonfiction'] = array();              
-        foreach ($rss as $rs) {
-            $arr[$rs['type']][] = $rs;
-        }
+    		$arr = array();
+    		$arr['movie']  		 = GlobalTable::doFetchArray('Item', array('type, route, image, title, year'), array('type'=>'movie', 'limit'=>15));
+    		$arr['series'] 		 = GlobalTable::doFetchArray('Item', array('type, route, image, title, year'), array('type'=>'series', 'limit'=>15));
+    		$arr['tvshow'] 		 = GlobalTable::doFetchArray('Item', array('type, route, image, title, year'), array('type'=>'tvshow', 'limit'=>15));
+    		$arr['mn']     		 = GlobalTable::doFetchArray('Item', array('type, route, image, title, year'), array('type'=>'mn', 'limit'=>15));
+    		$arr['nonfiction'] = GlobalTable::doFetchArray('Item', array('type, route, image, title, year'), array('type'=>'nonfiction', 'limit'=>15));
         $this->arr = $arr;
     }   
     
@@ -36,20 +30,13 @@ class mainActions extends sfActions
     public function executeSearch(sfWebRequest $request)
     {
         $this->setLayout(false);
-        
-        $rss = GlobalTable::doFetchArray('Item', array('type, route, image, title, year'), 
-              array('sItem'=>GlobalLib::clearInput($request->getParameter('search'))));
-              
+        $s = GlobalLib::clearInput($request->getParameter('search'));
         $arr = array();
-        $arr['movie'] = array();
-        $arr['series'] = array();
-        $arr['tvshow'] = array();
-        $arr['mn'] = array();
-        $arr['nonfiction'] = array();
-        foreach ($rss as $rs) {
-            $arr[$rs['type']][] = $rs;
-        }
-
+        $arr['movie']  		 = GlobalTable::doFetchArray('Item', array('type, route, image, title, year'), array('sItem'=>$s, 'type'=>'movie', 'limit'=>15));
+    		$arr['series'] 		 = GlobalTable::doFetchArray('Item', array('type, route, image, title, year'), array('sItem'=>$s, 'type'=>'series', 'limit'=>15));
+    		$arr['tvshow'] 		 = GlobalTable::doFetchArray('Item', array('type, route, image, title, year'), array('sItem'=>$s, 'type'=>'tvshow', 'limit'=>15));
+    		$arr['mn']     		 = GlobalTable::doFetchArray('Item', array('type, route, image, title, year'), array('sItem'=>$s, 'type'=>'mn', 'limit'=>15));
+    		$arr['nonfiction'] = GlobalTable::doFetchArray('Item', array('type, route, image, title, year'), array('sItem'=>$s, 'type'=>'nonfiction', 'limit'=>15));
         return $this->renderPartial('partial/searchResult', array('arr'=>$arr));
     }
     

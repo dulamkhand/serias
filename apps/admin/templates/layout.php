@@ -24,9 +24,16 @@
                 <li <?php echo $tab == 'link' ? 'class="current"' : '' ?>>
                   <?php echo link_to('Link', 'link/index')?>
                 </li>
-                <li <?php echo $tab == 'admin' ? 'class="current"' : '' ?>>
-                    <?php echo link_to('Admin', 'admin/index')?>
-                </li>
+                <?php if($sf_user->hasCredential('bests')):?>
+                		<li <?php echo $tab == 'bests' ? 'class="current"' : '' ?>>
+		                  <?php echo link_to('Bests', 'bests/index')?>
+		                </li>
+                <?php endif?>
+                <?php if($sf_user->hasCredential('admin')):?>
+		                <li <?php echo $tab == 'admin' ? 'class="current"' : '' ?>>
+		                    <?php echo link_to('Admin', 'admin/index')?>
+		                </li>
+                <?php endif?>
             <li><?php echo link_to('Logout ('.$sf_user->getEmail().')', 'admin/logout')?></li>
         </ul></div><!--topmenu-->
     

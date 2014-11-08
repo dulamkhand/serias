@@ -10,9 +10,9 @@ class ProjectConfiguration extends sfProjectConfiguration
   {
       $this->enablePlugins('sfDoctrinePlugin', 'sfThumbnailPlugin');
       
-      sfConfig::set('sf_web_dir', 'C:\wamp\www\imdb\web');
-      sfConfig::set('sf_upload_dir', 'C:\wamp\www\imdb\web\u');
-      sfConfig::set('rich_text_fck_js_dir', 'C:\wamp\www\imdb\web\js');
+      sfConfig::set('sf_web_dir', 'C:\wamp\www\mmdb\web');
+      sfConfig::set('sf_upload_dir', 'C:\wamp\www\mmdb\web\u');
+      sfConfig::set('rich_text_fck_js_dir', 'C:\wamp\www\mmdb\web\js');
       
       //sfConfig::set('sf_web_dir', '/home1/urinesse/public_html/girasole/imdb/web');
       //sfConfig::set('sf_upload_dir', '/home1/urinesse/public_html/girasole/imdb/web/u');
