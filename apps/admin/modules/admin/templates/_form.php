@@ -50,13 +50,13 @@
                 <input type="checkbox" value="false" name="checkall" id="checkall"/> &nbsp; Check/Uncheck all
             </label>
             <div style="height:300px;overflow-y:scroll;width:550px;">
-                <?php $obj = $form->getObject()?>
-                <?php $checkedArray = ($obj && $obj->getCatPermissions()) ? explode(';', $obj->getCatPermissions()) : array();?>
-                <?php include_partial('admin/checkboxCats', array('type'=>'businesswoman', 'checkedArray'=>$checkedArray));?>
-                <?php include_partial('admin/checkboxCats', array('type'=>'housewife', 'checkedArray'=>$checkedArray));?>
-                <?php include_partial('admin/checkboxCats', array('type'=>'diva', 'checkedArray'=>$checkedArray));?>
-                <?php include_partial('admin/checkboxCats', array('type'=>'teenage', 'checkedArray'=>$checkedArray));?>
-                <?php include_partial('admin/checkboxCats', array('type'=>'patriot', 'checkedArray'=>$checkedArray));?>
+                <?php //$obj = $form->getObject()?>
+                <?php //$checkedArray = ($obj && $obj->getCatPermissions()) ? explode(';', $obj->getCatPermissions()) : array();?>
+                <?php //include_partial('admin/checkboxCats', array('type'=>'businesswoman', 'checkedArray'=>$checkedArray));?>
+                <?php //include_partial('admin/checkboxCats', array('type'=>'housewife', 'checkedArray'=>$checkedArray));?>
+                <?php //include_partial('admin/checkboxCats', array('type'=>'diva', 'checkedArray'=>$checkedArray));?>
+                <?php //include_partial('admin/checkboxCats', array('type'=>'teenage', 'checkedArray'=>$checkedArray));?>
+                <?php //include_partial('admin/checkboxCats', array('type'=>'patriot', 'checkedArray'=>$checkedArray));?>
             </div>
           </td>
       </tr>

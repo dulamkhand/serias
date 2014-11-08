@@ -1,10 +1,29 @@
 <div class="box-home" style="background:#dedede;border:1px solid #ccc;">
+		<?php if($tmp = $rs->getKickass()):?>
+				<a href="<?php echo $tmp?>" target="_blank" style="text-decoration:underline;">KICKASS TORRENT ТАТАХ</a> &nbsp; |&nbsp;
+				<a onclick="$('#kickass-help').toggle();" style="text-decoration:underline;cursor:pointer;">ХЭРХЭН ТАТАХ ВЭ?</a>
+				<div id="kickass-help" style="display:none;margin:5px 0 0 0;">
+						<?php echo image_tag('kickass-help.jpg', array())?><br>
+						<iframe width="560" height="315" src="//www.youtube.com/embed/t1pMl1jUKyI" frameborder="0" allowfullscreen></iframe>
+				</div>
+		<?php else:?>
+				Торрент татах линк оруулаагүй байна. Та хэсэг хугацааны дараа дахин хандаарай.
+		<?php endif?>
+</div>
+
+
+<div class="box-home" style="background:#dedede;border:1px solid #ccc;">
     <?php $links = Doctrine::getTable('Link')->createQuery()
                       ->where('item_id =?', $rs->getId())
                       ->orderBy('season ASC, episode ASC, created_at DESC, updated_at DESC')
                       ->execute();?>
     <?php if(!sizeof($links)):?>
-        Линк оруулаагүй байна. Та хэсэг хугацааны дараа дахин хандаарай.
+        Шууд үзэх линк оруулаагүй байна. Та хэсэг хугацааны дараа дахин хандаарай.
+    <?php else:?>
+    		<?php if($rs->getType() == 'series'):?>
+				    Season: <?php echo $nbSeasons?>, 
+				    Episode: <?php echo $nbEpisodes?>
+		    <?php endif?>
     <?php endif?>
     
     <?php 
@@ -20,9 +39,7 @@
             $nbEpisodes++;
         }
     }?>
-    Season: <?php echo $nbSeasons?>, 
-    Episode: <?php echo $nbEpisodes?>
-
+    
     <?php $season=null; $episode=null; $l=0; $first=0;?>
     <?php foreach($links as $link):?>
         <!--series-->
