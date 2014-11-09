@@ -47,11 +47,34 @@ class mainActions extends sfActions
 
     public function executeTmp(sfWebRequest $request)
     {
+    		$org = file_get_contents("http://www.imdb.com/title/tt0060196/?ref_=chttp_tt_6");
+    		
         //echo 
         $rs = new Item();
         $rs->setType('movie');
+        // title
+        /*$tmp = explode('<span class="itemprop" itemprop="name">', $org);
+    		$tmp = explode('</span>', $tmp[1]);
+        $rs->setTitle($tmp[0]);
+        echo $rs->getTitle(); die();*/
+        // genre
+
+        // duration - <time itemprop="duration" datetime="PT133M">133 min</time>
+        $tmp = explode('<time itemprop="duration" datetime="PT133M">', $org);
+    		$tmp = explode('</time>', $tmp[1]);
+    		echo $tmp[0]; die();
+    		//echo str_replace(' min', '', $tmp[0]); die();
+    		
+
+        // release date
+        /*$tmp = explode('"See all release dates"', $org);
+    		$tmp = explode('meta itemprop="datePublished"', $tmp[1]);
+    		echo $tmp[0];die();*/
+    		$rs->setYear($tmp[0]);
+    		echo $rs->getYear(); die();
+        
+        /*
         $rs->setGenre('');
-        $rs->setTitle();
         $rs->setYear();
         $rs->setYearEnd();
         $rs->setRoute(GlobalLib::slugify(GlobalLib::mn2en($rs->getTitle().'-'.$rs->getYear())));
@@ -75,7 +98,7 @@ class mainActions extends sfActions
         $rs->setSource('imdb.com');
         $rs->setIsActive(1);
         $rs->setCreatedAid(1);
-        $rs->save();
+        $rs->save();*/
         echo 'success'; die();
     }
 
