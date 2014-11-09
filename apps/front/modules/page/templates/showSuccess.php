@@ -1,16 +1,20 @@
 <?php $host = sfConfig::get('app_host')?>
 
 <!--breadcrumb-->
-<a href="<?php echo url_for('page/index?type='.$rs->getType())?>" class="h3">
-    <?php echo GlobalLib::getValue('type_mn', $rs->getType())?>
+<?php $type = $rs->getType();?>
+<a href="<?php echo url_for('page/index?type='.$type)?>" class="h3">
+    <?php echo GlobalLib::getValue('type_mn', $type)?>
 </a> &raquo;
-<a href="<?php echo url_for('page/index?type='.$rs->getType().'&g='.$rs->getGenre())?>" class="h3">
-    <?php echo $rs->getGenre()?>
-</a>
+<?php $ks = explode(";", $rs->getGenre()); $i=0?>
+<?php foreach ($ks as $k):?>
+		<a href="<?php echo url_for('page/index?type='.$type.'&g='.$k)?>" class="h3">
+				<?php echo $k?><?php echo ++$i == sizeof($ks) ? '' : ',';?>
+		</a>
+<?php endforeach?>
 <br clear="all">
 
 <!--image & info-->
-<?php $color = GlobalLib::getValue('colors', $rs->getType()) ?>
+<?php $color = GlobalLib::getValue('colors', $type) ?>
 <div class="box-home" style="background:<?php echo $color?>;">
 		<div style="float:left;margin:0 0 10px 0;width:215px;">
 				<h2 style="margin:0;"><?php echo $rs?></h2>

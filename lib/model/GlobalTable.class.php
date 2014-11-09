@@ -31,6 +31,12 @@ class GlobalTable extends Doctrine_Table
         if(isset($params['typeO']) && $params['typeO'] != null)
             $q->andWhere('type <> ?', $params['typeO']);
             
+				# bestType
+        if(isset($params['bestType']) && $params['bestType'] != null)
+            $q->andWhere('best_type = ?', $params['bestType']);
+        if(isset($params['bestTypeO']) && $params['bestTypeO'] != null)
+            $q->andWhere('best_type <> ?', $params['bestTypeO']);
+            
         # genre
         if(isset($params['genre']) && $params['genre'] != null)
             $q->andWhere('genre= ?', $params['genre']);
@@ -73,8 +79,6 @@ class GlobalTable extends Doctrine_Table
         # keyword
         if(isset($params['sItem']) && $params['sItem'] != null)
             $q->andWhere('title LIKE ? ', array('%'.$params['sItem'].'%'));
-        if(isset($params['sPlayer']) && $params['sPlayer'] != null)
-            $q->andWhere('fullname LIKE ? ', array('%'.$params['playerKeyword'].'%'));
         if(isset($params['sNews']) && $params['sNews'] != null)
             $q->andWhere('title LIKE ? OR summary LIKE ? OR body LIKE ?', array('%'.$params['sNews'].'%','%'.$params['sNews'].'%','%'.$params['sNews'].'%'));
 

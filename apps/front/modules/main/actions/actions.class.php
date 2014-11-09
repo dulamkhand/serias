@@ -49,8 +49,8 @@ class mainActions extends sfActions
     {
         //echo 
         $rs = new Item();
-        $rs->setType();
-        $rs->setGenre();
+        $rs->setType('movie');
+        $rs->setGenre('');
         $rs->setTitle();
         $rs->setYear();
         $rs->setYearEnd();

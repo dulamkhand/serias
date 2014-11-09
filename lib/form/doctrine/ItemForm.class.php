@@ -22,7 +22,7 @@ class ItemForm extends BaseItemForm
         $this->widgetSchema['image']          = new sfWidgetFormInputFile(array(), array());
       	$this->widgetSchema['year']           = new sfWidgetFormInputText(array(), array('style'=>'width:40px;'));
       	$this->widgetSchema['year_end']       = new sfWidgetFormInputText(array(), array('style'=>'width:40px;'));
-      	$years = range(date('Y') + 2, date('Y') - 20);
+      	$years = range(date('Y') + 2, date('Y') - 40);
       	$this->widgetSchema['release_date']   = new sfWidgetFormDate(array('years'=>array_combine($years, $years), 'format'=>'%year%/%month%/%day%'), array('style'=>'width:55px;'));
       	$this->widgetSchema['summary']        = new sfWidgetFormTextarea(array(), array());
       	$this->widgetSchema['summary_mn']     = new sfWidgetFormTextarea(array(), array());
@@ -56,7 +56,7 @@ class ItemForm extends BaseItemForm
       	# VALIDATORS
       	$this->validatorSchema['type']         = new sfValidatorString();
       	$this->validatorSchema['genre']        = new sfValidatorPass();
-      	$this->validatorSchema['title']        = new sfValidatorString(array(), array());
+				$this->validatorSchema['title']    	   = new sfValidatorCallback(array('required'=>true, 'callback' => array($this, 'validateTitle')), array());
       	$this->validatorSchema['title_mn']     = new sfValidatorPass();
       	$this->validatorSchema['image']        = new sfValidatorFile($this->getFileAttrs('m'), $this->getFileOpts());
       	$this->validatorSchema['year']         = new sfValidatorInteger();
@@ -94,5 +94,13 @@ class ItemForm extends BaseItemForm
       	$this->widgetSchema->setLabel('official_link2', 'Official website');
       	
     }
+	
+		public function validateTitle($validator, $value)
+	  {
+			  if ($this->getObject()->isNew() && Doctrine::getTable('Item')->findOneByTitle($value)) {
+				  	throw new sfValidatorError($validator, 'Same titled movie already exists.');
+			  }
+			  return $value;
+	  }
 }
 
