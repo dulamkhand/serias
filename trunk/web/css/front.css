@@ -96,15 +96,16 @@ strong,b{font-weight:bold!important;}
 .font70{font-size:70px!important;line-height:80px;}
 
 
-.000{color:#000;}
-.666{color:#666;}
-.888{color:#888;}
-.ff1111{color:#ff1111;}
-.ff3322{color:#ff3322;}
-.gray{color:gray;}
-.green{color:green;}
-.orange{color:orange;}
-.brown{color:#663300;}
+.c000{color:#000!important;}
+.c222{color:#222!important;}
+.c666{color:#666!important;}
+.c888{color:#888!important;}
+.ff1111{color:#ff1111!important;}
+.ff3322{color:#ff3322!important;}
+.gray{color:gray!important;}
+.green{color:green!important;}
+.orange{color:orange!important;}
+.brown{color:#663300!important;}
 
 .pointer {cursor:pointer;}
 .relative {position:relative;}

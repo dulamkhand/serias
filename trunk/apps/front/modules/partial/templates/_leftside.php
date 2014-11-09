@@ -23,7 +23,7 @@
     		<br clear="all">
         <h3>Шилдэгүүд</h3>
         <?php foreach (GlobalLib::getArray('bests') as $k=>$v):?>
-            <a href="<?php echo url_for('page/bests?g='.$k)?>"><?php echo $v?></a><br>
+            <a href="<?php echo url_for('page/bests?bestType='.$k)?>"><?php echo $v?></a><br>
         <?php endforeach?>
         
         <br clear="all">

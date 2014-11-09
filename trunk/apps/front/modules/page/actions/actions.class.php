@@ -29,9 +29,8 @@ class pageActions extends sfActions
     
     public function executeBests(sfWebRequest $request)
     {
-        $this->forward404Unless(in_array($this->type = $type = $request->getParameter('type'), GlobalLib::getKeys('type')));
-        $params = array();
-        $params['type'] = $type;
+    		$this->bestType = $bestType = $request->getParameter('bestType');
+    		$this->rss = $rss = GlobalTable::doExecute('Bests', array('*'), array('bestType'=>$bestType, 'orderBy'=>'number asc'));
     }
   
     public function executeShow(sfWebRequest $request)

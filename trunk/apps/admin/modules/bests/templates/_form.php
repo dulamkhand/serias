@@ -52,10 +52,9 @@
 
 <script type="text/javascript">
 function itemsOptions() {
-  $('#bests_item_search').val('<?php echo $form->getObject()->getItem()->getTitle()?>');  
   $.ajax({
       url: "<?php echo url_for('bests/itemsOptions')?>",
-      data: {s : $('#bests_item_search').val(), itemId: <?php echo $form->getObject()->getItemId()?>},
+      data: {s : $('#bests_item_search').val(), itemId: <?php echo $form->getObject()->getItemId() ? $form->getObject()->getItemId() : 0?>},
       type: "POST",
       success: function(data){
           $('#bests_item_id').html(data);
@@ -64,6 +63,7 @@ function itemsOptions() {
   return false;
 }
 $(document).ready(function() {
+		$('#bests_item_search').val('<?php echo $form->getObject()->getItem()->getTitle()?>');
     itemsOptions();
 });
 </script>

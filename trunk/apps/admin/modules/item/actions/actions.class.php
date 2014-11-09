@@ -69,11 +69,29 @@ class itemActions extends sfActions
         {
             $rs = $form->save();
             $rs->setGenre(join(";", $request->getParameter('genres')));
-            
+            $rs->setTitle(trim($rs->getTitle()));
+            $rs->setTitleMn(trim($rs->getTitleMn()));
             if($rs->getTitle()) {
                 $rs->setRoute(GlobalLib::slugify(GlobalLib::mn2en($rs->getTitle().'-'.$rs->getYear())));
-                $rs->save();
             }
+            $rs->setSummary(trim($rs->getSummary()));
+            $rs->setSummaryMn(trim($rs->getSummaryMn()));
+            $rs->setBody(trim($rs->getBody()));
+            $rs->setBodyMn(trim($rs->getBodyMn()));
+            $rs->setTrailer(trim($rs->getTrailer()));
+            $rs->setRating(trim($rs->getRating()));
+            $rs->setKickass(trim($rs->getKickass()));
+            $rs->setCasts(trim($rs->getCasts()));
+            $rs->setStudios(trim($rs->getStudios()));
+            $rs->setDirector(trim($rs->getDirector()));
+            $rs->setWriter(trim($rs->getWriter()));
+            $rs->setDuration(trim($rs->getDuration()));
+            $rs->setAge(trim($rs->getAge()));
+            $rs->setOfficialLink1(trim($rs->getOfficialLink1()));
+            $rs->setOfficialLink2(trim($rs->getOfficialLink2()));
+            $rs->setSource(trim($rs->getSource()));
+            $rs->save();
+            
             GlobalLib::createThumbs($rs->getImage(), 'm', array(140));
 
             $this->getUser()->setFlash('flash', 'Successfully saved.', true);
