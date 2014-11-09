@@ -117,11 +117,20 @@ class GlobalTable extends Doctrine_Table
         $rss = self::doFetchArray($tableName, $columns, $params);
         foreach ($rss as $rs) 
         {
-            $res[$rs['id']] = $fieldName;
+            $res[$rs['id']] = $rs[$fieldName];
         }
         return $res;
     }
   
+    public static function doFetchSelectionItem($tableName, $params = array())
+    {
+        $res = array();
+        $rss = self::doFetchArray($tableName, array('id, title, year'), $params);
+        foreach ($rss as $rs) {
+            $res[$rs['id']] = $rs['title'].' ('.$rs['year'].')';
+        }
+        return $res;
+    }
     
     public static function doFetchOne($tableName, $columns = array(), $params = array())
     {

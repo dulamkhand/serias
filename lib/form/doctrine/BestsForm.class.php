@@ -14,14 +14,17 @@ class BestsForm extends BaseBestsForm
 	  {
 	      // WIDGETS
 	      $choices = GlobalLib::getArray('bests');
-        $this->widgetSchema['best_type']      = new sfWidgetFormChoice(array('choices'=>$choices), array('style'=>'width:200px;'));
+        $this->widgetSchema['best_type']      = new sfWidgetFormChoice(array('choices'=>$choices), array());
         $choices = GlobalLib::getNumbers(0, 50);
-        $this->widgetSchema['number']         = new sfWidgetFormChoice(array('choices'=>$choices), array('style'=>'width:200px;'));
-	      $this->widgetSchema['item_id']     		= new sfWidgetFormInputText(array(), array('onclick'=>'loadItems();'));
+        $this->widgetSchema['number']         = new sfWidgetFormChoice(array('choices'=>$choices), array('style'=>'width:50px;'));        
+	      $this->widgetSchema['item_search']    = new sfWidgetFormInputText(array(), array('onkeyup'=>'itemsOptions();', 'id'=>'bests_item_search'));
+	      $choices = array();
+	      $this->widgetSchema['item_id']     		= new sfWidgetFormChoice(array('choices'=>$choices), array('id'=>'bests_item_id'));
 	      
 	      // VALIDATORS
 	      $this->validatorSchema['best_type']  	= new sfValidatorString(array(), array());
 	      $this->validatorSchema['number']    	= new sfValidatorInteger();
+	      $this->validatorSchema['item_search'] = new sfValidatorPass();
 	      $this->validatorSchema['item_id']    	= new sfValidatorInteger();
 	  }
 

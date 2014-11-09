@@ -51,7 +51,7 @@
             <b>Featured: </b><?php if($rs->getIsFeatured()) echo image_tag('icons/ok.png', array('align'=>'absmiddle')) ?>
         </td>
         <td nowrap>
-            <?php include_partial('partial/editDelete', array('module'=>'item', 'id'=>$rs->getId()));?><br>
+            <?php include_partial('partial/edit', array('module'=>'item', 'id'=>$rs->getId()));?><br>
             <a href="<?php echo url_for('link/index?itemId='.$rs->getId())?>" title="Links" class="action">Links</a> | 
             <a href="<?php echo url_for('link/new?itemId='.$rs->getId())?>" title="Add link" class="action">Add link</a>
         </td> 

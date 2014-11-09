@@ -32,13 +32,17 @@
       <tr>
           <th><?php echo $form['item_id']->renderLabel() ?></th>
           <td>
-          	<select name="bests[item_id]" id="content_category_id">
-          			<?php $itemId = $form->getObject() ? $form->getObject()->getItemId() : $sf_params->get('itemId');?>
-          			<option <?php echo ''?>><?php echo $itemId?></option>
-          	</select>
-          	
+            <?php echo $form['item_search'] ?>
+            <br clear="all">
             <?php echo $form['item_id']->renderError() ?>
             <?php echo $form['item_id'] ?>
+          </td>
+      </tr>
+      <tr>
+          <th><?php echo $form['is_active']->renderLabel() ?></th>
+          <td>
+            <?php echo $form['is_active']->renderError() ?>
+            <?php echo $form['is_active'] ?>
           </td>
       </tr>
     </tbody>
@@ -47,19 +51,19 @@
 
 
 <script type="text/javascript">
-function loadItems() {
+function itemsOptions() {
+  $('#bests_item_search').val('<?php echo $form->getObject()->getItem()->getTitle()?>');  
   $.ajax({
-      url: "<?php echo url_for('bests/loadItems')?>",
-      data: {itemId : $('#bests_item_id').val(), objectId: <?php echo $objectId ? $objectId : 0?>},
+      url: "<?php echo url_for('bests/itemsOptions')?>",
+      data: {s : $('#bests_item_search').val(), itemId: <?php echo $form->getObject()->getItemId()?>},
       type: "POST",
       success: function(data){
-          $('#containerBestId').html('<select id="bests_item_id" name="bests[item_id]">' + data + '</select>');
+          $('#bests_item_id').html(data);
       }
   });
   return false;
 }
-
 $(document).ready(function() {
-    loadItems();
+    itemsOptions();
 });
 </script>

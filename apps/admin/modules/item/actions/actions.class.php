@@ -52,13 +52,14 @@ class itemActions extends sfActions
         $this->setTemplate('edit');
     }
   
+    /** not used yet
     public function executeDelete(sfWebRequest $request)
     {
         $this->forward404Unless($rs = Doctrine::getTable('Item')->find(array($request->getParameter('id'))), sprintf('Object page does not exist (%s).', $request->getParameter('id')));
         $rs->delete();
         $this->getUser()->setFlash('flash', 'Successfully deleted.', true);
         $this->redirect($request->getReferer() ? $request->getReferer() : 'item/index');
-    }
+    }*/
     
 
     protected function processForm(sfWebRequest $request, sfForm $form)

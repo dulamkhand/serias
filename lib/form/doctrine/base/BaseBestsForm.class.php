@@ -33,7 +33,7 @@ abstract class BaseBestsForm extends BaseFormDoctrine
       'item_id'     => new sfValidatorDoctrineChoice(array('model' => $this->getRelatedModelName('Item'))),
       'is_active'   => new sfValidatorInteger(),
       'created_at'  => new sfValidatorDateTime(),
-      'updated_at'  => new sfValidatorDateTime(),
+      'updated_at'  => new sfValidatorDateTime(array('required' => false)),
       'created_aid' => new sfValidatorInteger(),
       'updated_aid' => new sfValidatorInteger(),
     ));
