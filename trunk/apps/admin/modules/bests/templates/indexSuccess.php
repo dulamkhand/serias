@@ -29,9 +29,11 @@
     <?php $i=0; foreach ($pager->getResults() as $rs): ?>
     <tr>
       <td><?php echo ++$i?></td>
-      <td nowrap><a href="<?php echo url_for('bests/edit?id='.$rs->getId())?>"><?php echo $rs->getId() ?></a></td>
+      <td nowrap><a href="<?php echo url_for('bests/edit?id='.$rs->getId())?>">
+          <?php echo GlobalLib::getValue('bests', $rs->getBestType()) ?></a>
+      </td>
       <td nowrap><a href="<?php echo url_for('bests/edit?id='.$rs->getId())?>"><?php echo $rs->getNumber() ?></a></td>
-      <td><?php echo $rs->getItem() ?></td>
+      <td><a href="<?php echo url_for('item/edit?id='.$rs->getItem()->getId())?>" target="_blank"><?php echo $rs->getItem() ?></a></td>
       <td nowrap>
           <?php include_partial('partial/editDelete', array('module'=>'bests', 'id'=>$rs->getId()));?>
       </td>

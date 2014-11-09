@@ -17,13 +17,15 @@ class bestsActions extends sfActions
 	  public function executeIndex(sfWebRequest $request) {
 	      $this->forwardUnless($this->getUser()->hasCredential('bests'), 'admin', 'perm');
 	      $params = array();
+	      $params['orderBy'] = 'best_type asc, number asc';
 	      if($request->getParameter('best_type')) $params['best_type'] = $request->getParameter('best_type');
         if($request->getParameter('s')) $params['sBests'] = $request->getParameter('s');
 	      $this->pager = GlobalTable::getPager('Bests', array('*'), $params, $request->getParameter('page'));
 	  }
 	  
-	  public function executeLoadItems(sfWebRequest $request) {
-	  		
+	  public function executeItemsOptions(sfWebRequest $request) {
+	  		$this->rss = GlobalTable::doFetchSelectionItem('Item', array('sItem'=>$request->getParameter('s')));
+	  		$this->itemId = $request->getParameter('itemId');
 	      $this->setLayout(false);
 	  }
 	

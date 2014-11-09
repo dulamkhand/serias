@@ -46,7 +46,7 @@ class GlobalLib
     );
     
 		public static $bests  = array(
-                  'imdb250'=>'IMDB шилдэг 250', 
+                  'imdb250'=>'IMDB шилдэг 50', 
                   'oscar2014'=>'Оскар 2014 шилдэгүүд',
                   'series10'=>'Шилдэг 10 цуврал', 
                   'mn10'=>'Шилдэг 10 монгол кино', 
