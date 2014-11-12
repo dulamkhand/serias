@@ -1,9 +1,6 @@
 <?php if(sizeof($rss)):?>
     <?php foreach($rss as $rs):?>
         <div style="width:<?php echo $width?>px;height:<?php echo $height?>px;margin:0 5px 5px 0;position:relative;" class="left">
-            <?php echo image_tag('icons/unlove.ico', array('alt'=>'Love this!', 'title'=>'Love this!', 
-                  'style'=>'position:absolute;right:0;bottom:20px;z-index:1000;cursor:pointer;', 'class'=>'love-dedede'))?>
-        
             <a href="<?php echo url_for('page/show?route='.$rs['route'])?>" style="color:#fff;" title="<?php echo $rs['title']?>">
                 <?php echo image_tag('/u/m/t140-'.$rs['image'], array('style'=>'box-shadow:0 0 4px #666;max-width:'.$width.'px'))?>
                 <br clear="all">

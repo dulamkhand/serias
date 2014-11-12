@@ -6,9 +6,11 @@
     <div style="background:#333;padding:10px;">
         <?php foreach($rss as $rs):?>
             <div style="width:<?php echo $width?>px;height:<?php echo $height?>px;margin:0 10px 0 0;position:relative;" class="left">
-                <?php echo image_tag('icons/unlove.ico', array('alt'=>'Love!', 'title'=>'Love!', 
+                <?php $loved = in_array($rs['id'], $loves)?>
+                <?php echo image_tag('icons/'.( $loved ? 'love.ico' : 'unlove.ico'), 
+                      array('alt'=>($loved ? 'Unlove!' : 'Love!'),
+                      'onclick'=>"love({$rs['id']}, '".($loved ? 'unlove' : 'love')."');", 
                       'style'=>'position:absolute;right:0;bottom:20px;z-index:1000;cursor:pointer;', 'class'=>'love'))?>
-                
                 <a href="<?php echo url_for('page/show?route='.$rs['route'])?>" style="color:#fff;">
                     <?php echo image_tag('/u/m/t140-'.$rs['image'], array('style'=>'box-shadow:0 0 4px #666;max-width:'.$width.'px'))?>
                     <br clear="all">
@@ -45,14 +47,20 @@ $('.love').mouseover(function() {
     }
 });
 
-function love(itemId)
+function love(itemId, act)
 {
   $.ajax({
       url: "<?php echo url_for('user/love')?>",
       type : "POST",
-      data: {itemId:itemId},
+      data: {itemId:itemId, act:act},
       success: function(data) {
-          
+          if(act == 'love') {
+              $(this).attr('src', '<?php echo $host?>images/icons/love.ico');
+              $(this).attr('alt') == 'Unlove!'
+          } else { // unlove
+              $(this).attr('src', '<?php echo $host?>images/icons/unlove.ico');
+              $(this).attr('alt') == 'Love!'
+          }
       }
   });
 }

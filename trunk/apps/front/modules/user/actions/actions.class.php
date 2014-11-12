@@ -26,13 +26,23 @@ class userActions extends sfActions
   
   public function executeLove(sfWebRequest $request)
   {
-      $love = new Love();
-      $love->setObjectId($request->getParameter('itemId'));
-      $love->setObjectType('item');
-      $love->setUserId($this->getUser()->getId());
-      $love->setIpAddress($request->getRemoteAddress());
-      $love->save();
-      return sfView::SUCCESS;
+      if($request->getParameter('act') == 'love') {
+          $love = new Love();
+          $love->setObjectId($request->getParameter('itemId'));
+          $love->setObjectType('item');
+          $love->setUserId($this->getUser()->getId());
+          $love->setIpAddress($request->getRemoteAddress());
+          $love->save();  
+      } elseif ($request->getParameter('act') == 'unlove') {
+          Doctrine_Query::create()->delete()->from('Love')
+              ->where('object_id', $request->getParameter('itemId'))
+              ->andWhere('object_type', 'item')
+              ->execute();
+      }
+
+      $this->setLayout(false);
+      $this->setTemplate(false);
+      return $this->renderText("");
   }
   
   public function executeJoin(sfWebRequest $request)

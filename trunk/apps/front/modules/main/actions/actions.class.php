@@ -24,6 +24,8 @@ class mainActions extends sfActions
     		$arr['mn']     		 = GlobalTable::doFetchArray('Item', array('type, route, image, title, year'), array('type'=>'mn', 'limit'=>15));
     		$arr['nonfiction'] = GlobalTable::doFetchArray('Item', array('type, route, image, title, year'), array('type'=>'nonfiction', 'limit'=>15));
         $this->arr = $arr;
+        
+        $this->loves = GlobalTable::doFetchArray('Love', array('object_id'), array('objectType'=>'item', 'isActive'=>-1));
     }   
     
 
