@@ -24,6 +24,17 @@ class userActions extends sfActions
           array('email'=>$this->getUser()->getAttribute('email'))));
   }
   
+  public function executeLove(sfWebRequest $request)
+  {
+      $love = new Love();
+      $love->setObjectId($request->getParameter('itemId'));
+      $love->setObjectType('item');
+      $love->setUserId($this->getUser()->getId());
+      $love->setIpAddress($request->getRemoteAddress());
+      $love->save();
+      return sfView::SUCCESS;
+  }
+  
   public function executeJoin(sfWebRequest $request)
   {
       return sfView::SUCCESS;
