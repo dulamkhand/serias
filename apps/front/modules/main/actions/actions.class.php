@@ -40,6 +40,27 @@ class mainActions extends sfActions
         return $this->renderPartial('partial/searchResult', array('arr'=>$arr));
     }
     
+    public function executeContact(sfWebRequest $request)
+    {	
+    		$form = new FeedbackForm();
+    		if($request->isMethod(sfRequest::POST)) {
+    				$form->bind($request->getParameter($form->getName()), $request->getFiles($form->getName()));
+			      if ($form->isValid()) {
+			          $feedback = $form->save();
+			          // send mail to hello@mmdb.mn
+    					  $body = $this->getPartial("mail/feedback", array('rs'=>$feedback));
+    					  $message = $this->getMailer()->compose($feedback->getEmail(), sfConfig::get('app_feedbackmail'), 'mmdb.mn feedback', $body);
+    					  $this->getMailer()->send($message);
+                //$this->sendMail(sfConfig::get('app_feedbackmail'), 'mmdb.mn feedback', $body);
+			          $this->getUser()->setFlash('flash', 'Таны захидлыг амжилттай илгээлээ.', true);
+			          $this->redirect('page/contact');
+			      }
+    		} else {
+            $this->getResponse()->setTitle(sfConfig::get('app_webname').' | Холбоо барих');
+    		}
+			  $this->form = $form;
+    }
+    
     public function execute404(sfWebRequest $request)
     {
         

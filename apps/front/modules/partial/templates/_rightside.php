@@ -1,5 +1,5 @@
 <div id="rightside">
-		<?php include_partial('user/fblogin', array())?>
+		<?php include_partial('user/login', array())?>
 
     <h3>Манай санд шинээр нэмэгдсэн</h3>
     <ul>

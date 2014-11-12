@@ -289,9 +289,9 @@ Bests:
       local: item_id
       foreign: id
       type: one
-Category:
+Celebrity:
   connection: doctrine
-  tableName: category
+  tableName: celebrity
   columns:
     id:
       type: integer(4)
@@ -299,123 +299,85 @@ Category:
       unsigned: false
       primary: true
       autoincrement: true
-    type:
-      type: string(255)
+    fullname:
+      type: string(1000)
       fixed: false
       unsigned: false
       primary: false
       notnull: true
       autoincrement: false
-    parent_id:
-      type: integer(4)
-      fixed: false
-      unsigned: false
-      primary: false
-      notnull: true
-      autoincrement: false
-    parent_name:
-      type: string(255)
-      fixed: false
-      unsigned: false
-      primary: false
-      notnull: true
-      autoincrement: false
-    name:
-      type: string(255)
+    fullname_mn:
+      type: string(1000)
       fixed: false
       unsigned: false
       primary: false
       notnull: true
       autoincrement: false
     route:
-      type: string(255)
+      type: string(1000)
       fixed: false
       unsigned: false
       primary: false
       notnull: true
       autoincrement: false
-    position:
-      type: string(255)
+    profession:
+      type: string(100)
       fixed: false
       unsigned: false
       primary: false
       notnull: true
       autoincrement: false
-    sort:
-      type: integer(4)
+    image:
+      type: string(1000)
       fixed: false
       unsigned: false
       primary: false
       notnull: true
       autoincrement: false
-    backcolor:
-      type: string(255)
+    birthday:
+      type: date(25)
       fixed: false
       unsigned: false
       primary: false
       notnull: true
       autoincrement: false
-    forecolor:
-      type: string(255)
+    deadday:
+      type: date(25)
       fixed: false
       unsigned: false
       primary: false
       notnull: true
       autoincrement: false
-    is_active:
-      type: integer(1)
+    about:
+      type: string(1000)
       fixed: false
       unsigned: false
       primary: false
       notnull: true
       autoincrement: false
-    updated_at:
-      type: timestamp(25)
+    about_mn:
+      type: string(1000)
       fixed: false
       unsigned: false
       primary: false
       notnull: true
       autoincrement: false
-Episode:
-  connection: doctrine
-  tableName: episode
-  columns:
-    id:
-      type: integer(4)
-      fixed: false
-      unsigned: false
-      primary: true
-      autoincrement: true
-    item_id:
-      type: integer(4)
+    rating:
+      type: string(1000)
       fixed: false
       unsigned: false
       primary: false
       notnull: true
       autoincrement: false
-    season:
-      type: integer(4)
+    official_link1:
+      type: string(1000)
       fixed: false
       unsigned: false
       primary: false
       notnull: true
       autoincrement: false
-    episode:
-      type: integer(4)
-      fixed: false
-      unsigned: false
-      primary: false
-      notnull: true
-      autoincrement: false
-    title:
-      type: string(500)
-      fixed: false
-      unsigned: false
-      primary: false
-      notnull: true
-      autoincrement: false
-    route:
-      type: string(500)
+    official_link2:
+      type: string(1000)
       fixed: false
       unsigned: false
       primary: false
@@ -435,6 +397,13 @@ Episode:
       primary: false
       notnull: true
       autoincrement: false
+    nb_love:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
     is_active:
       type: integer(1)
       fixed: false
@@ -444,6 +413,13 @@ Episode:
       autoincrement: false
     is_featured:
       type: integer(1)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    source:
+      type: string(1000)
       fixed: false
       unsigned: false
       primary: false
@@ -476,6 +452,58 @@ Episode:
       unsigned: false
       primary: false
       default: '0000-00-00 00:00:00'
+      notnull: true
+      autoincrement: false
+Feedback:
+  connection: doctrine
+  tableName: feedback
+  columns:
+    id:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: true
+      autoincrement: true
+    organization:
+      type: string(255)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    name:
+      type: string(255)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    email:
+      type: string(255)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    phone:
+      type: string(255)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    message:
+      type: string()
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    created_at:
+      type: timestamp(25)
+      fixed: false
+      unsigned: false
+      primary: false
       notnull: true
       autoincrement: false
 Item:
@@ -684,6 +712,13 @@ Item:
       primary: false
       notnull: true
       autoincrement: false
+    nb_love:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
     is_active:
       type: integer(1)
       fixed: false
@@ -860,5 +895,351 @@ Link:
       unsigned: false
       primary: false
       default: '0000-00-00 00:00:00'
+      notnull: true
+      autoincrement: false
+Love:
+  connection: doctrine
+  tableName: love
+  columns:
+    id:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: true
+      autoincrement: true
+    object_type:
+      type: string(255)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    object_id:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    created_at:
+      type: timestamp(25)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    updated_at:
+      type: timestamp(25)
+      fixed: false
+      unsigned: false
+      primary: false
+      default: '0000-00-00 00:00:00'
+      notnull: true
+      autoincrement: false
+    user_id:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    ip_address:
+      type: string(15)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+Poll:
+  connection: doctrine
+  tableName: poll
+  columns:
+    id:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: true
+      autoincrement: true
+    item_id:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    title:
+      type: string(255)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    route:
+      type: string(255)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    body:
+      type: string()
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    options_addable:
+      type: integer(1)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    multiple_choice:
+      type: integer(1)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    sort:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    is_active:
+      type: integer(1)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    is_featured:
+      type: integer(1)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    created_at:
+      type: timestamp(25)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    updated_at:
+      type: timestamp(25)
+      fixed: false
+      unsigned: false
+      primary: false
+      default: '0000-00-00 00:00:00'
+      notnull: true
+      autoincrement: false
+    created_aid:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    updated_aid:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+PollOption:
+  connection: doctrine
+  tableName: poll_option
+  columns:
+    id:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: true
+      autoincrement: true
+    poll_id:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    body:
+      type: string()
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    nb_vote:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    user_id:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    ip:
+      type: string(50)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    is_active:
+      type: integer(1)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    sort:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    created_at:
+      type: timestamp(25)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    updated_at:
+      type: timestamp(25)
+      fixed: false
+      unsigned: false
+      primary: false
+      default: '0000-00-00 00:00:00'
+      notnull: true
+      autoincrement: false
+    created_aid:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    updated_aid:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+User:
+  connection: doctrine
+  tableName: user
+  columns:
+    id:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: true
+      autoincrement: true
+    password:
+      type: string(255)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    firstname:
+      type: string(255)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    lastname:
+      type: string(255)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    fullname:
+      type: string(255)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    email:
+      type: string(255)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    mobile:
+      type: string(255)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    avator:
+      type: string(255)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    is_active:
+      type: integer(1)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    created_at:
+      type: timestamp(25)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    updated_at:
+      type: timestamp(25)
+      fixed: false
+      unsigned: false
+      primary: false
+      default: '0000-00-00 00:00:00'
+      notnull: true
+      autoincrement: false
+    logged_at:
+      type: timestamp(25)
+      fixed: false
+      unsigned: false
+      primary: false
+      default: '0000-00-00 00:00:00'
+      notnull: true
+      autoincrement: false
+    activation_code:
+      type: string(255)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    ip:
+      type: string(255)
+      fixed: false
+      unsigned: false
+      primary: false
       notnull: true
       autoincrement: false

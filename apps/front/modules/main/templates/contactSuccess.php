@@ -1,88 +1,97 @@
-<div class="welcomezone">
+<br clear="all">
+<br clear="all">
+<br clear="all">
 
-<h1><?php echo $page?></h1>
+<?php $form = new FeedbackForm()?>
+<form action="<?php echo url_for('page/contact')?>" method="post" class="left" 
+    style="width:360px;margin:0 40px 0 0;border-right:1px solid #dedede;">
 
-<div style="padding-bottom:10px;">
-  <div>
-    <strong><?php echo htmlspecialchars_decode($page->getSummary())?></strong>
-    <br clear="all"/>    
-    <?php echo htmlspecialchars_decode($page->getContent())?>
-    <div class="clear"></div>
-  </div>
-
-  <br clear="all">
-
-  <div><!--Санал хүсэлт-->
-    <h3>Санал хүсэлт</h3>
-
-    <form action="http://all-free-download.com/free-website-templates/" method="post">
-      <table width="97%">
-        <tr>
-          <td width="145" align="left" valign="top" class="body" id="Company"><strong>
-            <label for="Company">Company:</label>
-            </strong></td>
-          <td width="280" align="left" valign="top"><input name="Company" type="text" size="40" /></td>
-        </tr>
-        <tr>
-          <td align="left" valign="top" class="body" id="Contact"><strong>
-            <label for="FullName">Full name:</label>
-            </strong></td>
-          <td align="left" valign="top"><input name="Name" type="text" size="40" /></td>
-        </tr>
-        <tr>
-          <td align="left" valign="top" class="body" id="Address"><strong>
-            <label for="Address">Address:</label>
-            </strong></td>
-          <td align="left" valign="top"><input name="Address" type="text" size="40" /></td>
-        </tr>
-        <tr>
-          <td align="left" valign="top" class="body" id="Phone"><strong>
-            <label for="Phone">Phone:</label>
-            </strong></td>
-          <td align="left" valign="top"><input name="Phone" type="text" size="40" /></td>
-        </tr>
-        <tr>
-          <td align="left" valign="top" class="body" id="Email"><strong>
-            <label for="Email">Email:</label>
-            </strong></td>
-          <td align="left" valign="top"><input name="Email" type="text" size="40" /></td>
-        </tr>
-        <tr>
-          <td align="left" valign="top" class="body" id="Comments"><strong>
-            <label for="Comments">Questions / Comments:</label>
-            </strong></td>
-          <td align="left" valign="top"><textarea name="comments" cols="32" rows="6"></textarea></td>
-        </tr>
-        <tr>
-          <td></td>
-          <td><input type="submit" name="submit" class="button" value="Send Now" /></td>
-        </tr>
-      </table>
-    </form>
-    
+		<div style="background:#FEAA66;padding:5px;width:301px;" class="border-radius-5">
+				<div style="border:1px dashed #fff;color:#fff;text-align:center;">
+						Бид таны захидлыг хүлээж авсан дариудаа хариу илгээх болно.
+				</div>
+		</div>
+  	<?php echo $form->renderGlobalErrors() ?>
+		<br clear="all">
+    <?php echo $form['organization']->renderError() ?>
+    <?php echo $form['organization'] ?>
     <br clear="all">
-    
-    <div> 
-      <h3>Хаяг байршил</h3>
-      <?php if($page->getCover()) echo image_tag('/uploads/page/'.$page->getCover(), array('class'=>'project-img', 'title'=>$page, 'alt'=>$page))?>
-      <p>100 Lorem Ipsum Dolor Sit<br /> 88-99 Sit Amet, Lorem<br /> USA</p>
-      <p>        
-        <span><img src="/images/ico-phone.png" alt="" width="20" height="16" hspace="2" /> 
-        Phone:</span> (888) 123 456 789<br />
-        <span><img src="/images/ico-fax.png" alt="" width="20" height="16" hspace="2" /> 
-        Fax:</span> (888) 987 654 321<br />
-        <span><img src="/images/ico-website.png" alt="" width="20" height="16" hspace="2" /> 
-        Website:</span> <a href="http://all-free-download.com/free-website-templates/">www.mycompany.com</a><br/>
-        <span><img src="/images/ico-email.png" alt="" width="20" height="16" hspace="2" /> 
-        Email:</span> <a href="http://all-free-download.com/free-website-templates/">info@mycompany.com</a><br/>
-        <span><img src="/images/ico-twitter.png" alt="" width="20" height="16" hspace="3" /> 
-        <a href="http://all-free-download.com/free-website-templates/">Follow</a> on Twitter</span><br/>
-      </p>
-    </div>
-          
+    <?php echo $form['name']->renderError() ?>
+    <?php echo $form['name'] ?>
     <br clear="all">
-  </div><!--Санал хүсэлт-->
+    <?php echo $form['email']->renderError() ?>
+    <?php echo $form['email'] ?>
+    <br clear="all">
+    <?php echo $form['phone']->renderError() ?>
+    <?php echo $form['phone'] ?>
+    <br clear="all">
+    <?php echo $form['message']->renderError() ?>
+    <?php echo $form['message'] ?>
+    <br clear="all">
+  	<input type="submit" value="Илгээх" class="button" style="height:36px;width:120px;text-align:center;cursor:pointer;" />
+  	<br clear="all">
+</form>
 
-</div><!--style="padding-bottom:10px;"-->
+<div class="left" style="width:300px;">
+		<h3>ИМЭЙЛ</h3>
+		<a href="mailto:mmdb.llc@gmail.com">mmdb.llc@gmail.com</a>
 
-</div><!--welcomezone-->
+		<br clear="all">
+		<br clear="all">
+		
+		<h3>ХОЛБОГДОХ УТАС</h3>
+		99258807, 99022507, 99688179
+		
+		<br clear="all">
+		<br clear="all">
+		 
+		<h3>ХАЯГ БАЙРШИЛ</h3>
+		Манай оффис өөр гаригт байдаг тул та бүхэн бидэнтэй дээрх утас, имэйл-р холбогдох эсвэл захидал илгээхийг хүсье.
+
+		<br clear="all">
+		<br clear="all">
+		
+		<?php include_partial('partial/socials', array());?>
+		<br clear="all">
+
+		Latest Tweets and Latest FB posts can be here.
+		
+		<br clear="all">
+		<br clear="all">
+</div>
+
+
+<script type="text/javascript">
+$(document).ready(function(){
+  $('#feedback_org').click(function(){
+      if($(this).val().trim() == "Байгууллага") { $(this).val(''); }
+  }).blur(function() {
+      if($(this).val().trim() == "") { $(this).val('Байгууллага'); }
+  });
+
+  $('#feedback_name').click(function(){
+      if($(this).val().trim() == "Таны бүтэн нэр") { $(this).val(''); }
+  }).blur(function() {
+      if($(this).val().trim() == "") { $(this).val('Таны бүтэн нэр'); }
+  });
+  
+  $('#feedback_email').click(function(){
+      if($(this).val().trim() == "Имэйл хаяг") { $(this).val(''); }
+  }).blur(function() {
+      if($(this).val().trim() == "") { $(this).val('Имэйл хаяг'); }
+  });
+
+  $('#feedback_phone').click(function(){
+      if($(this).val().trim() == "Утасны дугаар") { $(this).val(''); }
+  }).blur(function() {
+      if($(this).val().trim() == "") { $(this).val('Утасны дугаар'); }
+  });
+
+  $('#feedback_message').click(function(){
+      if($(this).val().trim() == "Захидал") { $(this).val(''); }
+  }).blur(function() {
+      if($(this).val().trim() == "") { $(this).val('Захидал'); }
+  });
+  
+});
+</script>
