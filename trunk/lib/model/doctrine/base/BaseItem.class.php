@@ -36,6 +36,7 @@ Doctrine_Manager::getInstance()->bindComponent('Item', 'doctrine');
  * @property string $kickass
  * @property integer $sort
  * @property integer $nb_views
+ * @property integer $nb_love
  * @property integer $is_active
  * @property integer $is_featured
  * @property integer $boxoffice
@@ -77,6 +78,7 @@ Doctrine_Manager::getInstance()->bindComponent('Item', 'doctrine');
  * @method string              getKickass()        Returns the current record's "kickass" value
  * @method integer             getSort()           Returns the current record's "sort" value
  * @method integer             getNbViews()        Returns the current record's "nb_views" value
+ * @method integer             getNbLove()         Returns the current record's "nb_love" value
  * @method integer             getIsActive()       Returns the current record's "is_active" value
  * @method integer             getIsFeatured()     Returns the current record's "is_featured" value
  * @method integer             getBoxoffice()      Returns the current record's "boxoffice" value
@@ -117,6 +119,7 @@ Doctrine_Manager::getInstance()->bindComponent('Item', 'doctrine');
  * @method Item                setKickass()        Sets the current record's "kickass" value
  * @method Item                setSort()           Sets the current record's "sort" value
  * @method Item                setNbViews()        Sets the current record's "nb_views" value
+ * @method Item                setNbLove()         Sets the current record's "nb_love" value
  * @method Item                setIsActive()       Sets the current record's "is_active" value
  * @method Item                setIsFeatured()     Sets the current record's "is_featured" value
  * @method Item                setBoxoffice()      Sets the current record's "boxoffice" value
@@ -391,6 +394,15 @@ abstract class BaseItem extends sfDoctrineRecord
              'length' => 4,
              ));
         $this->hasColumn('nb_views', 'integer', 4, array(
+             'type' => 'integer',
+             'fixed' => 0,
+             'unsigned' => false,
+             'primary' => false,
+             'notnull' => true,
+             'autoincrement' => false,
+             'length' => 4,
+             ));
+        $this->hasColumn('nb_love', 'integer', 4, array(
              'type' => 'integer',
              'fixed' => 0,
              'unsigned' => false,

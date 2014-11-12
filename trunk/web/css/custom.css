@@ -9,26 +9,6 @@
 .intro{line-height:18px;font-size:14px;text-align:justify;color:#666;font-style:italic;}
 
 
-/* title */
-.title{text-transform:uppercase;letter-spacing:-1px;font-family:'Roboto Condensed',sans-serif;color:#000;font-style:normal;font-weight:normal;font-size:17px;}
-a.title:hover{color:green!important;}
-
-
-.title-branch{text-transform:uppercase;letter-spacing:0px;font-style:normal;font-weight:normal;display:block;
-    font-size:40px;line-height:40px;font-family:'Open Sans Condensed';letter-spacing:-1px;padding-bottom:10px;color:#000;
-}
-.title-leaf{text-transform:uppercase;letter-spacing:0px;font-family:'Open Sans Condensed';color:#000;display:block;
-    font-size:50px;line-height:60px;font-style:normal;font-weight:normal;margin:0;padding:0;cursor:default;text-align:center;}
-
-.title-branch2{
-    text-transform:uppercase;letter-spacing:-3px;font-style:normal;font-weight:normal!important;display:inline;
-    font-size:42px;line-height:42px;font-family:'Open Sans Condensed';color:#000;
-}
-.title-page{text-transform:uppercase;letter-spacing:0px;font-style:normal;font-weight:normal;display:block;
-    font-size:40px;line-height:40px;font-family:'Open Sans Condensed';letter-spacing:-1px;padding-bottom:10px;color:darkgreen;
-    border-bottom:3px double green;padding-bottom:15px;
-}
-
 
 
 a.arrow{background:url(../images/icons/arror-right-gray.png) 0 9px no-repeat;padding-left:15px;}

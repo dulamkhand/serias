@@ -12,7 +12,7 @@ abstract class BaseFormDoctrine extends sfFormDoctrine
 {
     public function setup()
     {
-          unset($this['id'],$this['route'],$this['nb_views'],$this['sort'],
+          unset($this['id'],$this['route'],$this['nb_views'],$this['nb_love'],$this['sort'],
           $this['created_at'],$this['updated_at'],$this['created_aid'],$this['updated_aid']);
           
           # WIDGETS
