@@ -28,20 +28,20 @@ class GlobalTable extends Doctrine_Table
         # type
         if(isset($params['type']) && $params['type'] != null)
             $q->andWhere('type= ?', $params['type']);
-        if(isset($params['typeO']) && $params['typeO'] != null)
-            $q->andWhere('type <> ?', $params['typeO']);
             
 				# bestType
         if(isset($params['bestType']) && $params['bestType'] != null)
             $q->andWhere('best_type = ?', $params['bestType']);
-        if(isset($params['bestTypeO']) && $params['bestTypeO'] != null)
-            $q->andWhere('best_type <> ?', $params['bestTypeO']);
+            
+        # objectType, objectId
+        if(isset($params['objectType']) && $params['objectType'] != null)
+            $q->andWhere('object_type = ?', $params['objectType']);
+        if(isset($params['objectId']) && $params['objectId'] != null)
+            $q->andWhere('object_id <> ?', $params['objectId']);
             
         # genre
         if(isset($params['genre']) && $params['genre'] != null)
             $q->andWhere('genre= ?', $params['genre']);
-        if(isset($params['genreO']) && $params['genreO'] != null)
-            $q->andWhere('genre <> ?', $params['genreO']);
 
         # itemId
         if(isset($params['itemId']) && $params['itemId'] != null)
@@ -62,8 +62,8 @@ class GlobalTable extends Doctrine_Table
         if(isset($params['isActive'])) {
             if($params['isActive'] != "all" && in_array($params['isActive'], array('0', '1'))) // all ued filter hiihgui
                 $q->andWhere('is_active = ?', $params['isActive']);
-        } else {
-            $q->andWhere('is_active = ?', 1);
+        } else if($params['isActive'] != -1) {
+              $q->andWhere('is_active = ?', 1);
         }
         
         # isFeatured

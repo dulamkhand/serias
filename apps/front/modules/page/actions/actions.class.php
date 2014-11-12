@@ -25,6 +25,8 @@ class pageActions extends sfActions
         $params['g'] = $request->getParameter('g');
         $this->pager = GlobalTable::getPager('Item', array('type, route, image, title, year'), 
                                               $params, $request->getParameter('page'));
+
+        $this->loves = GlobalTable::doFetchSelection('Love', 'object_id', array('object_id'), array('objectType'=>'item', 'isActive'=>-1));
     }
     
     public function executeBests(sfWebRequest $request)

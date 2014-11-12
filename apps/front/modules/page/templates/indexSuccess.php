@@ -31,7 +31,7 @@
 </div>
 <br clear="all">
 
-<?php include_partial('page/boxcolor', array('rss'=>$pager->getResults(), 'type'=>$type, 'width'=>140, 'height'=>250));?>
+<?php include_partial('page/boxcolor', array('rss'=>$pager->getResults(), 'type'=>$type, 'width'=>140, 'height'=>250, 'loves'=>$loves));?>
 
 <br clear="all">
 <?php echo pager($pager, $uri.'&y='.$y.'&l='.$l.'&g='.$g)?>
