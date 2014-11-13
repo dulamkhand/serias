@@ -3,7 +3,7 @@
         <ul>
             <li class="left"><a href="#">Вэбийн тухай</a> |&nbsp;</li>
             <li class="left"><a href="#">Сурталчилгаа байршуулах</a> |&nbsp;</li>
-            <li class="left"><a href="#">Холбоо барих</a></li>
+            <li class="left"><a href="<?php echo url_for('main/contact')?>">Холбоо барих</a></li>
         </ul>
     </div>
     <div class="right" style="margin:0 5px 0 0;">
