@@ -81,7 +81,8 @@ class userActions extends sfActions
               }
               
               sfContext::getInstance()->getConfiguration()->loadHelpers('Url');
-              $url = $request->getReferer() ? $request->getReferer() : url_for('@homepage');
+              #$url = $request->getReferer() ? $request->getReferer() : url_for('user/profile');
+              $url = url_for('user/profile');
               $str = "
                   <script type='text/javascript'>
                     window.location.href = '".$url."';
@@ -156,7 +157,5 @@ EOF;
       $this->setLayout(false);
   }
 
- 
-  
 
 }

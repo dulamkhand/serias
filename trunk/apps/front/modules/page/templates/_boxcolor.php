@@ -28,40 +28,4 @@
 </div><!--box-home-->
 <br clear="all">
 
-<script type="text/javascript">
-$('.love').mouseover(function() {
-    if($(this).attr('alt') == 'Love!') {
-        $(this).attr('src', '<?php echo $host?>images/icons/love.ico');
-        $(this).attr('alt') == 'Love!'
-    } else {
-        $(this).attr('src', '<?php echo $host?>images/icons/unlove.ico');
-        $(this).attr('alt') == 'Unlove!'
-    }
-}).mouseout(function() {
-    if($(this).attr('alt') == 'Love!') {
-        $(this).attr('src', '<?php echo $host?>images/icons/unlove.ico');
-        $(this).attr('alt') == 'Unlove!'
-    } else {
-        $(this).attr('src', '<?php echo $host?>images/icons/love.ico');
-        $(this).attr('alt') == 'Love!'
-    }
-});
-
-function love(itemId, act)
-{
-  $.ajax({
-      url: "<?php echo url_for('user/love')?>",
-      type : "POST",
-      data: {itemId:itemId, act:act},
-      success: function(data) {
-          if(act == 'love') {
-              $(this).attr('src', '<?php echo $host?>images/icons/love.ico');
-              $(this).attr('alt') == 'Unlove!'
-          } else { // unlove
-              $(this).attr('src', '<?php echo $host?>images/icons/unlove.ico');
-              $(this).attr('alt') == 'Love!'
-          }
-      }
-  });
-}
-</script>
+<?php include_partial('user/love', array());?>

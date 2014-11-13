@@ -28,6 +28,12 @@
 				</div>
     		<?php include_partial('page/share', array('url'=>$host."/page/show?route=".$rs->getRoute(),
                                        'via'=>sfConfig::get('app_webname'), 'text'=>$rs));?>
+        <?php $loved = in_array($rs['id'], $loves)?>
+        <?php echo image_tag('icons/'.( $loved ? 'love.ico' : 'unlove.ico'), 
+              array('alt'=>($loved ? 'Unlove!' : 'Love!'),
+                    'onclick'=>"love({$rs['id']}, '".($loved ? 'unlove' : 'love')."');", 
+                    'style'=>'float:left;cursor:pointer;', 'class'=>'love'))?>
+        <?php include_partial('user/love', array());?>
 				<br clear="all">
         <?php include_partial('page/info', array('rs'=>$rs))?>
     </div>
