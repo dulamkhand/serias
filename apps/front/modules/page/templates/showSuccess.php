@@ -16,24 +16,24 @@
 <!--image & info-->
 <?php $color = GlobalLib::getValue('colors', $type) ?>
 <div class="box-home" style="background:<?php echo $color?>;">
-		<div style="float:left;margin:0 0 10px 0;width:215px;">
+		<div style="float:left;margin:0 0 10px 0;width:215px;position:relative;">
 				<h2 style="margin:0;"><?php echo $rs?></h2>
 		    (<b><?php echo $rs->getTitleMn()?></b>)
 		    <br clear="all">
 		    <?php echo image_tag('/u/m/'.$rs->getImage(), array('style'=>'max-width:215px;'))?>
+		    <!--love-->
+        <?php $isLoved = GlobalTable::doFetchOne('Love', array('id'), array('objectType'=>'item', 'objectId'=>$rs->getId(), 'isActive'=>-1));?>
+        <?php include_partial('love/img', array('id'=>$rs->getId(), 'isLoved'=>$isLoved));?>
+        <?php include_partial('love/js', array());?>
 		</div>
     <div class="left ml10px" style="color:#fff;width:575px;">    		
     		<div class="left" style="width:125px;">
 					<?php echo $rs->getRating();?>
 				</div>
+				<!--share-->
     		<?php include_partial('page/share', array('url'=>$host."/page/show?route=".$rs->getRoute(),
                                        'via'=>sfConfig::get('app_webname'), 'text'=>$rs));?>
-        <?php $loved = in_array($rs['id'], $loves)?>
-        <?php echo image_tag('icons/'.( $loved ? 'love.ico' : 'unlove.ico'), 
-              array('alt'=>($loved ? 'Unlove!' : 'Love!'),
-                    'onclick'=>"love({$rs['id']}, '".($loved ? 'unlove' : 'love')."');", 
-                    'style'=>'float:left;cursor:pointer;', 'class'=>'love'))?>
-        <?php include_partial('user/love', array());?>
+
 				<br clear="all">
         <?php include_partial('page/info', array('rs'=>$rs))?>
     </div>

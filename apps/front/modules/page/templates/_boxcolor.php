@@ -6,11 +6,9 @@
     <div style="background:#333;padding:10px;">
         <?php foreach($rss as $rs):?>
             <div style="width:<?php echo $width?>px;height:<?php echo $height?>px;margin:0 10px 0 0;position:relative;" class="left">
-                <?php $loved = in_array($rs['id'], $loves)?>
-                <?php echo image_tag('icons/'.( $loved ? 'love.ico' : 'unlove.ico'), 
-                      array('alt'=>($loved ? 'Unlove!' : 'Love!'),
-                      'onclick'=>"love({$rs['id']}, '".($loved ? 'unlove' : 'love')."');", 
-                      'style'=>'position:absolute;right:0;bottom:20px;z-index:1000;cursor:pointer;', 'class'=>'love'))?>
+            
+                <?php include_partial('love/img', array('id'=>$rs['id'], 'isLoved'=>in_array($rs['id'], $loves)));?>
+
                 <a href="<?php echo url_for('page/show?route='.$rs['route'])?>" style="color:#fff;">
                     <?php echo image_tag('/u/m/t140-'.$rs['image'], array('style'=>'box-shadow:0 0 4px #666;max-width:'.$width.'px'))?>
                     <br clear="all">
@@ -27,5 +25,3 @@
     <?php endif?>
 </div><!--box-home-->
 <br clear="all">
-
-<?php include_partial('user/love', array());?>

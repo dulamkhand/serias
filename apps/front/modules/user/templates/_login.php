@@ -38,11 +38,15 @@ function showName() {
 
 <?php if($sf_user->isAuthenticated()):?>
     (<?php echo substr($sf_user->getAttribute('email'), 0, 24)?>)
-    <a style="text-decoration:underline;" href="<?php echo url_for('user/join')?>">Гарах</a>
+    <a style="text-decoration:underline;" href="<?php echo url_for('user/logout')?>">Гарах</a>
 <?php else:?>
-    <a href="<?php echo url_for('user/join')?>"><h3 style="float:left;width:60px;">Нэвтрэх</h3></a>
+    <a onclick="$('#formLogin').dialog({height:310, width:400});">
+        <h3 style="float:left;width:60px;">Нэвтрэх</h3>
+    </a>
     <span style="float:left;margin:0 10px 0 2px;"> | </span>
-    <a href="<?php echo url_for('user/join')?>"><h3 style="float:left;width:80px;">Бүртгүүлэх</h3></a>    
+    <a onclick="$('#formRegister').dialog({height:310, width:400});">
+        <h3 style="float:left;width:80px;">Бүртгүүлэх</h3>
+    </a>
 <?php endif?>
 <br clear="all">
 

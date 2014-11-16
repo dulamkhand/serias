@@ -1,8 +1,8 @@
 <?php $host = sfConfig::get('app_host')?>
 
-<form action="#" method="post" id="formLogin" class="left">
+<form action="#" method="post" id="formLogin" class="left" title="Нэвтрэх" style="padding:30px 70px 0px 70px;z-index:2;">
     <div id="errorLogin"></div>
-  
+    
     <?php echo $form['email']->renderLabel() ?>
     <br clear="all">
     <?php echo $form['email'] ?>
