@@ -56,5 +56,7 @@
 </body>
 </html>
 
-<?php include_partial("user/boxLogin", array('form'=>new LoginForm()))?>
-<?php include_partial('user/boxRegister', array('form'=>new RegisterForm()))?>
+<div style="display:none;">
+    <?php include_partial("user/boxLogin", array('form'=>new LoginForm()))?>
+    <?php include_partial('user/boxRegister', array('form'=>new RegisterForm()))?>
+</div>

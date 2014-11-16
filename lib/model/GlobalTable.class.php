@@ -47,6 +47,10 @@ class GlobalTable extends Doctrine_Table
         if(isset($params['itemId']) && $params['itemId'] != null)
             $q->andWhere('item_id = ? ', $params['itemId']);
 
+        # userId
+        if(isset($params['userId']) && $params['userId'] != null)
+            $q->andWhere('user_id = ? ', $params['userId']);
+
         # filters
         if(isset($params['y']) && $params['y'] != null)
             $q->andWhere('year = ? ', $params['y']);

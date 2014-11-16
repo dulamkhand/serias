@@ -37,7 +37,7 @@ function showName() {
 </script>
 
 <?php if($sf_user->isAuthenticated()):?>
-    (<?php echo substr($sf_user->getAttribute('email'), 0, 24)?>)
+    (<a href="<?php echo url_for('user/profile')?>"><?php echo substr($sf_user->getAttribute('email'), 0, 24)?></a>)
     <a style="text-decoration:underline;" href="<?php echo url_for('user/logout')?>">Гарах</a>
 <?php else:?>
     <a onclick="$('#formLogin').dialog({height:310, width:400});">
