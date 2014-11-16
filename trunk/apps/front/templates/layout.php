@@ -9,7 +9,11 @@
 
   <!-- JQUIRY -->
   <!--<script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>-->
-  <script src="<?php echo $host?>js/jquery.min.js"></script>  
+  <script src="<?php echo $host?>js/jquery.min.js"></script>
+  
+  <!-- UI -->
+  <script src="<?php echo $host?>addons/ui/jquery-ui.min.js"></script>
+  <?php use_stylesheet('/addons/ui/jquery-ui.css') ?>
    
   <!-- FONTS -->
   <?php use_stylesheet('/addons/fonts/open-sans.css') ?>
@@ -51,3 +55,6 @@
 
 </body>
 </html>
+
+<?php include_partial("user/boxLogin", array('form'=>new LoginForm()))?>
+<?php include_partial('user/boxRegister', array('form'=>new RegisterForm()))?>

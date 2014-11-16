@@ -1,6 +1,6 @@
 <?php $host = sfConfig::get('app_host')?>
 
-<form action="#" method="post" id="formRegister" class="left">
+<form action="#" method="post" id="formRegister" class="left" title="Бүртгүүлэх" style="padding:30px 70px 0px 70px;z-index:2;">
     <div id="errorRegister"></div>
 
     <?php echo $form['email']->renderLabel() ?>

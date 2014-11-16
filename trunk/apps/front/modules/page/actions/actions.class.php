@@ -45,6 +45,9 @@ class pageActions extends sfActions
         $rs->setNbViews($rs->getNbViews()+1);
         $rs->save();
         
+        
+        $this->loves = GlobalTable::doFetchSelection('Love', 'object_id', array('object_id'), array('objectType'=>'item', 'isActive'=>-1));
+        
         // META
         $meta = sfConfig::get('app_webname').' | '.$rs;
         $this->getResponse()->setTitle($meta);

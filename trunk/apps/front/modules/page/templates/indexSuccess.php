@@ -36,3 +36,4 @@
 <br clear="all">
 <?php echo pager($pager, $uri.'&y='.$y.'&l='.$l.'&g='.$g)?>
 
+<?php include_partial('love/js', array());?>
