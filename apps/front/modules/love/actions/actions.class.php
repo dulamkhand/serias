@@ -12,14 +12,14 @@ class loveActions extends sfActions
 {
     public function executeToggle(sfWebRequest $request)
     {
-        if($request->getParameter('act') == 'love') {
+        if($request->getParameter('alt') == 'Love!') {
             $love = new Love();
             $love->setObjectId($request->getParameter('itemId'));
             $love->setObjectType('item');
             $love->setUserId($this->getUser()->getId());
             $love->setIpAddress($request->getRemoteAddress());
             $love->save();  
-        } elseif ($request->getParameter('act') == 'unlove') {
+        } elseif ($request->getParameter('alt') == 'Unlove!') {
             Doctrine_Query::create()->delete()->from('Love')
                 ->where('object_id = ?', $request->getParameter('itemId'))
                 ->andWhere('object_type = ?', 'item')

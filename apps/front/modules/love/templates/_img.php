@@ -1,8 +1,8 @@
-<?php echo image_tag('icons/'.( $isLoved ? 'love.ico' : 'unlove.ico'), 
+<?php echo image_tag('icons/'.( $isLoved ? 'love16.ico' : 'unlove16.ico'), 
       array('alt'=>($isLoved ? 'Unlove!' : 'Love!'),
       'onclick'=>$sf_user->isAuthenticated() ? 
-              "love({$id}, '".($isLoved ? 'unlove' : 'love')."');" 
+              "love({$id}, 16);" 
             : "$('#formLogin').dialog({height:310, width:400});", 
       'style'=>'position:absolute;right:0;bottom:20px;z-index:1;cursor:pointer;', 
-      'class'=>'love', 'id'=>'love'.$id))?>
+      'class'=>'love16', 'id'=>'love'.$id))?>
 

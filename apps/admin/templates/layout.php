@@ -19,19 +19,44 @@
             <?php $tab = isset($tab) ? $tab : $sf_request->getParameter('module'); ?>
             <?php $act = isset($act) ? $act : $sf_request->getParameter('action'); ?>
             		<li <?php echo $tab == 'item' ? 'class="current"' : '' ?>>
-                  <?php echo link_to('Item', 'item/index')?>
+                  <?php echo link_to('item', 'item/index')?>
                 </li>
                 <li <?php echo $tab == 'link' ? 'class="current"' : '' ?>>
-                  <?php echo link_to('Link', 'link/index')?>
+                  <?php echo link_to('link', 'link/index')?>
                 </li>
                 <?php if($sf_user->hasCredential('bests')):?>
                 		<li <?php echo $tab == 'bests' ? 'class="current"' : '' ?>>
-		                  <?php echo link_to('Bests', 'bests/index')?>
+		                  <?php echo link_to('bests', 'bests/index')?>
+		                </li>
+                <?php endif?>
+                <?php if($sf_user->hasCredential('feedback')):?>
+                		<li <?php echo $tab == 'feedback' ? 'class="current"' : '' ?>>
+		                  <?php echo link_to('feedback', 'feedback/index')?>
+		                </li>
+                <?php endif?>
+                <?php if($sf_user->hasCredential('news')):?>
+                		<li <?php echo $tab == 'news' ? 'class="current"' : '' ?>>
+		                  <?php echo link_to('news', 'news/index')?>
+		                </li>
+                <?php endif?>
+                <?php if($sf_user->hasCredential('poll')):?>
+                		<li <?php echo $tab == 'poll' ? 'class="current"' : '' ?>>
+		                  <?php echo link_to('poll', 'poll/index')?>
+		                </li>
+                <?php endif?>
+                <?php if($sf_user->hasCredential('subscriber')):?>
+                		<li <?php echo $tab == 'subscriber' ? 'class="current"' : '' ?>>
+		                  <?php echo link_to('subscriber', 'subscriber/index')?>
+		                </li>
+                <?php endif?>
+                <?php if($sf_user->hasCredential('user')):?>
+                		<li <?php echo $tab == 'user' ? 'class="current"' : '' ?>>
+		                  <?php echo link_to('user', 'user/index')?>
 		                </li>
                 <?php endif?>
                 <?php if($sf_user->hasCredential('admin')):?>
 		                <li <?php echo $tab == 'admin' ? 'class="current"' : '' ?>>
-		                    <?php echo link_to('Admin', 'admin/index')?>
+		                    <?php echo link_to('admin', 'admin/index')?>
 		                </li>
                 <?php endif?>
             <li><?php echo link_to('Logout ('.$sf_user->getEmail().')', 'admin/logout')?></li>

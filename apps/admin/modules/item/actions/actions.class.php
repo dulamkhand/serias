@@ -81,10 +81,37 @@ class itemActions extends sfActions
             $rs->setTrailer(trim($rs->getTrailer()));
             $rs->setRating(trim($rs->getRating()));
             $rs->setKickass(trim($rs->getKickass()));
+						// casts            
             $rs->setCasts(trim($rs->getCasts()));
+            $tmp = explode(',', $rs->getCasts());
+            foreach($tmp as $t) {
+            		if(!GlobalTable::doFetchOne('Celebrity', array('id'), array('fullname'=>trim($t)))) {
+            				$c = new Celebrity();
+            				$c->setFullname($t);
+            				$c->save();
+            		}
+            }
             $rs->setStudios(trim($rs->getStudios()));
+            // director
             $rs->setDirector(trim($rs->getDirector()));
+            $tmp = explode(',', $rs->getDirector());
+            foreach($tmp as $t) {
+            		if(!GlobalTable::doFetchOne('Celebrity', array('id'), array('fullname'=>trim($t)))) {
+            				$c = new Celebrity();
+            				$c->setFullname($t);
+            				$c->save();
+            		}
+            }
+            // writer
             $rs->setWriter(trim($rs->getWriter()));
+            $tmp = explode(',', $rs->getWriter());
+            foreach($tmp as $t) {
+            		if(!GlobalTable::doFetchOne('Celebrity', array('id'), array('fullname'=>trim($t)))) {
+            				$c = new Celebrity();
+            				$c->setFullname($t);
+            				$c->save();
+            		}
+            }
             $rs->setDuration(trim($rs->getDuration()));
             $rs->setAge(trim($rs->getAge()));
             $rs->setOfficialLink1(trim($rs->getOfficialLink1()));
