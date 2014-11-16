@@ -100,7 +100,8 @@ class GlobalLib
                   'sideright'=>'Sideright',
                   'search'=>'Search 1000px');
 
-    public static $mod_permissions = array('item'=>'Item', 'link'=>'Link', 'admin'=>'admin');   
+    public static $mod_permissions = array('item'=>'Item', 'link'=>'Link', 'bests'=>'Bests', 'feedback'=>'Feedback', 
+										   'news'=>'News','poll'=>'Poll', 'subs'=>'Subscriber', 'user'=>'User', 'admin'=>'Admin');
 
     public static function getArray($type)
     {

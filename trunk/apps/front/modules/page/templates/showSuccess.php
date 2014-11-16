@@ -33,13 +33,13 @@
                                        'via'=>sfConfig::get('app_webname'), 'text'=>$rs));?>
         <!--love-->
         <?php $isLoved = GlobalTable::doFetchOne('Love', array('id'), array('objectType'=>'item', 'objectId'=>$rs->getId(), 'isActive'=>-1));?>
-        <?php echo image_tag('icons/'.( $isLoved ? 'love.ico' : 'unlove.ico'), 
+        <?php echo image_tag('icons/'.( $isLoved ? 'love24.ico' : 'unlove24.ico'), 
                   array('alt'=>($isLoved ? 'Unlove!' : 'Love!'),
                   'onclick'=>$sf_user->isAuthenticated() ? 
-                          "love({$id}, '".($isLoved ? 'unlove' : 'love')."');" 
+                          "love({$rs->getId()}, 24);" 
                         : "$('#formLogin').dialog({height:310, width:400});", 
-                  'style'=>'float:left;margin:10px;z-index:1;cursor:pointer;', 
-                  'class'=>'love', 'id'=>'love'.$id))?>
+                  'style'=>'float:left;margin:9px 0 0 20px;z-index:1;cursor:pointer;', 
+                  'class'=>'love24', 'id'=>'love'.$rs->getId()))?>
 
         <?php include_partial('love/js', array());?>
 				<br clear="all">

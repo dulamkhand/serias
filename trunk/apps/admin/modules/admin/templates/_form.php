@@ -35,7 +35,7 @@
             <div style="height:250px;overflow-y:scroll;width:550px;">
                 <?php $obj = $form->getObject();
                 $ids = ($obj && $obj->getModPermissions()) ? explode(";", $obj->getModPermissions()) : array();
-                $rss = GlobalLib::getArray('modPermissions');
+                $rss = GlobalLib::getArray('mod_permissions');
                 foreach ($rss as $k=>$v){
                     echo "<label><input type='checkbox' value='{$k}' name='mod_permissions[]' ".(in_array($k, $ids) ? 'checked' : '')."/>{$v}</label><br clear='all'>";
                 }
