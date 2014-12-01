@@ -105,10 +105,10 @@
       </tr>
       <tr><td colspan="2" style="color:#ccc;"><?php echo str_repeat('-', 120)?></td></tr>
       <tr>
-        <th><?php echo $form['trailer']->renderLabel() ?></th>
+        <th><?php echo $form['studios']->renderLabel() ?></th>
         <td>
-          <?php echo $form['trailer']->renderError() ?>
-          <?php echo $form['trailer'] ?>
+          <?php echo $form['studios']->renderError() ?>
+          <?php echo $form['studios'] ?>
         </td>
       </tr>
       <tr>
@@ -118,46 +118,10 @@
           <?php echo $form['rating'] ?>
         </td>
       </tr>
-      <tr>
-        <th><?php echo $form['kickass']->renderLabel() ?></th>
-        <td>
-          <?php echo $form['kickass']->renderError() ?>
-          <?php echo $form['kickass'] ?>
-        </td>
-      </tr>
     </tbody>
   </table>
   <table class="left">
-      <tr>
-        <th><?php echo $form['casts']->renderLabel() ?></th>
-        <td>
-          <?php echo $form['casts']->renderError() ?>
-          <?php echo $form['casts'] ?>
-          <?php echo $form['casts']->renderHelp() ?>
-        </td>
-      </tr>
-      <tr>
-        <th><?php echo $form['studios']->renderLabel() ?></th>
-        <td>
-          <?php echo $form['studios']->renderError() ?>
-          <?php echo $form['studios'] ?>
-        </td>
-      </tr>
-      <tr>
-        <th><?php echo $form['director']->renderLabel() ?></th>
-        <td>
-          <?php echo $form['director']->renderError() ?>
-          <?php echo $form['director'] ?>
-        </td>
-      </tr>
-      <tr>
-        <th><?php echo $form['writer']->renderLabel() ?></th>
-        <td>
-          <?php echo $form['writer']->renderError() ?>
-          <?php echo $form['writer'] ?>
-        </td>
-      </tr> 
-      <tr>
+  		 <tr>
         <th><?php echo $form['duration']->renderLabel() ?></th>
         <td>
           <?php echo $form['duration']->renderError() ?>
@@ -173,6 +137,29 @@
           <?php echo $form['age']->renderHelp() ?>
         </td>
       </tr>
+      <tr>
+        <th><?php echo $form['director']->renderLabel() ?></th>
+        <td>
+          <?php echo $form['director']->renderError() ?>
+          <?php echo $form['director'] ?>
+        </td>
+      </tr>
+      <tr>
+        <th><?php echo $form['writer']->renderLabel() ?></th>
+        <td>
+          <?php echo $form['writer']->renderError() ?>
+          <?php echo $form['writer'] ?>
+        </td>
+      </tr>
+      <tr>
+        <th><?php echo $form['casts']->renderLabel() ?></th>
+        <td>
+          <?php echo $form['casts']->renderError() ?>
+          <?php echo $form['casts'] ?>
+          <?php echo $form['casts']->renderHelp() ?>
+        </td>
+      </tr>
+			<tr><td colspan="2" style="color:#ccc;"><?php echo str_repeat('-', 120)?></td></tr>
       <tr>
         <th><?php echo $form['nb_seasons']->renderLabel() ?></th>
         <td>
@@ -209,6 +196,7 @@
           <?php echo $form['comingsoon'] ?>
         </td>
       </tr>
+      <tr><td colspan="2" style="color:#ccc;"><?php echo str_repeat('-', 120)?></td></tr>
       <tr>
         <th><?php echo $form['official_link1']->renderLabel() ?></th>
         <td>
@@ -223,7 +211,6 @@
           <?php echo $form['official_link2'] ?>
         </td>
       </tr>
-      <tr><td colspan="2" style="color:#ccc;"><?php echo str_repeat('-', 120)?></td></tr>
       <tr>
         <th><?php echo $form['source']->renderLabel() ?></th>
         <td>
@@ -232,6 +219,21 @@
           <?php echo $form['source']->renderHelp() ?>
         </td>
       </tr>
+      <tr>
+        <th><?php echo $form['trailer']->renderLabel() ?></th>
+        <td>
+          <?php echo $form['trailer']->renderError() ?>
+          <?php echo $form['trailer'] ?>
+        </td>
+      </tr>
+      <tr>
+        <th><?php echo $form['kickass']->renderLabel() ?></th>
+        <td>
+          <?php echo $form['kickass']->renderError() ?>
+          <?php echo $form['kickass'] ?>
+        </td>
+      </tr>
+      <tr><td colspan="2" style="color:#ccc;"><?php echo str_repeat('-', 120)?></td></tr>
       <tr>
         <th><?php echo $form['sort']->renderLabel() ?></th>
         <td>
