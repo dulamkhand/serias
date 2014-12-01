@@ -161,3 +161,4 @@ border-radius:2px;-moz-border-radius:2px;-webkit-border-radius:2px;-o-border-rad
 .pager .total{float:right;margin:5px 0 0 0;font-style:italic;}
 
 
+#scrollUp {background: url(../images/icons/scrollup.png) no-repeat;bottom:30px;right:15px;width:48px;height:48px;opacity:0.7;}

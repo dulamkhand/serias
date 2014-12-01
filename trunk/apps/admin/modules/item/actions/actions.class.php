@@ -69,6 +69,16 @@ class itemActions extends sfActions
         {
             $rs = $form->save();
             $rs->setGenre(join(";", $request->getParameter('genres')));
+            // image
+            if($rs->getImage()) {
+            		// create waterlink
+		            $filepath = sfConfig::get('sf_upload_dir').'/'.$rs->getFolder().'/'.$rs->getImage();
+		            $img = new sfImage($filepath);
+		            $img->overlay(new sfImage(sfConfig::get('sf_web_dir').'/images/watermark.png'), 'bottom-right');
+		            $img->saveAs($filepath);
+            }
+            
+            // title
             $rs->setTitle(trim($rs->getTitle()));
             $rs->setTitleMn(trim($rs->getTitleMn()));
             if($rs->getTitle()) {

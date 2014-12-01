@@ -1,26 +1,35 @@
+<?php $host = sfConfig::get('app_host')?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
-  <?php include_http_metas() ?>
-  <?php include_metas() ?>
-  <?php include_title() ?>
-  <?php $host = sfConfig::get('app_host')?>
-  <link rel="shortcut icon" href="<?php echo $host?>favicon.ico" />
-
-  <!-- JQUIRY -->
-  <!--<script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>-->
-  <script src="<?php echo $host?>js/jquery.min.js"></script>
-  
-  <!-- UI -->
-  <script src="<?php echo $host?>addons/ui/jquery-ui.min.js"></script>
-  <?php use_stylesheet('/addons/ui/jquery-ui.css') ?>
-   
-  <!-- FONTS -->
-  <?php use_stylesheet('/addons/fonts/open-sans.css') ?>
-  <?php use_stylesheet('/addons/fonts/roboto.css') ?>  
-  
-	<?php include_stylesheets() ?>
-  <?php include_javascripts() ?>
+	  <?php include_http_metas() ?>
+	  <?php include_metas() ?>
+	  <?php include_title() ?>
+	  <link rel="shortcut icon" href="<?php echo $host?>favicon.ico" />
+	
+	  <!-- JQUIRY -->
+	  <!--<script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>-->
+	  <script src="<?php echo $host?>js/jquery.min.js"></script>
+	  
+	  <!-- ADDONS -->
+	  <script src="<?php echo $host?>addons/ui/jquery-ui.min.js"></script>
+	  <?php use_stylesheet('/addons/ui/jquery-ui.css') ?>
+	  <script src="<?php echo $host?>addons/sticky/jquery.sticky.js"></script>
+	  <script src="<?php echo $host?>addons/scrollup/jquery.scrollUp.min.js"></script>
+	   
+	  <!-- FONTS -->
+	  <?php use_stylesheet('/addons/fonts/open-sans.css') ?>
+	  <?php use_stylesheet('/addons/fonts/roboto.css') ?>  
+	  
+		<?php include_stylesheets() ?>
+	  <?php include_javascripts() ?>
+	  
+	  <script type="text/javascript">
+				// scroll-up
+		    $(function(){
+		        $.scrollUp({scrollText:''});
+		    });
+	  </script>
 </head>
 <body>
 <div id="fb-root"></div>
