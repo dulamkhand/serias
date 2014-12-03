@@ -22,7 +22,7 @@ class ItemForm extends BaseItemForm
         $this->widgetSchema['image']          = new sfWidgetFormInputFile(array(), array());
       	$this->widgetSchema['year']           = new sfWidgetFormInputText(array(), array('style'=>'width:40px;'));
       	$this->widgetSchema['year_end']       = new sfWidgetFormInputText(array(), array('style'=>'width:40px;'));
-      	$years = range(date('Y') + 2, date('Y') - 40);
+      	$years = range(date('Y') + 3, date('Y') - 100);
       	$this->widgetSchema['release_date']   = new sfWidgetFormDate(array('years'=>array_combine($years, $years), 'format'=>'%year%/%month%/%day%'), array('style'=>'width:60px;'));
       	$this->widgetSchema['summary']        = new sfWidgetFormTextarea(array(), array());
       	$this->widgetSchema['summary_mn']     = new sfWidgetFormTextarea(array(), array());
@@ -80,8 +80,8 @@ class ItemForm extends BaseItemForm
       	$this->validatorSchema['boxoffice']    = new sfValidatorPass();
       	$this->validatorSchema['thisweek']     = new sfValidatorPass();
       	$this->validatorSchema['comingsoon']   = new sfValidatorPass();
-      	$this->validatorSchema['official_link1'] = new sfValidatorString();
-      	$this->validatorSchema['official_link2'] = new sfValidatorString();
+      	$this->validatorSchema['official_link1'] = new sfValidatorUrl(array('required'=>false), array());
+      	$this->validatorSchema['official_link2'] = new sfValidatorUrl();
       	$this->validatorSchema['source']         = new sfValidatorString();
       	
       	#HELP

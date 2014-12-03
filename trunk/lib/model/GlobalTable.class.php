@@ -70,8 +70,8 @@ class GlobalTable extends Doctrine_Table
         if(isset($params['isActive'])) {
             if($params['isActive'] != "all" && in_array($params['isActive'], array('0', '1'))) // all ued filter hiihgui
                 $q->andWhere('is_active = ?', $params['isActive']);
-        } else if($params['isActive'] != -1) {
-              $q->andWhere('is_active = ?', 1);
+            else if($params['isActive'] != -1)
+                $q->andWhere('is_active = ?', 1);
         }
         
         # isFeatured

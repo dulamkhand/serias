@@ -11,7 +11,7 @@ Doctrine_Manager::getInstance()->bindComponent('Bests', 'doctrine');
  * @property string $best_type
  * @property integer $number
  * @property integer $item_id
- * @property integer $is_active
+ * @property boolean $is_active
  * @property timestamp $created_at
  * @property timestamp $updated_at
  * @property integer $created_aid
@@ -22,7 +22,7 @@ Doctrine_Manager::getInstance()->bindComponent('Bests', 'doctrine');
  * @method string    getBestType()    Returns the current record's "best_type" value
  * @method integer   getNumber()      Returns the current record's "number" value
  * @method integer   getItemId()      Returns the current record's "item_id" value
- * @method integer   getIsActive()    Returns the current record's "is_active" value
+ * @method boolean   getIsActive()    Returns the current record's "is_active" value
  * @method timestamp getCreatedAt()   Returns the current record's "created_at" value
  * @method timestamp getUpdatedAt()   Returns the current record's "updated_at" value
  * @method integer   getCreatedAid()  Returns the current record's "created_aid" value
@@ -84,14 +84,13 @@ abstract class BaseBests extends sfDoctrineRecord
              'autoincrement' => false,
              'length' => 4,
              ));
-        $this->hasColumn('is_active', 'integer', 1, array(
-             'type' => 'integer',
+        $this->hasColumn('is_active', 'boolean', null, array(
+             'type' => 'boolean',
              'fixed' => 0,
              'unsigned' => false,
              'primary' => false,
              'notnull' => true,
              'autoincrement' => false,
-             'length' => 1,
              ));
         $this->hasColumn('created_at', 'timestamp', 25, array(
              'type' => 'timestamp',

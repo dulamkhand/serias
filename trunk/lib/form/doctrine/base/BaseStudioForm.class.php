@@ -1,25 +1,25 @@
 <?php
 
 /**
- * Celebrity form base class.
+ * Studio form base class.
  *
- * @method Celebrity getObject() Returns the current form's model object
+ * @method Studio getObject() Returns the current form's model object
  *
  * @package    imdb
  * @subpackage form
  * @author     Your name here
  * @version    SVN: $Id: sfDoctrineFormGeneratedTemplate.php 29553 2010-05-20 14:33:00Z Kris.Wallsmith $
  */
-abstract class BaseCelebrityForm extends BaseFormDoctrine
+abstract class BaseStudioForm extends BaseFormDoctrine
 {
   public function setup()
   {
     $this->setWidgets(array(
       'id'             => new sfWidgetFormInputHidden(),
-      'fullname'       => new sfWidgetFormTextarea(),
-      'fullname_mn'    => new sfWidgetFormTextarea(),
+      'name'           => new sfWidgetFormTextarea(),
+      'name_mn'        => new sfWidgetFormTextarea(),
       'route'          => new sfWidgetFormTextarea(),
-      'profession'     => new sfWidgetFormInputText(),
+      'location'       => new sfWidgetFormTextarea(),
       'image'          => new sfWidgetFormTextarea(),
       'birthday'       => new sfWidgetFormDate(),
       'deadday'        => new sfWidgetFormDate(),
@@ -42,10 +42,10 @@ abstract class BaseCelebrityForm extends BaseFormDoctrine
 
     $this->setValidators(array(
       'id'             => new sfValidatorChoice(array('choices' => array($this->getObject()->get('id')), 'empty_value' => $this->getObject()->get('id'), 'required' => false)),
-      'fullname'       => new sfValidatorString(array('max_length' => 1000)),
-      'fullname_mn'    => new sfValidatorString(array('max_length' => 1000)),
+      'name'           => new sfValidatorString(array('max_length' => 1000)),
+      'name_mn'        => new sfValidatorString(array('max_length' => 1000)),
       'route'          => new sfValidatorString(array('max_length' => 1000)),
-      'profession'     => new sfValidatorString(array('max_length' => 100)),
+      'location'       => new sfValidatorString(array('max_length' => 1000)),
       'image'          => new sfValidatorString(array('max_length' => 1000)),
       'birthday'       => new sfValidatorDate(),
       'deadday'        => new sfValidatorDate(),
@@ -66,7 +66,7 @@ abstract class BaseCelebrityForm extends BaseFormDoctrine
       'updated_at'     => new sfValidatorDateTime(array('required' => false)),
     ));
 
-    $this->widgetSchema->setNameFormat('celebrity[%s]');
+    $this->widgetSchema->setNameFormat('studio[%s]');
 
     $this->errorSchema = new sfValidatorErrorSchema($this->validatorSchema);
 
@@ -77,7 +77,7 @@ abstract class BaseCelebrityForm extends BaseFormDoctrine
 
   public function getModelName()
   {
-    return 'Celebrity';
+    return 'Studio';
   }
 
 }

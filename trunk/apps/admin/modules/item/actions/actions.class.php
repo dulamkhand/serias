@@ -97,18 +97,27 @@ class itemActions extends sfActions
             foreach($tmp as $t) {
             		if(!GlobalTable::doFetchOne('Celebrity', array('id'), array('fullname'=>trim($t)))) {
             				$c = new Celebrity();
-            				$c->setFullname($t);
+            				$c->setFullname(trim($t));
             				$c->save();
             		}
             }
+            // studio
             $rs->setStudios(trim($rs->getStudios()));
+            $tmp = explode(',', $rs->getStudios());
+            foreach($tmp as $t) {
+            		if(!GlobalTable::doFetchOne('Studio', array('id'), array('name'=>trim($t)))) {
+            				$c = new Studio();
+            				$c->setName(trim($t));
+            				$c->save();
+            		}
+            }
             // director
             $rs->setDirector(trim($rs->getDirector()));
             $tmp = explode(',', $rs->getDirector());
             foreach($tmp as $t) {
             		if(!GlobalTable::doFetchOne('Celebrity', array('id'), array('fullname'=>trim($t)))) {
             				$c = new Celebrity();
-            				$c->setFullname($t);
+            				$c->setFullname(trim($t));
             				$c->save();
             		}
             }
@@ -118,7 +127,7 @@ class itemActions extends sfActions
             foreach($tmp as $t) {
             		if(!GlobalTable::doFetchOne('Celebrity', array('id'), array('fullname'=>trim($t)))) {
             				$c = new Celebrity();
-            				$c->setFullname($t);
+            				$c->setFullname(trim($t));
             				$c->save();
             		}
             }

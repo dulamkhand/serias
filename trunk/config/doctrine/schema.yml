@@ -51,14 +51,14 @@ Admin:
       notnull: true
       autoincrement: false
     is_active:
-      type: integer(1)
+      type: boolean
       fixed: false
       unsigned: false
       primary: false
       notnull: true
       autoincrement: false
     is_featured:
-      type: integer(1)
+      type: boolean
       fixed: false
       unsigned: false
       primary: false
@@ -132,7 +132,7 @@ Banner:
       notnull: true
       autoincrement: false
     target:
-      type: integer(1)
+      type: boolean
       fixed: false
       unsigned: false
       primary: false
@@ -175,14 +175,14 @@ Banner:
       notnull: true
       autoincrement: false
     is_active:
-      type: integer(1)
+      type: boolean
       fixed: false
       unsigned: false
       primary: false
       notnull: true
       autoincrement: false
     is_featured:
-      type: integer(1)
+      type: boolean
       fixed: false
       unsigned: false
       primary: false
@@ -249,7 +249,7 @@ Bests:
       notnull: true
       autoincrement: false
     is_active:
-      type: integer(1)
+      type: boolean
       fixed: false
       unsigned: false
       primary: false
@@ -405,14 +405,14 @@ Celebrity:
       notnull: true
       autoincrement: false
     is_active:
-      type: integer(1)
+      type: boolean
       fixed: false
       unsigned: false
       primary: false
       notnull: true
       autoincrement: false
     is_featured:
-      type: integer(1)
+      type: boolean
       fixed: false
       unsigned: false
       primary: false
@@ -720,35 +720,35 @@ Item:
       notnull: true
       autoincrement: false
     is_active:
-      type: integer(1)
+      type: boolean
       fixed: false
       unsigned: false
       primary: false
       notnull: true
       autoincrement: false
     is_featured:
-      type: integer(1)
+      type: boolean
       fixed: false
       unsigned: false
       primary: false
       notnull: true
       autoincrement: false
     boxoffice:
-      type: integer(1)
+      type: boolean
       fixed: false
       unsigned: false
       primary: false
       notnull: true
       autoincrement: false
     thisweek:
-      type: integer(1)
+      type: boolean
       fixed: false
       unsigned: false
       primary: false
       notnull: true
       autoincrement: false
     comingsoon:
-      type: integer(1)
+      type: boolean
       fixed: false
       unsigned: false
       primary: false
@@ -855,14 +855,14 @@ Link:
       notnull: true
       autoincrement: false
     is_active:
-      type: integer(1)
+      type: boolean
       fixed: false
       unsigned: false
       primary: false
       notnull: true
       autoincrement: false
     is_featured:
-      type: integer(1)
+      type: boolean
       fixed: false
       unsigned: false
       primary: false
@@ -989,14 +989,14 @@ Poll:
       notnull: true
       autoincrement: false
     options_addable:
-      type: integer(1)
+      type: boolean
       fixed: false
       unsigned: false
       primary: false
       notnull: true
       autoincrement: false
     multiple_choice:
-      type: integer(1)
+      type: boolean
       fixed: false
       unsigned: false
       primary: false
@@ -1010,14 +1010,14 @@ Poll:
       notnull: true
       autoincrement: false
     is_active:
-      type: integer(1)
+      type: boolean
       fixed: false
       unsigned: false
       primary: false
       notnull: true
       autoincrement: false
     is_featured:
-      type: integer(1)
+      type: boolean
       fixed: false
       unsigned: false
       primary: false
@@ -1098,7 +1098,7 @@ PollOption:
       notnull: true
       autoincrement: false
     is_active:
-      type: integer(1)
+      type: boolean
       fixed: false
       unsigned: false
       primary: false
@@ -1138,6 +1138,171 @@ PollOption:
       fixed: false
       unsigned: false
       primary: false
+      notnull: true
+      autoincrement: false
+Studio:
+  connection: doctrine
+  tableName: studio
+  columns:
+    id:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: true
+      autoincrement: true
+    name:
+      type: string(1000)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    name_mn:
+      type: string(1000)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    route:
+      type: string(1000)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    location:
+      type: string(1000)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    image:
+      type: string(1000)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    birthday:
+      type: date(25)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    deadday:
+      type: date(25)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    about:
+      type: string(1000)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    about_mn:
+      type: string(1000)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    rating:
+      type: string(1000)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    official_link1:
+      type: string(1000)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    official_link2:
+      type: string(1000)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    sort:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    nb_views:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    nb_love:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    is_active:
+      type: boolean
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    is_featured:
+      type: boolean
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    source:
+      type: string(1000)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    created_aid:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    updated_aid:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    created_at:
+      type: timestamp(25)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    updated_at:
+      type: timestamp(25)
+      fixed: false
+      unsigned: false
+      primary: false
+      default: '0000-00-00 00:00:00'
       notnull: true
       autoincrement: false
 User:
@@ -1200,7 +1365,7 @@ User:
       notnull: true
       autoincrement: false
     is_active:
-      type: integer(1)
+      type: boolean
       fixed: false
       unsigned: false
       primary: false

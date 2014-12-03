@@ -51,7 +51,9 @@
 <?php endif?>
 
 <span class="bold">Албан ёсны хуудас:</span>
-<a href="<?php echo $rs->getOfficialLink1();?>" target="_blank" style="color:#fff;">Facebok official</a>, 
+<?php if($tmp = $rs->getOfficialLink1()):?>
+    <a href="<?php echo $rs->getOfficialLink1();?>" target="_blank" style="color:#fff;">Facebook official</a>, 
+<?php endif?>
 <a href="<?php echo $rs->getOfficialLink2();?>" target="_blank" style="color:#fff;">Official website</a>
 <br clear="all">
 
