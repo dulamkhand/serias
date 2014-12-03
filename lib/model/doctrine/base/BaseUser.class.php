@@ -15,7 +15,7 @@ Doctrine_Manager::getInstance()->bindComponent('User', 'doctrine');
  * @property string $email
  * @property string $mobile
  * @property string $avator
- * @property integer $is_active
+ * @property boolean $is_active
  * @property timestamp $created_at
  * @property timestamp $updated_at
  * @property timestamp $logged_at
@@ -30,7 +30,7 @@ Doctrine_Manager::getInstance()->bindComponent('User', 'doctrine');
  * @method string    getEmail()           Returns the current record's "email" value
  * @method string    getMobile()          Returns the current record's "mobile" value
  * @method string    getAvator()          Returns the current record's "avator" value
- * @method integer   getIsActive()        Returns the current record's "is_active" value
+ * @method boolean   getIsActive()        Returns the current record's "is_active" value
  * @method timestamp getCreatedAt()       Returns the current record's "created_at" value
  * @method timestamp getUpdatedAt()       Returns the current record's "updated_at" value
  * @method timestamp getLoggedAt()        Returns the current record's "logged_at" value
@@ -132,14 +132,13 @@ abstract class BaseUser extends sfDoctrineRecord
              'autoincrement' => false,
              'length' => 255,
              ));
-        $this->hasColumn('is_active', 'integer', 1, array(
-             'type' => 'integer',
+        $this->hasColumn('is_active', 'boolean', null, array(
+             'type' => 'boolean',
              'fixed' => 0,
              'unsigned' => false,
              'primary' => false,
              'notnull' => true,
              'autoincrement' => false,
-             'length' => 1,
              ));
         $this->hasColumn('created_at', 'timestamp', 25, array(
              'type' => 'timestamp',

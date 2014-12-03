@@ -29,7 +29,7 @@
         <td>
             <?php $params = $sf_params->get('genres') ? $sf_params->get('genres') : explode(";", $form->getObject()->getGenre());?>
             <?php $choices = GlobalLib::getArray('genre');?>
-            <select id="item_genre" name="genres[]" style="height:300px;width:200px;" multiple="1">
+            <select id="item_genre" name="genres[]" style="height:300px;width:250px;" multiple="1">
                 <?php foreach ($choices as $k=>$v):?>
                     <option value="<?php echo $k?>" <?php echo in_array($k, $params) ? 'selected': ''?>><?php echo $v?></option>
                 <?php endforeach;?>

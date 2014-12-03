@@ -1,4 +1,4 @@
-<h3 style="margin:0 0 5px 0">Төстэй кино</h3>
+<h3 style="margin:0 0 15px 0">Төстэй кино</h3>
 <?php 
 $rss = GlobalTable::doFetchArray('Item', array('route, image, title, year'), 
               array('idO'=>$rs->getId(), 'type'=>$rs->getType(), 'genre'=>$rs->getGenre(), 'limit'=>10));
