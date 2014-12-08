@@ -35,29 +35,20 @@
 <div class="left" style="width:300px;">
 		<h3>ИМЭЙЛ</h3>
 		<a href="mailto:mmdb.llc@gmail.com">mmdb.llc@gmail.com</a>
-
 		<br clear="all">
 		<br clear="all">
 		
 		<h3>ХОЛБОГДОХ УТАС</h3>
 		99258807, 99022507, 99688179
-		
 		<br clear="all">
 		<br clear="all">
 		 
 		<h3>ХАЯГ БАЙРШИЛ</h3>
 		Манай оффис өөр гаригт байдаг тул та бүхэн бидэнтэй дээрх утас, имэйл-р холбогдох эсвэл захидал илгээхийг хүсье.
-
 		<br clear="all">
 		<br clear="all">
 		
 		<?php include_partial('partial/socials', array());?>
-		<br clear="all">
-
-		Latest Tweets and Latest FB posts can be here.
-		
-		<br clear="all">
-		<br clear="all">
 </div>
 
 

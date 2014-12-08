@@ -551,6 +551,13 @@ Item:
       primary: false
       notnull: true
       autoincrement: false
+    folder:
+      type: string(100)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
     image:
       type: string(1000)
       fixed: false

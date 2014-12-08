@@ -18,7 +18,9 @@ class ItemForm extends BaseItemForm
         // genre is in template
         $this->widgetSchema['title'] 	        = new sfWidgetFormInputText(array(), array());
         $this->widgetSchema['title_mn'] 	    = new sfWidgetFormInputText(array(), array());
-        // route
+        $object = $this->getObject();
+    	  $folder = ($object && $object->getFolder()) ? $object->getFolder() : date('Ym');
+    	  $this->widgetSchema['folder']         = new sfWidgetFormInputHidden(array(), array('value'=>$folder));
         $this->widgetSchema['image']          = new sfWidgetFormInputFile(array(), array());
       	$this->widgetSchema['year']           = new sfWidgetFormInputText(array(), array('style'=>'width:40px;'));
       	$this->widgetSchema['year_end']       = new sfWidgetFormInputText(array(), array('style'=>'width:40px;'));
@@ -58,7 +60,8 @@ class ItemForm extends BaseItemForm
       	$this->validatorSchema['genre']        = new sfValidatorPass();
 				$this->validatorSchema['title']    	   = new sfValidatorCallback(array('required'=>true, 'callback' => array($this, 'validateTitle')), array());
       	$this->validatorSchema['title_mn']     = new sfValidatorPass();
-      	$this->validatorSchema['image']        = new sfValidatorFile($this->getFileAttrs('m'), $this->getFileOpts());
+      	$this->validatorSchema['folder']       = new sfValidatorPass();
+      	$this->validatorSchema['image']        = new sfValidatorFile($this->getFileAttrs($folder), $this->getFileOpts());
       	$this->validatorSchema['year']         = new sfValidatorInteger();
       	$this->validatorSchema['year_end']     = new sfValidatorInteger(array('required'=>false));
       	$this->validatorSchema['release_date'] = new sfValidatorDate();

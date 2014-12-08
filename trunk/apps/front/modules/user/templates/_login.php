@@ -54,5 +54,3 @@ function showName() {
 		<fb:login-button scope="public_profile,email,image" onlogin="checkLoginState();"></fb:login-button>
 </div>
 <a href="<?php echo url_for('user/profile')?>"><h3 id="fb_login_status"></h3></a>
-<br clear="all">
-<br clear="all">
