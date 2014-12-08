@@ -33,7 +33,7 @@
         <td><?php echo ++$i?></td>
         <td>
             <a href="<?php echo url_for('item/edit?id='.$rs->getId())?>">
-               <?php if($rs->getImage()) echo image_tag('/u/m/t140-'.$rs->getImage(), array('style'=>'max-width:140px;border:2px solid '.(GlobalLib::getValue('colors', $rs->getType()))))?>
+               <?php if($rs->getImage()) echo image_tag('/u/'.$rs->getFolder().'/t140-'.$rs->getImage(), array('style'=>'max-width:140px;border:2px solid '.(GlobalLib::getValue('colors', $rs->getType()))))?>
             </a>
         </td>
         <td>

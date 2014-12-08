@@ -13,6 +13,7 @@ Doctrine_Manager::getInstance()->bindComponent('Item', 'doctrine');
  * @property string $title
  * @property string $title_mn
  * @property string $route
+ * @property string $folder
  * @property string $image
  * @property integer $year
  * @property integer $year_end
@@ -55,6 +56,7 @@ Doctrine_Manager::getInstance()->bindComponent('Item', 'doctrine');
  * @method string              getTitle()          Returns the current record's "title" value
  * @method string              getTitleMn()        Returns the current record's "title_mn" value
  * @method string              getRoute()          Returns the current record's "route" value
+ * @method string              getFolder()         Returns the current record's "folder" value
  * @method string              getImage()          Returns the current record's "image" value
  * @method integer             getYear()           Returns the current record's "year" value
  * @method integer             getYearEnd()        Returns the current record's "year_end" value
@@ -96,6 +98,7 @@ Doctrine_Manager::getInstance()->bindComponent('Item', 'doctrine');
  * @method Item                setTitle()          Sets the current record's "title" value
  * @method Item                setTitleMn()        Sets the current record's "title_mn" value
  * @method Item                setRoute()          Sets the current record's "route" value
+ * @method Item                setFolder()         Sets the current record's "folder" value
  * @method Item                setImage()          Sets the current record's "image" value
  * @method Item                setYear()           Sets the current record's "year" value
  * @method Item                setYearEnd()        Sets the current record's "year_end" value
@@ -194,6 +197,15 @@ abstract class BaseItem extends sfDoctrineRecord
              'notnull' => true,
              'autoincrement' => false,
              'length' => 1000,
+             ));
+        $this->hasColumn('folder', 'string', 100, array(
+             'type' => 'string',
+             'fixed' => 0,
+             'unsigned' => false,
+             'primary' => false,
+             'notnull' => true,
+             'autoincrement' => false,
+             'length' => 100,
              ));
         $this->hasColumn('image', 'string', 1000, array(
              'type' => 'string',

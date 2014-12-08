@@ -8,6 +8,8 @@
  * @author     Your name here
  * @version    SVN: $Id: actions.class.php 3335 2007-01-23 16:19:56Z fabien $
  */
+
+$ITEM_COLUMNS = array('type', 'route', 'folder', 'image', 'title', 'year');
 class pageActions extends sfActions
 {
 
@@ -18,14 +20,13 @@ class pageActions extends sfActions
     public function executeIndex(sfWebRequest $request)
     {
         $this->forward404Unless(in_array($this->type = $type = $request->getParameter('type'), GlobalLib::getKeys('type')));
+        global $ITEM_COLUMNS;
         $params = array();
         $params['type'] = $type;
         $params['y'] = $request->getParameter('y');
         $params['l'] = $request->getParameter('l');
         $params['g'] = $request->getParameter('g');
-        $this->pager = GlobalTable::getPager('Item', array('type, route, image, title, year'), 
-                                              $params, $request->getParameter('page'));
-
+        $this->pager = GlobalTable::getPager('Item', $ITEM_COLUMNS, $params, $request->getParameter('page'));
         $this->loves = GlobalTable::doFetchSelection('Love', 'object_id', array('object_id'), array('objectType'=>'item', 'isActive'=>-1));
     }
     

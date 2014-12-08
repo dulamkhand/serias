@@ -21,7 +21,7 @@
 				<h2 style="margin:0;"><?php echo $rs?></h2>
 		    (<b><?php echo $rs->getTitleMn()?></b>)
 		    <br clear="all">
-		    <?php echo image_tag('/u/m/'.$rs->getImage(), array('style'=>'max-width:215px;'))?>
+		    <?php echo image_tag('/u/'.$rs->getFolder().'/'.$rs->getImage(), array('style'=>'max-width:215px;'))?>
 		</div>
 		
     <div class="left ml10px" style="color:#fff;width:575px;">    		

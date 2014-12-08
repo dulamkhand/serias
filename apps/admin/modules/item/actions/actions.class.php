@@ -70,11 +70,12 @@ class itemActions extends sfActions
             $rs = $form->save();
             $rs->setGenre(join(";", $request->getParameter('genres')));
             // image
-            if($rs->getImage()) {
+            GlobalLib::createThumbs($rs->getImage(), $rs->getFolder(), array(140));
+            if($rs->getImage() && file_exists(sfConfig::get('sf_upload_dir').'/'.$rs->getFolder().'/'.$rs->getImage())) {
             		// create waterlink
 		            $filepath = sfConfig::get('sf_upload_dir').'/'.$rs->getFolder().'/'.$rs->getImage();
 		            $img = new sfImage($filepath);
-		            $img->overlay(new sfImage(sfConfig::get('sf_web_dir').'/images/watermark.png'), 'bottom-right');
+		            $img->overlay(new sfImage(sfConfig::get('sf_web_dir').'/images/watermark200.png'), 'bottom-right');
 		            $img->saveAs($filepath);
             }
             
@@ -95,9 +96,11 @@ class itemActions extends sfActions
             $rs->setCasts(trim($rs->getCasts()));
             $tmp = explode(',', $rs->getCasts());
             foreach($tmp as $t) {
-            		if(!GlobalTable::doFetchOne('Celebrity', array('id'), array('fullname'=>trim($t)))) {
+                $route = GlobalLib::slugify(GlobalLib::mn2en(trim($t)));
+            		if(!GlobalTable::doFetchOne('Celebrity', array('id'), array('route'=>$route, 'limit'=>1))) {
             				$c = new Celebrity();
             				$c->setFullname(trim($t));
+            				$rs->setRoute($route);
             				$c->save();
             		}
             }
@@ -105,9 +108,11 @@ class itemActions extends sfActions
             $rs->setStudios(trim($rs->getStudios()));
             $tmp = explode(',', $rs->getStudios());
             foreach($tmp as $t) {
-            		if(!GlobalTable::doFetchOne('Studio', array('id'), array('name'=>trim($t)))) {
+                $route = GlobalLib::slugify(GlobalLib::mn2en(trim($t)));
+            		if(!GlobalTable::doFetchOne('Studio', array('id'), array('route'=>$route, 'limit'=>1))) {
             				$c = new Studio();
             				$c->setName(trim($t));
+            				$rs->setRoute($route);
             				$c->save();
             		}
             }
@@ -115,9 +120,11 @@ class itemActions extends sfActions
             $rs->setDirector(trim($rs->getDirector()));
             $tmp = explode(',', $rs->getDirector());
             foreach($tmp as $t) {
-            		if(!GlobalTable::doFetchOne('Celebrity', array('id'), array('fullname'=>trim($t)))) {
+                $route = GlobalLib::slugify(GlobalLib::mn2en(trim($t)));
+            		if(!GlobalTable::doFetchOne('Celebrity', array('id'), array('route'=>$route, 'limit'=>1))) {
             				$c = new Celebrity();
             				$c->setFullname(trim($t));
+            				$rs->setRoute($route);
             				$c->save();
             		}
             }
@@ -125,9 +132,11 @@ class itemActions extends sfActions
             $rs->setWriter(trim($rs->getWriter()));
             $tmp = explode(',', $rs->getWriter());
             foreach($tmp as $t) {
-            		if(!GlobalTable::doFetchOne('Celebrity', array('id'), array('fullname'=>trim($t)))) {
+                $route = GlobalLib::slugify(GlobalLib::mn2en(trim($t)));
+            		if(!GlobalTable::doFetchOne('Celebrity', array('id'), array('route'=>$route, 'limit'=>1))) {
             				$c = new Celebrity();
             				$c->setFullname(trim($t));
+            				$rs->setRoute($route);
             				$c->save();
             		}
             }
@@ -137,8 +146,6 @@ class itemActions extends sfActions
             $rs->setOfficialLink2(trim($rs->getOfficialLink2()));
             $rs->setSource(trim($rs->getSource()));
             $rs->save();
-            
-            GlobalLib::createThumbs($rs->getImage(), 'm', array(140));
 
             $this->getUser()->setFlash('flash', 'Successfully saved.', true);
             $this->redirect('item/index');
