@@ -2,7 +2,7 @@
 <div id="leftside">
 
     <a href="<?php echo url_for('@homepage')?>">
-        <?php echo image_tag('logo-200x130.png', array('style'=>'margin:10px 0 5px 0;max-width:170px;'))?>
+        <?php echo image_tag('logo-200x130.png', array('style'=>'margin:10px 0 5px 0;max-width:150px;'))?>
     </a>
   
     <ul id="mainmenu">

@@ -10,11 +10,11 @@ outline:0;background:none;text-rendering:optimizelegibility;position:relative;fo
 /* LAYOUT */
 body {background:#fff;position:relative;}
 
-#leftside{float:left;background:#fff;width:170px;min-height:600px;
+#leftside{float:left;background:#fff;width:150px;min-height:600px;
           border-right:1px solid #ccc;box-shadow:0 3px 5px #ededed;padding:0 0 0 1px;}
-#rightside{float:left;background:#fff;width:200px;min-height:600px;
+#rightside{float:left;background:#fff;width:180px;min-height:600px;
           border:0;box-shadow:0 3px 5px #ededed;}
-#center{float:left;width:750px;border:0;padding:5px 15px;}
+#center{float:left;width:720px;border:0;padding:5px 15px;}
 #footer{position:fixed;bottom:0;left:0;width:100%;background:rgba(0,0,0,0.8);padding:0px;}
 #footer *{color:#fff;}
 
@@ -30,7 +30,7 @@ select {width:300px;height:26px;padding:0 5px;border:1px solid #dedede;margin:0 
 select optgroup{text-transform:uppercase;padding:0;}
 select option{text-transform:;padding:2px 0px;background:#FFF;}
 
-ul#mainmenu {list-style-type:none;margin:0;padding:0;width:170px;border-top:1px solid #ccc;}
+ul#mainmenu {list-style-type:none;margin:0;padding:0;width:150px;border-top:1px solid #ccc;}
 ul#mainmenu li a{font-size:13px;text-transform:uppercase;font-family:Roboto Condensed;
                  line-height:26px;margin:0;padding:5px 15px;display:block;border-bottom:1px solid #dedede;
                  background:#fff;font-weight:bold;}
