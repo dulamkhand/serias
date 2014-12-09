@@ -1,5 +1,5 @@
 <?php $host = sfConfig::get('app_host')?>
-
+<br clear="all">
 <!--breadcrumb-->
 <?php $type = $rs->getType();?>
 <a href="<?php echo url_for('page/index?type='.$type)?>" class="h3">

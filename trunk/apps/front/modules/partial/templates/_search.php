@@ -7,7 +7,6 @@
     </div>
 </div>
 <br clear="all">
-<br clear="all">
 
 <script type="text/javascript">
 $('#search').keyup(function() {
