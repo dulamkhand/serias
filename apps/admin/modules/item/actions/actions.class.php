@@ -92,15 +92,29 @@ class itemActions extends sfActions
             $rs->setTrailer(trim($rs->getTrailer()));
             $rs->setRating(trim($rs->getRating()));
             $rs->setKickass(trim($rs->getKickass()));
-						// casts            
+            $rs->setDuration(trim($rs->getDuration()));
+            $rs->setAge(trim($rs->getAge()));
+            $rs->setOfficialLink1(trim($rs->getOfficialLink1()));
+            $rs->setOfficialLink2(trim($rs->getOfficialLink2()));
+            $rs->setSource(trim($rs->getSource()));
+            $rs->setCreatedAid($this->getUser()->getId());
+    				$rs->setUpdatedAid($this->getUser()->getId());
+    				$rs->setUpdatedAt(date('Y-m-d  H:i:s'));
+            $rs->save();
+            
+            // casts         
             $rs->setCasts(trim($rs->getCasts()));
             $tmp = explode(',', $rs->getCasts());
             foreach($tmp as $t) {
-                $route = GlobalLib::slugify(GlobalLib::mn2en(trim($t)));
-            		if(!GlobalTable::doFetchOne('Celebrity', array('id'), array('route'=>$route, 'limit'=>1))) {
+                $t = explode('(', $t);
+                $route = GlobalLib::slugify(GlobalLib::mn2en(trim($t[0])));
+            		if(!GlobalTable::doFetchOne('Celebrity', array('id'), array('route'=>$route))) {
             				$c = new Celebrity();
-            				$c->setFullname(trim($t));
-            				$rs->setRoute($route);
+            				$c->setFullname(trim($t[0]));
+            				$c->setRoute($route);
+            				$c->setCreatedAid($this->getUser()->getId());
+            				$c->setUpdatedAid($this->getUser()->getId());
+            				$c->setUpdatedAt(date('Y-m-d  H:i:s'));
             				$c->save();
             		}
             }
@@ -108,11 +122,15 @@ class itemActions extends sfActions
             $rs->setStudios(trim($rs->getStudios()));
             $tmp = explode(',', $rs->getStudios());
             foreach($tmp as $t) {
-                $route = GlobalLib::slugify(GlobalLib::mn2en(trim($t)));
-            		if(!GlobalTable::doFetchOne('Studio', array('id'), array('route'=>$route, 'limit'=>1))) {
+                $t = explode('(', $t);
+                $route = GlobalLib::slugify(GlobalLib::mn2en(trim($t[0])));
+            		if(!GlobalTable::doFetchOne('Studio', array('id'), array('route'=>$route))) {
             				$c = new Studio();
-            				$c->setName(trim($t));
-            				$rs->setRoute($route);
+            				$c->setName(trim($t[0]));
+            				$c->setRoute($route);
+            				$c->setCreatedAid($this->getUser()->getId());
+            				$c->setUpdatedAid($this->getUser()->getId());
+            				$c->setUpdatedAt(date('Y-m-d  H:i:s'));
             				$c->save();
             		}
             }
@@ -120,11 +138,15 @@ class itemActions extends sfActions
             $rs->setDirector(trim($rs->getDirector()));
             $tmp = explode(',', $rs->getDirector());
             foreach($tmp as $t) {
-                $route = GlobalLib::slugify(GlobalLib::mn2en(trim($t)));
-            		if(!GlobalTable::doFetchOne('Celebrity', array('id'), array('route'=>$route, 'limit'=>1))) {
+                $t = explode('(', $t);
+                $route = GlobalLib::slugify(GlobalLib::mn2en(trim($t[0])));
+            		if(!GlobalTable::doFetchOne('Celebrity', array('id'), array('route'=>$route))) {
             				$c = new Celebrity();
-            				$c->setFullname(trim($t));
-            				$rs->setRoute($route);
+            				$c->setFullname(trim($t[0]));
+            				$c->setRoute($route);
+            				$c->setCreatedAid($this->getUser()->getId());
+            				$c->setUpdatedAid($this->getUser()->getId());
+            				$c->setUpdatedAt(date('Y-m-d  H:i:s'));
             				$c->save();
             		}
             }
@@ -132,20 +154,18 @@ class itemActions extends sfActions
             $rs->setWriter(trim($rs->getWriter()));
             $tmp = explode(',', $rs->getWriter());
             foreach($tmp as $t) {
-                $route = GlobalLib::slugify(GlobalLib::mn2en(trim($t)));
-            		if(!GlobalTable::doFetchOne('Celebrity', array('id'), array('route'=>$route, 'limit'=>1))) {
+                $t = explode('(', $t);
+                $route = GlobalLib::slugify(GlobalLib::mn2en(trim($t[0])));
+            		if(!GlobalTable::doFetchOne('Celebrity', array('id'), array('route'=>$route))) {
             				$c = new Celebrity();
-            				$c->setFullname(trim($t));
-            				$rs->setRoute($route);
+            				$c->setFullname(trim($t[0]));
+            				$c->setRoute($route);
+            				$c->setCreatedAid($this->getUser()->getId());
+            				$c->setUpdatedAid($this->getUser()->getId());
+            				$c->setUpdatedAt(date('Y-m-d  H:i:s'));
             				$c->save();
             		}
             }
-            $rs->setDuration(trim($rs->getDuration()));
-            $rs->setAge(trim($rs->getAge()));
-            $rs->setOfficialLink1(trim($rs->getOfficialLink1()));
-            $rs->setOfficialLink2(trim($rs->getOfficialLink2()));
-            $rs->setSource(trim($rs->getSource()));
-            $rs->save();
 
             $this->getUser()->setFlash('flash', 'Successfully saved.', true);
             $this->redirect('item/index');
