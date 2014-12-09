@@ -48,6 +48,8 @@ Doctrine_Manager::getInstance()->bindComponent('Item', 'doctrine');
  * @property integer $updated_aid
  * @property timestamp $created_at
  * @property timestamp $updated_at
+ * @property Admin $Admin
+ * @property Admin $Admin_2
  * @property Doctrine_Collection $Bests
  * 
  * @method integer             getId()             Returns the current record's "id" value
@@ -91,6 +93,8 @@ Doctrine_Manager::getInstance()->bindComponent('Item', 'doctrine');
  * @method integer             getUpdatedAid()     Returns the current record's "updated_aid" value
  * @method timestamp           getCreatedAt()      Returns the current record's "created_at" value
  * @method timestamp           getUpdatedAt()      Returns the current record's "updated_at" value
+ * @method Admin               getAdmin()          Returns the current record's "Admin" value
+ * @method Admin               getAdmin2()         Returns the current record's "Admin_2" value
  * @method Doctrine_Collection getBests()          Returns the current record's "Bests" collection
  * @method Item                setId()             Sets the current record's "id" value
  * @method Item                setType()           Sets the current record's "type" value
@@ -133,6 +137,8 @@ Doctrine_Manager::getInstance()->bindComponent('Item', 'doctrine');
  * @method Item                setUpdatedAid()     Sets the current record's "updated_aid" value
  * @method Item                setCreatedAt()      Sets the current record's "created_at" value
  * @method Item                setUpdatedAt()      Sets the current record's "updated_at" value
+ * @method Item                setAdmin()          Sets the current record's "Admin" value
+ * @method Item                setAdmin2()         Sets the current record's "Admin_2" value
  * @method Item                setBests()          Sets the current record's "Bests" collection
  * 
  * @package    imdb
@@ -514,6 +520,14 @@ abstract class BaseItem extends sfDoctrineRecord
     public function setUp()
     {
         parent::setUp();
+        $this->hasOne('Admin', array(
+             'local' => 'updated_aid',
+             'foreign' => 'id'));
+
+        $this->hasOne('Admin as Admin_2', array(
+             'local' => 'created_aid',
+             'foreign' => 'id'));
+
         $this->hasMany('Bests', array(
              'local' => 'id',
              'foreign' => 'item_id'));

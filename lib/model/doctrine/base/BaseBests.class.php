@@ -16,7 +16,9 @@ Doctrine_Manager::getInstance()->bindComponent('Bests', 'doctrine');
  * @property timestamp $updated_at
  * @property integer $created_aid
  * @property integer $updated_aid
+ * @property Admin $Admin
  * @property Item $Item
+ * @property Admin $Admin_3
  * 
  * @method integer   getId()          Returns the current record's "id" value
  * @method string    getBestType()    Returns the current record's "best_type" value
@@ -27,7 +29,9 @@ Doctrine_Manager::getInstance()->bindComponent('Bests', 'doctrine');
  * @method timestamp getUpdatedAt()   Returns the current record's "updated_at" value
  * @method integer   getCreatedAid()  Returns the current record's "created_aid" value
  * @method integer   getUpdatedAid()  Returns the current record's "updated_aid" value
+ * @method Admin     getAdmin()       Returns the current record's "Admin" value
  * @method Item      getItem()        Returns the current record's "Item" value
+ * @method Admin     getAdmin3()      Returns the current record's "Admin_3" value
  * @method Bests     setId()          Sets the current record's "id" value
  * @method Bests     setBestType()    Sets the current record's "best_type" value
  * @method Bests     setNumber()      Sets the current record's "number" value
@@ -37,7 +41,9 @@ Doctrine_Manager::getInstance()->bindComponent('Bests', 'doctrine');
  * @method Bests     setUpdatedAt()   Sets the current record's "updated_at" value
  * @method Bests     setCreatedAid()  Sets the current record's "created_aid" value
  * @method Bests     setUpdatedAid()  Sets the current record's "updated_aid" value
+ * @method Bests     setAdmin()       Sets the current record's "Admin" value
  * @method Bests     setItem()        Sets the current record's "Item" value
+ * @method Bests     setAdmin3()      Sets the current record's "Admin_3" value
  * 
  * @package    imdb
  * @subpackage model
@@ -134,8 +140,16 @@ abstract class BaseBests extends sfDoctrineRecord
     public function setUp()
     {
         parent::setUp();
+        $this->hasOne('Admin', array(
+             'local' => 'updated_aid',
+             'foreign' => 'id'));
+
         $this->hasOne('Item', array(
              'local' => 'item_id',
+             'foreign' => 'id'));
+
+        $this->hasOne('Admin as Admin_3', array(
+             'local' => 'created_aid',
              'foreign' => 'id'));
     }
 }

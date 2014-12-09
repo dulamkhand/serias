@@ -19,6 +19,8 @@ Doctrine_Manager::getInstance()->bindComponent('PollOption', 'doctrine');
  * @property timestamp $updated_at
  * @property integer $created_aid
  * @property integer $updated_aid
+ * @property Admin $Admin
+ * @property Admin $Admin_2
  * 
  * @method integer    getId()          Returns the current record's "id" value
  * @method integer    getPollId()      Returns the current record's "poll_id" value
@@ -32,6 +34,8 @@ Doctrine_Manager::getInstance()->bindComponent('PollOption', 'doctrine');
  * @method timestamp  getUpdatedAt()   Returns the current record's "updated_at" value
  * @method integer    getCreatedAid()  Returns the current record's "created_aid" value
  * @method integer    getUpdatedAid()  Returns the current record's "updated_aid" value
+ * @method Admin      getAdmin()       Returns the current record's "Admin" value
+ * @method Admin      getAdmin2()      Returns the current record's "Admin_2" value
  * @method PollOption setId()          Sets the current record's "id" value
  * @method PollOption setPollId()      Sets the current record's "poll_id" value
  * @method PollOption setBody()        Sets the current record's "body" value
@@ -44,6 +48,8 @@ Doctrine_Manager::getInstance()->bindComponent('PollOption', 'doctrine');
  * @method PollOption setUpdatedAt()   Sets the current record's "updated_at" value
  * @method PollOption setCreatedAid()  Sets the current record's "created_aid" value
  * @method PollOption setUpdatedAid()  Sets the current record's "updated_aid" value
+ * @method PollOption setAdmin()       Sets the current record's "Admin" value
+ * @method PollOption setAdmin2()      Sets the current record's "Admin_2" value
  * 
  * @package    imdb
  * @subpackage model
@@ -167,6 +173,12 @@ abstract class BasePollOption extends sfDoctrineRecord
     public function setUp()
     {
         parent::setUp();
-        
+        $this->hasOne('Admin', array(
+             'local' => 'updated_aid',
+             'foreign' => 'id'));
+
+        $this->hasOne('Admin as Admin_2', array(
+             'local' => 'created_aid',
+             'foreign' => 'id'));
     }
 }

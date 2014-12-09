@@ -24,7 +24,7 @@
 		    <?php echo image_tag('/u/'.$rs->getFolder().'/'.$rs->getImage(), array('style'=>'max-width:215px;'))?>
 		</div>
 		
-    <div class="left ml10px" style="color:#fff;width:575px;">    		
+    <div class="left ml10px" style="color:#fff;width:510px;">
     		<div class="left" style="width:125px;">
 					<?php echo $rs->getRating();?>
 				</div>
@@ -63,17 +63,14 @@
 <?php include_partial('links', array('rs'=>$rs));?>
 <br clear="all">
 
-<!--share-->
-<?php include_partial('page/share', array('url'=>$host."/page/show?route=".$rs->getRoute(), 'via'=>sfConfig::get('app_webname'), 'text'=>$rs));?>
+<!--similars-->
+<?php include_partial('similars', array('rs'=>$rs));?>
 <br clear="all">
+
 <div class="fb-comments" data-href="<?php echo $host."/page/show?route=".$rs->getRoute()?>" data-numposts="10" data-colorscheme="light" data-width="560"></div>
 <br clear="all">
 <br clear="all">
-<br clear="all">
-<br clear="all">
 
-<!--similars-->
-<?php include_partial('similars', array('rs'=>$rs));?>
 
 <script type="text/javascript">
 function iframe(link)

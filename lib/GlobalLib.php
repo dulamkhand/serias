@@ -90,24 +90,17 @@ class GlobalLib
             17=>17,18=>18,19=>19,20=>20,21=>21,22=>22,23=>23,24=>24,25=>25,26=>26,27=>27,28=>28,29=>29,30=>30,31=>31);
 
     public static $banner_position = array(
-                  'header'=>'Header 300px65px', 
-                  'home-featured'=>'Home featured 450px', 
-                  'home-hor'=>'Home horizintal 715px',
-                  'home-right'=>'Home right 270px', 
-                  'branch1-hor'=>'Branch1 horizintal 800px', 
-                  'branch1-left'=>'Branch1 left 450px', 
-                  'branch1-pos2'=>'Branch1 pos2 320px', 
-                  'branch1-right'=>'Branch1 right 170px', 
-                  'branch2-hor'=>'Branch2 horizintal 670px', 
-                  'branch2-right'=>'Branch2 right 300px', 
-                  'leaf1-left'=>'Leaf1 horizintal 650px',
-                  'leaf1-right'=>'Leaf1 right 325px',
-                  'footer-up'=>'Footer up 1000px',
-                  'sideright'=>'Sideright',
-                  'search'=>'Search 1000px');
+                  'top'          =>'Top 750 x 100', 
+                  'left'         =>'Left 150 x 300', 
+                  'right-top'    =>'Right top 160 x 300',
+                  'right-middle' =>'Right middle 160 x 300', 
+                  'right-bottom' =>'Right bottom 160 x 300', 
+                  'footer'       =>'Footer 1100 x 100'
+    );
 
-    public static $mod_permissions = array('item'=>'Item', 'link'=>'Link', 'bests'=>'Bests', 'feedback'=>'Feedback', 
-										   'news'=>'News','poll'=>'Poll', 'subs'=>'Subscriber', 'user'=>'User', 'admin'=>'Admin');
+    public static $mod_permissions = array('item'=>'item', 'link'=>'link', 'bests'=>'bests', 
+                  'feedback'=>'feedback', 'banner'=>'banner', 'news'=>'news', 'poll'=>'poll', 
+                  'subs'=>'subscriber', 'user'=>'user', 'admin'=>'admin');
 
     public static function getArray($type)
     {

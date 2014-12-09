@@ -29,9 +29,9 @@
 		                  <?php echo link_to('bests', 'bests/index')?>
 		                </li>
                 <?php endif?>
-                <?php if($sf_user->hasCredential('feedback')):?>
-                		<li <?php echo $tab == 'feedback' ? 'class="current"' : '' ?>>
-		                  <?php echo link_to('feedback', 'feedback/index')?>
+                <?php if($sf_user->hasCredential('banner')):?>
+                		<li <?php echo $tab == 'banner' ? 'class="current"' : '' ?>>
+		                  <?php echo link_to('banner', 'banner/index')?>
 		                </li>
                 <?php endif?>
                 <?php if($sf_user->hasCredential('news')):?>
@@ -42,6 +42,11 @@
                 <?php if($sf_user->hasCredential('poll')):?>
                 		<li <?php echo $tab == 'poll' ? 'class="current"' : '' ?>>
 		                  <?php echo link_to('poll', 'poll/index')?>
+		                </li>
+                <?php endif?>
+                <?php if($sf_user->hasCredential('feedback')):?>
+                		<li <?php echo $tab == 'feedback' ? 'class="current"' : '' ?>>
+		                  <?php echo link_to('feedback', 'feedback/index')?>
 		                </li>
                 <?php endif?>
                 <?php if($sf_user->hasCredential('subscriber')):?>

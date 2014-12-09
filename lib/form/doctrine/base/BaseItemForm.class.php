@@ -52,8 +52,8 @@ abstract class BaseItemForm extends BaseFormDoctrine
       'thisweek'       => new sfWidgetFormInputCheckbox(),
       'comingsoon'     => new sfWidgetFormInputCheckbox(),
       'source'         => new sfWidgetFormTextarea(),
-      'created_aid'    => new sfWidgetFormInputText(),
-      'updated_aid'    => new sfWidgetFormInputText(),
+      'created_aid'    => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('Admin_2'), 'add_empty' => false)),
+      'updated_aid'    => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('Admin'), 'add_empty' => false)),
       'created_at'     => new sfWidgetFormDateTime(),
       'updated_at'     => new sfWidgetFormDateTime(),
     ));
@@ -96,8 +96,8 @@ abstract class BaseItemForm extends BaseFormDoctrine
       'thisweek'       => new sfValidatorBoolean(),
       'comingsoon'     => new sfValidatorBoolean(),
       'source'         => new sfValidatorString(array('max_length' => 1000)),
-      'created_aid'    => new sfValidatorInteger(),
-      'updated_aid'    => new sfValidatorInteger(),
+      'created_aid'    => new sfValidatorDoctrineChoice(array('model' => $this->getRelatedModelName('Admin_2'))),
+      'updated_aid'    => new sfValidatorDoctrineChoice(array('model' => $this->getRelatedModelName('Admin'))),
       'created_at'     => new sfValidatorDateTime(),
       'updated_at'     => new sfValidatorDateTime(array('required' => false)),
     ));

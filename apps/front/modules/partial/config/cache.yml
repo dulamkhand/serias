@@ -1,6 +1,14 @@
+_bannerTop:
+  enabled:     true
+
+_bannerFooter:
+  enabled:     true
+
 _leftside:
   enabled:     true
   
 _rightside:
   enabled:     true
 
+_socials:
+  enabled:     true

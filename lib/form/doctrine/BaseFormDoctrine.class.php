@@ -16,9 +16,14 @@ abstract class BaseFormDoctrine extends sfFormDoctrine
           $this['created_at'],$this['updated_at'],$this['created_aid'],$this['updated_aid']);
           
           # WIDGETS
-          $this->widgetSchema['sort']        = new sfWidgetFormInputText(array(), array('style'=>'width:40px;'));
+          $choices = GlobalLib::getNumbers(100, 1);
+          $this->widgetSchema['sort']        = new sfWidgetFormChoice(array('choices'=>$choices), array('style'=>'width:50px;'));
           $this->widgetSchema['is_active']   = new sfWidgetFormInputCheckbox(array(), array('value'=>1));
           $this->widgetSchema['is_featured'] = new sfWidgetFormInputCheckbox(array(), array('value'=>1));
+          $this->widgetSchema['created_aid'] = new sfWidgetFormInputHidden(array(), array());
+          $this->widgetSchema['updated_aid'] = new sfWidgetFormInputHidden(array(), array());
+          $this->setDefault('created_aid', sfContext::getInstance()->getUser()->getId());
+          $this->setDefault('updated_aid', sfContext::getInstance()->getUser()->getId());
   
           # DEFUALTS
           $this->setDefault('is_active', 1);
@@ -27,13 +32,18 @@ abstract class BaseFormDoctrine extends sfFormDoctrine
           $this->validatorSchema['sort']        = new sfValidatorPass();
           $this->validatorSchema['is_active']   = new sfValidatorPass();
           $this->validatorSchema['is_featured'] = new sfValidatorPass();
-                        
-          # HELPS  
+          $this->validatorSchema['created_aid'] = new sfValidatorPass();
+          $this->validatorSchema['updated_aid'] = new sfValidatorPass();
+          
+          # HELPS            
           $this->getWidgetSchema()->getFormFormatter()->setHelpFormat('<span class="help">%help%</span>');  
+          $this->widgetSchema->setHelp('sort', 'Буурахаар эрэмбэлнэ');
+          $this->widgetSchema->setHelp('is_active', 'Идэвхитэй эсэх');
+          $this->widgetSchema->setHelp('is_featured', 'Онцлох эсэх');
     }
     
     
-    function getFileAttrs($folder, $required=false, $maxsize=10, $mime=array('image/jpeg','image/pjpeg','image/png','image/x-png','image/gif')) {
+    function getFileAttrs($folder, $required=false, $maxsize=10, $mime=array('image/jpeg','image/pjpeg','image/png','image/x-png','image/gif','application/x-shockwave-flash')) {
         return array('required'   => $required,
                      'path'       => sfConfig::get("sf_upload_dir")."/".$folder,
                      'max_size'   => ($maxsize*1024*1024),

@@ -20,33 +20,81 @@ Doctrine_Manager::getInstance()->bindComponent('Admin', 'doctrine');
  * @property timestamp $updated_at
  * @property integer $created_aid
  * @property integer $updated_aid
+ * @property Doctrine_Collection $Banner
+ * @property Doctrine_Collection $Banner_2
+ * @property Doctrine_Collection $Bests
+ * @property Doctrine_Collection $Bests_3
+ * @property Doctrine_Collection $Celebrity
+ * @property Doctrine_Collection $Celebrity_2
+ * @property Doctrine_Collection $Item
+ * @property Doctrine_Collection $Item_2
+ * @property Doctrine_Collection $Link
+ * @property Doctrine_Collection $Link_2
+ * @property Doctrine_Collection $Poll
+ * @property Doctrine_Collection $Poll_2
+ * @property Doctrine_Collection $PollOption
+ * @property Doctrine_Collection $PollOption_2
+ * @property Doctrine_Collection $Studio
+ * @property Doctrine_Collection $Studio_2
  * 
- * @method integer   getId()              Returns the current record's "id" value
- * @method string    getEmail()           Returns the current record's "email" value
- * @method string    getPassword()        Returns the current record's "password" value
- * @method string    getModPermissions()  Returns the current record's "mod_permissions" value
- * @method string    getCatPermissions()  Returns the current record's "cat_permissions" value
- * @method timestamp getLoggedAt()        Returns the current record's "logged_at" value
- * @method integer   getSort()            Returns the current record's "sort" value
- * @method boolean   getIsActive()        Returns the current record's "is_active" value
- * @method boolean   getIsFeatured()      Returns the current record's "is_featured" value
- * @method timestamp getCreatedAt()       Returns the current record's "created_at" value
- * @method timestamp getUpdatedAt()       Returns the current record's "updated_at" value
- * @method integer   getCreatedAid()      Returns the current record's "created_aid" value
- * @method integer   getUpdatedAid()      Returns the current record's "updated_aid" value
- * @method Admin     setId()              Sets the current record's "id" value
- * @method Admin     setEmail()           Sets the current record's "email" value
- * @method Admin     setPassword()        Sets the current record's "password" value
- * @method Admin     setModPermissions()  Sets the current record's "mod_permissions" value
- * @method Admin     setCatPermissions()  Sets the current record's "cat_permissions" value
- * @method Admin     setLoggedAt()        Sets the current record's "logged_at" value
- * @method Admin     setSort()            Sets the current record's "sort" value
- * @method Admin     setIsActive()        Sets the current record's "is_active" value
- * @method Admin     setIsFeatured()      Sets the current record's "is_featured" value
- * @method Admin     setCreatedAt()       Sets the current record's "created_at" value
- * @method Admin     setUpdatedAt()       Sets the current record's "updated_at" value
- * @method Admin     setCreatedAid()      Sets the current record's "created_aid" value
- * @method Admin     setUpdatedAid()      Sets the current record's "updated_aid" value
+ * @method integer             getId()              Returns the current record's "id" value
+ * @method string              getEmail()           Returns the current record's "email" value
+ * @method string              getPassword()        Returns the current record's "password" value
+ * @method string              getModPermissions()  Returns the current record's "mod_permissions" value
+ * @method string              getCatPermissions()  Returns the current record's "cat_permissions" value
+ * @method timestamp           getLoggedAt()        Returns the current record's "logged_at" value
+ * @method integer             getSort()            Returns the current record's "sort" value
+ * @method boolean             getIsActive()        Returns the current record's "is_active" value
+ * @method boolean             getIsFeatured()      Returns the current record's "is_featured" value
+ * @method timestamp           getCreatedAt()       Returns the current record's "created_at" value
+ * @method timestamp           getUpdatedAt()       Returns the current record's "updated_at" value
+ * @method integer             getCreatedAid()      Returns the current record's "created_aid" value
+ * @method integer             getUpdatedAid()      Returns the current record's "updated_aid" value
+ * @method Doctrine_Collection getBanner()          Returns the current record's "Banner" collection
+ * @method Doctrine_Collection getBanner2()         Returns the current record's "Banner_2" collection
+ * @method Doctrine_Collection getBests()           Returns the current record's "Bests" collection
+ * @method Doctrine_Collection getBests3()          Returns the current record's "Bests_3" collection
+ * @method Doctrine_Collection getCelebrity()       Returns the current record's "Celebrity" collection
+ * @method Doctrine_Collection getCelebrity2()      Returns the current record's "Celebrity_2" collection
+ * @method Doctrine_Collection getItem()            Returns the current record's "Item" collection
+ * @method Doctrine_Collection getItem2()           Returns the current record's "Item_2" collection
+ * @method Doctrine_Collection getLink()            Returns the current record's "Link" collection
+ * @method Doctrine_Collection getLink2()           Returns the current record's "Link_2" collection
+ * @method Doctrine_Collection getPoll()            Returns the current record's "Poll" collection
+ * @method Doctrine_Collection getPoll2()           Returns the current record's "Poll_2" collection
+ * @method Doctrine_Collection getPollOption()      Returns the current record's "PollOption" collection
+ * @method Doctrine_Collection getPollOption2()     Returns the current record's "PollOption_2" collection
+ * @method Doctrine_Collection getStudio()          Returns the current record's "Studio" collection
+ * @method Doctrine_Collection getStudio2()         Returns the current record's "Studio_2" collection
+ * @method Admin               setId()              Sets the current record's "id" value
+ * @method Admin               setEmail()           Sets the current record's "email" value
+ * @method Admin               setPassword()        Sets the current record's "password" value
+ * @method Admin               setModPermissions()  Sets the current record's "mod_permissions" value
+ * @method Admin               setCatPermissions()  Sets the current record's "cat_permissions" value
+ * @method Admin               setLoggedAt()        Sets the current record's "logged_at" value
+ * @method Admin               setSort()            Sets the current record's "sort" value
+ * @method Admin               setIsActive()        Sets the current record's "is_active" value
+ * @method Admin               setIsFeatured()      Sets the current record's "is_featured" value
+ * @method Admin               setCreatedAt()       Sets the current record's "created_at" value
+ * @method Admin               setUpdatedAt()       Sets the current record's "updated_at" value
+ * @method Admin               setCreatedAid()      Sets the current record's "created_aid" value
+ * @method Admin               setUpdatedAid()      Sets the current record's "updated_aid" value
+ * @method Admin               setBanner()          Sets the current record's "Banner" collection
+ * @method Admin               setBanner2()         Sets the current record's "Banner_2" collection
+ * @method Admin               setBests()           Sets the current record's "Bests" collection
+ * @method Admin               setBests3()          Sets the current record's "Bests_3" collection
+ * @method Admin               setCelebrity()       Sets the current record's "Celebrity" collection
+ * @method Admin               setCelebrity2()      Sets the current record's "Celebrity_2" collection
+ * @method Admin               setItem()            Sets the current record's "Item" collection
+ * @method Admin               setItem2()           Sets the current record's "Item_2" collection
+ * @method Admin               setLink()            Sets the current record's "Link" collection
+ * @method Admin               setLink2()           Sets the current record's "Link_2" collection
+ * @method Admin               setPoll()            Sets the current record's "Poll" collection
+ * @method Admin               setPoll2()           Sets the current record's "Poll_2" collection
+ * @method Admin               setPollOption()      Sets the current record's "PollOption" collection
+ * @method Admin               setPollOption2()     Sets the current record's "PollOption_2" collection
+ * @method Admin               setStudio()          Sets the current record's "Studio" collection
+ * @method Admin               setStudio2()         Sets the current record's "Studio_2" collection
  * 
  * @package    imdb
  * @subpackage model
@@ -178,6 +226,68 @@ abstract class BaseAdmin extends sfDoctrineRecord
     public function setUp()
     {
         parent::setUp();
-        
+        $this->hasMany('Banner', array(
+             'local' => 'id',
+             'foreign' => 'updated_aid'));
+
+        $this->hasMany('Banner as Banner_2', array(
+             'local' => 'id',
+             'foreign' => 'created_aid'));
+
+        $this->hasMany('Bests', array(
+             'local' => 'id',
+             'foreign' => 'updated_aid'));
+
+        $this->hasMany('Bests as Bests_3', array(
+             'local' => 'id',
+             'foreign' => 'created_aid'));
+
+        $this->hasMany('Celebrity', array(
+             'local' => 'id',
+             'foreign' => 'updated_aid'));
+
+        $this->hasMany('Celebrity as Celebrity_2', array(
+             'local' => 'id',
+             'foreign' => 'created_aid'));
+
+        $this->hasMany('Item', array(
+             'local' => 'id',
+             'foreign' => 'updated_aid'));
+
+        $this->hasMany('Item as Item_2', array(
+             'local' => 'id',
+             'foreign' => 'created_aid'));
+
+        $this->hasMany('Link', array(
+             'local' => 'id',
+             'foreign' => 'updated_aid'));
+
+        $this->hasMany('Link as Link_2', array(
+             'local' => 'id',
+             'foreign' => 'created_aid'));
+
+        $this->hasMany('Poll', array(
+             'local' => 'id',
+             'foreign' => 'updated_aid'));
+
+        $this->hasMany('Poll as Poll_2', array(
+             'local' => 'id',
+             'foreign' => 'created_aid'));
+
+        $this->hasMany('PollOption', array(
+             'local' => 'id',
+             'foreign' => 'updated_aid'));
+
+        $this->hasMany('PollOption as PollOption_2', array(
+             'local' => 'id',
+             'foreign' => 'created_aid'));
+
+        $this->hasMany('Studio', array(
+             'local' => 'id',
+             'foreign' => 'updated_aid'));
+
+        $this->hasMany('Studio as Studio_2', array(
+             'local' => 'id',
+             'foreign' => 'created_aid'));
     }
 }
