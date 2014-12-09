@@ -26,16 +26,14 @@
     
     <div class="box-right">
         <span style="color:#666;">Сурталчилгаа</span>
-        <a href="http://www.dagina.mn/index.php" target="_blank">
-            <?php echo image_tag('/u/b/dagina.png', array('width'=>180))?>
-        </a>
+        <?php $rs = GlobalTable::doFetchOne('Banner', array('path', 'ext', 'link', 'target'), array('position'=>'right-top', 'limit'=>1));?>
+        <?php include_partial("partial/banner", array('rs'=>$rs, 'width'=>160, 'height'=>300));?>
     </div>
     
     <div class="box-right">
         <span style="color:#666;">Сурталчилгаа</span>
-        <a href="http://www.urin-essence.com/girasole/firewall/web/index.php" target="_blank">
-            <?php echo image_tag('/u/b/firewall.png', array('width'=>180))?>
-        </a>
+        <?php $rs = GlobalTable::doFetchOne('Banner', array('path', 'ext', 'link', 'target'), array('position'=>'right-middle', 'limit'=>1));?>
+        <?php include_partial("partial/banner", array('rs'=>$rs, 'width'=>160, 'height'=>300));?>
     </div>
     
     <div class="box-right">

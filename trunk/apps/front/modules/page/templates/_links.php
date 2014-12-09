@@ -1,4 +1,4 @@
-<div class="box-home" style="background:#dedede;border:1px solid #ccc;margin-top:0px;">
+<div class="box-home" style="background:#dedede;border:1px solid #ccc;margin-top:15px;">
 		<?php if($tmp = $rs->getKickass()):?>
 				<a href="<?php echo $tmp?>" target="_blank" style="text-decoration:underline;">KICKASS TORRENT ТАТАХ</a> &nbsp; |&nbsp;
 				<a onclick="$('#kickass-help').toggle();" style="text-decoration:underline;cursor:pointer;">ХЭРХЭН ТАТАХ ВЭ?</a>

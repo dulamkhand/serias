@@ -41,11 +41,11 @@ function showName() {
     <a style="text-decoration:underline;" href="<?php echo url_for('user/logout')?>">Гарах</a>
 <?php else:?>
     <a onclick="$('#formLogin').dialog({height:310, width:400});">
-        <h3 style="float:left;width:60px;">Нэвтрэх</h3>
+        <h3 style="float:left;width:55px;">Нэвтрэх</h3>
     </a>
-    <span style="float:left;margin:0 10px 0 2px;"> | </span>
+    <span style="float:left;margin:0 5px 0 2px;"> | </span>
     <a onclick="$('#formRegister').dialog({height:310, width:400});">
-        <h3 style="float:left;width:80px;">Бүртгүүлэх</h3>
+        <h3 style="float:left;width:70px;">Бүртгүүлэх</h3>
     </a>
 <?php endif?>
 <br clear="all">

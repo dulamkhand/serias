@@ -15,4 +15,9 @@ class Admin extends BaseAdmin
     public function __toString() {
         return $this->getEmail();
     }
+    
+    public function getUsername() {
+        $tmp = explode('@', $this->getEmail());
+        return $tmp[0];
+    }
 }

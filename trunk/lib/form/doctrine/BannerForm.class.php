@@ -31,14 +31,14 @@ class BannerForm extends BaseBannerForm
       $this->validatorSchema['target']  	= new sfValidatorPass();
       $this->validatorSchema['start_date']= new sfValidatorPass();
       $this->validatorSchema['end_date']  = new sfValidatorPass();
-      $this->validatorSchema['path']    = new sfValidatorFile(
+      $this->validatorSchema['path']      = new sfValidatorFile(
                                                   array('required' => false,
                                                       'path'       => sfConfig::get("sf_upload_dir")."/b",
                                                       'max_size'   => 104857600,
-                                                      'mime_types' =>  array('image/jpeg','image/pjpeg','image/png','image/x-png','image/gif','application/x-shockwave-flash')),
+                                                      'mime_types' =>  array('application/x-shockwave-flash', 'application/x-shockwave-flash2-preview', 'image/jpeg', 'image/pjpeg', 'image/png', 'image/x-png', 'image/gif')),
                                                   array(
                                                       'max_size'   => 'Файлын хэмжээ хамгийн ихдээ 10MB байна',
-                                                      'mime_types' => 'Дараах өргөтгөлтэй файлууд зөвшөөрөгдөнө: jpg, png, gif'));
+                                                      'mime_types' => 'Дараах өргөтгөлтэй файлууд зөвшөөрөгдөнө: jpg, png, gif, swf'));
   }
 
 }

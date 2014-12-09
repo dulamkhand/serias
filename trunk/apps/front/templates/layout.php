@@ -60,6 +60,9 @@
   <?php include_component("partial", "rightside", array());?>
   
   <br clear="all">
+  <?php include_partial("partial/bannerFooter", array());?>
+  <br clear="all">
+  <br clear="all">
   <?php include_partial("global/footer", array());?>  
 
 </body>

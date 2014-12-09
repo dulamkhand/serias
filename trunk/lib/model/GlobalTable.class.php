@@ -39,9 +39,16 @@ class GlobalTable extends Doctrine_Table
         if(isset($params['objectId']) && $params['objectId'] != null)
             $q->andWhere('object_id <> ?', $params['objectId']);
             
-        # genre
-        if(isset($params['genre']) && $params['genre'] != null)
-            $q->andWhere('genre= ?', $params['genre']);
+        # banner position
+        if(isset($params['position']) && $params['position'] != null)
+            $q->andWhere('position = ?', $params['position']);
+            
+        # genres
+        if(isset($params['genres']) && $params['genres'] != null && sizeof($params['genres'])) {
+            foreach($params['genres'] as $genre) {
+                $q->orWhere('genre LIKE ?', '%'.$genre.'%');
+            }
+        }
 
         # itemId
         if(isset($params['itemId']) && $params['itemId'] != null)
@@ -147,6 +154,7 @@ class GlobalTable extends Doctrine_Table
     public static function doFetchOne($tableName, $columns = array(), $params = array())
     {
         $q = Doctrine_Query::create()->select(join(',', $columns));
+        $params['limit'] = 1;
         $q = self::params($tableName, $q, $params);
         return $q->fetchOne();
     }
