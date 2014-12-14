@@ -3,9 +3,9 @@
 class GlobalLib
 {
   
-    public static $type   = array('movie'=>'Movie',   'series'=>'Series',  'soap'=>'Soap opera', 'tvshow'=>'TV show', 'mn'=>'MN films',    'nonfiction'=>'Non fiction');
-    public static $type_mn = array('movie'=>'Кино',   'series'=>'Цуврал',  'soap'=>'Олон ангит', 'tvshow'=>'ТВ Шоу',  'mn'=>'Монгол кино', 'nonfiction'=>'Баримтат кино');
-    public static $colors = array('movie'=>'#067FF9', 'series'=>'#4D9804', 'soap'=>'#5F1DCB',    'tvshow'=>'#CB1D6B', 'mn'=>'#FA3F06',     'nonfiction'=>'#80482C');
+    public static $type   = array('movie'=>'Movie',   'series'=>'Series',  'soap'=>'Soap opera', 'tvshow'=>'TV show', 'mn'=>'MN films',    'nonfiction'=>'Non fiction',   'game'=>'Game');
+    public static $type_mn = array('movie'=>'Кино',   'series'=>'Цуврал',  'soap'=>'Олон ангит', 'tvshow'=>'ТВ Шоу',  'mn'=>'Монгол кино', 'nonfiction'=>'Баримтат кино', 'game'=>'Тоглоом');
+    public static $colors = array('movie'=>'#067FF9', 'series'=>'#4D9804', 'soap'=>'#5F1DCB',    'tvshow'=>'#CB1D6B', 'mn'=>'#FA3F06',     'nonfiction'=>'#80482C', 			'game'=>'red');
     public static $genre  = array(
                   'action'       => 'Action', 
                   'adventure'    => 'Adventure', 
