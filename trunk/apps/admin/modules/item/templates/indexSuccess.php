@@ -23,13 +23,17 @@
       <th>#</th>
       <th></th>
       <th></th>
-      <th></th>
+      <th>Nb of views</th>
+      <th>Is?</th>
+      <th>Sort</th>
+      <th>Date</th>
+      <th>Admin</th>
       <th></th>
     </tr>
   </thead>
   <tbody>
     <?php $i = 0; foreach ($pager->getResults() as $rs): ?>
-    <tr <?php if($i%2 != 0) echo 'class="odd"'?>>
+    <tr <?php if($i%2 != 0) echo 'class="odd"'?> style="<?php if(!$rs->getIsActive()) echo 'background:#cdcdcd;'?>">
         <td><?php echo ++$i?></td>
         <td>
             <a href="<?php echo url_for('item/edit?id='.$rs->getId())?>">
@@ -42,18 +46,16 @@
             		<?php echo $rs->getSummaryMn() ? $rs->getSummaryMn() : $rs->getSummary() ?>
             </a>
         </td>
+        <td><?php echo $rs->getNbViews()?></td>
+        <?php include_partial('partial/td_active_featured', array('rs'=>$rs))?>
+        <?php include_partial('partial/td_sort_date_admin', array('rs'=>$rs))?>
         <td nowrap>
-            <b>View: </b><?php echo $rs->getNbViews() ?><br/>
-            <b>Sort: </b><?php echo $rs->getSort() ?><br/>
-            <b>Created: </b><?php echo time_ago($rs->getCreatedAt()) ?><br/>
-            <b>Updated: </b><?php echo time_ago($rs->getUpdatedAt()) ?><br>
-            <b>Active: </b><?php if($rs->getIsActive()) echo image_tag('icons/ok.png', array('align'=>'absmiddle')) ?><br>
-            <b>Featured: </b><?php if($rs->getIsFeatured()) echo image_tag('icons/ok.png', array('align'=>'absmiddle')) ?>
-        </td>
-        <td nowrap>
-            <?php include_partial('partial/edit', array('module'=>'item', 'id'=>$rs->getId()));?><br>
+            <a href="<?php echo url_for('image/new?objectType=item&objectId='.$rs->getId())?>" title="Images" class="action">Images (<?php echo $rs->getNbImages()?>)</a>
+            <br clear="all">
             <a href="<?php echo url_for('link/index?itemId='.$rs->getId())?>" title="Links" class="action">Links</a> | 
             <a href="<?php echo url_for('link/new?itemId='.$rs->getId())?>" title="Add link" class="action">Add link</a>
+            <br clear="all">
+            <?php include_partial('partial/edit', array('module'=>'item', 'id'=>$rs->getId()));?>
         </td> 
     </tr>
     <?php endforeach; ?>

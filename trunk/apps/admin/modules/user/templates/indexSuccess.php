@@ -18,7 +18,7 @@
   </thead>
   <tbody>
     <?php $i=0; foreach ($pager->getResults() as $rs): ?>
-    <tr <?php if($i%2 != 0) echo 'class="odd"'?> style="background:<?php if(!$rs->getIsActive()) echo '#dedede;'?>">
+    <tr <?php if($i%2 != 0) echo 'class="odd"'?> style="<?php if(!$rs->getIsActive()) echo 'background:#cdcdcd;'?>">
       <td><?php echo ++$i?></td>      
       <td><?php echo $rs->getEmail() ?></td>
       <td><?php echo $rs->getFullname() ?></td>

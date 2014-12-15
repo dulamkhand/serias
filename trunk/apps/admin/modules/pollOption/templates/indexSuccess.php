@@ -33,7 +33,7 @@
   <tbody>
       <?php $i = 0;?>
       <?php foreach ($pager->getResults() as $rs): ?>
-      <tr style="background:<?php if(!$rs->getIsActive()) echo '#dedede;'?>">
+      <tr <?php if($i%2 != 0) echo 'class="odd"'?> style="<?php if(!$rs->getIsActive()) echo 'background:#cdcdcd;'?>">
         <td><?php echo ++$i?></td>
         <td><?php echo $rs->getPoll() ?></td>
         <td><a href="<?php echo url_for('pollOption/edit?id='.$rs->getId())?>" class="action"><?php echo $rs?></a></td>

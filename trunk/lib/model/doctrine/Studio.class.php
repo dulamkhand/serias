@@ -12,5 +12,7 @@
  */
 class Studio extends BaseStudio
 {
-
+  public function __toString() {
+      return $this->getName();
+  }
 }

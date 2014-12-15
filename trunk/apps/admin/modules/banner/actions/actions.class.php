@@ -16,7 +16,7 @@ class bannerActions extends sfActions
   
   public function executeIndex(sfWebRequest $request)
   {
-      $this->pager = GlobalTable::getPager('Banner', array('*'), array('position'=>$position, 'orderBy'=>'position ASC, sort DESC'), $request->getParameter('page'));
+      $this->pager = GlobalTable::getPager('Banner', array('*'), array('isActive'=>'all', 'position'=>$position, 'orderBy'=>'position ASC, sort DESC'), $request->getParameter('page'));
   }
   
   
@@ -87,16 +87,23 @@ class bannerActions extends sfActions
       if ($form->isValid())
       {
           $banner = $form->save();
-    
-          $banner->setRoute(GlobalLib::slugify($banner->getPath()));
-          $ext = GlobalLib::getFileExtension($banner->getPath());
-          $banner->setExt($ext);
+          if($form->getValue('start_date') || $form->getValue('end_date')) {
+              $tmp = $form->getValue('start_date');
+              $banner->setStartDate($tmp['year'].'-'.$tmp['month'].'-'.$tmp['day']);
+              $tmp = $form->getValue('end_date');
+              $banner->setEndDate($tmp['year'].'-'.$tmp['month'].'-'.$tmp['day']);
+          }
+          if($form->getValue('path')) {
+              $banner->setRoute(GlobalLib::slugify($banner->getPath()));
+              $ext = GlobalLib::getFileExtension($banner->getPath());
+              $banner->setExt($ext);
+          }
+          $banner->setUpdatedAt(date('Y-m-d H:i:s'));
           $banner->save();
-    
+          
           $this->getUser()->setFlash('flash', 'Successfully saved.', true);
           $this->redirect('banner/index');
       }
   }
-
   
 }

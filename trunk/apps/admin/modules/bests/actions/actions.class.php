@@ -18,6 +18,7 @@ class bestsActions extends sfActions
 	      $this->forwardUnless($this->getUser()->hasCredential('bests'), 'admin', 'perm');
 	      $params = array();
 	      $params['orderBy'] = 'best_type asc, number asc';
+	      $params['isAcrive'] = 'all';
 	      if($request->getParameter('best_type')) $params['best_type'] = $request->getParameter('best_type');
         if($request->getParameter('s')) $params['sBests'] = $request->getParameter('s');
 	      $this->pager = GlobalTable::getPager('Bests', array('*'), $params, $request->getParameter('page'));

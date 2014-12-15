@@ -17,7 +17,7 @@
   </thead>
   <tbody>
     <?php $i=0; foreach ($pager->getResults() as $rs): ?>
-    <tr style="background:<?php if(!$rs->getIsActive()) echo '#dedede;'?>">
+    <tr <?php if($i%2 != 0) echo 'class="odd"'?> style="<?php if(!$rs->getIsActive()) echo 'background:#cdcdcd;'?>">
       <td><?php echo ++$i?></td>
       <td><a href="<?php echo url_for('admin/edit?id='.$rs->getId())?>"><?php echo $rs->getEmail() ?></a></td>
       <td width="20%"><?php echo $rs->getModPermissions() ?></td>

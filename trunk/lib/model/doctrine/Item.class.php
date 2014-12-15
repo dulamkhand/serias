@@ -16,4 +16,8 @@ class Item extends BaseItem
       return $this->getTitle().' ('.$this->getYear().')';
   }
   
+  public function getNbImages() {
+      return GlobalTable::doCount('Image', array('objectId'=>$this->getId(), 'objectType'=>'item', 'isActive'=>'all'));
+  }
+  
 }

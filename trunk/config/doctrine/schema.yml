@@ -121,6 +121,15 @@ Admin:
       local: id
       foreign: created_aid
       type: many
+    Image:
+      local: id
+      foreign: updated_aid
+      type: many
+    Image_2:
+      class: Image
+      local: id
+      foreign: created_aid
+      type: many
     Item:
       local: id
       foreign: updated_aid
@@ -376,7 +385,7 @@ Bests:
       local: item_id
       foreign: id
       type: one
-    Admin_3:
+    Admin_2:
       class: Admin
       local: created_aid
       foreign: id
@@ -608,6 +617,104 @@ Feedback:
       primary: false
       notnull: true
       autoincrement: false
+Image:
+  connection: doctrine
+  tableName: image
+  columns:
+    id:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: true
+      autoincrement: true
+    object_type:
+      type: string(50)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    object_id:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    folder:
+      type: string(255)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    filename:
+      type: string(255)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    description:
+      type: string()
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    iscover:
+      type: boolean
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    sort:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    created_at:
+      type: timestamp(25)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    updated_at:
+      type: timestamp(25)
+      fixed: false
+      unsigned: false
+      primary: false
+      default: '0000-00-00 00:00:00'
+      notnull: true
+      autoincrement: false
+    created_aid:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    updated_aid:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+  relations:
+    Admin:
+      local: updated_aid
+      foreign: id
+      type: one
+    Admin_2:
+      class: Admin
+      local: created_aid
+      foreign: id
+      type: one
 Item:
   connection: doctrine
   tableName: item

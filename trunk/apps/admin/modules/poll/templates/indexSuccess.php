@@ -17,7 +17,7 @@
   <tbody>
     <?php $i = 0;?>
     <?php foreach ($pager->getResults() as $rs): ?>
-    <tr style="background:<?php if(!$rs->getIsActive()) echo '#dedede;'?>">
+    <tr <?php if($i%2 != 0) echo 'class="odd"'?> style="<?php if(!$rs->getIsActive()) echo 'background:#cdcdcd;'?>">
         <td><?php echo ++$i?></td>
         <td>
             <a href="<?php echo url_for('poll/edit?id='.$rs->getId())?>" class="action"><b><?php echo $rs->getTitle() ?></b></a><br>

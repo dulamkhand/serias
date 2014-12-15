@@ -26,6 +26,8 @@ Doctrine_Manager::getInstance()->bindComponent('Admin', 'doctrine');
  * @property Doctrine_Collection $Bests_3
  * @property Doctrine_Collection $Celebrity
  * @property Doctrine_Collection $Celebrity_2
+ * @property Doctrine_Collection $Image
+ * @property Doctrine_Collection $Image_2
  * @property Doctrine_Collection $Item
  * @property Doctrine_Collection $Item_2
  * @property Doctrine_Collection $Link
@@ -56,6 +58,8 @@ Doctrine_Manager::getInstance()->bindComponent('Admin', 'doctrine');
  * @method Doctrine_Collection getBests3()          Returns the current record's "Bests_3" collection
  * @method Doctrine_Collection getCelebrity()       Returns the current record's "Celebrity" collection
  * @method Doctrine_Collection getCelebrity2()      Returns the current record's "Celebrity_2" collection
+ * @method Doctrine_Collection getImage()           Returns the current record's "Image" collection
+ * @method Doctrine_Collection getImage2()          Returns the current record's "Image_2" collection
  * @method Doctrine_Collection getItem()            Returns the current record's "Item" collection
  * @method Doctrine_Collection getItem2()           Returns the current record's "Item_2" collection
  * @method Doctrine_Collection getLink()            Returns the current record's "Link" collection
@@ -85,6 +89,8 @@ Doctrine_Manager::getInstance()->bindComponent('Admin', 'doctrine');
  * @method Admin               setBests3()          Sets the current record's "Bests_3" collection
  * @method Admin               setCelebrity()       Sets the current record's "Celebrity" collection
  * @method Admin               setCelebrity2()      Sets the current record's "Celebrity_2" collection
+ * @method Admin               setImage()           Sets the current record's "Image" collection
+ * @method Admin               setImage2()          Sets the current record's "Image_2" collection
  * @method Admin               setItem()            Sets the current record's "Item" collection
  * @method Admin               setItem2()           Sets the current record's "Item_2" collection
  * @method Admin               setLink()            Sets the current record's "Link" collection
@@ -247,6 +253,14 @@ abstract class BaseAdmin extends sfDoctrineRecord
              'foreign' => 'updated_aid'));
 
         $this->hasMany('Celebrity as Celebrity_2', array(
+             'local' => 'id',
+             'foreign' => 'created_aid'));
+
+        $this->hasMany('Image', array(
+             'local' => 'id',
+             'foreign' => 'updated_aid'));
+
+        $this->hasMany('Image as Image_2', array(
              'local' => 'id',
              'foreign' => 'created_aid'));
 
