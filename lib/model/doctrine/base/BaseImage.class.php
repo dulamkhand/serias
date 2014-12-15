@@ -12,6 +12,7 @@ Doctrine_Manager::getInstance()->bindComponent('Image', 'doctrine');
  * @property integer $object_id
  * @property string $folder
  * @property string $filename
+ * @property string $content
  * @property string $description
  * @property boolean $iscover
  * @property integer $sort
@@ -27,6 +28,7 @@ Doctrine_Manager::getInstance()->bindComponent('Image', 'doctrine');
  * @method integer   getObjectId()    Returns the current record's "object_id" value
  * @method string    getFolder()      Returns the current record's "folder" value
  * @method string    getFilename()    Returns the current record's "filename" value
+ * @method string    getContent()     Returns the current record's "content" value
  * @method string    getDescription() Returns the current record's "description" value
  * @method boolean   getIscover()     Returns the current record's "iscover" value
  * @method integer   getSort()        Returns the current record's "sort" value
@@ -41,6 +43,7 @@ Doctrine_Manager::getInstance()->bindComponent('Image', 'doctrine');
  * @method Image     setObjectId()    Sets the current record's "object_id" value
  * @method Image     setFolder()      Sets the current record's "folder" value
  * @method Image     setFilename()    Sets the current record's "filename" value
+ * @method Image     setContent()     Sets the current record's "content" value
  * @method Image     setDescription() Sets the current record's "description" value
  * @method Image     setIscover()     Sets the current record's "iscover" value
  * @method Image     setSort()        Sets the current record's "sort" value
@@ -104,6 +107,15 @@ abstract class BaseImage extends sfDoctrineRecord
              'notnull' => true,
              'autoincrement' => false,
              'length' => 255,
+             ));
+        $this->hasColumn('content', 'string', null, array(
+             'type' => 'string',
+             'fixed' => 0,
+             'unsigned' => false,
+             'primary' => false,
+             'notnull' => true,
+             'autoincrement' => false,
+             'length' => '',
              ));
         $this->hasColumn('description', 'string', null, array(
              'type' => 'string',
@@ -174,11 +186,11 @@ abstract class BaseImage extends sfDoctrineRecord
     {
         parent::setUp();
         $this->hasOne('Admin', array(
-             'local' => 'updated_aid',
+             'local' => 'created_aid',
              'foreign' => 'id'));
 
         $this->hasOne('Admin as Admin_2', array(
-             'local' => 'created_aid',
+             'local' => 'updated_aid',
              'foreign' => 'id'));
     }
 }

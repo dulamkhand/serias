@@ -234,74 +234,74 @@ abstract class BaseAdmin extends sfDoctrineRecord
         parent::setUp();
         $this->hasMany('Banner', array(
              'local' => 'id',
-             'foreign' => 'updated_aid'));
+             'foreign' => 'created_aid'));
 
         $this->hasMany('Banner as Banner_2', array(
              'local' => 'id',
-             'foreign' => 'created_aid'));
+             'foreign' => 'updated_aid'));
 
         $this->hasMany('Bests', array(
              'local' => 'id',
-             'foreign' => 'updated_aid'));
+             'foreign' => 'created_aid'));
 
         $this->hasMany('Bests as Bests_3', array(
              'local' => 'id',
-             'foreign' => 'created_aid'));
+             'foreign' => 'updated_aid'));
 
         $this->hasMany('Celebrity', array(
              'local' => 'id',
-             'foreign' => 'updated_aid'));
+             'foreign' => 'created_aid'));
 
         $this->hasMany('Celebrity as Celebrity_2', array(
              'local' => 'id',
-             'foreign' => 'created_aid'));
+             'foreign' => 'updated_aid'));
 
         $this->hasMany('Image', array(
              'local' => 'id',
-             'foreign' => 'updated_aid'));
+             'foreign' => 'created_aid'));
 
         $this->hasMany('Image as Image_2', array(
              'local' => 'id',
-             'foreign' => 'created_aid'));
+             'foreign' => 'updated_aid'));
 
         $this->hasMany('Item', array(
              'local' => 'id',
-             'foreign' => 'updated_aid'));
+             'foreign' => 'created_aid'));
 
         $this->hasMany('Item as Item_2', array(
              'local' => 'id',
-             'foreign' => 'created_aid'));
+             'foreign' => 'updated_aid'));
 
         $this->hasMany('Link', array(
              'local' => 'id',
-             'foreign' => 'updated_aid'));
+             'foreign' => 'created_aid'));
 
         $this->hasMany('Link as Link_2', array(
              'local' => 'id',
-             'foreign' => 'created_aid'));
+             'foreign' => 'updated_aid'));
 
         $this->hasMany('Poll', array(
              'local' => 'id',
-             'foreign' => 'updated_aid'));
+             'foreign' => 'created_aid'));
 
         $this->hasMany('Poll as Poll_2', array(
              'local' => 'id',
-             'foreign' => 'created_aid'));
+             'foreign' => 'updated_aid'));
 
         $this->hasMany('PollOption', array(
              'local' => 'id',
-             'foreign' => 'updated_aid'));
+             'foreign' => 'created_aid'));
 
         $this->hasMany('PollOption as PollOption_2', array(
              'local' => 'id',
-             'foreign' => 'created_aid'));
+             'foreign' => 'updated_aid'));
 
         $this->hasMany('Studio', array(
              'local' => 'id',
-             'foreign' => 'updated_aid'));
+             'foreign' => 'created_aid'));
 
         $this->hasMany('Studio as Studio_2', array(
              'local' => 'id',
-             'foreign' => 'created_aid'));
+             'foreign' => 'updated_aid'));
     }
 }

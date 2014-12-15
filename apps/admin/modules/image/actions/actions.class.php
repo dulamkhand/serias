@@ -15,6 +15,64 @@ class imageActions extends sfActions
       //$this->forwardUnless($this->getUser()->hasCredential('image'), 'admin', 'perm'); TODO
   }
   
+  public function executeDownloadImages(sfWebRequest $request)
+  { 
+      $urls = array(
+          "http://content8.flixster.com/rtmovie/10/35/103554_gal.jpg",
+          "http://content7.flixster.com/rtmovie/10/35/103553_gal.jpg",
+          "http://content6.flixster.com/rtmovie/10/35/103552_gal.jpg",
+          "http://content9.flixster.com/rtmovie/10/35/103551_gal.jpg",
+          "http://content9.flixster.com/rtmovie/10/35/103547_gal.jpg",
+          "http://content8.flixster.com/rtmovie/10/35/103546_gal.png",
+          "http://content6.flixster.com/rtmovie/10/35/103544_gal.jpg",
+          "http://content9.flixster.com/rtmovie/10/35/103543_gal.jpg",
+          "http://content8.flixster.com/rtmovie/10/35/103542_gal.jpg",
+          "http://content7.flixster.com/rtmovie/10/35/103541_gal.jpg",
+          "http://content6.flixster.com/rtmovie/10/35/103540_gal.jpg",
+          "http://content9.flixster.com/rtmovie/10/35/103539_gal.jpg",
+          "http://content8.flixster.com/rtmovie/10/35/103538_gal.jpg",
+          "http://content7.flixster.com/rtmovie/10/35/103537_gal.jpg",
+          "http://content6.flixster.com/rtmovie/10/35/103536_gal.jpg",
+          "http://content9.flixster.com/rtmovie/10/35/103535_gal.jpg",
+          "http://content8.flixster.com/rtmovie/10/35/103534_gal.jpg",
+          "http://content7.flixster.com/rtmovie/10/35/103533_gal.jpg",
+          "http://content6.flixster.com/rtmovie/10/35/103532_gal.jpg",
+          "http://content8.flixster.com/rtmovie/10/35/103530_gal.jpg",
+          "http://content6.flixster.com/rtmovie/10/35/103528_gal.png",
+          "http://content8.flixster.com/rtmovie/10/33/103358_gal.jpg",
+          "http://content7.flixster.com/rtmovie/98/10/98109_gal.jpg",
+      );
+
+      $i = 0;
+      $objectId = 3;//$request->getParameter('objectId');
+      $folder = date('Ym');
+      foreach($urls as $url) {
+          $filename = $objectId.'-'.++$i.'.jpg';
+          // create image
+        	$img = imagecreatefromstring(file_get_contents($url));
+        	imagejpeg($img, sfConfig::get('sf_upload_dir')."/".$folder.'/'.$filename);
+        	// save in db
+        	$image = new Image();
+          $image->setObjectType('item');
+          $image->setObjectId($objectId);
+          $image->setFolder($folder);
+          $image->setFilename($filename);
+          $image->setUpdatedAt(date('Y-m-d H:i:s'));
+          $image->setCreatedAid(1);
+          $image->setUpdatedAid(1);
+          $image->save();
+          // create thumb
+          GlobalLib::createThumbs($filename, $folder, array(120));
+          // create waterlink
+          $filepath = sfConfig::get('sf_upload_dir').'/'.$folder.'/'.$filename;
+          $img = new sfImage($filepath);
+          $img->overlay(new sfImage(sfConfig::get('sf_web_dir').'/images/watermark200.png'), 'bottom-right');
+          $img->saveAs($filepath);
+      }
+      echo 'DONE'; die();
+  }
+
+
   public function executeNew(sfWebRequest $request)
   {
       $this->forward404Unless($objectType = $request->getParameter('objectType'));
