@@ -17,7 +17,7 @@
   </thead>
   <tbody>
     <?php $i = 0; foreach ($pager->getResults() as $rs): ?>
-    <tr <?php if($i%2 != 0) echo 'class="odd"'?>>
+    <tr <?php if($i%2 != 0) echo 'class="odd"'?> style="<?php if(!$rs->getIsActive()) echo 'background:#cdcdcd;'?>">
         <td><?php echo ++$i?></td>
         <td>
             <a href="<?php echo url_for('news/edit?id='.$rs->getId())?>" class="action"><b><?php echo $rs->getTitle() ?></b></a><br>

@@ -13,6 +13,7 @@ class linkActions extends sfActions
     public function executeIndex(sfWebRequest $request)
     {
         $params = array();
+        $params['isActive'] = 'all';
         $params['itemId'] = $request->getParameter('itemId');
         $params['orderBy'] = 'season ASC, episode ASC, created_at DESC, updated_at DESC';
         if($request->getParameter('s')) $params['sLink'] = $request->getParameter('s');

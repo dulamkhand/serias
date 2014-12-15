@@ -13,6 +13,7 @@ class itemActions extends sfActions
     public function executeIndex(sfWebRequest $request)
     {
         $params = array();
+        $params['isActive'] = 'all';
         if($request->getParameter('type')) $params['type'] = $request->getParameter('type');
         if($request->getParameter('s')) $params['sItem'] = $request->getParameter('s');
         $this->pager = GlobalTable::getPager('Item', array('*'), $params, $request->getParameter('page'));

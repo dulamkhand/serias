@@ -17,6 +17,7 @@ class newsActions extends sfActions
     public function executeIndex(sfWebRequest $request)
     {
         $params = array();
+        $params['isActive'] = 'all';
         if($request->getParameter('s')) $params['sNews'] = $request->getParameter('s');
         $this->pager = GlobalTable::getPager('News', $params, $request->getParameter('page'));
         

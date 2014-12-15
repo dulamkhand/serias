@@ -33,11 +33,11 @@ class GlobalTable extends Doctrine_Table
         if(isset($params['bestType']) && $params['bestType'] != null)
             $q->andWhere('best_type = ?', $params['bestType']);
             
-        # objectType, objectId
+        # image objectType, objectId
         if(isset($params['objectType']) && $params['objectType'] != null)
             $q->andWhere('object_type = ?', $params['objectType']);
         if(isset($params['objectId']) && $params['objectId'] != null)
-            $q->andWhere('object_id <> ?', $params['objectId']);
+            $q->andWhere('object_id = ?', $params['objectId']);
             
         # banner position
         if(isset($params['position']) && $params['position'] != null)
@@ -75,10 +75,10 @@ class GlobalTable extends Doctrine_Table
 
         # isActive
         if(isset($params['isActive'])) {
-            if($params['isActive'] != "all" && in_array($params['isActive'], array('0', '1'))) // all ued filter hiihgui
+            if($params['isActive'] != "all" && in_array($params['isActive'], array('0', '1')))
                 $q->andWhere('is_active = ?', $params['isActive']);
-            else if($params['isActive'] != -1)
-                $q->andWhere('is_active = ?', 1);
+        } else {
+            $q->andWhere('is_active = ?', 1);
         }
         
         # isFeatured
@@ -88,8 +88,6 @@ class GlobalTable extends Doctrine_Table
             $q->andWhere('is_top = ?', 1);
         if(isset($params['isNew']) && in_array($params['isNew'], array('0', '1'))) 
             $q->andWhere('is_new = ?', 1);
-        if(isset($params['isDiscuss']) && in_array($params['isDiscuss'], array('0', '1'))) 
-            $q->andWhere('is_discuss = ?', 1);
 
         # keyword
         if(isset($params['sItem']) && $params['sItem'] != null)

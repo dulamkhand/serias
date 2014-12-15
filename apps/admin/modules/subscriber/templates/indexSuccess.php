@@ -15,7 +15,7 @@
   <tbody>
     <?php $i = 0;?>
     <?php foreach ($pager->getResults() as $rs): ?>
-    <tr <?php if($i%2 != 0) echo 'class="odd"'?>>
+    <tr <?php if($i%2 != 0) echo 'class="odd"'?> style="<?php if(!$rs->getIsActive()) echo 'background:#cdcdcd;'?>">
       <td><?php echo ++$i?></td>
       <td><?php echo $rs?></td>
       <td nowrap>

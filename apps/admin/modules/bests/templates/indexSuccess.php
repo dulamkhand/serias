@@ -27,7 +27,7 @@
   </thead>
   <tbody>
     <?php $i=0; foreach ($pager->getResults() as $rs): ?>
-    <tr>
+    <tr <?php if($i%2 != 0) echo 'class="odd"'?> style="<?php if(!$rs->getIsActive()) echo 'background:#cdcdcd;'?>">
       <td><?php echo ++$i?></td>
       <td nowrap><a href="<?php echo url_for('bests/edit?id='.$rs->getId())?>">
           <?php echo GlobalLib::getValue('bests', $rs->getBestType()) ?></a>

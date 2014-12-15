@@ -20,6 +20,9 @@
             <?php $act = isset($act) ? $act : $sf_request->getParameter('action'); ?>
             		<li <?php echo $tab == 'item' ? 'class="current"' : '' ?>>
                   <?php echo link_to('item', 'item/index')?>
+                </li>                
+                <li <?php echo $tab == 'image' ? 'class="current"' : '' ?>>
+                  <?php echo link_to('image', 'image/index')?>
                 </li>
                 <li <?php echo $tab == 'link' ? 'class="current"' : '' ?>>
                   <?php echo link_to('link', 'link/index')?>
@@ -29,6 +32,12 @@
 		                  <?php echo link_to('bests', 'bests/index')?>
 		                </li>
                 <?php endif?>
+                <li <?php echo $tab == 'celebrity' ? 'class="current"' : '' ?>>
+                  <?php echo link_to('celebrity', 'celebrity/index')?>
+                </li>
+                <li <?php echo $tab == 'studio' ? 'class="current"' : '' ?>>
+                  <?php echo link_to('studio', 'studio/index')?>
+                </li>
                 <?php if($sf_user->hasCredential('banner')):?>
                 		<li <?php echo $tab == 'banner' ? 'class="current"' : '' ?>>
 		                  <?php echo link_to('banner', 'banner/index')?>
@@ -73,7 +82,7 @@
             if($tab == 'link') { 
                 echo link_to('+ new', 'link/new?itemId='.$sf_params->get('itemId'));
                 echo link_to('list', 'link/index?itemId='.$sf_params->get('itemId'));
-            } else {
+            } else if($tab != 'image') {
             		include_partial('partial/sublink', array('tab'=>$tab));
             }
             ?>
