@@ -43,7 +43,7 @@ class ImageForm extends BaseImageForm
                                                         'max_size'   => 'Файлын хэмжээ хамгийн ихдээ 20MB байна',
                                                         'mime_types' => 'Дараах өргөтгөлтэй файлууд зөвшөөрөгдөнө: jpg, png, gif'));
         # HELP
-        $this->widgetSchema->setHelp('filename', 'dimension: 563 x 500, png|gif|jpg, maxsize:1MB');
+        $this->widgetSchema->setHelp('filename', 'dimension: 600 x 400, png|gif|jpg, maxsize:1MB');
         $this->widgetSchema->setHelp('sort', 'Өсөхөөр эрэмбэлнэ');
     }
 
