@@ -51,7 +51,7 @@
     <?php $images = GlobalTable::doFetchArray('Image', array('id, folder, filename, description'), 
                   array('objectId'=>$rs->getId(), 'objectType'=>$objectType, 'isActive'=>'all', 'orderBy'=>'sort ASC'));?>
     <?php foreach ($images as $image) {?>
-        <div class="left" style="width:120px;height:150px;margin:0 5px 0 0;">
+        <div class="left" style="width:120px;height:200px;margin:0 5px 0 0;overflow:hidden;">
             <a href="<?php echo url_for('image/edit?id='.$image['id'])?>" title="Edit image">[edit image]</a><br>
             <a onclick="return confirm('Are you sure?')" href="<?php echo url_for('image/delete?id='.$image['id'])?>" title="Delete">[delete image]</a><br>
             <?php echo image_tag('/u/'.$image['folder'].'/t120-'.$image['filename'], array('style'=>'max-width:120px;'));?><br>
