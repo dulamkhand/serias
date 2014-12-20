@@ -1,21 +1,13 @@
 <?php $host = sfConfig::get('app_host')?>
-<br clear="all">
-<!--breadcrumb-->
-<?php $type = $rs->getType();?>
-<a href="<?php echo url_for('page/index?type='.$type)?>" class="h3">
-    <?php echo GlobalLib::getValue('type_mn', $type)?>
-</a> &raquo;
-<?php $ks = explode(";", $rs->getGenre()); $i=0?>
-<?php foreach ($ks as $k):?>
-		<a href="<?php echo url_for('page/index?type='.$type.'&g='.$k)?>" class="h3">
-				<?php echo $k?><?php echo ++$i == sizeof($ks) ? '' : ',';?>
-		</a>
-<?php endforeach?>
-<br clear="all">
-
-<h2 style="font-weight:bold;color:#222;"><?php echo $rs?> (<?php echo $rs->getTitleMn()?>)</h2>
+<h2 style="font-weight:bold;color:#222;"><?php echo $rs?> &nbsp; /<?php echo $rs->getTitleMn()?>/</h2>
 <div style="float:left;margin:0 0 20px 0;width:215px;position:relative;">
     <?php echo image_tag('/u/'.$rs->getFolder().'/'.$rs->getImage(), array('style'=>'max-width:215px;'))?>
+    <?php $images = GlobalTable::doFetchArray('Image', array('folder', 'filename'), array('isActive'=>'all', 'limit'=>8, 'objectType'=>'item', 'objectId'=>$rs->getId()))?>
+    <?php foreach ($images as $image) {?>
+        <div class="left" style="width:105px;height:80px;margin:3px 2px 0 0;overflow:hidden;">
+            <?php echo image_tag('/u/'.$image['folder'].'/t120-'.$image['filename'], array('style'=>'width:105px;height:80px;'));?>
+        </div>
+    <?php }?>
 </div>
 
 <div class="left ml10px" style="background:#fef7cd;width:504px;padding:10px;border-radius:3px;">
@@ -36,6 +28,18 @@
 
     <?php include_partial('love/js', array());?>
 		<br clear="all">
+		<!--breadcrumb-->
+		<?php $type = $rs->getType();?>
+		<a href="<?php echo url_for('page/index?type='.$type)?>" class="h3">
+		  <?php echo GlobalLib::getValue('type_mn', $type)?>
+		</a> &raquo;
+		<?php $ks = explode(";", $rs->getGenre()); $i=0?>
+		<?php foreach ($ks as $k):?>
+			<a href="<?php echo url_for('page/index?type='.$type.'&g='.$k)?>" class="h3">
+					<?php echo $k?><?php echo ++$i == sizeof($ks) ? '' : ',';?>
+			</a>
+		<?php endforeach?>
+		<br clear="all">
     <?php include_partial('page/info', array('rs'=>$rs))?>
     <?php if($tmp = $rs->getBodyMn()):?>
     <div style="text-align:justify;">
@@ -48,15 +52,6 @@
 </div>
 <br clear="all">
 
-<!--photos-->
-<div>
-    <?php $images = GlobalTable::doFetchArray('Image', array('folder', 'filename'), array('isActive'=>'all', 'objectType'=>'item', 'objectId'=>$rs->getId()))?>
-    <?php foreach ($images as $image) {?>
-        <div class="left" style="width:120px;height:80px;margin:0 5px 5px 0;overflow:hidden;">
-            <?php echo image_tag('/u/'.$image['folder'].'/t120-'.$image['filename'], array('style'=>'max-width:120px;max-height:80px;'));?><br>
-        </div>
-    <?php }?>
-</div>
 
 <!--trailer -->
 <?php echo $rs->getTrailer();?>
