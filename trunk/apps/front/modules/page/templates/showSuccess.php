@@ -13,51 +13,54 @@
 <?php endforeach?>
 <br clear="all">
 
-<!--image & info-->
-<?php $color = GlobalLib::getValue('colors', $type) ?>
-<div class="box-home" style="background:<?php echo $color?>;">
-    <!-- image & title -->
-		<div style="float:left;margin:0 0 10px 0;width:215px;position:relative;">
-				<h2 style="margin:0;"><?php echo $rs?></h2>
-		    (<b><?php echo $rs->getTitleMn()?></b>)
-		    <br clear="all">
-		    <?php echo image_tag('/u/'.$rs->getFolder().'/'.$rs->getImage(), array('style'=>'max-width:215px;'))?>
-		</div>
-		
-    <div class="left ml10px" style="color:#fff;width:510px;">
-    		<div class="left" style="width:125px;">
-					<?php echo $rs->getRating();?>
-				</div>
-				<!--share-->
-    		<?php include_partial('page/share', array('url'=>$host."/page/show?route=".$rs->getRoute(),
-                                       'via'=>sfConfig::get('app_webname'), 'text'=>$rs));?>
-        <!--love-->
-        <?php $isLoved = GlobalTable::doFetchOne('Love', array('id'), array('objectType'=>'item', 'objectId'=>$rs->getId(), 'isActive'=>-1));?>
-        <?php echo image_tag('icons/'.( $isLoved ? 'love24.ico' : 'unlove24.ico'), 
-                  array('alt'=>($isLoved ? 'Unlove!' : 'Love!'),
-                  'onclick'=>$sf_user->isAuthenticated() ? 
-                          "love({$rs->getId()}, 24);" 
-                        : "$('#formLogin').dialog({height:310, width:400});", 
-                  'style'=>'float:left;margin:9px 0 0 20px;z-index:1;cursor:pointer;', 
-                  'class'=>'love24', 'id'=>'love'.$rs->getId()))?>
-
-        <?php include_partial('love/js', array());?>
-				<br clear="all">
-        <?php include_partial('page/info', array('rs'=>$rs))?>
-    </div>
+<h2 style="font-weight:bold;color:#222;"><?php echo $rs?> (<?php echo $rs->getTitleMn()?>)</h2>
+<div style="float:left;margin:0 0 20px 0;width:215px;position:relative;">
+    <?php echo image_tag('/u/'.$rs->getFolder().'/'.$rs->getImage(), array('style'=>'max-width:215px;'))?>
 </div>
-<br clear="all">
 
-<!--trailer & body-->
-<?php echo $rs->getTrailer();?>
-<?php if($tmp = $rs->getBodyMn()):?>
-    <div class="right" style="width:250px;text-align:justify;">
-        <h2 style="color:<?php echo $color?>;font-weight:bold;">Үйл явдал</h2>
+<div class="left ml10px" style="background:#fef7cd;width:504px;padding:10px;border-radius:3px;">
+		<div class="left" style="width:115px;"><?php echo $rs->getRating();?></div>
+		<div class="left" style="margin:5px 0 0 0;">
+				<?php include_partial('page/share', array('url'=>$host."/page/show?route=".$rs->getRoute(), 'title'=>$rs));?>
+		</div>
+
+    <!--love-->
+    <?php $isLoved = GlobalTable::doFetchOne('Love', array('id'), array('objectType'=>'item', 'objectId'=>$rs->getId(), 'isActive'=>-1));?>
+    <?php echo image_tag('icons/'.( $isLoved ? 'love24.ico' : 'unlove24.ico'), 
+              array('alt'=>($isLoved ? 'Unlove!' : 'Love!'),
+              'onclick'=>$sf_user->isAuthenticated() ? 
+                      "love({$rs->getId()}, 24);" 
+                    : "$('#formLogin').dialog({height:310, width:400});", 
+              'style'=>'float:left;margin:9px 0 0 20px;z-index:1;cursor:pointer;', 
+              'class'=>'love24', 'id'=>'love'.$rs->getId()))?>
+
+    <?php include_partial('love/js', array());?>
+		<br clear="all">
+    <?php include_partial('page/info', array('rs'=>$rs))?>
+    <?php if($tmp = $rs->getBodyMn()):?>
+    <div style="text-align:justify;">
+        <h2 style="font-weight:bold;color:#222;">Үйл явдал</h2>
         <?php echo $tmp;?>
     </div>
     <br clear="all">
 		<br clear="all">
 <?php endif?>
+</div>
+<br clear="all">
+
+<!--photos-->
+<div>
+    <?php $images = GlobalTable::doFetchArray('Image', array('folder', 'filename'), array('isActive'=>'all', 'objectType'=>'item', 'objectId'=>$rs->getId()))?>
+    <?php foreach ($images as $image) {?>
+        <div class="left" style="width:120px;height:80px;margin:0 5px 5px 0;overflow:hidden;">
+            <?php echo image_tag('/u/'.$image['folder'].'/t120-'.$image['filename'], array('style'=>'max-width:120px;max-height:80px;'));?><br>
+        </div>
+    <?php }?>
+</div>
+
+<!--trailer -->
+<?php echo $rs->getTrailer();?>
+
 
 <!--links-->
 <?php include_partial('links', array('rs'=>$rs));?>

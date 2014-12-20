@@ -1,14 +1,23 @@
-<div class="left" style="margin:10px 0 0 0;width:90px;">
-    <div class="fb-like" data-href="<?php echo $url?>" data-send="false" colorscheme="dark" data-layout="button_count" data-width="20" 
-        data-show-faces="false"></div>
-</div>
+<a target="_blank" title="Share on Facebook" 
+    onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600');return false;" 
+    class="left" style="background:#1061bb;display:block;height:28px;width:95px;padding:7px 0 2px 10px;border-radius:4px;" 
+    href="https://www.facebook.com/sharer/sharer.php?u=<?php echo $url?>&amp;title=<?php echo $title?>">
+    <?php echo image_tag('icons/share-fb.png', array('class'=>'left', 'style'=>'margin:1px 0 0 0;'))?>
+    <h2 class="left" style="color:#fff;">Түгээх</h2>
+</a>
 
-<div class="left" style="margin:10px 0 0 0;width:100px;">
-    <div class="fb-share-button" data-href="<?php echo $url?>" data-type="button_count"></div>
-</div>
+<a target="_blank" title="Share on Twitter" 
+    onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600');return false;" 
+    class="left" style="background:#3ccaeb;display:block;height:28px;width:95px;padding:7px 0 2px 10px;border-radius:4px;margin:0 0 0 8px;" 
+    href="https://twitter.com/share?url=<?php echo $url?>&amp;via=<?php echo sfConfig::get('app_webname')?>&amp;text=<?php echo $title?>">
+    <?php echo image_tag('icons/share-tw.png', array('class'=>'left', 'style'=>'margin:0 2px 0 0;'))?>
+    <h2 class="left" style="color:#fff;">Жиргэх</h2>
+</a>
 
-<div class="left" style="margin:10px 0 0 0;width:70px;">
-    <a href="https://twitter.com/share" class="twitter-share-button" data-lang="en" 
-        data-via="<?php echo $via?>" data-text="<?php echo $text?>" data-url="<?php echo $url?>">Tweet</a>
-    <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-</div>
+<a target="_blank" title="Share on Youtube" 
+    onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600');return false;" 
+    class="left" style="background:#FF212A;display:block;height:28px;width:95px;padding:7px 0 2px 10px;border-radius:4px;margin:0 0 0 8px;" 
+    href="https://twitter.com/share?url=<?php echo $url?>&amp;via=<?php echo sfConfig::get('app_webname')?>&amp;text=<?php echo $title?>">
+    <?php echo image_tag('icons/share-g.png', array('class'=>'left', 'style'=>'margin:0 2px 0 0;'))?>
+    <h2 class="left" style="color:#fff;">Тараах</h2>
+</a>

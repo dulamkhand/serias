@@ -48,7 +48,7 @@
 <div style="width:750px;float:left;">
     <a href="<?php echo url_for($objectType.'/edit?id='.$rs->getId())?>" title="Edit object">[edit object]</a>
     <h1><?php echo $rs?></h1>
-    <?php $images = GlobalTable::doFetchArray('Image', array('id, folder, filename, description'), 
+    <?php $images = GlobalTable::doFetchArray('Image', array('id', 'folder', 'filename', 'description'), 
                   array('objectId'=>$rs->getId(), 'objectType'=>$objectType, 'isActive'=>'all', 'orderBy'=>'sort ASC'));?>
     <?php foreach ($images as $image) {?>
         <div class="left" style="width:120px;height:200px;margin:0 5px 0 0;overflow:hidden;">

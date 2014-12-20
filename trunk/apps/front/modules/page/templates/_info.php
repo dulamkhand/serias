@@ -52,9 +52,9 @@
 
 <span class="bold">Албан ёсны хуудас:</span>
 <?php if($tmp = $rs->getOfficialLink1()):?>
-    <a href="<?php echo $rs->getOfficialLink1();?>" target="_blank" style="color:#fff;">Facebook official</a>, 
+    <a href="<?php echo $rs->getOfficialLink1();?>" target="_blank">Facebook official</a>, 
 <?php endif?>
-<a href="<?php echo $rs->getOfficialLink2();?>" target="_blank" style="color:#fff;">Official website</a>
+<a href="<?php echo $rs->getOfficialLink2();?>" target="_blank">Official website</a>
 <br clear="all">
 
 <?php if($tmp = $rs->getSource()):?>
