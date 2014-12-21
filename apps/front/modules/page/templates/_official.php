@@ -5,6 +5,7 @@
     <h2 class="left" style="color:#222;margin:0 0 0 -6px;">acebook хуудас</h2>
 </a>
 <?php endif?>
+<br clear="all">
 
 <?php if($tmp = $rs->getOfficialLink2()):?>
 <a target="_blank" title="Official website" class="left" style="margin:0 0 0 8px;" href="<?php echo $rs->getOfficialLink2();?>">
