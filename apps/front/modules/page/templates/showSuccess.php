@@ -1,5 +1,5 @@
 <?php $host = sfConfig::get('app_host')?>
-<h2 style="font-weight:bold;color:#222;"><?php echo $rs?> &nbsp; /<?php echo $rs->getTitleMn()?>/</h2>
+<h2 style="font-weight:bold;color:#222;margin:10px 0 15px 0;"><?php echo $rs?> &nbsp; /<?php echo $rs->getTitleMn()?>/</h2>
 <div style="float:left;margin:0 0 20px 0;width:215px;position:relative;">
     <?php echo image_tag('/u/'.$rs->getFolder().'/'.$rs->getImage(), array('style'=>'max-width:215px;'))?>
     <?php $images = GlobalTable::doFetchArray('Image', array('folder', 'filename'), array('isActive'=>'all', 'limit'=>8, 'objectType'=>'item', 'objectId'=>$rs->getId()))?>
@@ -47,7 +47,7 @@
         <?php echo $tmp;?>
     </div>
     <br clear="all">
-		<br clear="all">
+    <?php include_partial('official', array('rs'=>$rs));?>
 <?php endif?>
 </div>
 <br clear="all">

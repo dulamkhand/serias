@@ -50,13 +50,6 @@
     <br clear="all">    
 <?php endif?>
 
-<span class="bold">Албан ёсны хуудас:</span>
-<?php if($tmp = $rs->getOfficialLink1()):?>
-    <a href="<?php echo $rs->getOfficialLink1();?>" target="_blank">Facebook official</a>, 
-<?php endif?>
-<a href="<?php echo $rs->getOfficialLink2();?>" target="_blank">Official website</a>
-<br clear="all">
-
 <?php if($tmp = $rs->getSource()):?>
     <span class="bold">Эх сурвалж:</span>
     <?php echo $tmp?>
