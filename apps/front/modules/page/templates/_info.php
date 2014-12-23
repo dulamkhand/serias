@@ -29,20 +29,17 @@
 		<?php endif?>
 		<?php if($tmp = $rs->getOfficialLink1()):?>
 				<tr class="odd">
-						<td>Facebook:</td>
-						<td><?php echo $tmp?></td>
+						<td colspan="2"><a href="<?php echo $tmp?>" target="_blank">Албан ёсны facebook хуудас</a></td>
 				</tr>
 		<?php endif?>
 		<?php if($tmp = $rs->getOfficialLink2()):?>
 				<tr>
-						<td>Вэб:</td>
-						<td><?php echo $tmp?></td>
+						<td colspan="2"><a href="<?php echo $tmp?>" target="_blank">Албан ёсны вэб сайт</a></td>
 				</tr>
 		<?php endif?>
 		<?php if($tmp = $rs->getSource()):?>
 				<tr class="odd">
-						<td>Эх сурвалж:</td>
-						<td><?php echo $tmp?></td>
+				    <td colspan="2"><a href="<?php echo $tmp?>" target="_blank">Эх сурвалж</a></td>
 				</tr>
 		<?php endif?>
 		<?php if($tmp = $rs->getNbViews()):?>
@@ -57,18 +54,24 @@
 						</td>
 				</tr>		    
 		<?php endif?>
+		<?php if($tmp = $rs->getBoxoffice()):?>
+				<tr>
+						<td></td>
+						<td>
+								<h6 style="font-size:40px;color:#ff6600;font-weight:bold;margin:15px 0 0 10px;">
+										<?php echo $tmp?>
+								</h6>
+						    <br clear="all">
+								<span class="upper" style="color:#666;">Boxoffice</span>
+						</td>
+				</tr>		    
+		<?php endif?>
 		<tr>
 				<td></td>
 				<td></td>
 		</tr>
 </table>
 
-<?php if($tmp = $rs->getBoxoffice()):?>
-    <h6>Boxoffice:</h6>
-    <?php echo $tmp?>
-    <br clear="all">    
-<?php endif?>
-
 <style>
-.odd{background:#fef7cd;}
+.odd{background:#efefef;}
 </style>
