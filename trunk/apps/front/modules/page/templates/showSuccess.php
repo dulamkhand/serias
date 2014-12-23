@@ -1,13 +1,30 @@
 <?php $host = sfConfig::get('app_host')?>
-<h1 style="margin:10px 0 0 0;"><?php echo $rs?> &nbsp; /<?php echo $rs->getTitleMn()?>/</h1>
+<!--title-->
+<div>
+    <span class="left h1" style="margin:0;"><?php echo $rs?> /<?php echo $rs->getTitleMn()?>/</span>
+    <!--love-->
+    <?php $isLoved = GlobalTable::doFetchOne('Love', array('id'), array('objectType'=>'item', 'objectId'=>$rs->getId(), 'isActive'=>-1));?>
+    <?php echo image_tag('icons/'.( $isLoved ? 'love24.ico' : 'unlove24.ico'), 
+              array('alt'=>($isLoved ? 'Unlove!' : 'Love!'),
+              'onclick'=>$sf_user->isAuthenticated() ? 
+                      "love({$rs->getId()}, 24);" 
+                    : "$('#formLogin').dialog({height:310, width:400});", 
+              'style'=>'margin:5px 0 0 5px;z-index:1;cursor:pointer;float:left;', 
+              'class'=>'love24', 'id'=>'love'.$rs->getId()))?>
+    <?php include_partial('love/js', array());?>
+    <br clear="all">
+</div>
+
+<!--image-->
 <div style="float:left;margin:0 0 20px 0;width:215px;position:relative;">
     <?php echo image_tag('/u/'.$rs->getFolder().'/'.$rs->getImage(), array('style'=>'max-width:215px;'))?>
+    <!--info-->
     <?php include_partial('page/info', array('rs'=>$rs))?>
 </div>
 
-<div class="left" style="background:#fef7cd;width:510px;padding:5px 10px;border-radius:3px;">
+<div class="left" style="background:#fff6e4;width:510px;padding:5px 10px;border-radius:3px;">
 		<h6 style="color:#ff6600;font-weight:bold;"><?php echo $rs->getAge();?>+</h6>
-		<h6 class="right" style="margin:0 0 0 10px;">
+		<h6 class="right" style="margin:0 0 0 10px;width:70px;text-align:right;">
 				<?php echo image_tag('icons/time.ico', array('class'=>'left', 'style'=>'margin:3px 0 0 0;'))?>
 				<?php echo $rs->getDuration();?><span class="lower">min</span>
 		</h6>
@@ -35,17 +52,12 @@
 		<div class="left" style="margin:10px 0 0 0;">
 				<?php include_partial('page/share', array('url'=>$host."/page/show?route=".$rs->getRoute(), 'title'=>$rs));?>
 		</div>
-    <!--love-->
-    <?php $isLoved = GlobalTable::doFetchOne('Love', array('id'), array('objectType'=>'item', 'objectId'=>$rs->getId(), 'isActive'=>-1));?>
-    <?php echo image_tag('icons/'.( $isLoved ? 'love24.ico' : 'unlove24.ico'), 
-              array('alt'=>($isLoved ? 'Unlove!' : 'Love!'),
-              'onclick'=>$sf_user->isAuthenticated() ? 
-                      "love({$rs->getId()}, 24);" 
-                    : "$('#formLogin').dialog({height:310, width:400});", 
-              'style'=>'float:left;margin:9px 0 0 20px;z-index:1;cursor:pointer;', 
-              'class'=>'love24', 'id'=>'love'.$rs->getId()))?>
-
-    <?php include_partial('love/js', array());?>
+		
+		<!--mmdb rating-->
+		<div class="left" style="margin:10px 0 0 0;width:115px;"><?php //echo $rs->getRating();?></div>
+		<div class="left" style="margin:10px 0 0 0;">
+				<?php include_partial('page/rating', array());?>
+		</div>
 		<br clear="all">
 		<br clear="all">
 		

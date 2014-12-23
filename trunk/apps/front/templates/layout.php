@@ -15,6 +15,7 @@
     <?php use_stylesheet('/addons/ui/jquery-ui.css') ?>
     <?php use_javascript('/addons/sticky/jquery.sticky.js');?>
     <?php use_javascript('/addons/scrollup/jquery.scrollUp.min.js');?>
+    <?php use_javascript('/addons/bar-rating/jquery.barrating.min.js');?>
      
     <!-- FONTS -->
     <?php use_stylesheet('/addons/fonts/open-sans.css') ?>
