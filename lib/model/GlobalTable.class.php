@@ -25,21 +25,21 @@ class GlobalTable extends Doctrine_Table
         if(isset($params['route']) && $params['route'] != null)
             $q->andWhere('route= ?', $params['route']);
 
-        # type
+        # page.type
         if(isset($params['type']) && $params['type'] != null)
             $q->andWhere('type= ?', $params['type']);
             
-				# bestType
+				# best.type
         if(isset($params['bestType']) && $params['bestType'] != null)
             $q->andWhere('best_type = ?', $params['bestType']);
             
-        # image objectType, objectId
+        # image., rate. objectType, objectId
         if(isset($params['objectType']) && $params['objectType'] != null)
             $q->andWhere('object_type = ?', $params['objectType']);
         if(isset($params['objectId']) && $params['objectId'] != null)
             $q->andWhere('object_id = ?', $params['objectId']);
             
-        # banner position
+        # banner.position
         if(isset($params['position']) && $params['position'] != null)
             $q->andWhere('position = ?', $params['position']);
             

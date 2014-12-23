@@ -1426,6 +1426,13 @@ Rating:
       primary: false
       notnull: true
       autoincrement: false
+    rate:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
     created_at:
       type: timestamp(25)
       fixed: false
