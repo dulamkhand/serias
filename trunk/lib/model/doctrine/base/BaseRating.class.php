@@ -10,6 +10,7 @@ Doctrine_Manager::getInstance()->bindComponent('Rating', 'doctrine');
  * @property integer $id
  * @property string $object_type
  * @property integer $object_id
+ * @property integer $rate
  * @property timestamp $created_at
  * @property timestamp $updated_at
  * @property integer $user_id
@@ -18,6 +19,7 @@ Doctrine_Manager::getInstance()->bindComponent('Rating', 'doctrine');
  * @method integer   getId()          Returns the current record's "id" value
  * @method string    getObjectType()  Returns the current record's "object_type" value
  * @method integer   getObjectId()    Returns the current record's "object_id" value
+ * @method integer   getRate()        Returns the current record's "rate" value
  * @method timestamp getCreatedAt()   Returns the current record's "created_at" value
  * @method timestamp getUpdatedAt()   Returns the current record's "updated_at" value
  * @method integer   getUserId()      Returns the current record's "user_id" value
@@ -25,6 +27,7 @@ Doctrine_Manager::getInstance()->bindComponent('Rating', 'doctrine');
  * @method Rating    setId()          Sets the current record's "id" value
  * @method Rating    setObjectType()  Sets the current record's "object_type" value
  * @method Rating    setObjectId()    Sets the current record's "object_id" value
+ * @method Rating    setRate()        Sets the current record's "rate" value
  * @method Rating    setCreatedAt()   Sets the current record's "created_at" value
  * @method Rating    setUpdatedAt()   Sets the current record's "updated_at" value
  * @method Rating    setUserId()      Sets the current record's "user_id" value
@@ -58,6 +61,15 @@ abstract class BaseRating extends sfDoctrineRecord
              'length' => 255,
              ));
         $this->hasColumn('object_id', 'integer', 4, array(
+             'type' => 'integer',
+             'fixed' => 0,
+             'unsigned' => false,
+             'primary' => false,
+             'notnull' => true,
+             'autoincrement' => false,
+             'length' => 4,
+             ));
+        $this->hasColumn('rate', 'integer', 4, array(
              'type' => 'integer',
              'fixed' => 0,
              'unsigned' => false,

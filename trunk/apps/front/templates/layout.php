@@ -17,8 +17,6 @@
     <?php use_javascript('/addons/scrollup/jquery.scrollUp.min.js');?>
     <?php use_javascript('/addons/bar-rating/jquery.barrating.min.js');?>
 		<?php use_stylesheet('/addons/bar-rating/style.css') ?>
-     
-    <!-- FONTS -->
     <?php use_stylesheet('/addons/fonts/open-sans.css') ?>
     <?php use_stylesheet('/addons/fonts/roboto.css') ?>  
 	  
@@ -30,10 +28,6 @@
 		    $(function(){
 		        $.scrollUp({scrollText:''});
 		    });
-		    
-		    $(document).ready(function () {
-						$('#example-f').barrating();
-				});
 	  </script>
 </head>
 <body>

@@ -37,27 +37,22 @@
 		<?php echo $rs->getSummaryMn();?>
 		<br clear="all">
 		
+		<!--mmdb rating-->
+		<div class="left" style="margin:15px 0 0 0;">
+				<?php include_partial('page/rating', array('id'=>$rs->getId()));?>
+		</div>
+		<!--imdb rating-->
+		<div class="left" style="margin:15px 0 0 60px;width:115px;"><?php echo $rs->getRating();?></div>
+		<br clear="all">
+		
 		<!--genres-->
 		<?php $type = $rs->getType();?>
 		<?php $ks = explode(";", $rs->getGenre()); $i=0?>
 		<?php foreach ($ks as $k):?>
-			<a href="<?php echo url_for('page/index?type='.$type.'&g='.$k)?>" class="h6">
+			<a href="<?php echo url_for('page/index?type='.$type.'&g='.$k)?>" class="italic">
 					<?php echo GlobalLib::getValue('genre_mn', $k)?><?php echo ++$i == sizeof($ks) ? '' : '/';?>
 			</a>
 		<?php endforeach?>
-		<br clear="all">
-
-		<!--imdb rating-->
-		<div class="left" style="margin:10px 0 0 0;width:115px;"><?php //echo $rs->getRating();?></div>
-		<div class="left" style="margin:10px 0 0 0;">
-				<?php include_partial('page/share', array('url'=>$host."/page/show?route=".$rs->getRoute(), 'title'=>$rs));?>
-		</div>
-		
-		<!--mmdb rating-->
-		<div class="left" style="margin:10px 0 0 0;width:115px;"><?php //echo $rs->getRating();?></div>
-		<div class="left" style="margin:10px 0 0 0;">
-				<?php include_partial('page/rating', array());?>
-		</div>
 		<br clear="all">
 		<br clear="all">
 		
@@ -80,15 +75,16 @@
 		    <div style="text-align:justify;">
 		        <?php echo $tmp;?>
 		    </div>
-		    <br clear="all">
-<?php endif?>
+		<?php endif?>
+		
+		<br clear="all">
+		<?php include_partial('page/share', array('url'=>$host."/page/show?route=".$rs->getRoute(), 'title'=>$rs));?>
+		<br clear="all">
 </div>
 <br clear="all">
 
-
 <!--trailer -->
 <?php echo $rs->getTrailer();?>
-
 
 <!--links-->
 <?php include_partial('links', array('rs'=>$rs));?>
