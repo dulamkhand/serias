@@ -46,10 +46,7 @@
 				<tr>
 						<td></td>
 						<td>
-								<h6 style="font-size:40px;color:#ff6600;font-weight:bold;margin:15px 0 0 10px;">
-										<?php echo $tmp?>
-								</h6>
-						    <br clear="all">
+								<span class="bold"><?php echo $tmp?> </span>
 								<span class="upper" style="color:#666;">Нээгдсэн</span>
 						</td>
 				</tr>		    
@@ -58,10 +55,7 @@
 				<tr>
 						<td></td>
 						<td>
-								<h6 style="font-size:40px;color:#ff6600;font-weight:bold;margin:15px 0 0 10px;">
-										<?php echo $tmp?>
-								</h6>
-						    <br clear="all">
+								<span class="bold"><?php echo $tmp?> </span>
 								<span class="upper" style="color:#666;">Boxoffice</span>
 						</td>
 				</tr>		    

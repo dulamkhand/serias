@@ -19,10 +19,10 @@ class partialActions extends sfActions
   		$objectId = GlobalLib::clearInput($request->getParameter('objectId'));
   		$rate = intval(GlobalLib::clearInput($request->getParameter('rate')));
   		if(!($objectId && $rate)) {
-					return $this->renderText("NOK");
+					return $this->renderText("Амжилтгүй боллоо!");
   		}
   		if($this->getUser()->getAttribute('rated'.$objectId)) {
-					return $this->renderText("ALREADY");
+					return $this->renderText("Та өмнө үнэлсэн байна!");
   		}
 			// save rating
       $rating = new Rating();
@@ -31,7 +31,7 @@ class partialActions extends sfActions
       $rating->setRate($rate);
       $rating->setIpAddress($request->getRemoteAddress());
       $rating->save();
-			return $this->renderText("OK");
+			return $this->renderText("Амжилттай үнэллээ!");
   }
 
 }	

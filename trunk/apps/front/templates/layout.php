@@ -5,7 +5,7 @@
 	  <?php include_http_metas() ?>
 	  <?php include_metas() ?>
 	  <?php include_title() ?>
-	  <link rel="shortcut icon" href="<?php echo $host?>favicon.ico" />
+	  <link rel="shortcut icon" href="<?php echo $host?>images/favicon.ico" />
 	
 	  <!-- JQUIRY -->
 	  <script src="<?php echo $host?>js/jquery.min.js"></script>

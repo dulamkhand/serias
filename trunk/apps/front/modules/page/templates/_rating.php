@@ -1,6 +1,6 @@
 <?php $host = sfConfig::get('app_host')?>
 <?php $rates = GlobalTable::doFetchArray('Rating', array('rate'), 
-								array('objectType'=>'item', 'objectId'=>$id, 'isActive'=>'all'));
+							 array('objectType'=>'item', 'objectId'=>$id, 'isActive'=>'all'));
 $sum = 0;
 foreach ($rates as $rate) {
 		$sum +=	$rate['rate'];
@@ -22,7 +22,8 @@ $avgRate = number_format($sum/sizeof($rates), 1);
 	  </select>
 </div>
 <div class="upper left" style="color:#666;margin:3px 0 10px 15px;">
-		<?php echo sizeof($rates);?> УДАА ҮНЭЛСЭН
+    <span id="nbRate"><?php echo sizeof($rates);?></span> УДАА ҮНЭЛСЭН<br>
+    <span id="rateResult" style="color:red;"></span>
 </div>
 
 <script type="text/javascript">
@@ -35,6 +36,13 @@ $(document).ready(function () {
 						    url: "<?php echo url_for('partial/rate')?>", 
 						    type: "POST",
 						    data: {objectId:<?php echo $id?>, rate:$('#rateit').val()},
+						    beforeSend: function(){
+                    $('#rateResult').html('<img src="<?php echo $host?>images/loading-colorful.gif" align="absmiddle"/>');
+                },
+						    success: function(data) {
+                    $('#nbRate').val(parseInt($('#nbRate').val()) + 1);
+                    $('#rateResult').html(data);
+                }
 					  });
         }
 		});
