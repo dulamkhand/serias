@@ -2,5 +2,5 @@
 <?php 
 $rss = GlobalTable::doFetchArray('Item', array('type', 'route', 'folder', 'image', 'title', 'year'), 
               array('idO'=>$rs->getId(), 'type'=>$rs->getType(), 'genres'=>explode(";", $rs->getGenre()), 'limit'=>10));
-include_partial('page/boxwhite', array('rss'=>$rss, 'type'=>$rs->getType(), 'width'=>90, 'height'=>170));
+include_partial('page/boxwhite', array('rss'=>$rss, 'type'=>$rs->getType(), 'width'=>90, 'height'=>185));
 ?>

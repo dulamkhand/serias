@@ -23,13 +23,13 @@ class mainActions extends sfActions
         global $ITEM_COLUMNS;
     		$arr = array();
     		$arr['movie']  		 = GlobalTable::doFetchArray('Item', $ITEM_COLUMNS, array('type'=>'movie', 'limit'=>15));
+    		$arr['soap'] 		 = GlobalTable::doFetchArray('Item', $ITEM_COLUMNS, array('type'=>'soap', 'limit'=>15));
     		$arr['series'] 		 = GlobalTable::doFetchArray('Item', $ITEM_COLUMNS, array('type'=>'series', 'limit'=>15));
     		$arr['tvshow'] 		 = GlobalTable::doFetchArray('Item', $ITEM_COLUMNS, array('type'=>'tvshow', 'limit'=>15));
     		$arr['mn']     		 = GlobalTable::doFetchArray('Item', $ITEM_COLUMNS, array('type'=>'mn', 'limit'=>15));
-    		$arr['nonfiction'] = GlobalTable::doFetchArray('Item', $ITEM_COLUMNS, array('type'=>'nonfiction', 'limit'=>15));
+    		$arr['nonfiction']   = GlobalTable::doFetchArray('Item', $ITEM_COLUMNS, array('type'=>'nonfiction', 'limit'=>15));
+    		$arr['game'] 		 = GlobalTable::doFetchArray('Item', $ITEM_COLUMNS, array('type'=>'game', 'limit'=>15));
         $this->arr = $arr;
-        
-        $this->loves = GlobalTable::doFetchSelection('Love', 'object_id', array('object_id'), array('objectType'=>'item', 'isActive'=>-1));
     }   
     
 
