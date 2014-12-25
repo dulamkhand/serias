@@ -1,4 +1,4 @@
-<div style="position:relative;margin:10px 0;float:left;">
+<div style="position:relative;margin:10px 0;float:left;clear:both;">
     <input type="text" name="search" id="search" class="left" style="width:300px;height:26px;padding:0 5px;" autocomplete="off"
           value="<?php echo $sf_params->get('search') ? $sf_params->get('search') : 'Хайлт'?>"/>
     <?php echo image_tag('icons/loading-colorful.gif', array('style'=>'margin:5px 0 0 3px;display:none;', 'id'=>'search-loader'))?>

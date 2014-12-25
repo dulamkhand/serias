@@ -31,6 +31,7 @@ class partialActions extends sfActions
       $rating->setRate($rate);
       $rating->setIpAddress($request->getRemoteAddress());
       $rating->save();
+      $this->getUser()->setAttribute('rated'.$objectId, true);
 			return $this->renderText("Амжилттай үнэллээ!");
   }
 

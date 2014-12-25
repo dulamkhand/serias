@@ -8,13 +8,10 @@
         <?php foreach($rss as $rs):?>
             <div style="width:<?php echo $width?>px;height:<?php echo $height?>px;margin:0 <?php echo (++$i == 5)  ? '0' : '6px'?> 0 0;position:relative;" class="left">
                 <?php if($i == 5) {$i = 0;}?>
-            
-                <?php include_partial('love/img', array('id'=>$rs['id'], 'isLoved'=>in_array($rs['id'], $loves)));?>
-
                 <a href="<?php echo url_for('page/show?route='.$rs['route'])?>" style="color:#fff;">
                     <?php echo image_tag('/u/'.$rs['folder'].'/t140-'.$rs['image'], array('style'=>'box-shadow:0 0 4px #666;max-width:'.$width.'px'))?>
-                    <br clear="all">
-                    <span style="line-height:13px;color:#fff;"><?php echo $rs['title']?> (<?php echo $rs['year']?>)</span>
+                    <span class="left" style="color:#fff;line-height:22px;margin:5px 0 0 0;"><?php echo $rs['title']?> (<?php echo $rs['year']?>)</span>
+					<br clear="all">
                 </a>
             </div>
         <?php endforeach;?>

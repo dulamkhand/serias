@@ -23,7 +23,7 @@
 </div>
 
 <div class="left" style="background:#fff6e4;width:500px;padding:5px 15px 15px 15px;border-radius:3px;">
-		<h6 style="color:#ff6600;font-weight:bold;"><?php echo $rs->getAge();?>+</h6>
+		<h6 class="left"><?php echo $rs->getAge();?>+</h6>
 		<h6 class="right" style="margin:0 0 0 10px;width:70px;text-align:right;">
 				<?php echo image_tag('icons/time.ico', array('class'=>'left', 'style'=>'margin:3px 0 0 0;'))?>
 				<?php echo $rs->getDuration();?><span class="lower">min</span>
@@ -37,13 +37,8 @@
 		<?php echo $rs->getSummaryMn();?>
 		<br clear="all">
 		
-		<!--mmdb rating-->
-		<div class="left" style="margin:15px 0 0 50px;">
-				<?php include_partial('page/rating', array('id'=>$rs->getId()));?>
-		</div>
-		<!--imdb rating-->
-		<div class="left" style="margin:15px 0 0 70px;width:115px;"><?php echo $rs->getRating();?></div>
-		<br clear="all">
+		<!--rating-->
+		<?php include_partial('page/rating', array('rs'=>$rs));?>
 		
 		<!--genres-->
 		<?php $type = $rs->getType();?>
@@ -58,7 +53,7 @@
 		
 		<!--photos-->
 		<h6 style="width:45px;">Зураг</h6>
-		<hr class="left" style="border:0;border-top:1px double #aaa;width:460px;margin:0;">
+		<hr class="left" style="border:0;border-top:1px double #aaa;width:445px;margin:15px 0 0 0;">
 		<br clear="all">
 		<?php $images = GlobalTable::doFetchArray('Image', array('folder', 'filename'), array('isActive'=>'all', 'limit'=>8, 'objectType'=>'item', 'objectId'=>$rs->getId()))?>
     <?php foreach ($images as $image) {?>
@@ -69,16 +64,16 @@
 		<br clear="all">
 		<br clear="all">
 		
+		<!--body-->
     <?php if($tmp = $rs->getBodyMn()):?>
 		    <h6 style="width:90px;">Үйл явдал</h6>
-				<hr class="left" style="border:0;border-top:1px double #aaa;width:420px;margin:0;">
+				<hr class="left" style="border:0;border-top:1px double #aaa;width:400px;margin:15px 0 0 0;">
 				<br clear="all">
 		    <div style="text-align:justify;">
 		        <?php echo $tmp;?>
 		    </div>
 		<?php endif?>
 
-		<br clear="all">
 		<?php include_partial('page/share', array('url'=>$host."/page/show?route=".$rs->getRoute(), 'title'=>$rs));?>
 		<br clear="all">
 </div>
