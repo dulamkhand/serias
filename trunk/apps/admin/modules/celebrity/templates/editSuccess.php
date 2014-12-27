@@ -1,4 +1,4 @@
-<form action="<?php echo url_for('banner/'.($form->getObject()->isNew() ? 'create' : 'update').(!$form->getObject()->isNew() ? '?id='.$form->getObject()->getId() : '')) ?>" method="post" <?php $form->isMultipart() and print 'enctype="multipart/form-data" ' ?>>
+<form action="<?php echo url_for('celebrity/'.($form->getObject()->isNew() ? 'create' : 'update').(!$form->getObject()->isNew() ? '?id='.$form->getObject()->getId() : '')) ?>" method="post" <?php $form->isMultipart() and print 'enctype="multipart/form-data" ' ?>>
 <?php if (!$form->getObject()->isNew()): ?>
 <input type="hidden" name="sf_method" value="put" />
 <?php endif; ?>
@@ -8,7 +8,7 @@
         <td colspan="2">
           <?php echo $form->renderHiddenFields(false) ?>
           <input type="submit" value="Save"/>
-          &nbsp;<a href="<?php echo url_for('banner/index') ?>">Back to list</a>
+          &nbsp;<a href="<?php echo url_for('celebrity/index') ?>">Back to list</a>
         </td>
       </tr>
     </tfoot>
@@ -41,9 +41,14 @@
       <tr>
         <th><?php echo $form['profession']->renderLabel() ?></th>
         <td>
-          <?php echo $form['profession']->renderError() ?>
-          <?php echo $form['profession'] ?>
-          <?php echo $form['profession']->renderHelp() ?>
+            <?php $params = $sf_params->get('professions') ? $sf_params->get('professions') : explode(";", $form->getObject()->getProfession());?>
+            <?php $choices = GlobalLib::getArray('profession');?>
+            <select id="celebrity_profession" name="professions[]" style="height:200px;width:200px;" multiple="1">
+                <?php foreach ($choices as $k=>$v):?>
+                    <option value="<?php echo $k?>" <?php echo in_array($k, $params) ? 'selected': ''?>><?php echo $v?></option>
+                <?php endforeach;?>
+            </select><br>
+            <?php echo $form['profession']->renderHelp() ?>
         </td>
       </tr>
       <tr>
@@ -108,6 +113,14 @@
           <?php echo $form['web']->renderError() ?>
           <?php echo $form['web'] ?>
           <?php echo $form['web']->renderHelp() ?>
+        </td>
+      </tr>
+      <tr>
+        <th><?php echo $form['source']->renderLabel() ?></th>
+        <td>          
+          <?php echo $form['source']->renderError() ?>
+          <?php echo $form['source'] ?>
+          <?php echo $form['source']->renderHelp() ?>
         </td>
       </tr>
       <tr>
