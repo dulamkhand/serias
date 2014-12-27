@@ -40,7 +40,7 @@ abstract class BaseBannerForm extends BaseFormDoctrine
       'ext'         => new sfValidatorString(array('max_length' => 255)),
       'link'        => new sfValidatorString(array('max_length' => 255)),
       'route'       => new sfValidatorString(array('max_length' => 255)),
-      'target'      => new sfValidatorBoolean(array('required' => false)),
+      'target'      => new sfValidatorBoolean(),
       'position'    => new sfValidatorString(array('max_length' => 255)),
       'start_date'  => new sfValidatorDate(),
       'end_date'    => new sfValidatorDate(),

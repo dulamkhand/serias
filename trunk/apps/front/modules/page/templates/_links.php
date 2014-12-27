@@ -3,7 +3,7 @@
 				<a href="<?php echo $tmp?>" target="_blank" style="text-decoration:underline;">KICKASS TORRENT ТАТАХ</a> &nbsp; |&nbsp;
 				<a onclick="$('#kickass-help').toggle();" style="text-decoration:underline;cursor:pointer;">ХЭРХЭН ТАТАХ ВЭ?</a>
 				<div id="kickass-help" style="display:none;margin:5px 0 0 0;">
-						<?php echo image_tag('kickass-help.jpg', array())?><br>
+						<?php echo image_tag('help/kickass.jpg', array())?><br>
 						<iframe width="560" height="315" src="//www.youtube.com/embed/t1pMl1jUKyI" frameborder="0" allowfullscreen></iframe>
 				</div>
 		<?php else:?>

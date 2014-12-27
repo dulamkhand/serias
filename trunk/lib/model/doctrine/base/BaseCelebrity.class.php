@@ -11,15 +11,16 @@ Doctrine_Manager::getInstance()->bindComponent('Celebrity', 'doctrine');
  * @property string $fullname
  * @property string $fullname_mn
  * @property string $route
+ * @property string $nickname
+ * @property string $cover
  * @property string $profession
- * @property string $image
  * @property date $birthday
  * @property date $deadday
  * @property string $about
  * @property string $about_mn
- * @property string $rating
- * @property string $official_link1
- * @property string $official_link2
+ * @property string $facebook
+ * @property string $twitter
+ * @property string $web
  * @property integer $sort
  * @property integer $nb_views
  * @property integer $nb_love
@@ -33,56 +34,58 @@ Doctrine_Manager::getInstance()->bindComponent('Celebrity', 'doctrine');
  * @property Admin $Admin
  * @property Admin $Admin_2
  * 
- * @method integer   getId()             Returns the current record's "id" value
- * @method string    getFullname()       Returns the current record's "fullname" value
- * @method string    getFullnameMn()     Returns the current record's "fullname_mn" value
- * @method string    getRoute()          Returns the current record's "route" value
- * @method string    getProfession()     Returns the current record's "profession" value
- * @method string    getImage()          Returns the current record's "image" value
- * @method date      getBirthday()       Returns the current record's "birthday" value
- * @method date      getDeadday()        Returns the current record's "deadday" value
- * @method string    getAbout()          Returns the current record's "about" value
- * @method string    getAboutMn()        Returns the current record's "about_mn" value
- * @method string    getRating()         Returns the current record's "rating" value
- * @method string    getOfficialLink1()  Returns the current record's "official_link1" value
- * @method string    getOfficialLink2()  Returns the current record's "official_link2" value
- * @method integer   getSort()           Returns the current record's "sort" value
- * @method integer   getNbViews()        Returns the current record's "nb_views" value
- * @method integer   getNbLove()         Returns the current record's "nb_love" value
- * @method boolean   getIsActive()       Returns the current record's "is_active" value
- * @method boolean   getIsFeatured()     Returns the current record's "is_featured" value
- * @method string    getSource()         Returns the current record's "source" value
- * @method integer   getCreatedAid()     Returns the current record's "created_aid" value
- * @method integer   getUpdatedAid()     Returns the current record's "updated_aid" value
- * @method timestamp getCreatedAt()      Returns the current record's "created_at" value
- * @method timestamp getUpdatedAt()      Returns the current record's "updated_at" value
- * @method Admin     getAdmin()          Returns the current record's "Admin" value
- * @method Admin     getAdmin2()         Returns the current record's "Admin_2" value
- * @method Celebrity setId()             Sets the current record's "id" value
- * @method Celebrity setFullname()       Sets the current record's "fullname" value
- * @method Celebrity setFullnameMn()     Sets the current record's "fullname_mn" value
- * @method Celebrity setRoute()          Sets the current record's "route" value
- * @method Celebrity setProfession()     Sets the current record's "profession" value
- * @method Celebrity setImage()          Sets the current record's "image" value
- * @method Celebrity setBirthday()       Sets the current record's "birthday" value
- * @method Celebrity setDeadday()        Sets the current record's "deadday" value
- * @method Celebrity setAbout()          Sets the current record's "about" value
- * @method Celebrity setAboutMn()        Sets the current record's "about_mn" value
- * @method Celebrity setRating()         Sets the current record's "rating" value
- * @method Celebrity setOfficialLink1()  Sets the current record's "official_link1" value
- * @method Celebrity setOfficialLink2()  Sets the current record's "official_link2" value
- * @method Celebrity setSort()           Sets the current record's "sort" value
- * @method Celebrity setNbViews()        Sets the current record's "nb_views" value
- * @method Celebrity setNbLove()         Sets the current record's "nb_love" value
- * @method Celebrity setIsActive()       Sets the current record's "is_active" value
- * @method Celebrity setIsFeatured()     Sets the current record's "is_featured" value
- * @method Celebrity setSource()         Sets the current record's "source" value
- * @method Celebrity setCreatedAid()     Sets the current record's "created_aid" value
- * @method Celebrity setUpdatedAid()     Sets the current record's "updated_aid" value
- * @method Celebrity setCreatedAt()      Sets the current record's "created_at" value
- * @method Celebrity setUpdatedAt()      Sets the current record's "updated_at" value
- * @method Celebrity setAdmin()          Sets the current record's "Admin" value
- * @method Celebrity setAdmin2()         Sets the current record's "Admin_2" value
+ * @method integer   getId()          Returns the current record's "id" value
+ * @method string    getFullname()    Returns the current record's "fullname" value
+ * @method string    getFullnameMn()  Returns the current record's "fullname_mn" value
+ * @method string    getRoute()       Returns the current record's "route" value
+ * @method string    getNickname()    Returns the current record's "nickname" value
+ * @method string    getCover()       Returns the current record's "cover" value
+ * @method string    getProfession()  Returns the current record's "profession" value
+ * @method date      getBirthday()    Returns the current record's "birthday" value
+ * @method date      getDeadday()     Returns the current record's "deadday" value
+ * @method string    getAbout()       Returns the current record's "about" value
+ * @method string    getAboutMn()     Returns the current record's "about_mn" value
+ * @method string    getFacebook()    Returns the current record's "facebook" value
+ * @method string    getTwitter()     Returns the current record's "twitter" value
+ * @method string    getWeb()         Returns the current record's "web" value
+ * @method integer   getSort()        Returns the current record's "sort" value
+ * @method integer   getNbViews()     Returns the current record's "nb_views" value
+ * @method integer   getNbLove()      Returns the current record's "nb_love" value
+ * @method boolean   getIsActive()    Returns the current record's "is_active" value
+ * @method boolean   getIsFeatured()  Returns the current record's "is_featured" value
+ * @method string    getSource()      Returns the current record's "source" value
+ * @method integer   getCreatedAid()  Returns the current record's "created_aid" value
+ * @method integer   getUpdatedAid()  Returns the current record's "updated_aid" value
+ * @method timestamp getCreatedAt()   Returns the current record's "created_at" value
+ * @method timestamp getUpdatedAt()   Returns the current record's "updated_at" value
+ * @method Admin     getAdmin()       Returns the current record's "Admin" value
+ * @method Admin     getAdmin2()      Returns the current record's "Admin_2" value
+ * @method Celebrity setId()          Sets the current record's "id" value
+ * @method Celebrity setFullname()    Sets the current record's "fullname" value
+ * @method Celebrity setFullnameMn()  Sets the current record's "fullname_mn" value
+ * @method Celebrity setRoute()       Sets the current record's "route" value
+ * @method Celebrity setNickname()    Sets the current record's "nickname" value
+ * @method Celebrity setCover()       Sets the current record's "cover" value
+ * @method Celebrity setProfession()  Sets the current record's "profession" value
+ * @method Celebrity setBirthday()    Sets the current record's "birthday" value
+ * @method Celebrity setDeadday()     Sets the current record's "deadday" value
+ * @method Celebrity setAbout()       Sets the current record's "about" value
+ * @method Celebrity setAboutMn()     Sets the current record's "about_mn" value
+ * @method Celebrity setFacebook()    Sets the current record's "facebook" value
+ * @method Celebrity setTwitter()     Sets the current record's "twitter" value
+ * @method Celebrity setWeb()         Sets the current record's "web" value
+ * @method Celebrity setSort()        Sets the current record's "sort" value
+ * @method Celebrity setNbViews()     Sets the current record's "nb_views" value
+ * @method Celebrity setNbLove()      Sets the current record's "nb_love" value
+ * @method Celebrity setIsActive()    Sets the current record's "is_active" value
+ * @method Celebrity setIsFeatured()  Sets the current record's "is_featured" value
+ * @method Celebrity setSource()      Sets the current record's "source" value
+ * @method Celebrity setCreatedAid()  Sets the current record's "created_aid" value
+ * @method Celebrity setUpdatedAid()  Sets the current record's "updated_aid" value
+ * @method Celebrity setCreatedAt()   Sets the current record's "created_at" value
+ * @method Celebrity setUpdatedAt()   Sets the current record's "updated_at" value
+ * @method Celebrity setAdmin()       Sets the current record's "Admin" value
+ * @method Celebrity setAdmin2()      Sets the current record's "Admin_2" value
  * 
  * @package    imdb
  * @subpackage model
@@ -102,23 +105,23 @@ abstract class BaseCelebrity extends sfDoctrineRecord
              'autoincrement' => true,
              'length' => 4,
              ));
-        $this->hasColumn('fullname', 'string', 1000, array(
+        $this->hasColumn('fullname', 'string', 100, array(
              'type' => 'string',
              'fixed' => 0,
              'unsigned' => false,
              'primary' => false,
              'notnull' => true,
              'autoincrement' => false,
-             'length' => 1000,
+             'length' => 100,
              ));
-        $this->hasColumn('fullname_mn', 'string', 1000, array(
+        $this->hasColumn('fullname_mn', 'string', 100, array(
              'type' => 'string',
              'fixed' => 0,
              'unsigned' => false,
              'primary' => false,
              'notnull' => true,
              'autoincrement' => false,
-             'length' => 1000,
+             'length' => 100,
              ));
         $this->hasColumn('route', 'string', 1000, array(
              'type' => 'string',
@@ -129,7 +132,7 @@ abstract class BaseCelebrity extends sfDoctrineRecord
              'autoincrement' => false,
              'length' => 1000,
              ));
-        $this->hasColumn('profession', 'string', 100, array(
+        $this->hasColumn('nickname', 'string', 100, array(
              'type' => 'string',
              'fixed' => 0,
              'unsigned' => false,
@@ -138,7 +141,16 @@ abstract class BaseCelebrity extends sfDoctrineRecord
              'autoincrement' => false,
              'length' => 100,
              ));
-        $this->hasColumn('image', 'string', 1000, array(
+        $this->hasColumn('cover', 'string', 1000, array(
+             'type' => 'string',
+             'fixed' => 0,
+             'unsigned' => false,
+             'primary' => false,
+             'notnull' => true,
+             'autoincrement' => false,
+             'length' => 1000,
+             ));
+        $this->hasColumn('profession', 'string', 1000, array(
              'type' => 'string',
              'fixed' => 0,
              'unsigned' => false,
@@ -183,7 +195,7 @@ abstract class BaseCelebrity extends sfDoctrineRecord
              'autoincrement' => false,
              'length' => 1000,
              ));
-        $this->hasColumn('rating', 'string', 1000, array(
+        $this->hasColumn('facebook', 'string', 1000, array(
              'type' => 'string',
              'fixed' => 0,
              'unsigned' => false,
@@ -192,7 +204,7 @@ abstract class BaseCelebrity extends sfDoctrineRecord
              'autoincrement' => false,
              'length' => 1000,
              ));
-        $this->hasColumn('official_link1', 'string', 1000, array(
+        $this->hasColumn('twitter', 'string', 1000, array(
              'type' => 'string',
              'fixed' => 0,
              'unsigned' => false,
@@ -201,7 +213,7 @@ abstract class BaseCelebrity extends sfDoctrineRecord
              'autoincrement' => false,
              'length' => 1000,
              ));
-        $this->hasColumn('official_link2', 'string', 1000, array(
+        $this->hasColumn('web', 'string', 1000, array(
              'type' => 'string',
              'fixed' => 0,
              'unsigned' => false,

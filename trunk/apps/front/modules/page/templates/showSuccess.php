@@ -1,7 +1,7 @@
 <?php $host = sfConfig::get('app_host')?>
 <!--title-->
 <div>
-    <span class="left h1" style="margin:0;"><?php echo $rs?> /<?php echo $rs->getTitleMn()?>/</span>
+    <span class="left h1" style="margin:0;"><?php echo $rs?> <?php if($rs->getTitleMn()) echo '/'.$rs->getTitleMn().'/'?></span>
     <!--love-->
     <?php $isLoved = GlobalTable::doFetchOne('Love', array('id'), array('objectType'=>'item', 'objectId'=>$rs->getId(), 'isActive'=>-1));?>
     <?php echo image_tag('icons/'.( $isLoved ? 'love24.ico' : 'unlove24.ico'), 
@@ -45,7 +45,7 @@
 		<?php $ks = explode(";", $rs->getGenre()); $i=0?>
 		<?php foreach ($ks as $k):?>
 			<a href="<?php echo url_for('page/index?type='.$type.'&g='.$k)?>" class="italic">
-					<?php echo GlobalLib::getValue('genre_mn', $k)?><?php echo ++$i == sizeof($ks) ? '' : '/';?>
+					<?php echo GlobalLib::getValue('genre_mn', $k)?><?php echo ++$i == sizeof($ks) ? '' : ' / ';?>
 			</a>
 		<?php endforeach?>
 		<br clear="all">

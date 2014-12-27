@@ -18,9 +18,13 @@ Doctrine_Manager::getInstance()->bindComponent('User', 'doctrine');
  * @property boolean $is_active
  * @property timestamp $created_at
  * @property timestamp $updated_at
+ * @property integer $created_aid
+ * @property integer $updated_aid
  * @property timestamp $logged_at
  * @property string $activation_code
  * @property string $ip
+ * @property Admin $Admin
+ * @property Admin $Admin_2
  * 
  * @method integer   getId()              Returns the current record's "id" value
  * @method string    getPassword()        Returns the current record's "password" value
@@ -33,9 +37,13 @@ Doctrine_Manager::getInstance()->bindComponent('User', 'doctrine');
  * @method boolean   getIsActive()        Returns the current record's "is_active" value
  * @method timestamp getCreatedAt()       Returns the current record's "created_at" value
  * @method timestamp getUpdatedAt()       Returns the current record's "updated_at" value
+ * @method integer   getCreatedAid()      Returns the current record's "created_aid" value
+ * @method integer   getUpdatedAid()      Returns the current record's "updated_aid" value
  * @method timestamp getLoggedAt()        Returns the current record's "logged_at" value
  * @method string    getActivationCode()  Returns the current record's "activation_code" value
  * @method string    getIp()              Returns the current record's "ip" value
+ * @method Admin     getAdmin()           Returns the current record's "Admin" value
+ * @method Admin     getAdmin2()          Returns the current record's "Admin_2" value
  * @method User      setId()              Sets the current record's "id" value
  * @method User      setPassword()        Sets the current record's "password" value
  * @method User      setFirstname()       Sets the current record's "firstname" value
@@ -47,9 +55,13 @@ Doctrine_Manager::getInstance()->bindComponent('User', 'doctrine');
  * @method User      setIsActive()        Sets the current record's "is_active" value
  * @method User      setCreatedAt()       Sets the current record's "created_at" value
  * @method User      setUpdatedAt()       Sets the current record's "updated_at" value
+ * @method User      setCreatedAid()      Sets the current record's "created_aid" value
+ * @method User      setUpdatedAid()      Sets the current record's "updated_aid" value
  * @method User      setLoggedAt()        Sets the current record's "logged_at" value
  * @method User      setActivationCode()  Sets the current record's "activation_code" value
  * @method User      setIp()              Sets the current record's "ip" value
+ * @method User      setAdmin()           Sets the current record's "Admin" value
+ * @method User      setAdmin2()          Sets the current record's "Admin_2" value
  * 
  * @package    imdb
  * @subpackage model
@@ -159,6 +171,24 @@ abstract class BaseUser extends sfDoctrineRecord
              'autoincrement' => false,
              'length' => 25,
              ));
+        $this->hasColumn('created_aid', 'integer', 4, array(
+             'type' => 'integer',
+             'fixed' => 0,
+             'unsigned' => false,
+             'primary' => false,
+             'notnull' => true,
+             'autoincrement' => false,
+             'length' => 4,
+             ));
+        $this->hasColumn('updated_aid', 'integer', 4, array(
+             'type' => 'integer',
+             'fixed' => 0,
+             'unsigned' => false,
+             'primary' => false,
+             'notnull' => true,
+             'autoincrement' => false,
+             'length' => 4,
+             ));
         $this->hasColumn('logged_at', 'timestamp', 25, array(
              'type' => 'timestamp',
              'fixed' => 0,
@@ -192,6 +222,12 @@ abstract class BaseUser extends sfDoctrineRecord
     public function setUp()
     {
         parent::setUp();
-        
+        $this->hasOne('Admin', array(
+             'local' => 'updated_aid',
+             'foreign' => 'id'));
+
+        $this->hasOne('Admin as Admin_2', array(
+             'local' => 'created_aid',
+             'foreign' => 'id'));
     }
 }

@@ -98,9 +98,6 @@ class itemActions extends sfActions
             $rs->setOfficialLink1(trim($rs->getOfficialLink1()));
             $rs->setOfficialLink2(trim($rs->getOfficialLink2()));
             $rs->setSource(trim($rs->getSource()));
-            $rs->setCreatedAid($this->getUser()->getId());
-    				$rs->setUpdatedAid($this->getUser()->getId());
-    				$rs->setUpdatedAt(date('Y-m-d  H:i:s'));
             $rs->save();
             
             // casts         
