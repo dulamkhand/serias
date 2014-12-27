@@ -31,8 +31,8 @@
         <td><?php echo $rs?></td>
         <td><?php echo $rs->getProfession()?></td>
         <td><?php echo $rs->getBirthday()?></td>
-        <td><?php echo $rs->getAbout()?></td>
-        <td><?php echo $rs->getAboutMn()?></td>
+        <td><?php //echo $rs->getAbout()?></td>
+        <td><?php //echo $rs->getAboutMn()?></td>
         <td><?php echo $rs->getNbViews()?></td>
         <?php include_partial('partial/td_active_featured', array('rs'=>$rs))?>
         <?php include_partial('partial/td_sort_date_admin', array('rs'=>$rs))?>

@@ -64,9 +64,7 @@ class celebrityActions extends sfActions
     $this->forward404Unless($request->isMethod(sfRequest::POST) || $request->isMethod(sfRequest::PUT));
     $this->forward404Unless($celebrity = Doctrine::getTable('Celebrity')->find(array($request->getParameter('id'))), sprintf('Object celebrity does not exist (%s).', $request->getParameter('id')));
     $this->form = new CelebrityForm($celebrity);
-
     $this->processForm($request, $this->form);
-
     $this->setTemplate('edit');
   }
 
@@ -86,6 +84,7 @@ class celebrityActions extends sfActions
       if ($form->isValid())
       {
           $celebrity = $form->save();
+          $celebrity->setProfession(join(";", $request->getParameter('professions')));
           $celebrity->setUpdatedAt(date('Y-m-d H:i:s'));
           $celebrity->save();
           
