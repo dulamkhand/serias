@@ -19,6 +19,7 @@
         <td>
           <?php echo $form['fullname']->renderError() ?>
           <?php echo $form['fullname'] ?>
+          <?php echo $form['fullname']->renderHelp() ?>
         </td>
       </tr>
       <tr>
@@ -26,6 +27,7 @@
         <td>
           <?php echo $form['fullname_mn']->renderError() ?>
           <?php echo $form['fullname_mn'] ?>
+          <?php echo $form['fullname_mn']->renderHelp() ?>
         </td>
       </tr>
       <tr>
@@ -33,6 +35,7 @@
         <td>
           <?php echo $form['nickname']->renderError() ?>
           <?php echo $form['nickname'] ?>
+          <?php echo $form['nickname']->renderHelp() ?>
         </td>
       </tr>
       <tr>
@@ -40,6 +43,7 @@
         <td>
           <?php echo $form['profession']->renderError() ?>
           <?php echo $form['profession'] ?>
+          <?php echo $form['profession']->renderHelp() ?>
         </td>
       </tr>
       <tr>
@@ -47,6 +51,7 @@
         <td>          
           <?php echo $form['height']->renderError() ?>
           <?php echo $form['height'] ?>
+          <?php echo $form['height']->renderHelp() ?>
         </td>
       </tr>
       <tr>
@@ -54,6 +59,7 @@
         <td>
           <?php echo $form['birthday']->renderError() ?>
           <?php echo $form['birthday'] ?>
+          <?php echo $form['birthday']->renderHelp() ?>
         </td>
       </tr>
       <tr>
@@ -61,6 +67,7 @@
         <td>
           <?php echo $form['deadday']->renderError() ?>
           <?php echo $form['deadday'] ?>
+          <?php echo $form['deadday']->renderHelp() ?>
         </td>
       </tr>
       <tr>
@@ -68,6 +75,7 @@
         <td>
           <?php echo $form['about']->renderError() ?>
           <?php echo $form['about'] ?>
+          <?php echo $form['about']->renderHelp() ?>
         </td>
       </tr>
 			<tr>
@@ -75,6 +83,7 @@
         <td>
           <?php echo $form['about_mn']->renderError() ?>
           <?php echo $form['about_mn'] ?>
+          <?php echo $form['about_mn']->renderHelp() ?>
         </td>
       </tr>
 			<tr>
@@ -82,6 +91,7 @@
         <td>          
           <?php echo $form['facebook']->renderError() ?>
           <?php echo $form['facebook'] ?>
+          <?php echo $form['facebook']->renderHelp() ?>
         </td>
       </tr>
 			<tr>
@@ -89,6 +99,7 @@
         <td>          
           <?php echo $form['twitter']->renderError() ?>
           <?php echo $form['twitter'] ?>
+          <?php echo $form['twitter']->renderHelp() ?>
         </td>
       </tr>
       <tr>
@@ -96,6 +107,7 @@
         <td>          
           <?php echo $form['web']->renderError() ?>
           <?php echo $form['web'] ?>
+          <?php echo $form['web']->renderHelp() ?>
         </td>
       </tr>
       <tr>
@@ -103,6 +115,7 @@
         <td>
           <?php echo $form['is_active']->renderError() ?>
           <?php echo $form['is_active'] ?>
+          <?php echo $form['is_active']->renderHelp() ?>
         </td>
       </tr>
       <tr>
@@ -110,6 +123,7 @@
         <td>
           <?php echo $form['is_featured']->renderError() ?>
           <?php echo $form['is_featured'] ?>
+          <?php echo $form['is_featured']->renderHelp() ?>
         </td>
       </tr>
       <tr>
@@ -117,8 +131,18 @@
         <td>
           <?php echo $form['sort']->renderError() ?>
           <?php echo $form['sort'] ?>
+          <?php echo $form['sort']->renderHelp() ?>
         </td>
       </tr>
     </tbody>
   </table>
 </form>
+
+<style>
+#celebrity_birthday_date{width:100px;}
+#celebrity_birthday_hour{width:50px;}
+#celebrity_birthday_minute{width:50px;}
+#celebrity_deadday_date{width:100px;}
+#celebrity_deadday_hour{width:50px;}
+#celebrity_deadday_minute{width:50px;}
+</style>

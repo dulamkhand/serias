@@ -4,15 +4,16 @@
   <?php include_http_metas() ?>
   <?php include_metas() ?>
   <?php include_title() ?>
-	<?php include_stylesheets() ?>    
-  <?php include_javascripts() ?>
 	<?php $host = sfConfig::get('app_host')?>
 	<link rel="shortcut icon" href="<?php echo $host?>/favicon.ico" />
   <!--jquery-->
-  <!--<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>-->
-	<script src="<?php echo $host?>/js/jquery.min.js"></script>  
+	<script src="<?php echo $host?>/js/jquery.min.js"></script>
+	<script src="<?php echo $host?>addons/ui/jquery-ui.min.js"></script>
+  <!-- ADDONS -->
+  <?php use_stylesheet('/addons/ui/jquery-ui.css') ?>
+	<?php include_stylesheets() ?>    
+  <?php include_javascripts() ?>
 </head>
-
 <body>
     <?php if($sf_user->isAuthenticated()):?>
         <div id="topmenu"><ul>

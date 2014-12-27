@@ -141,6 +141,8 @@ class GlobalLib
           	case 'days': return self::$days;
           	case 'mod_permissions': return self::$mod_permissions;
           	case 'banner_position': return self::$banner_position;
+          	case 'profession': return self::$profession;
+          	case 'profession_mn': return self::$profession_mn;
         }
        return array();
     }

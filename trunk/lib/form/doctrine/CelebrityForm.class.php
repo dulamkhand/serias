@@ -17,12 +17,12 @@ class CelebrityForm extends BaseCelebrityForm
 	      $this->widgetSchema['fullname_mn'] 	  = new sfWidgetFormInputText(array(), array());
 	      $this->widgetSchema['nickname']   	  = new sfWidgetFormInputText(array(), array());
 	      $choices = GlobalLib::getArray('profession');
-	      $this->widgetSchema['profession']     = new sfWidgetFormChoice(array('choices'=>$choices, 'multiple'=>true), array('style'=>'width:200px;'));
+	      $this->widgetSchema['profession']     = new sfWidgetFormChoice(array('choices'=>$choices, 'multiple'=>true), array('style'=>'width:200px;height:200px;'));
 	    	$this->widgetSchema['height']         = new sfWidgetFormInputText(array(), array('style'=>'width:40px;'));
-	    	$this->widgetSchema['birthday']       = new sfWidgetFormDatePickerTime(array(), array('style'=>'width:60px;'));
-	    	$this->widgetSchema['deadday']        = new sfWidgetFormDatePickerTime(array(), array('style'=>'width:60px;'));
-	    	$this->widgetSchema['about']          = new sfWidgetFormTextarea(array(), array());
-	    	$this->widgetSchema['about_mn']       = new sfWidgetFormTextarea(array(), array());
+	    	$this->widgetSchema['birthday']       = new sfWidgetFormDatePickerTime(array(), array());
+	    	$this->widgetSchema['deadday']        = new sfWidgetFormDatePickerTime(array(), array());
+	    	$this->widgetSchema['about']          = new sfWidgetFormTextarea(array(), array('style'=>'width:500px;height:200px;'));
+	    	$this->widgetSchema['about_mn']       = new sfWidgetFormTextarea(array(), array('style'=>'width:500px;height:200px;'));
 	    	$this->widgetSchema['facebook']       = new sfWidgetFormInputText(array(), array());
 	    	$this->widgetSchema['twitter']        = new sfWidgetFormInputText(array(), array());
 	    	$this->widgetSchema['web']        		= new sfWidgetFormInputText(array(), array());
