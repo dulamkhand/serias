@@ -38,6 +38,8 @@ Doctrine_Manager::getInstance()->bindComponent('Admin', 'doctrine');
  * @property Doctrine_Collection $PollOption_2
  * @property Doctrine_Collection $Studio
  * @property Doctrine_Collection $Studio_2
+ * @property Doctrine_Collection $User
+ * @property Doctrine_Collection $User_2
  * 
  * @method integer             getId()              Returns the current record's "id" value
  * @method string              getEmail()           Returns the current record's "email" value
@@ -70,6 +72,8 @@ Doctrine_Manager::getInstance()->bindComponent('Admin', 'doctrine');
  * @method Doctrine_Collection getPollOption2()     Returns the current record's "PollOption_2" collection
  * @method Doctrine_Collection getStudio()          Returns the current record's "Studio" collection
  * @method Doctrine_Collection getStudio2()         Returns the current record's "Studio_2" collection
+ * @method Doctrine_Collection getUser()            Returns the current record's "User" collection
+ * @method Doctrine_Collection getUser2()           Returns the current record's "User_2" collection
  * @method Admin               setId()              Sets the current record's "id" value
  * @method Admin               setEmail()           Sets the current record's "email" value
  * @method Admin               setPassword()        Sets the current record's "password" value
@@ -101,6 +105,8 @@ Doctrine_Manager::getInstance()->bindComponent('Admin', 'doctrine');
  * @method Admin               setPollOption2()     Sets the current record's "PollOption_2" collection
  * @method Admin               setStudio()          Sets the current record's "Studio" collection
  * @method Admin               setStudio2()         Sets the current record's "Studio_2" collection
+ * @method Admin               setUser()            Sets the current record's "User" collection
+ * @method Admin               setUser2()           Sets the current record's "User_2" collection
  * 
  * @package    imdb
  * @subpackage model
@@ -303,5 +309,13 @@ abstract class BaseAdmin extends sfDoctrineRecord
         $this->hasMany('Studio as Studio_2', array(
              'local' => 'id',
              'foreign' => 'updated_aid'));
+
+        $this->hasMany('User', array(
+             'local' => 'id',
+             'foreign' => 'updated_aid'));
+
+        $this->hasMany('User as User_2', array(
+             'local' => 'id',
+             'foreign' => 'created_aid'));
     }
 }

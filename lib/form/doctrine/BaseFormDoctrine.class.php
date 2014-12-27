@@ -20,11 +20,12 @@ abstract class BaseFormDoctrine extends sfFormDoctrine
           $this->widgetSchema['sort']        = new sfWidgetFormChoice(array('choices'=>$choices), array('style'=>'width:50px;'));
           $this->widgetSchema['is_active']   = new sfWidgetFormInputCheckbox(array(), array('value'=>1));
           $this->widgetSchema['is_featured'] = new sfWidgetFormInputCheckbox(array(), array('value'=>1));
-          $this->widgetSchema['created_aid'] = new sfWidgetFormInputHidden(array(), array());
+          
+      		$this->widgetSchema['created_aid'] = new sfWidgetFormInputHidden(array(), array());
+      		$this->setDefault('created_aid', $this->getObject()->getCreatedAid() ? $this->getObject()->getCreatedAid() : sfContext::getInstance()->getUser()->getId()); 
           $this->widgetSchema['updated_aid'] = new sfWidgetFormInputHidden(array(), array());
-          $this->setDefault('created_aid', $this->getObject()->getCreatedAid() ? $this->getObject()->getCreatedAid() : sfContext::getInstance()->getUser()->getId());
           $this->setDefault('updated_aid', sfContext::getInstance()->getUser()->getId());
-          $this->widgetSchema['updated_at'] = new sfWidgetFormInputHidden(array(), array());
+          $this->widgetSchema['updated_at']  = new sfWidgetFormInputHidden(array(), array());
           $this->setDefault('updated_at', date('Y-m-d H:i:s'));
   
           # DEFUALTS

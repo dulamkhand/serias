@@ -50,6 +50,30 @@ class GlobalLib
                   'drama'        => 'Уянгын',                  
                   'scifi'        => 'Шинжлэх ухааны уран зөгнөлт', 
     );
+
+    public static $profession = array(
+                  'actor'       => 'Actor', 
+                  'actress'     => 'Actress', 
+                  'composer'  	=> 'Composer', 
+                  'director'  	=> 'Director', 
+                  'music_department' => 'Music department', 
+                  'producer'    => 'Producer', 
+                  'soundtrack'  => 'Soundtrack', 
+                  'stunts'  		=> 'Stunts', 
+                  'writer'    	=> 'Writer', 
+    );
+    public static $profession_mn  = array(
+                  'actor'       => 'Жүжигчин', 
+                  'actress'     => 'Жүжигчин', 
+                  'composer'  	=> 'Хөгжмийн зохиолч', 
+                  'director'  	=> 'Найруулагч', 
+                  'music_department' => 'Хөгжмийн найруулагч', 
+                  'producer'    => 'Зураглаач', 
+                  'soundtrack'  => 'Фонограм', 
+                  'stunts'  		=> 'Stunts', 
+                  'writer'    	=> 'Зохиолч',
+    );
+
     
 		public static $bests  = array(
                   'imdb250'=>'IMDB шилдэг 50', 
@@ -264,7 +288,7 @@ class GlobalLib
     
     public static function clearOutput($text)
     {
-        return nl2br(htmlspecialchars_decode(strip_tags($text, '<strong><b><i><em><u><sup><sub><ol><ul><li><a><img><embed><object>')));
+        return nl2br(htmlspecialchars_decode(strip_tags($text, '<strong><b><i><em><u><sup><sub><ol><ul><li><a><img><embed><object><iframe>')));
     }
     
     public static function clearInput($text)

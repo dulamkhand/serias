@@ -125,7 +125,6 @@ abstract class BaseBanner extends sfDoctrineRecord
              'fixed' => 0,
              'unsigned' => false,
              'primary' => false,
-             'default' => '1',
              'notnull' => true,
              'autoincrement' => false,
              ));

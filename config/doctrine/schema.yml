@@ -175,6 +175,15 @@ Admin:
       local: id
       foreign: updated_aid
       type: many
+    User:
+      local: id
+      foreign: updated_aid
+      type: many
+    User_2:
+      class: User
+      local: id
+      foreign: created_aid
+      type: many
 Banner:
   connection: doctrine
   tableName: banner
@@ -218,7 +227,6 @@ Banner:
       fixed: false
       unsigned: false
       primary: false
-      default: '1'
       notnull: true
       autoincrement: false
     position:
@@ -401,14 +409,14 @@ Celebrity:
       primary: true
       autoincrement: true
     fullname:
-      type: string(1000)
+      type: string(100)
       fixed: false
       unsigned: false
       primary: false
       notnull: true
       autoincrement: false
     fullname_mn:
-      type: string(1000)
+      type: string(100)
       fixed: false
       unsigned: false
       primary: false
@@ -421,14 +429,21 @@ Celebrity:
       primary: false
       notnull: true
       autoincrement: false
-    profession:
+    nickname:
       type: string(100)
       fixed: false
       unsigned: false
       primary: false
       notnull: true
       autoincrement: false
-    image:
+    cover:
+      type: string(1000)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    profession:
       type: string(1000)
       fixed: false
       unsigned: false
@@ -463,21 +478,21 @@ Celebrity:
       primary: false
       notnull: true
       autoincrement: false
-    rating:
+    facebook:
       type: string(1000)
       fixed: false
       unsigned: false
       primary: false
       notnull: true
       autoincrement: false
-    official_link1:
+    twitter:
       type: string(1000)
       fixed: false
       unsigned: false
       primary: false
       notnull: true
       autoincrement: false
-    official_link2:
+    web:
       type: string(1000)
       fixed: false
       unsigned: false
@@ -1718,6 +1733,20 @@ User:
       default: '0000-00-00 00:00:00'
       notnull: true
       autoincrement: false
+    created_aid:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    updated_aid:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
     logged_at:
       type: timestamp(25)
       fixed: false
@@ -1740,3 +1769,13 @@ User:
       primary: false
       notnull: true
       autoincrement: false
+  relations:
+    Admin:
+      local: updated_aid
+      foreign: id
+      type: one
+    Admin_2:
+      class: Admin
+      local: created_aid
+      foreign: id
+      type: one

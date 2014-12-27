@@ -1,12 +1,12 @@
-<div style="position:relative;margin:10px 0;float:left;clear:both;">
+<div style="position:relative;margin:10px 0;float:left;clear:both;width:100%;">
     <input type="text" name="search" id="search" class="left" style="width:300px;height:26px;padding:0 5px;" autocomplete="off"
           value="<?php echo $sf_params->get('search') ? $sf_params->get('search') : 'Хайлт'?>"/>
     <?php echo image_tag('icons/loading-colorful.gif', array('style'=>'margin:5px 0 0 3px;display:none;', 'id'=>'search-loader'))?>
     <div id="search-result" style="display:none;position:absolute;z-index:1000;top:27px;left:0;padding:5px;
           min-width:700px;max-height:700px;overflow-y:scroll;border-radius:1px;background:#fff;border:1px solid #4779B8;">
     </div>
+    <br clear="all">
 </div>
-<br clear="all">
 
 <script type="text/javascript">
 $('#search').keyup(function() {

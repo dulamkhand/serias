@@ -8,7 +8,7 @@ class ProjectConfiguration extends sfProjectConfiguration
 {
   public function setup()
   {
-      $this->enablePlugins('sfDoctrinePlugin', 'sfThumbnailPlugin', 'sfImageTransformPlugin');
+      $this->enablePlugins('sfDoctrinePlugin', 'sfThumbnailPlugin', 'sfImageTransformPlugin', 'sfDatePickerTimePlugin', 'sfFormExtraPlugin');
       
       sfConfig::set('sf_web_dir', 'C:\wamp\www\imdb\web');
       sfConfig::set('sf_upload_dir', 'C:\wamp\www\imdb\web\u');
