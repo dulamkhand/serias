@@ -12,6 +12,7 @@ class ItemForm extends BaseItemForm
 {
     public function configure()
     {
+		unset($this['source']);
         # WIDGETS
         $choices = GlobalLib::getArray('type_mn');
         $this->widgetSchema['type']           = new sfWidgetFormChoice(array('choices'=>$choices), array('style'=>'width:200px;'));
@@ -32,7 +33,6 @@ class ItemForm extends BaseItemForm
       	$this->widgetSchema['body_mn']        = new sfWidgetFormTextarea(array(), array());
       	$this->widgetSchema['trailer']        = new sfWidgetFormTextarea(array(), array());
       	$this->widgetSchema['rating']         = new sfWidgetFormTextarea(array(), array());
-      	$this->widgetSchema['kickass']        = new sfWidgetFormInputText(array(), array());
       	$this->widgetSchema['casts']          = new sfWidgetFormInputText(array(), array());
 
       	$choices = GlobalLib::getNumbers(0, 30);
@@ -52,7 +52,12 @@ class ItemForm extends BaseItemForm
       	$this->widgetSchema['nb_episodes']    = new sfWidgetFormChoice(array('choices'=>$choices), array('style'=>'width:46px;'));
       	$this->widgetSchema['official_link1'] = new sfWidgetFormInputText(array(), array());
       	$this->widgetSchema['official_link2'] = new sfWidgetFormInputText(array(), array());
-      	$this->widgetSchema['source']         = new sfWidgetFormInputText(array(), array());
+		
+		$this->widgetSchema['kickass']           = new sfWidgetFormInputText(array(), array());
+		$this->widgetSchema['torrentz']          = new sfWidgetFormInputText(array(), array());
+		$this->widgetSchema['extratorrent']      = new sfWidgetFormInputText(array(), array());
+		$this->widgetSchema['freetvvideoonline'] = new sfWidgetFormInputText(array(), array());
+		$this->widgetSchema['youtube']           = new sfWidgetFormInputText(array(), array());
       	
       	  	
       	# VALIDATORS
@@ -71,7 +76,6 @@ class ItemForm extends BaseItemForm
       	$this->validatorSchema['body_mn']      = new sfValidatorPass();
       	$this->validatorSchema['trailer']      = new sfValidatorString();
       	$this->validatorSchema['rating']       = new sfValidatorPass();
-      	$this->validatorSchema['kickass']      = new sfValidatorPass();
       	$this->validatorSchema['casts']        = new sfValidatorString();
       	$this->validatorSchema['age']          = new sfValidatorInteger();
       	$this->validatorSchema['studios']      = new sfValidatorString();
@@ -85,16 +89,33 @@ class ItemForm extends BaseItemForm
       	$this->validatorSchema['comingsoon']   = new sfValidatorPass();
       	$this->validatorSchema['official_link1'] = new sfValidatorUrl(array('required'=>false), array());
       	$this->validatorSchema['official_link2'] = new sfValidatorUrl();
-      	$this->validatorSchema['source']         = new sfValidatorString();
+		
+		$this->validatorSchema['kickass']      = new sfValidatorPass();
+      	$this->validatorSchema['torrentz']     = new sfValidatorPass();
+      	$this->validatorSchema['extratorrent'] = new sfValidatorPass();
+      	$this->validatorSchema['freetvvideoonline'] = new sfValidatorPass();
+      	$this->validatorSchema['youtube']      = new sfValidatorPass();
       	
       	#HELP
       	$this->widgetSchema->setHelp('genre', 'Ctrl + Mouse left click дарж зэрэг сонгоно уу.');      	
       	$this->widgetSchema->setHelp('duration', 'min');
       	$this->widgetSchema->setHelp('age', '+');
+		$this->widgetSchema->setHelp('official_link1', '');
+		$this->widgetSchema->setHelp('official_link2', '');
+		$this->widgetSchema->setHelp('kickass', 'link');
+		$this->widgetSchema->setHelp('torrentz', 'link');
+		$this->widgetSchema->setHelp('extratorrent', 'link');
+		$this->widgetSchema->setHelp('freetvvideoonline', 'embed code');
+		$this->widgetSchema->setHelp('youtube', 'шууд үзэх');
       	
       	#LABEL
       	$this->widgetSchema->setLabel('official_link1', 'Official facebook');
       	$this->widgetSchema->setLabel('official_link2', 'Official website');
+      	$this->widgetSchema->setLabel('kickass', 'kickass.to');
+      	$this->widgetSchema->setLabel('torrentz', 'torrentz.eu');
+      	$this->widgetSchema->setLabel('extratorrent', 'extratorrent.cc');
+      	$this->widgetSchema->setLabel('freetvvideoonline', 'free-tv-video-online.me');
+      	$this->widgetSchema->setLabel('youtube', 'youtube.com');
       	
     }
 	
