@@ -103,7 +103,7 @@
           <?php echo $form['body_mn'] ?>
         </td>
       </tr>
-      <tr><td colspan="2" style="color:#ccc;"><?php echo str_repeat('-', 120)?></td></tr>
+      <tr><td colspan="2" style="color:#FF6600;"><?php echo str_repeat('-', 120)?></td></tr>
       <tr>
         <th><?php echo $form['studios']->renderLabel() ?></th>
         <td>
@@ -159,7 +159,7 @@
           <?php echo $form['casts']->renderHelp() ?>
         </td>
       </tr>
-			<tr><td colspan="2" style="color:#ccc;"><?php echo str_repeat('-', 120)?></td></tr>
+			<tr><td colspan="2" style="color:#FF6600;"><?php echo str_repeat('-', 120)?></td></tr>
       <tr>
         <th><?php echo $form['nb_seasons']->renderLabel() ?></th>
         <td>
@@ -196,7 +196,7 @@
           <?php echo $form['comingsoon'] ?>
         </td>
       </tr>
-      <tr><td colspan="2" style="color:#ccc;"><?php echo str_repeat('-', 120)?></td></tr>
+      <tr><td colspan="2" style="color:#FF6600;"><?php echo str_repeat('-', 120)?></td></tr>
       <tr>
         <th><?php echo $form['official_link1']->renderLabel() ?></th>
         <td>
@@ -212,28 +212,54 @@
         </td>
       </tr>
       <tr>
-        <th><?php echo $form['source']->renderLabel() ?></th>
-        <td>
-          <?php echo $form['source']->renderError() ?>
-          <?php echo $form['source'] ?>
-          <?php echo $form['source']->renderHelp() ?>
-        </td>
-      </tr>
-      <tr>
         <th><?php echo $form['trailer']->renderLabel() ?></th>
         <td>
           <?php echo $form['trailer']->renderError() ?>
           <?php echo $form['trailer'] ?>
         </td>
       </tr>
+	  <tr><td colspan="2" style="color:#FF6600;"><?php echo str_repeat('-', 120)?></td></tr>
       <tr>
         <th><?php echo $form['kickass']->renderLabel() ?></th>
         <td>
           <?php echo $form['kickass']->renderError() ?>
           <?php echo $form['kickass'] ?>
+		  <?php echo $form['kickass']->renderHelp() ?>
         </td>
       </tr>
-      <tr><td colspan="2" style="color:#ccc;"><?php echo str_repeat('-', 120)?></td></tr>
+	  <tr>
+        <th><?php echo $form['torrentz']->renderLabel() ?></th>
+        <td>
+          <?php echo $form['torrentz']->renderError() ?>
+          <?php echo $form['torrentz'] ?>
+		  <?php echo $form['torrentz']->renderHelp() ?>
+        </td>
+      </tr>
+	  <tr>
+        <th><?php echo $form['extratorrent']->renderLabel() ?></th>
+        <td>
+          <?php echo $form['extratorrent']->renderError() ?>
+          <?php echo $form['extratorrent'] ?>
+		  <?php echo $form['extratorrent']->renderHelp() ?>
+        </td>
+      </tr>
+	  <tr>
+        <th><?php echo $form['freetvvideoonline']->renderLabel() ?></th>
+        <td>
+          <?php echo $form['freetvvideoonline']->renderError() ?>
+          <?php echo $form['freetvvideoonline'] ?>
+		  <?php echo $form['freetvvideoonline']->renderHelp() ?>
+        </td>
+      </tr>
+	  <tr>
+        <th><?php echo $form['youtube']->renderLabel() ?></th>
+        <td>
+          <?php echo $form['youtube']->renderError() ?>
+          <?php echo $form['youtube'] ?>
+		  <?php echo $form['youtube']->renderHelp() ?>
+        </td>
+      </tr>
+      <tr><td colspan="2" style="color:#FF6600;"><?php echo str_repeat('-', 120)?></td></tr>
       <tr>
         <th><?php echo $form['sort']->renderLabel() ?></th>
         <td>
