@@ -9,6 +9,6 @@ all:
       #username: urinesse_handaa
       #password: urinesse@handaa2013
       
-      dsn:      mysql:host=localhost;dbname=imdb
+      dsn:      mysql:host=localhost;dbname=tmp
       username: root
-      password: 
+      password: <;(w3iF?Mc75!Tg
