@@ -1,10 +1,10 @@
 <form action="<?php echo url_for('bests/index')?>" method="GET">
 		<b>Type</b>&nbsp;
     <?php $rss = GlobalLib::getArray('bests')?>
-    <select name="best_type">
+    <select name="bestType" style="width:200px;">
         <option value="">Бүгд</option>
         <?php foreach ($rss as $k=>$v):?>
-            <option value="<?php echo $k?>" <?php if($k == $sf_params->get('best_type')) echo 'selected'?>>
+            <option value="<?php echo $k?>" <?php if($k == $sf_params->get('bestType')) echo 'selected'?>>
                 <?php echo $v?>
             </option>
         <?php endforeach?>

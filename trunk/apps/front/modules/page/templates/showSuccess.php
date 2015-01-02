@@ -22,7 +22,7 @@
     <?php include_partial('page/info', array('rs'=>$rs))?>
 </div>
 
-<div class="left" style="background:#fff6e4;width:500px;padding:5px 15px 15px 15px;border-radius:3px;">
+<div class="left" style="background:#fff6e4;width:480px;padding:5px 15px 15px 15px;border-radius:3px;">
 		<h6 class="left"><?php echo $rs->getAge();?>+</h6>
 		<h6 class="right" style="margin:0 0 0 10px;width:70px;text-align:right;">
 				<?php echo image_tag('icons/time.ico', array('class'=>'left', 'style'=>'margin:3px 0 0 0;'))?>
@@ -53,7 +53,7 @@
 		
 		<!--photos-->
 		<h6 style="width:45px;">Зураг</h6>
-		<hr class="left" style="border:0;border-top:1px double #aaa;width:445px;margin:15px 0 0 0;">
+		<hr class="left" style="border:0;border-top:1px double #aaa;width:435px;margin:15px 0 0 0;">
 		<br clear="all">
 		<?php $images = GlobalTable::doFetchArray('Image', array('folder', 'filename'), array('isActive'=>'all', 'limit'=>8, 'objectType'=>'item', 'objectId'=>$rs->getId()))?>
     <?php foreach ($images as $image) {?>
@@ -67,7 +67,7 @@
 		<!--body-->
     <?php if($tmp = $rs->getBodyMn()):?>
 		    <h6 style="width:90px;">Үйл явдал</h6>
-				<hr class="left" style="border:0;border-top:1px double #aaa;width:400px;margin:15px 0 0 0;">
+				<hr class="left" style="border:0;border-top:1px double #aaa;width:390px;margin:15px 0 0 0;">
 				<br clear="all">
 		    <div style="text-align:justify;">
 		        <?php echo $tmp;?>
@@ -84,6 +84,7 @@
 
 <!--links-->
 <?php include_partial('links', array('rs'=>$rs));?>
+<br clear="all">
 <br clear="all">
 
 <!--similars-->

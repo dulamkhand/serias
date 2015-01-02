@@ -38,12 +38,12 @@ function showName() {
 
 <div class="right">
 		<?php if($sf_user->isAuthenticated()):?>
-		    (<a href="<?php echo url_for('user/profile')?>"><?php echo substr($sf_user->getAttribute('email'), 0, 24)?></a>)
-		    <a style="text-decoration:underline;" href="<?php echo url_for('user/logout')?>" class="left upper">Гарах</a>
+		    (<a href="<?php echo url_for('user/profile')?>" class="left white"><?php echo substr($sf_user->getAttribute('email'), 0, 24)?></a>)
+		    <a style="text-decoration:underline;margin:0 0 0 5px" href="<?php echo url_for('user/logout')?>" class="left white">Гарах</a>
 		<?php else:?>
-		    <a onclick="$('#formLogin').dialog({height:310, width:400});" class="left upper white" style="width:50px;line-height:22px;">Нэвтрэх</a>
+		    <a onclick="$('#formLogin').dialog({height:310, width:400});" class="left upper white" style="width:50px;line-height:22px;cursor:pointer;z-index:1001;">Нэвтрэх</a>
 		    <span class="left" style="margin:6px 8px 0 3px;width:1px;height:14px;background:#fff;display:block;"></span>
-		    <a onclick="$('#formRegister').dialog({height:310, width:400});" class="left upper white" style="width:60px;line-height:22px;">Бүртгүүлэх</a>
+		    <a onclick="$('#formRegister').dialog({height:310, width:400});" class="left upper white" style="width:60px;line-height:22px;cursor:pointer;z-index:1001;">Бүртгүүлэх</a>
 		<?php endif?>
 		
 		<div id="fb_button_login">

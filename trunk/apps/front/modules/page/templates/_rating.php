@@ -45,7 +45,7 @@ $(document).ready(function () {
 					type: "POST",
 					data: {objectId:<?php echo $rs->getId()?>, rate:$('#rate-select').val()},
 					beforeSend: function(){
-						$('#rateResult').html('<img src="<?php echo $host?>images/loading-colorful.gif" style="float:left;margin:5px 0 0 5px"/>');
+						$('#rateResult').html('<img src="<?php echo $host?>images/icons/loading-colorful.gif" style="float:left;margin:5px 0 0 5px"/>');
 					},
 					success: function(data) {
 						if(data == 'Амжилттай үнэллээ!') {

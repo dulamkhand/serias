@@ -92,6 +92,8 @@ class GlobalTable extends Doctrine_Table
         # keyword
         if(isset($params['sItem']) && $params['sItem'] != null)
             $q->andWhere('title LIKE ? ', array('%'.$params['sItem'].'%'));
+        if(isset($params['sBests']) && $params['sBests'] != null)
+            $q->andWhere('title LIKE ? ', array('%'.$params['sBests'].'%'));
         if(isset($params['sNews']) && $params['sNews'] != null)
             $q->andWhere('title LIKE ? OR summary LIKE ? OR body LIKE ?', array('%'.$params['sNews'].'%','%'.$params['sNews'].'%','%'.$params['sNews'].'%'));
 
