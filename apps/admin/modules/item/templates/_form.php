@@ -5,7 +5,7 @@
 <?php if (!$form->getObject()->isNew()): ?>
 <input type="hidden" name="sf_method" value="put" />
 <?php endif; ?>
-  <table class="left">
+  <table class="left" width="550px">
     <tfoot>
       <tr>
         <td colspan="2">
@@ -103,7 +103,7 @@
           <?php echo $form['body_mn'] ?>
         </td>
       </tr>
-      <tr><td colspan="2" style="color:#FF6600;"><?php echo str_repeat('-', 120)?></td></tr>
+      <tr><td colspan="2" style="color:#FF6600;"><?php echo str_repeat('-', 100)?></td></tr>
       <tr>
         <th><?php echo $form['studios']->renderLabel() ?></th>
         <td>
@@ -120,7 +120,8 @@
       </tr>
     </tbody>
   </table>
-  <table class="left">
+
+  <table class="left" width="550px">
   		 <tr>
         <th><?php echo $form['duration']->renderLabel() ?></th>
         <td>
@@ -159,7 +160,7 @@
           <?php echo $form['casts']->renderHelp() ?>
         </td>
       </tr>
-			<tr><td colspan="2" style="color:#FF6600;"><?php echo str_repeat('-', 120)?></td></tr>
+			<tr><td colspan="2" style="color:#FF6600;"><?php echo str_repeat('-', 100)?></td></tr>
       <tr>
         <th><?php echo $form['nb_seasons']->renderLabel() ?></th>
         <td>
@@ -196,7 +197,7 @@
           <?php echo $form['comingsoon'] ?>
         </td>
       </tr>
-      <tr><td colspan="2" style="color:#FF6600;"><?php echo str_repeat('-', 120)?></td></tr>
+      <tr><td colspan="2" style="color:#FF6600;"><?php echo str_repeat('-', 100)?></td></tr>
       <tr>
         <th><?php echo $form['official_link1']->renderLabel() ?></th>
         <td>
@@ -218,7 +219,7 @@
           <?php echo $form['trailer'] ?>
         </td>
       </tr>
-	  <tr><td colspan="2" style="color:#FF6600;"><?php echo str_repeat('-', 120)?></td></tr>
+	  <tr><td colspan="2" style="color:#FF6600;"><?php echo str_repeat('-', 100)?></td></tr>
       <tr>
         <th><?php echo $form['kickass']->renderLabel() ?></th>
         <td>
@@ -259,7 +260,7 @@
 		  <?php echo $form['youtube']->renderHelp() ?>
         </td>
       </tr>
-      <tr><td colspan="2" style="color:#FF6600;"><?php echo str_repeat('-', 120)?></td></tr>
+      <tr><td colspan="2" style="color:#FF6600;"><?php echo str_repeat('-', 100)?></td></tr>
       <tr>
         <th><?php echo $form['sort']->renderLabel() ?></th>
         <td>
