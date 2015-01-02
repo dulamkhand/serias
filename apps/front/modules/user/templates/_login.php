@@ -36,21 +36,18 @@ function showName() {
 }
 </script>
 
-<?php if($sf_user->isAuthenticated()):?>
-    (<a href="<?php echo url_for('user/profile')?>"><?php echo substr($sf_user->getAttribute('email'), 0, 24)?></a>)
-    <a style="text-decoration:underline;" href="<?php echo url_for('user/logout')?>">Гарах</a>
-<?php else:?>
-    <a onclick="$('#formLogin').dialog({height:310, width:400});">
-        <h3 style="float:left;width:55px;">Нэвтрэх</h3>
-    </a>
-    <span style="float:left;margin:0 5px 0 2px;"> | </span>
-    <a onclick="$('#formRegister').dialog({height:310, width:400});">
-        <h3 style="float:left;width:70px;">Бүртгүүлэх</h3>
-    </a>
-<?php endif?>
-<br clear="all">
-
-<div id="fb_button_login">
-		<fb:login-button scope="public_profile,email,image" onlogin="checkLoginState();"></fb:login-button>
+<div class="right">
+		<?php if($sf_user->isAuthenticated()):?>
+		    (<a href="<?php echo url_for('user/profile')?>"><?php echo substr($sf_user->getAttribute('email'), 0, 24)?></a>)
+		    <a style="text-decoration:underline;" href="<?php echo url_for('user/logout')?>" class="left upper">Гарах</a>
+		<?php else:?>
+		    <a onclick="$('#formLogin').dialog({height:310, width:400});" class="left upper white" style="width:50px;line-height:22px;">Нэвтрэх</a>
+		    <span class="left" style="margin:6px 8px 0 3px;width:1px;height:14px;background:#fff;display:block;"></span>
+		    <a onclick="$('#formRegister').dialog({height:310, width:400});" class="left upper white" style="width:60px;line-height:22px;">Бүртгүүлэх</a>
+		<?php endif?>
+		
+		<div id="fb_button_login">
+				<fb:login-button scope="public_profile,email,image" onlogin="checkLoginState();"></fb:login-button>
+		</div>
+		<a href="<?php echo url_for('user/profile')?>" id="fb_login_status"></a>
 </div>
-<a href="<?php echo url_for('user/profile')?>"><h3 id="fb_login_status"></h3></a>

@@ -1,7 +1,7 @@
 *, html,body,div,span,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,abbr,address,cite,code,del,dfn,em,img,ins,kbd,q,samp,small,strong,sub,sup,var,
 b,i,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,figcaption,figure,footer,header,
 hgroup,menu,nav,section,summary,time,mark,audio,a 
-{font-family:Open Sans Condensed;line-height:30px;font-size:19px;color:#333;margin:0;padding:0;border:0;letter-spacing:-1px;
+{font-family:Open Sans Condensed;line-height:27px;font-size:17px;color:#333;margin:0;padding:0;border:0;letter-spacing:-1px;
 outline:0;background:none;text-rendering:optimizelegibility;position:relative;font-weight:normal;text-align:left;
 -webkit-touch-callout:none;-webkit-user-select:none;-khtml-user-select:none;
 -moz-user-select:-moz-none;-moz-user-select:none;-ms-user-select:none;user-select:none;
@@ -9,12 +9,13 @@ outline:0;background:none;text-rendering:optimizelegibility;position:relative;fo
 
 /* LAYOUT */
 body{background:#fff;position:relative;}
-
-#leftside{float:left;background:#fff;width:150px;min-height:600px;
-          border-right:1px solid #ccc;box-shadow:0 3px 5px #ededed;padding:0 0 0 1px;}
-#rightside{float:left;background:#fff;width:180px;min-height:600px;
-          border:0;box-shadow:0 3px 5px #ededed;}
-#center{float:left;width:750px;border:0;padding:5px 10px;}
+#header{position:relative;height:118px;}
+#bar{position:absolute;top:90px;left:0;width:1080px;background:#000;color:#fff;
+		 padding:3px 0 0 0;height:26px;clear:both;z-index:1000;}
+#leftside{float:left;background:#fff;width:150px;min-height:600px;position:relative;
+          border-right:1px solid #ccc;box-shadow:0 3px 5px #ededed;}
+#rightside{float:left;background:#fff;width:180px;min-height:600px;position:relative;border:0;}
+#center{float:left;width:750px;}
 #footer{position:fixed;bottom:0;left:0;width:100%;background:rgba(0,0,0,0.8);padding:0px;}
 #footer *{color:#fff;}
 
@@ -31,9 +32,9 @@ select optgroup{text-transform:uppercase;padding:0;}
 select option{text-transform:;padding:2px 0px;background:#FFF;}
 
 ul#mainmenu {list-style-type:none;margin:0;padding:0;width:150px;border-top:1px solid #ccc;}
-ul#mainmenu li a{text-transform:uppercase;line-height:26px;margin:0;padding:10px 15px;
+ul#mainmenu li a{text-transform:uppercase;line-height:26px;margin:0;padding:4px 15px;color:#000;
 								 display:block;border-bottom:1px solid #dedede;
-                 background:#fff;font-weight:bold;}
+                 background:#fff;}
 ul#mainmenu li a.active{color:#fff;background:rgba(0,0,0,0.8);}
 ul#mainmenu li a:hover{color:#fff;background:rgba(0,0,0,0.8);}
 
@@ -56,13 +57,11 @@ hr.gradient{
 }
 ol.none, ul.none{list-style-type:none;padding:0;margin:0;}
 
-h1, .h1{color:#444;text-transform:uppercase;font-size:25px;line-height:30px;
-				font-weight:bold;margin:0 0 25px 0;padding:0 0 15px 0;}
+h1, .h1{color:#444;text-transform:uppercase;font-size:25px;line-height:30px;margin:0 0 25px 0;padding:0 0 15px 0;}
 h2, .h2{color:#fff;text-transform:uppercase;font-size:18px;line-height:23px;
    			font-weight:normal;margin:0 0 5px 0;}
-h3, .h3{color:#444;text-transform:uppercase;
-				font-weight:bold;margin:0 7px 0 0;padding:0 0 5px;border-bottom:1px solid #aaa;
-				cursor:pointer;}
+h3, .h3{color:#444;text-transform:uppercase;margin:0 7px 0 0;padding:0 0 5px;
+				cursor:pointer;font-weight:bold;}
    
 h6, .h6{font-size:22px;text-transform:uppercase;margin:0 0 10px 0;float:left;}
 
@@ -112,6 +111,8 @@ strong,b{font-weight:bold!important;}
 .c888{color:#888!important;}
 .ff1111{color:#ff1111!important;}
 .ff3322{color:#ff3322!important;}
+.white{color:#fff!important;}
+.black{color:#000!important;}
 .gray{color:gray!important;}
 .green{color:green!important;}
 .orange{color:orange!important;}
@@ -152,19 +153,18 @@ strong,b{font-weight:bold!important;}
 .p10px{padding:10px;}
 
 
-.box-home{float:left;margin:10px 0 15px 0;padding:5px;width:98.5%;
-border-radius:2px;-moz-border-radius:2px;-webkit-border-radius:2px;-o-border-radius:2px;}
+.box-home{float:left;}
 .box-home a.toggle{float:right;margin:-6px -6px 0 0;}
 
-.box-right{border:1px solid #dedede;border-top:2px solid #666;padding:10px;margin:10px 0 0 0;}
+.box-right{border-top:2px solid #666;margin:10px 0 0 0;}
 
-
-/*********************** pager **********************/
 .pager {margin:0;padding:0;width:100%;}
 .pager a {float:left;margin:1px;padding:5px 12px;border:1px solid #dedede;border-radius:2px;}
 .pager a:hover {background:#dedede;color:#000;}
 .pager a.selected {background:#dedede;color:#000;font-weight:bold;}
 .pager .total{float:right;margin:5px 0 0 0;font-style:italic;}
 
+#sticky{z-index:1000;width:215px;position:absolute;left:-57px;top:0;background:#fff;box-shadow:0 3px 5px #ededed;padding:0 10px;
+		border:1px solid #dedede;border-bottom-left-radius:4px;border-bottom-right-radius:4px;}
 
 #scrollUp {background: url(../images/icons/scrollup.png) no-repeat;bottom:30px;right:15px;width:48px;height:48px;opacity:0.7;}
