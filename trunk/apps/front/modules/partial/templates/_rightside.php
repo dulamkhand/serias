@@ -1,27 +1,15 @@
 <div id="rightside">
-    <div id="socials" style="z-index:1000;">
-        <?php include_partial('partial/socials', array());?>    
-    </div>
-    <script type="text/javascript">
-        $("#socials").sticky({topSpacing:0});
-    </script>
-
-    <div class="box-right">
-		    <?php include_partial('user/login', array())?>
-		</div>
-
-		<div class="box-right">
+	<div class="box-right">
 		    <h3 style="text-decoration:none;">Манай санд шинээр нэмэгдсэн</h3>
-        <ul>
-            <?php $rss = array();?>
-            <?php foreach ($rss as $rs):?>
-                <?php if($rs['comingsoon'] > 0):?>
-                    <li><a href="<?php echo url_for('page/show?route='.$rs['route'])?>">
-                        <?php echo $rs['title']?>
-                    </a></li>
-                <?php endif?>
-            <?php endforeach?>
-        </ul>
+			<?php $rss = GlobalTable::doFetchArray('Item', array('type, route, image, title, year, boxoffice, thisweek, comingsoon'), 
+                                              array('limit'=>30))?>
+			<ul>
+			  <?php foreach ($rss as $rs):?>				  
+				  <li><a href="<?php echo url_for('page/show?route='.$rs['route'])?>">
+					  <?php echo $rs['title']?> (<?php echo $rs['year']?>)
+				  </a></li>				  
+			  <?php endforeach?>
+			</ul>
 		</div>
     
     <div class="box-right">

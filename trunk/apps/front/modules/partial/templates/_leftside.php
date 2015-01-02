@@ -1,10 +1,5 @@
 <?php $host = sfConfig::get('app_host')?>
 <div id="leftside">
-
-    <a href="<?php echo url_for('@homepage')?>">
-        <?php echo image_tag('logo-200x130.png', array('style'=>'margin:10px 0 5px 0;max-width:150px;'))?>
-    </a>
-  
     <ul id="mainmenu">
         <?php $rss = GlobalLib::getArray('type_mn')?>
         <?php foreach ($rss as $k=>$v):?>
@@ -39,7 +34,7 @@
           <?php foreach ($rss as $rs):?>
               <?php if($rs['boxoffice'] > 0):?>
                   <li><a href="<?php echo url_for('page/show?route='.$rs['route'])?>">
-                      <?php echo $rs['boxoffice']?>. <?php echo $rs['title']?>
+                      <?php echo $rs['boxoffice']?>. <?php echo $rs['title']?> (<?php echo $rs['year']?>)
                   </a></li>
               <?php endif?>
           <?php endforeach?>
@@ -51,7 +46,7 @@
         <?php foreach ($rss as $rs):?>
             <?php if($rs['thisweek'] > 0):?>
                 <li><a href="<?php echo url_for('page/show?route='.$rs['route'])?>">
-                    <?php echo $rs['title']?>
+                    <?php echo $rs['title']?> (<?php echo $rs['year']?>)
                 </a></li>
             <?php endif?>
         <?php endforeach?>
@@ -63,7 +58,7 @@
         <?php foreach ($rss as $rs):?>
             <?php if($rs['comingsoon'] > 0):?>
                 <li><a href="<?php echo url_for('page/show?route='.$rs['route'])?>">
-                    <?php echo $rs['title']?>
+                    <?php echo $rs['title']?> (<?php echo $rs['year']?>)
                 </a></li>
             <?php endif?>
         <?php endforeach?>

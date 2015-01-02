@@ -1,11 +1,10 @@
-<div style="position:relative;margin:10px 0;float:left;clear:both;width:100%;">
-    <input type="text" name="search" id="search" class="left" style="width:300px;height:26px;padding:0 5px;" autocomplete="off"
-          value="<?php echo $sf_params->get('search') ? $sf_params->get('search') : 'Хайлт'?>"/>
-    <?php echo image_tag('icons/loading-colorful.gif', array('style'=>'margin:5px 0 0 3px;display:none;', 'id'=>'search-loader'))?>
-    <div id="search-result" style="display:none;position:absolute;z-index:1000;top:27px;left:0;padding:5px;
-          min-width:700px;max-height:700px;overflow-y:scroll;border-radius:1px;background:#fff;border:1px solid #4779B8;">
-    </div>
-    <br clear="all">
+<div class="left" style="width:500px;margin:0 0 0 20px;">
+		<input type="text" name="search" id="search" class="left" style="background:#fff;width:300px;height:21px;padding:0 5px;line-height:22px;" autocomplete="off"
+		      value="<?php echo $sf_params->get('search') ? $sf_params->get('search') : 'Хайлт'?>"/>
+		<?php echo image_tag('icons/loading-colorful.gif', array('style'=>'margin:5px 0 0 3px;display:none;', 'id'=>'search-loader'))?>
+		<div id="search-result" style="display:none;position:absolute;z-index:1000;top:23px;left:0;padding:5px;
+		      max-height:500px;overflow-y:scroll;background:#fff;border:1px solid #dedede;border-top:0;width:616px;">
+		</div>
 </div>
 
 <script type="text/javascript">
@@ -21,7 +20,6 @@ $('#search').keyup(function() {
         $('#search-loader').hide();
         $("#search-result").html(data);
         $("#search-result").slideDown();
-        //$('#comment-area').val("Сайн байна уу, ");
     }
   });
   return false;

@@ -17,65 +17,37 @@ class imageActions extends sfActions
   
   public function executeDownloadImages(sfWebRequest $request)
   { 
-      $objectId = 115;
+      $objectId = 120;
       $urls = array(
-          "",
-          "",
-          "",
-          "",
-          "",
-          "",
-          "",
-          "",
-          "",
-          "",
-          "",
-          "",
-          "",
-          "",
-          "",
-          "",
-          "",
-          "",
-          "",
-          "",
-          "",
-          "",
-          "",
-          "",
-          "",
-          "",
-          "",
-          "",
-          "",
-          "",
-          "",
-		);
+					"",
+			);
 
-      $i = 23;
+      $i = 0;
       $folder = date('Ym');
+		  $udir = sfConfig::get('sf_upload_dir');
+		  $wdir = sfConfig::get('sf_web_dir');
       foreach($urls as $url) {
-          $filename = $objectId.'-'.++$i.'.jpg';
-          // create image
-        	$img = imagecreatefromstring(file_get_contents($url));
-        	imagejpeg($img, sfConfig::get('sf_upload_dir')."/".$folder.'/'.$filename);
-        	// save in db
-        	$image = new Image();
-          $image->setObjectType('item');
-          $image->setObjectId($objectId);
-          $image->setFolder($folder);
-          $image->setFilename($filename);
-          $image->setUpdatedAt(date('Y-m-d H:i:s'));
-          $image->setCreatedAid(1);
-          $image->setUpdatedAid(1);
-          $image->save();
-          // create thumb
-          GlobalLib::createThumbs($filename, $folder, array(120));
-          // create waterlink
-          $filepath = sfConfig::get('sf_upload_dir').'/'.$folder.'/'.$filename;
-          $img = new sfImage($filepath);
-          $img->overlay(new sfImage(sfConfig::get('sf_web_dir').'/images/watermark200.png'), 'bottom-right');
-          $img->saveAs($filepath);
+	        $filename = $objectId.'-'.++$i.'.jpg';
+	        // create image
+	      	$img = imagecreatefromstring(file_get_contents($url));
+	      	imagejpeg($img, $udir."/".$folder.'/'.$filename);
+					// create thumb
+					GlobalLib::createThumbs($filename, $folder, array(140));
+					// create waterlink
+		      $filepath = $udir.'/'.$folder.'/'.$filename;
+		      $img = new sfImage($filepath);
+		      $img->overlay(new sfImage($wdir.'/images/watermark200.png'), 'bottom-right');
+		      $img->saveAs($filepath);
+		    	// save in db
+		    	$image = new Image();
+				  $image->setObjectType('item');
+				  $image->setObjectId($objectId);
+				  $image->setFolder($folder);
+				  $image->setFilename($filename);
+				  $image->setUpdatedAt(date('Y-m-d H:i:s'));
+				  $image->setCreatedAid(1);
+				  $image->setUpdatedAid(1);
+				  $image->save();
       }
       echo 'DONE'; die();
   }
