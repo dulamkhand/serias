@@ -14,12 +14,12 @@ function pager($pager, $uri) {
 		    // Pages one by one
 		    $links = array();
 		    $options = '';
-		    foreach ($pager->getLinks() as $page) {
+		    foreach ($pager->getLinks(10) as $page) {
 		      	$links[] = '<a href="'.$uri.$page.'" class="'.($page == $pager->getPage()?"selected":"").'">'.$page.'</a>';
 		    }
 		    $navigation .= join('', $links);
 		    // Next and last page
-		    if ($pager->getPage() != $pager->getCurrentMaxLink(10)) {
+		    if ($pager->getPage() != $pager->getCurrentMaxLink()) {
 			      $navigation .= '<a href="'.$uri.$pager->getNextPage().'" >Дараах</a>';
 			      $navigation .= '<a href="'.$uri.$pager->getLastPage().'" >Сүүлд &raquo;</a>';
 		    }

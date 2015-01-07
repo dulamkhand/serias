@@ -18,38 +18,10 @@ class imageActions extends sfActions
   public function executeDownloadImages(sfWebRequest $request)
   { 
 	  	ini_set('memory_limit', '1024M');
-      $objectId = 140;
+      $objectId = 157;	
 	  	$i = 0;
       $urls = array(
-      		"http://ia.media-imdb.com/images/M/MV5BMTYwNDQxMTg3Nl5BMl5BanBnXkFtZTcwNzEzODQ0Nw@@._V1_SX640_SY720_.jpg",
-      		"http://upload.wikimedia.org/wikipedia/en/0/0a/SunsetBoulevardfilmposter.jpg",
-      		"http://4.bp.blogspot.com/-cvt7dKmrgOg/UQ1CQY9odVI/AAAAAAAAF7s/9QyJWgUdnQs/s1600/sunset-boulevard-1950-1.jpg",
-      		"http://www.lassothemovies.com/wp-content/uploads/2012/08/Sunset-Blvd.-2.jpg",
-      		"http://www.eskimo.com/~noir/ftitles/sunset/sunset01.jpg",
-      		"http://eng.cinemacity.org/media_lib/files/sunset_blvd2.jpg",
-      		"https://img-rp.vhd.me/2727878_l2.jpg",
-      		"http://lh4.ggpht.com/_SrxRt4fvC2Y/SRMcCEOYwBI/AAAAAAAACc8/Hp94z3Ah0Ns/s400/SunsetBlvd_Still_PK_11454-097.jpg",
-      		"http://www.premiere.fr/var/premiere/storage/images/cinema/photos-film/photos-acteur/images/boulevard-du-crepuscule-sunset-blvd-sunset-boulevard-1950__13/15839961-1-fre-FR/boulevard_du_crepuscule_sunset_blvd_sunset_boulevard_1950_diaporama_portrait.jpg",
-      		"http://www.impawards.com/1950/posters/sunset_boulevard_ver13_xlg.jpg",
-      		"http://img22.mtime.cn/up/2011/09/12/191709.36727937_o.jpg",
-      		"http://ia.media-imdb.com/images/M/MV5BMjkyNTUwMTY2Nl5BMl5BanBnXkFtZTcwODEzODQ0Nw@@._V1__SX640_SY720_.jpg",
-      		"http://ia.media-imdb.com/images/M/MV5BMjI5MDQ3NjcwOV5BMl5BanBnXkFtZTcwMjIzODQ0Nw@@._V1__SX640_SY720_.jpg",
-      		"http://ia.media-imdb.com/images/M/MV5BMTQzNjIwMTAxMV5BMl5BanBnXkFtZTYwMjYyODM2._V1__SX640_SY720_.jpg",
-      		"http://ia.media-imdb.com/images/M/MV5BMTkyMTcwMDE4NF5BMl5BanBnXkFtZTYwNjYyODM2._V1__SX640_SY720_.jpg",
-      		"http://ia.media-imdb.com/images/M/MV5BMjAyMjQzODU5MV5BMl5BanBnXkFtZTYwNTcyODM2._V1__SX640_SY720_.jpg",
-      		"http://ia.media-imdb.com/images/M/MV5BMTA2MTgyMDU3NTleQTJeQWpwZ15BbWU2MDUyMTg0Ng@@._V1__SX640_SY720_.jpg",
-      		"http://ia.media-imdb.com/images/M/MV5BNDkxNTY0MTAwNl5BMl5BanBnXkFtZTYwNjMxODQ2._V1__SX640_SY720_.jpg",
-      		"http://ia.media-imdb.com/images/M/MV5BMjAwMDcyMjk2M15BMl5BanBnXkFtZTcwMDM1NjcxMw@@._V1__SX640_SY720_.jpg",
-      		"http://ia.media-imdb.com/images/M/MV5BMTU2NjgxMjIyNl5BMl5BanBnXkFtZTYwMjcyODM2._V1__SX640_SY720_.jpg",
-      		"http://ia.media-imdb.com/images/M/MV5BMTU5ODY0MTY0Nl5BMl5BanBnXkFtZTYwNzcyODM2._V1__SX640_SY720_.jpg",
-      		"http://ia.media-imdb.com/images/M/MV5BMTI4MTM2NTE1NV5BMl5BanBnXkFtZTYwODYyODM2._V1__SX640_SY720_.jpg",
-      		"http://ia.media-imdb.com/images/M/MV5BODg5ODM0NzkyMV5BMl5BanBnXkFtZTYwMDcyODM2._V1__SX640_SY720_.jpg",
-      		"http://ia.media-imdb.com/images/M/MV5BMjE0Nzg2NTU3MF5BMl5BanBnXkFtZTYwNjUxODQ2._V1__SX640_SY720_.jpg",
-      		"http://ia.media-imdb.com/images/M/MV5BMTY0NzIzODg5OV5BMl5BanBnXkFtZTYwMDQxODQ2._V1__SX640_SY720_.jpg",
-      		"http://ia.media-imdb.com/images/M/MV5BMjIwNDA3NjI4Nl5BMl5BanBnXkFtZTgwMjMxNDg5MTE@._V1__SX640_SY720_.jpg",
-      		"http://ia.media-imdb.com/images/M/MV5BOTY2MTQ3OTI0MF5BMl5BanBnXkFtZTgwODc1MTczMTE@._V1__SX640_SY720_.jpg",
-      		"http://ia.media-imdb.com/images/M/MV5BMTQ4OTc4NjcyOF5BMl5BanBnXkFtZTgwOTc1MTczMTE@._V1__SX640_SY720_.jpg",
-      		"http://ia.media-imdb.com/images/M/MV5BMTg1NTY3MTU5Ml5BMl5BanBnXkFtZTgwMTg1MTczMTE@._V1__SX640_SY720_.jpg",
+      		"",
 	  	);
       $folder = date('Ym');
 		  $udir = sfConfig::get('sf_upload_dir');
