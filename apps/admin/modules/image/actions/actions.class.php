@@ -18,10 +18,29 @@ class imageActions extends sfActions
   public function executeDownloadImages(sfWebRequest $request)
   { 
 	  	ini_set('memory_limit', '1024M');
-      $objectId = 157;	
-	  	$i = 0;
+      $objectId = 166;	
+	  	$i = 23;
       $urls = array(
-      		"",
+      		"http://hollywoodmoviewiki.com/wp-content/uploads/2014/05/the-hundred-foot-journey-movie-image-7.jpg",
+      		"http://static2.opensubtitles.org/gfx/thumbs/8/4/6/0/2980648.jpg",
+      		"http://images.fandango.com/r95.1/imagerelay/300/0/video.fandango.com%2FFandangoMovies%2F899338_080.jpg/image.jpg/redesign/static/img/noxSquare.jpg",
+      		"http://cdn.abclocal.go.com/content/wabc/images/cms/AP204458480818_15.jpg",
+      		"http://pmcdeadline2.files.wordpress.com/2014/05/hundredfootjourney_c__140513170125.jpg",
+      		"http://www1.pictures.zimbio.com/gi/Manish+Dayal+Hundred+Foot+Journey+Premieres+R6pnCTwpy_Yl.jpg",
+      		"http://cdn.abclocal.go.com/content/wabc/images/cms/AP18880604188_0.jpg",
+      		"http://www4.pictures.zimbio.com/gi/Manish+Dayal+Hundred+Foot+Journey+Premieres+oI_BbcAdK1gl.jpg",
+      		"http://www3.pictures.zimbio.com/gi/Manish+Dayal+Hundred+Foot+Journey+Premieres+cH7a6MdhH29l.jpg",
+      		"http://images.huffingtonpost.com/2014-08-13-tomkira100footuse-thumb.jpg",
+      		"http://www2.pictures.zimbio.com/gi/Hundred+Foot+Journey+Premieres+NYC+_LZKb4uYVL0x.jpg",
+      		"http://www2.pictures.zimbio.com/gi/Courtney+Reed+Hundred+Foot+Journey+Premieres+XNJjtENs8lHl.jpg",
+      		"http://www3.pictures.zimbio.com/gi/Helen+Mirren+Hundred+Foot+Journey+photocall+BLQv2z521zll.jpg",
+      		"http://static.ibnlive.in.com/ibnlive/pix/slideshow/08-2014/the-hundredfoot-journey/100footjourney1.jpg",
+      		"http://www3.pictures.zimbio.com/gi/Charlotte+Le+Bon+Hundred+Foot+Journey+Premieres+Lyx1h9Bg0b7l.jpg",
+      		"http://www3.pictures.zimbio.com/gi/Manish+Dayal+Hundred+Foot+Journey+Premiere+5wI2q7TUJMhl.jpg",
+      		"http://www3.pictures.zimbio.com/gi/Manish+Dayal+Hundred+Foot+Journey+Photo+Call+s1d1BCMK3UIl.jpg",
+      		"http://www4.pictures.zimbio.com/gi/Amit+Shah+Hundred+Foot+Journey+Premieres+NYC+xrqMkFpqTcSl.jpg",
+      		"http://ww2.hdnux.com/photos/31/42/62/6696109/3/622x350.jpg",
+      		"http://www3.pictures.zimbio.com/gi/Helen+Mirren+Hundred+Foot+Journey+Premiere+F1f8ks_jlezl.jpg",
 	  	);
       $folder = date('Ym');
 		  $udir = sfConfig::get('sf_upload_dir');
