@@ -26,6 +26,56 @@
     		<?php endif?>
     <?php endforeach?>
     
+	
+<br clear="all">
+    <div style="margin:0px 0 0 10px;">
+    		<br clear="all">
+        <h3>Шилдэгүүд</h3>
+        <?php foreach (GlobalLib::getArray('bests') as $k=>$v):?>
+            <a href="<?php echo url_for('page/bests?bestType='.$k)?>"><?php echo $v?></a><br>
+        <?php endforeach?>
+        
+        <br clear="all">
+        <?php $rss = GlobalTable::doFetchArray('Item', array('type, route, image, title, year, boxoffice, thisweek, comingsoon'), 
+                                              array('rightside'=>1, 'limit'=>30, 'orderBy'=>'boxoffice ASC, title ASC'))?>
+        <h3>Box Office</h3>
+        <ul>
+          <?php foreach ($rss as $rs):?>
+              <?php if($rs['boxoffice'] > 0):?>
+                  <li><a href="<?php echo url_for('page/show?route='.$rs['route'])?>">
+                      <?php echo $rs['boxoffice']?>. <?php echo $rs['title']?> (<?php echo $rs['year']?>)
+                  </a></li>
+              <?php endif?>
+          <?php endforeach?>
+        </ul>
+      
+        <br clear="all">
+        <h3>Энэ 7 хоногт нээлт хийх</h3>
+        <ul>
+        <?php foreach ($rss as $rs):?>
+            <?php if($rs['thisweek'] > 0):?>
+                <li><a href="<?php echo url_for('page/show?route='.$rs['route'])?>">
+                    <?php echo $rs['title']?> (<?php echo $rs['year']?>)
+                </a></li>
+            <?php endif?>
+        <?php endforeach?>
+        </ul>
+      
+        <br clear="all">
+        <h3>Тун удахгүй</h3>
+        <ul>
+        <?php foreach ($rss as $rs):?>
+            <?php if($rs['comingsoon'] > 0):?>
+                <li><a href="<?php echo url_for('page/show?route='.$rs['route'])?>">
+                    <?php echo $rs['title']?> (<?php echo $rs['year']?>)
+                </a></li>
+            <?php endif?>
+        <?php endforeach?>
+        </ul>
+    </div>
+    <br clear="all">
+    <br clear="all">
+	
     <div class="box-right">
         <h3 style="text-decoration:none;">Реклам байршуулах</h3>
         99258807, 99071053
