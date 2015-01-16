@@ -74,7 +74,7 @@
 		    </div>
 		<?php endif?>
 
-		<?php include_partial('page/share', array('url'=>$host."/page/show?route=".$rs->getRoute(), 'title'=>$rs));?>
+		<?php //include_partial('page/share', array('url'=>$host."/page/show?route=".$rs->getRoute(), 'title'=>$rs));?>
 		<br clear="all">
 </div>
 <br clear="all">
