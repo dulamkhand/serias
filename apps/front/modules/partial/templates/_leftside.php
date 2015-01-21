@@ -31,12 +31,12 @@
     </ul>
   
     <!--<br clear="all">
-    <!--<div style="float:left;margin:0 20px 0 10px;" class="fb-like" data-href="<?php echo $host?>" data-layout="box_count" data-action="like" data-show-faces="false" data-share="true"></div>
+    <div style="float:left;margin:0 20px 0 10px;" class="fb-like" data-href="<?php echo $host?>" data-layout="box_count" data-action="like" data-show-faces="false" data-share="true"></div>
     <div style="float:left;margin:0 0 0 10px;" class="fb-follow" data-href="<?php echo $host?>" data-layout="box_count" data-colorscheme="light" data-show-faces="false"></div>
     <a class="twitter-share-button" href="https://twitter.com/share" data-related="twitterdev" data-count="vertical" 
-		 	 data-url="<?php echo $host?>" data-via="<?php echo sfConfig::get('app_webname')?>" data-text="<?php echo sfConfig::get('app_webname')?>">Tweet</a>-->
+		 	 data-url="<?php echo $host?>" data-via="<?php echo sfConfig::get('app_webname')?>" data-text="<?php echo sfConfig::get('app_webname')?>">Tweet</a>
 		<script type="text/javascript">
-		//window.twttr=(function(d,s,id){var t,js,fjs=d.getElementsByTagName(s)[0];if(d.getElementById(id)){return}js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);return window.twttr||(t={_e:[],ready:function(f){t._e.push(f)}})}(document,"script","twitter-wjs"));
+		window.twttr=(function(d,s,id){var t,js,fjs=d.getElementsByTagName(s)[0];if(d.getElementById(id)){return}js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);return window.twttr||(t={_e:[],ready:function(f){t._e.push(f)}})}(document,"script","twitter-wjs"));
 		</script>-->
     
 </div><!--leftside-->
