@@ -12,10 +12,22 @@
         <?php endforeach?>
     </select>
     &nbsp; 
+	<b>Admin</b>&nbsp;
+    <select name="caid" style="width:100px;">
+        <option value="">Бүгд</option>
+        <option value="1" <?php if(1 == $sf_params->get('caid')) echo 'selected'?>>handaa.1224@gmail.com</option>
+        <option value="13" <?php if(13 == $sf_params->get('caid')) echo 'selected'?>>batsukhd.mn@gmail.com</option>
+        <option value="2"  <?php if(2 == $sf_params->get('caid')) echo 'selected'?>>duuya2012@gmail.com</option>
+        <option value="14" <?php if(14 == $sf_params->get('caid')) echo 'selected'?>>romance0333@yahoo.com</option>
+        <option value="15" <?php if(15 == $sf_params->get('caid')) echo 'selected'?>>ddairiimaa@yahoo.com</option>
+    </select>
+    &nbsp;
     <?php include_partial('partial/search', array());?>
 </form>
 
 <br clear="all">
+<br clear="all">
+<?php echo pager($pager, 'item/index?type='.$sf_params->get('type').'&s='.$sf_params->get('s').'&caid='.$sf_params->get('caid'))?>
 <br clear="all">
 <table width="100%" cellpadding="0" cellspacing="0">
   <thead>
@@ -61,4 +73,4 @@
     <?php endforeach; ?>
   </tbody>
 </table>
-<?php echo pager($pager, 'item/index?type='.$sf_params->get('type').'&s='.$sf_params->get('s'))?>
+<?php echo pager($pager, 'item/index?type='.$sf_params->get('type').'&s='.$sf_params->get('s').'&caid='.$sf_params->get('caid'))?>

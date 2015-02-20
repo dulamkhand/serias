@@ -1,5 +1,4 @@
 <?php $host = sfConfig::get('app_host')?>
-<?php $color = GlobalLib::getValue('colors', $type);?>
 <div class="box-home">
     <?php $i = 0;?>
     <?php foreach($rss as $rs):?>
@@ -15,7 +14,7 @@
     <br clear="all">
     
     <?php if(isset($more) && $more):?>
-        <a href="<?php echo url_for('page/index?type='.$type)?>" class="right" style="margin:10px 0 0 0;">
+        <a href="<?php echo url_for('page/index')?>" class="right" style="margin:10px 0 0 0;">
           <h3 style="color:#fff;">Цааш &raquo;</h3></a>
     <?php endif?>
 </div><!--box-home-->

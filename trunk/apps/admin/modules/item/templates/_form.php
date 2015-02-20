@@ -73,6 +73,15 @@
         <td>
           <?php echo $form['image']->renderError() ?>
           <?php echo $form['image'] ?>
+		  <?php echo $form['image']->renderHelp() ?>
+        </td>
+      </tr>
+	  <tr>          
+        <th><?php echo $form['cover']->renderLabel() ?></th>
+        <td>
+          <?php echo $form['cover']->renderError() ?>
+          <?php echo $form['cover'] ?>
+		  <?php echo $form['cover']->renderHelp() ?>
         </td>
       </tr>
       <tr>          
@@ -281,6 +290,27 @@
         <td>
           <?php echo $form['is_active']->renderError() ?>
           <?php echo $form['is_active'] ?>
+        </td>
+      </tr>
+	  <tr>
+        <th><?php echo $form['is_watch_online']->renderLabel() ?></th>
+        <td>
+          <?php echo $form['is_watch_online']->renderError() ?>
+          <?php echo $form['is_watch_online'] ?>
+        </td>
+      </tr>
+	  <tr>
+        <th><?php echo $form['is_torrent_download']->renderLabel() ?></th>
+        <td>
+          <?php echo $form['is_torrent_download']->renderError() ?>
+          <?php echo $form['is_torrent_download'] ?>
+        </td>
+      </tr>
+	  <tr>
+        <th><?php echo $form['is_mongolian_language']->renderLabel() ?></th>
+        <td>
+          <?php echo $form['is_mongolian_language']->renderError() ?>
+          <?php echo $form['is_mongolian_language'] ?>
         </td>
       </tr>
   </table>

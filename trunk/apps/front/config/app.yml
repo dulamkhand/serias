@@ -3,8 +3,7 @@
 
 # default values
 all:
-  host: http://baavar.mn/tmp2015/web/
-  #host: http://urin-essence.com/girasole/imdb/web/
+  host: http://urin-essence.com/girasole/imdb/
   #host: http://localhost:88/imdb/web/
   webname: Монголын кино мэдээллийн нэгдсэн сан
   feedbackmail: mmdb.llc@gmail.com
