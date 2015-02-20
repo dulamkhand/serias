@@ -126,10 +126,12 @@ class GlobalLib
                   'footer'       =>'Footer 1100 x 100'
     );
 
-    public static $mod_permissions = array('item'=>'item', 'link'=>'link', 'bests'=>'bests', 
+    public static $mod_permissions = array('item'=>'item', 'link'=>'link', 'bests'=>'bests', 'cinema'=>'cinema',
                   'feedback'=>'feedback', 'banner'=>'banner', 'news'=>'news', 'poll'=>'poll', 
                   'subs'=>'subscriber', 'user'=>'user', 'admin'=>'admin');
 
+	public static $cinema = array('tengis'=>'Тэнгис кино театр', 'urgoo'=>'Өргөө кино театр', 'od'=>'Od кино театр');
+				  
     public static function getArray($type)
     {
         switch ($type) {
@@ -147,6 +149,7 @@ class GlobalLib
           	case 'banner_position': return self::$banner_position;
           	case 'profession': return self::$profession;
           	case 'profession_mn': return self::$profession_mn;
+          	case 'cinema': return self::$cinema;
         }
        return array();
     }

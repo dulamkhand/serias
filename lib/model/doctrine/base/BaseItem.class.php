@@ -15,6 +15,7 @@ Doctrine_Manager::getInstance()->bindComponent('Item', 'doctrine');
  * @property string $route
  * @property string $folder
  * @property string $image
+ * @property string $cover
  * @property integer $year
  * @property integer $year_end
  * @property string $summary
@@ -44,6 +45,9 @@ Doctrine_Manager::getInstance()->bindComponent('Item', 'doctrine');
  * @property integer $nb_love
  * @property boolean $is_active
  * @property boolean $is_featured
+ * @property boolean $is_watch_online
+ * @property boolean $is_torrent_download
+ * @property boolean $is_mongolian_language
  * @property boolean $boxoffice
  * @property boolean $thisweek
  * @property boolean $comingsoon
@@ -64,6 +68,7 @@ Doctrine_Manager::getInstance()->bindComponent('Item', 'doctrine');
  * @method string              getRoute()             Returns the current record's "route" value
  * @method string              getFolder()            Returns the current record's "folder" value
  * @method string              getImage()             Returns the current record's "image" value
+ * @method string              getCover()             Returns the current record's "cover" value
  * @method integer             getYear()              Returns the current record's "year" value
  * @method integer             getYearEnd()           Returns the current record's "year_end" value
  * @method string              getSummary()           Returns the current record's "summary" value
@@ -93,6 +98,9 @@ Doctrine_Manager::getInstance()->bindComponent('Item', 'doctrine');
  * @method integer             getNbLove()            Returns the current record's "nb_love" value
  * @method boolean             getIsActive()          Returns the current record's "is_active" value
  * @method boolean             getIsFeatured()        Returns the current record's "is_featured" value
+ * @method boolean             getIsWatchOnline()     Returns the current record's "is_watch_online" value
+ * @method boolean             getIsTorrentDownload() Returns the current record's "is_torrent_download" value
+ * @method boolean             getIsMongolianLanguage() Returns the current record's "is_mongolian_language" value
  * @method boolean             getBoxoffice()         Returns the current record's "boxoffice" value
  * @method boolean             getThisweek()          Returns the current record's "thisweek" value
  * @method boolean             getComingsoon()        Returns the current record's "comingsoon" value
@@ -112,6 +120,7 @@ Doctrine_Manager::getInstance()->bindComponent('Item', 'doctrine');
  * @method Item                setRoute()             Sets the current record's "route" value
  * @method Item                setFolder()            Sets the current record's "folder" value
  * @method Item                setImage()             Sets the current record's "image" value
+ * @method Item                setCover()             Sets the current record's "cover" value
  * @method Item                setYear()              Sets the current record's "year" value
  * @method Item                setYearEnd()           Sets the current record's "year_end" value
  * @method Item                setSummary()           Sets the current record's "summary" value
@@ -141,6 +150,9 @@ Doctrine_Manager::getInstance()->bindComponent('Item', 'doctrine');
  * @method Item                setNbLove()            Sets the current record's "nb_love" value
  * @method Item                setIsActive()          Sets the current record's "is_active" value
  * @method Item                setIsFeatured()        Sets the current record's "is_featured" value
+ * @method Item                setIsWatchOnline()     Sets the current record's "is_watch_online" value
+ * @method Item                setIsTorrentDownload() Sets the current record's "is_torrent_download" value
+ * @method Item                setIsMongolianLanguage() Sets the current record's "is_mongolian_language" value
  * @method Item                setBoxoffice()         Sets the current record's "boxoffice" value
  * @method Item                setThisweek()          Sets the current record's "thisweek" value
  * @method Item                setComingsoon()        Sets the current record's "comingsoon" value
@@ -226,6 +238,15 @@ abstract class BaseItem extends sfDoctrineRecord
              'length' => 100,
              ));
         $this->hasColumn('image', 'string', 1000, array(
+             'type' => 'string',
+             'fixed' => 0,
+             'unsigned' => false,
+             'primary' => false,
+             'notnull' => true,
+             'autoincrement' => false,
+             'length' => 1000,
+             ));
+		$this->hasColumn('cover', 'string', 1000, array(
              'type' => 'string',
              'fixed' => 0,
              'unsigned' => false,
@@ -486,6 +507,30 @@ abstract class BaseItem extends sfDoctrineRecord
              'autoincrement' => false,
              ));
         $this->hasColumn('is_featured', 'boolean', null, array(
+             'type' => 'boolean',
+             'fixed' => 0,
+             'unsigned' => false,
+             'primary' => false,
+             'notnull' => true,
+             'autoincrement' => false,
+             ));
+		$this->hasColumn('is_watch_online', 'boolean', null, array(
+             'type' => 'boolean',
+             'fixed' => 0,
+             'unsigned' => false,
+             'primary' => false,
+             'notnull' => true,
+             'autoincrement' => false,
+             ));
+		$this->hasColumn('is_torrent_download', 'boolean', null, array(
+             'type' => 'boolean',
+             'fixed' => 0,
+             'unsigned' => false,
+             'primary' => false,
+             'notnull' => true,
+             'autoincrement' => false,
+             ));
+		$this->hasColumn('is_mongolian_language', 'boolean', null, array(
              'type' => 'boolean',
              'fixed' => 0,
              'unsigned' => false,

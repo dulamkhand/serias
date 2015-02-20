@@ -73,6 +73,10 @@ class GlobalTable extends Doctrine_Table
         if(isset($params['rightside']) && $params['rightside'] != null)
             $q->andWhere('boxoffice > 0 OR thisweek > 0 OR comingsoon > 0');
 
+		# createdAid
+		if(isset($params['createdAid']) && $params['createdAid'] != null)
+            $q->andWhere('created_aid = ? ', array($params['createdAid']));
+
         # isActive
         if(isset($params['isActive'])) {
             if($params['isActive'] != "all" && in_array($params['isActive'], array('0', '1')))
@@ -88,7 +92,15 @@ class GlobalTable extends Doctrine_Table
             $q->andWhere('is_top = ?', 1);
         if(isset($params['isNew']) && in_array($params['isNew'], array('0', '1'))) 
             $q->andWhere('is_new = ?', 1);
-
+		
+		# item: is_watch_online, is_torrent_download, is_mongolian_language
+		if(isset($params['isWatchOnline']) && in_array($params['isWatchOnline'], array('0', '1'))) 
+            $q->andWhere('is_watch_online = ?', 1);
+		if(isset($params['isTorrentDownload']) && in_array($params['isTorrentDownload'], array('0', '1'))) 
+            $q->andWhere('is_torrent_download = ?', 1);
+		if(isset($params['isMongolianLanguage']) && in_array($params['isMongolianLanguage'], array('0', '1'))) 
+            $q->andWhere('is_mongolian_language = ?', 1);
+		
         # keyword
         if(isset($params['sItem']) && $params['sItem'] != null)
             $q->andWhere('title LIKE ? ', array('%'.$params['sItem'].'%'));
