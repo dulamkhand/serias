@@ -1,4 +1,4 @@
-<table>
+<table width="100%">
 		<tr class="odd">
 				<td>Дүрүүдэд:</td>
 				<td><?php echo $rs->getCasts();?></td>

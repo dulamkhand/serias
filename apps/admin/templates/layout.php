@@ -33,6 +33,11 @@
 		                  <?php echo link_to('bests', 'bests/index')?>
 		                </li>
                 <?php endif?>
+				<?php if($sf_user->hasCredential('cinema')):?>
+                		<li <?php echo $tab == 'cinema' ? 'class="current"' : '' ?>>
+		                  <?php echo link_to('cinema', 'cinema/index')?>
+		                </li>
+                <?php endif?>
                 <li <?php echo $tab == 'celebrity' ? 'class="current"' : '' ?>>
                   <?php echo link_to('celebrity', 'celebrity/index')?>
                 </li>

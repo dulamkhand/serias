@@ -16,18 +16,13 @@
 </div>
 
 <!--image-->
-<?php echo image_tag('/u/'.$rs->getFolder().'/'.$rs->getCover(), array('style'=>'width:1081px;height:300px;'))?>
-<?php //echo image_tag('/u/'.$rs->getFolder().'/'.$rs->getImage(), array('style'=>'width:700px;'))?>
-<br clear="all">
-
-<!--trailer -->
-<div style="float:left;margin:0;width:560px;">
-	<?php echo $rs->getTrailer();?>
-	<!--info-->
-	<?php include_partial('page/info', array('rs'=>$rs))?>
+<div style="float:left;margin:0 0 20px 0;width:215px;position:relative;">
+    <?php echo image_tag('/u/'.$rs->getFolder().'/'.$rs->getImage(), array('style'=>'max-width:215px;'))?>
+    <!--info-->
+    <?php include_partial('page/info', array('rs'=>$rs))?>
 </div>
 
-<div class="left" style="background:#fff6e4;width:491px;padding:5px 15px 15px 15px;border-radius:3px;">
+<div class="left" style="background:#fff6e4;width:480px;padding:5px 15px 15px 15px;border-radius:3px;">
 		<h6 class="left"><?php echo $rs->getAge();?>+</h6>
 		<h6 class="right" style="margin:0 0 0 10px;width:70px;text-align:right;">
 				<?php echo image_tag('icons/time.ico', array('class'=>'left', 'style'=>'margin:3px 0 0 0;'))?>
@@ -56,18 +51,18 @@
 		<br clear="all">
 		<br clear="all">
 		
-		<!--photos
+		<!--photos-->
 		<h6 style="width:45px;">Зураг</h6>
-		<hr class="left" style="border:0;border-top:1px double #aaa;width:400px;margin:15px 0 0 0;">
+		<hr class="left" style="border:0;border-top:1px double #aaa;width:435px;margin:15px 0 0 0;">
 		<br clear="all">
-		<?php //$images = GlobalTable::doFetchArray('Image', array('folder', 'filename'), array('isActive'=>'all', 'limit'=>8, 'objectType'=>'item', 'objectId'=>$rs->getId()))?>
-		<?php //foreach ($images as $image) {?>
-			<div class="left" style="width:100px;height:80px;margin:2px 2px 0 0;overflow:hidden;">
-				<?php //echo image_tag('/u/'.$image['folder'].'/t120-'.$image['filename'], array('style'=>'width:105px;height:80px;'));?>
-			</div>
-		<?php //}?>
+		<?php $images = GlobalTable::doFetchArray('Image', array('folder', 'filename'), array('isActive'=>'all', 'limit'=>8, 'objectType'=>'item', 'objectId'=>$rs->getId()))?>
+    <?php foreach ($images as $image) {?>
+        <div class="left" style="width:100px;height:80px;margin:2px 2px 0 0;overflow:hidden;">
+            <?php echo image_tag('/u/'.$image['folder'].'/t120-'.$image['filename'], array('style'=>'width:105px;height:80px;'));?>
+        </div>
+    <?php }?>
 		<br clear="all">
-		<br clear="all">-->
+		<br clear="all">
 		
 		<!--body-->
     <?php if($tmp = $rs->getBodyMn()):?>
@@ -84,14 +79,20 @@
 </div>
 <br clear="all">
 
+<!--trailer -->
+<?php echo $rs->getTrailer();?>
+
 <!--links-->
-<?php //include_partial('links', array('rs'=>$rs));?>
-<div class="fb-comments" data-href="<?php echo $host."/page/show?route=".$rs->getRoute()?>" data-numposts="10" data-colorscheme="light" data-width="560"></div>
+<?php include_partial('links', array('rs'=>$rs));?>
 <br clear="all">
 <br clear="all">
 
 <!--similars-->
 <?php include_partial('similars', array('rs'=>$rs));?>
+<br clear="all">
+
+<div class="fb-comments" data-href="<?php echo $host."/page/show?route=".$rs->getRoute()?>" data-numposts="10" data-colorscheme="light" data-width="560"></div>
+<br clear="all">
 <br clear="all">
 
 

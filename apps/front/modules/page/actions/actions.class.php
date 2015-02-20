@@ -19,13 +19,15 @@ class pageActions extends sfActions
     
     public function executeIndex(sfWebRequest $request)
     {
-        $this->forward404Unless(in_array($this->type = $type = $request->getParameter('type'), GlobalLib::getKeys('type')));
         global $ITEM_COLUMNS;
         $params = array();
-        $params['type'] = $type;
+        $params['type'] = $request->getParameter('type');
         $params['y'] = $request->getParameter('y');
         $params['l'] = $request->getParameter('l');
         $params['g'] = $request->getParameter('g');
+        if($request->getParameter('isWatchOnline')) $params['isWatchOnline'] = '1';
+        if($request->getParameter('isTorrentDownload')) $params['isTorrentDownload'] = '1';
+        if($request->getParameter('isMongolianLanguage')) $params['isMongolianLanguage'] = '1';
         $this->pager = GlobalTable::getPager('Item', $ITEM_COLUMNS, $params, $request->getParameter('page'));
         $this->loves = GlobalTable::doFetchSelection('Love', 'object_id', array('object_id'), array('objectType'=>'item', 'isActive'=>-1));
     }
@@ -54,6 +56,7 @@ class pageActions extends sfActions
         $this->getResponse()->setTitle($meta);
         $this->getResponse()->addMeta('description', $meta);
         $this->getResponse()->addMeta('keywords', $meta);
+		$this->setLayout('layoutShow');
     }
     
     public function executeIframe(sfWebRequest $request)
