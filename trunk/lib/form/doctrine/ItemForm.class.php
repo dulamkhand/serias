@@ -23,6 +23,7 @@ class ItemForm extends BaseItemForm
     	  $folder = ($object && $object->getFolder()) ? $object->getFolder() : date('Ym');
     	  $this->widgetSchema['folder']         = new sfWidgetFormInputHidden(array(), array('value'=>$folder));
         $this->widgetSchema['image']          = new sfWidgetFormInputFile(array(), array());
+        $this->widgetSchema['cover']          = new sfWidgetFormInputFile(array(), array());
       	$this->widgetSchema['year']           = new sfWidgetFormInputText(array(), array('style'=>'width:40px;'));
       	$this->widgetSchema['year_end']       = new sfWidgetFormInputText(array(), array('style'=>'width:40px;'));
       	$years = range(date('Y') + 3, date('Y') - 100);
@@ -67,6 +68,7 @@ class ItemForm extends BaseItemForm
       	$this->validatorSchema['title_mn']     = new sfValidatorPass();
       	$this->validatorSchema['folder']       = new sfValidatorPass();
       	$this->validatorSchema['image']        = new sfValidatorFile($this->getFileAttrs($folder), $this->getFileOpts());
+      	$this->validatorSchema['cover']        = new sfValidatorFile($this->getFileAttrs($folder), $this->getFileOpts());
       	$this->validatorSchema['year']         = new sfValidatorInteger();
       	$this->validatorSchema['year_end']     = new sfValidatorInteger(array('required'=>false));
       	$this->validatorSchema['release_date'] = new sfValidatorDate();
@@ -107,6 +109,7 @@ class ItemForm extends BaseItemForm
 		$this->widgetSchema->setHelp('extratorrent', 'link');
 		$this->widgetSchema->setHelp('freetvvideoonline', 'embed code');
 		$this->widgetSchema->setHelp('youtube', 'шууд үзэх');
+		$this->widgetSchema->setHelp('cover', 'Official web эсвэл Official facebook хуудаснаас 1000 x 300 хэмжээтэй зураг оруулах');
       	
       	#LABEL
       	$this->widgetSchema->setLabel('official_link1', 'Official facebook');

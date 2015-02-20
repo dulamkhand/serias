@@ -811,7 +811,7 @@ Item:
       notnull: true
       autoincrement: false
     summary:
-      type: string()
+      type: string(1000)
       fixed: false
       unsigned: false
       primary: false
@@ -825,7 +825,7 @@ Item:
       notnull: true
       autoincrement: false
     summary_mn:
-      type: string()
+      type: string(1000)
       fixed: false
       unsigned: false
       primary: false
@@ -839,14 +839,14 @@ Item:
       notnull: true
       autoincrement: false
     trailer:
-      type: string()
+      type: string(1000)
       fixed: false
       unsigned: false
       primary: false
       notnull: true
       autoincrement: false
     rating:
-      type: string()
+      type: string(1000)
       fixed: false
       unsigned: false
       primary: false
@@ -930,35 +930,7 @@ Item:
       notnull: true
       autoincrement: false
     kickass:
-      type: string()
-      fixed: false
-      unsigned: false
-      primary: false
-      notnull: true
-      autoincrement: false
-    torrentz:
-      type: string()
-      fixed: false
-      unsigned: false
-      primary: false
-      notnull: true
-      autoincrement: false
-    extratorrent:
-      type: string()
-      fixed: false
-      unsigned: false
-      primary: false
-      notnull: true
-      autoincrement: false
-    freetvvideoonline:
-      type: string()
-      fixed: false
-      unsigned: false
-      primary: false
-      notnull: true
-      autoincrement: false
-    youtube:
-      type: string()
+      type: string(1000)
       fixed: false
       unsigned: false
       primary: false
