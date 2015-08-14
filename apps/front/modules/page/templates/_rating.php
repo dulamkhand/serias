@@ -1,7 +1,7 @@
 <?php $host = sfConfig::get('app_host')?>
 <!--mmdb rating-->
 <div id="rating" class="left" style="margin:15px 0 15px 40px;width:280px;">
-    <?php $rates = GlobalTable::doFetchArray('Rating', array('rate'), 
+    <?php $rates = RatingTable::getInstance()->doFetchArray(array('rate'), 
     							 array('objectType'=>'item', 'objectId'=>$rs->getId(), 'isActive'=>'all'));
     $sum = 0;
     foreach ($rates as $rate) {

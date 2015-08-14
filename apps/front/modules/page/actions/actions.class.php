@@ -28,20 +28,20 @@ class pageActions extends sfActions
         if($request->getParameter('isWatchOnline')) $params['isWatchOnline'] = '1';
         if($request->getParameter('isTorrentDownload')) $params['isTorrentDownload'] = '1';
         if($request->getParameter('isMongolianLanguage')) $params['isMongolianLanguage'] = '1';
-        $this->pager = GlobalTable::getPager('Item', $ITEM_COLUMNS, $params, $request->getParameter('page'));
-        $this->loves = GlobalTable::doFetchSelection('Love', 'object_id', array('object_id'), array('objectType'=>'item', 'isActive'=>-1));
+        $this->pager = ItemTable::getInstance()->getPager($ITEM_COLUMNS, $params, $request->getParameter('page'));
+        //$this->loves = LoveTable::getInstance()->doFetchSelection('object_id', array('object_id'), array('objectType'=>'item', 'isActive'=>-1));
     }
     
     public function executeBests(sfWebRequest $request)
     {
     		$this->bestType = $bestType = $request->getParameter('bestType');
-    		$this->rss = $rss = GlobalTable::doExecute('Bests', array('*'), array('bestType'=>$bestType, 'orderBy'=>'number asc'));
+    		$this->rss = $rss = BestsTable::getInstance()->doExecute(array('*'), array('bestType'=>$bestType, 'orderBy'=>'number asc'));
     }
   
     public function executeShow(sfWebRequest $request)
     {
         //$this->rs = $rs = Doctrine::getTable('Item')->findOneBy('route', $request->getParameter('route'));
-        $this->rs = $rs = GlobalTable::doFetchOne('Item', array('*'), array('route'=>$request->getParameter('route')));
+        $this->rs = $rs = ItemTable::getInstance()->doFetchOne(array('*'), array('route'=>$request->getParameter('route')));
         $this->forward404Unless($rs);
         
         // set nb_views
@@ -49,14 +49,14 @@ class pageActions extends sfActions
         $rs->save();
         
         
-        $this->loves = GlobalTable::doFetchSelection('Love', 'object_id', array('object_id'), array('objectType'=>'item', 'isActive'=>-1));
+        $this->loves = ItemTable::getInstance()->doFetchSelection('object_id', array('object_id'), array('objectType'=>'item', 'isActive'=>-1));
         
         // META
         $meta = sfConfig::get('app_webname').' | '.$rs;
         $this->getResponse()->setTitle($meta);
         $this->getResponse()->addMeta('description', $meta);
         $this->getResponse()->addMeta('keywords', $meta);
-		$this->setLayout('layoutShow');
+				$this->setLayout('layoutShow');
     }
     
     public function executeIframe(sfWebRequest $request)

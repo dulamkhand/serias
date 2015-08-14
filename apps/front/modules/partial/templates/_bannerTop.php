@@ -1,2 +1,2 @@
-<?php $rs = GlobalTable::doFetchOne('Banner', array('path', 'ext', 'link', 'target'), array('position'=>'top', 'limit'=>1));?>
+<?php $rs = ItemTable::getInstance()->doFetchOne(array('path', 'ext', 'link', 'target'), array('position'=>'top'));?>
 <?php include_partial("partial/banner", array('rs'=>$rs, 'width'=>750, 'height'=>100));?>

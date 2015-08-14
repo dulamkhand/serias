@@ -3,8 +3,8 @@
 
 # default values
 all:
-  host: http://urin-essence.com/girasole/imdb/
-  #host: http://localhost:88/imdb/web/
+  #host: http://mmdb40.site40.net/
+  host: http://localhost/mmdb/web/
   webname: Монголын кино мэдээллийн нэгдсэн сан
   feedbackmail: mmdb.llc@gmail.com
   pager: 20

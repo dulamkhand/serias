@@ -12,7 +12,7 @@
  */
 class Cinema extends BaseCinema
 {
-	public function __toString() {
+		public function __toString() {
         return $this->getCinema();
     }
 }

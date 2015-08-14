@@ -1,4 +1,4 @@
-<a href="https://www.facebook.com/mmdb.mn" target="_blank"><?php echo image_tag('icons/share-fb.png', array('style'=>'max-width:30px;margin:10px 5px 5px 15px;','class'=>'left' ));?></a>
-<a href="http://www.twitter.com/mmdb_mn" target="_blank"><?php echo image_tag('icons/share-tw.png', array('style'=>'max-width:30px;margin:10px 5px 5px 0;','class'=>'left'));?></a>
-<a href="http://plus.google.com" target="_blank"><?php echo image_tag('icons/share-g.png', array('style'=>'max-width:30px;margin:10px 5px 5px 0;','class'=>'left'));?></a>
-<a href="http://www.youtube.com/channel/UCGpkrf0ganCFRf8CTvebx2g" target="_blank"><?php echo image_tag('icons/share-yt.png', array('style'=>'max-width:30px;margin:10px 5px 5px 0;','class'=>'left'));?></a>
+<a href="https://www.facebook.com/mmdb.mn" target="_blank"><?php echo image_tag('icons/share-fb-o.png', array('style'=>'max-width:;margin:10px 10px 5px 10px;','class'=>'left' ));?></a>
+<a href="http://www.twitter.com/mmdb_mn" target="_blank"><?php echo image_tag('icons/share-tw-o.png', array('style'=>'max-width:;margin:10px 10px 5px 0;','class'=>'left'));?></a>
+<a href="http://plus.google.com" target="_blank"><?php echo image_tag('icons/share-g-o.png', array('style'=>'max-width:;margin:10px 10px 5px 0;','class'=>'left'));?></a>
+<a href="http://www.youtube.com/channel/UCGpkrf0ganCFRf8CTvebx2g" target="_blank"><?php echo image_tag('icons/share-yt-o.png', array('style'=>'max-width:;margin:10px 0 5px 0;','class'=>'left'));?></a>

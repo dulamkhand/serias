@@ -21,10 +21,10 @@ class userActions extends sfActions
         if($this->getUser()->getAttribute('id') ==  $id) {
             $id = $this->getUser()->getAttribute('id');
         }*/
-        $this->forward404Unless($this->user = $user = GlobalTable::doFetchOne('User', array('*'), 
+        $this->forward404Unless($this->user = $user = UserTable::getInstance()->doFetchOne(array('*'), 
             array('email'=>$this->getUser()->getAttribute('email'))));
             
-        $this->pager = GlobalTable::getPager('Love', array('*'), 
+        $this->pager = LoveTable::getInstance()->getPager(array('*'), 
                   array('objectType'=>'item', 'userId'=>$this->getUser()->getId(), 'isActive'=>-1), 
                   $request->getParameter('page'));
     }

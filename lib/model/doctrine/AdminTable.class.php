@@ -17,57 +17,94 @@ class AdminTable extends Doctrine_Table
         return Doctrine_Core::getTable('Admin');
     }
     
-    public function doExecute($params = array())
+    private static function params($q, $params = array())
     {
-        $q = Doctrine_Query::create()->select('*');
-        $q = self::params($q, $params);
+        $q->from('Admin');
         
+        if(isset($params['id']) && $params['id'] != null)
+            $q->andWhere('id = ?', $params['id']);
+            
+        if(isset($params['email']) && $params['email'] != null)
+            $q->andWhere('email = ?', $params['email']);
+
+        if(isset($params['s']) && $params['s'] != null)
+            $q->andWhere('email LIKE ?', array('%'.$params['keyword'].'%'));
+            
+        # isActive
+        if(isset($params['isActive'])) {
+            if($params['isActive'] != "all" && in_array($params['isActive'], array('0', '1')))
+                $q->andWhere('is_active = ?', $params['isActive']);
+        } else {
+            $q->andWhere('is_active = ?', 1);
+        }
+        
+        # isFeatured
+        if(isset($params['isFeatured']) && in_array($params['isFeatured'], array('0', '1'))) 
+            $q->andWhere('is_featured = ?', 1);
+		
+        # keyword
+        if(isset($params['s']) && $params['s'] != null)
+            $q->andWhere('position LIKE ?', array('%'.$params['s'].'%'));
+
+        # group, offset, limit, order
+        if(isset($params['groupBy']) && $params['groupBy']) 
+            $q->groupBy($params['groupBy']);
+
+        if(isset($params['offset']) && $params['offset'])
+            $q->offset($params['offset']);
+        
+        $limit = isset($params['limit']) ? $params['limit'] : sfConfig::get('app_limit', 30);
+        $q->limit($limit);
+  
+        $order = isset($params['orderBy']) ? $params['orderBy'] : 'created_at DESC';
+        $q->orderBy($order);
+
+        return $q;
+    }
+    
+
+    public static function doExecute($columns = array(), $params = array())
+    {
+        $q = Doctrine_Query::create()->select(join(',', $columns));
+        $q = self::params($q, $params);
         return $q->execute();
     }
     
   
-    public function doFetchArray($params = array())
+    public static function doFetchArray($columns = array(), $params = array())
     {
-        $q = Doctrine_Query::create()->select('*');
+        $q = Doctrine_Query::create()->select(join(',', $columns));
         $q = self::params($q, $params);
-                
         return $q->fetchArray();
     }
     
     
-    public function doFetchSelection($params = array())
+    public static function doFetchSelection($fieldName, $columns = array(), $params = array())
     {
         $res = array();
-        $rss = self::doFetchArray($params);
-        foreach ($rss as $rs)
+        $rss = self::doFetchArray($columns, $params);
+        foreach ($rss as $rs) 
         {
-          $res[$rs['id']] = $rs['title'];
+            $res[$rs['id']] = $rs[$fieldName];
         }
         return $res;
     }
-    
-    
-    public function doFetchOne($params = array())
+  
+    public static function doFetchOne($columns = array(), $params = array())
     {
-        $q = Doctrine_Query::create()->select('*');
+        $q = Doctrine_Query::create()->select(join(',', $columns));
+        $params['limit'] = 1;
         $q = self::params($q, $params);
         return $q->fetchOne();
     }
     
-  
-    public function doCount($params = array())
-    {
-        $q = Doctrine_Query::create()->select('count(id)');
-        $q = self::params($q, $params);
-        return $q->count();
-    }
     
-    public function getPager($params = array(), $page=1)
+    public static function getPager($columns = array(), $params = array(), $page=1)
     {
-        $q = Doctrine_Query::create()->select('*');
+        $q = Doctrine_Query::create()->select(join(',', $columns));
         $q = self::params($q, $params);
 
-        $pager = new sfDoctrinePager('Admin', sfConfig::get('app_pager', 10));
+        $pager = new sfDoctrinePager(sfConfig::get('app_pager', 30));
         $pager->setPage($page);
         $pager->setQuery($q);
         $pager->init();
@@ -75,41 +112,10 @@ class AdminTable extends Doctrine_Table
         return $pager;
     }
     
-    
-    private function params($q, $params = array())
+    public static function doCount($params = array())
     {
-        $q->from('Admin');
-  
-        if(isset($params['id']) && $params['id'] != null)
-            $q->andWhere('id = ?', $params['id']);
-            
-        if(isset($params['email']) && $params['email'] != null)
-            $q->andWhere('email = ?', $params['email']);
-
-        if(isset($params['keyword']) && $params['keyword'] != null)
-            $q->andWhere('email LIKE ?', array('%'.$params['keyword'].'%'));
-        
-        if(isset($params['isActive'])) {
-            if($params['isActive'] != "all" && in_array($params['isActive'], array('0', '1'))) // all ued filter hiihgui
-                $q->andWhere('is_active = ?', $params['isActive']);
-        } else {
-            $q->andWhere('is_active = ?', 1);
-        }
-
-        // group, offset, limit, order
-        if(isset($params['groupBy']) && $params['groupBy']) 
-            $q->groupBy($params['groupBy']);
-
-        if(isset($params['offset']) && $params['offset']) 
-            $q->offset($params['offset']);    
-
-        $limit = isset($params['limit']) ? $params['limit'] : sfConfig::get('app_limit', 30);
-        $q->limit($limit);
-        
-        $order = isset($params['orderBy']) ? $params['orderBy'] : 'email ASC';
-        $q->orderBy($order);
-        
-        return $q;
+        $q = Doctrine_Query::create()->select('count(id)');
+        $q = self::params($q, $params);
+        return $q->count();
     }
-
 }

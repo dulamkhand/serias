@@ -2,7 +2,7 @@
 <h1>Таны дуртай кинонууд</h1>
 
 <?php foreach($pager->getResults() as $rs_love):?>
-    <?php $rs = GlobalTable::doFetchOne('Item', array('type, route, folder, image, title, year'), array('id'=>$rs_love->get('object_id')));?>
+    <?php $rs = ItemTable::getInstance()->doFetchOne(array('type, route, folder, image, title, year'), array('id'=>$rs_love->get('object_id')));?>
     <?php if($rs):?>
         <div style="width:90px;height:170px;margin:0 5px 5px 0;position:relative;" class="left">
             <a href="<?php echo url_for('page/show?route='.$rs['route'])?>" style="color:#fff;" title="<?php echo $rs['title']?>">

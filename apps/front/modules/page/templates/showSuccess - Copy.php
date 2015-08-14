@@ -3,7 +3,7 @@
 <div>
     <span class="left h1" style="margin:0;"><?php echo $rs?> <?php if($rs->getTitleMn()) echo '/'.$rs->getTitleMn().'/'?></span>
     <!--love-->
-    <?php $isLoved = GlobalTable::doFetchOne('Love', array('id'), array('objectType'=>'item', 'objectId'=>$rs->getId(), 'isActive'=>-1));?>
+    <?php $isLoved = LoveTable::getInstance()->doFetchOne(array('id'), array('objectType'=>'item', 'objectId'=>$rs->getId(), 'isActive'=>-1));?>
     <?php echo image_tag('icons/'.( $isLoved ? 'love24.ico' : 'unlove24.ico'), 
               array('alt'=>($isLoved ? 'Unlove!' : 'Love!'),
               'onclick'=>$sf_user->isAuthenticated() ? 
@@ -55,7 +55,7 @@
 		<h6 style="width:45px;">Зураг</h6>
 		<hr class="left" style="border:0;border-top:1px double #aaa;width:435px;margin:15px 0 0 0;">
 		<br clear="all">
-		<?php $images = GlobalTable::doFetchArray('Image', array('folder', 'filename'), array('isActive'=>'all', 'limit'=>8, 'objectType'=>'item', 'objectId'=>$rs->getId()))?>
+		<?php $images = ImageTable::getInstance()->doFetchArray(array('folder', 'filename'), array('isActive'=>'all', 'limit'=>8, 'objectType'=>'item', 'objectId'=>$rs->getId()))?>
     <?php foreach ($images as $image) {?>
         <div class="left" style="width:100px;height:80px;margin:2px 2px 0 0;overflow:hidden;">
             <?php echo image_tag('/u/'.$image['folder'].'/t120-'.$image['filename'], array('style'=>'width:105px;height:80px;'));?>
