@@ -20,7 +20,7 @@
     
 		
     <br clear="all">
-    <?php $rss = ItemTable::getInstance()->doFetchArray('Item', array('route, title, year, boxoffice, boxoffice_mn, thisweek, comingsoon'), 
+    <?php $rss = ItemTable::getInstance()->doFetchArray(array('route, title, year, boxoffice, boxoffice_mn, thisweek, comingsoon'), 
                  array('limit'=>50, 'where'=>'boxoffice > 0 or boxoffice_mn > 0 or thisweek > 0 or comingsoon > 0', 
                        'orderBy'=>'boxoffice ASC, boxoffice_mn ASC, title ASC'))?>
     <h3>Box Office</h3>

@@ -1,6 +1,6 @@
-<?php $rss = GlobalTable::doFetchSelection('Category', '*', array('*'), array('type'=>$type,'parentId'=>'0'))?>
+<?php $rss = CategoryTable::getInstance()->doFetchSelection('name', array('*'), array('type'=>$type,'parentId'=>'0'))?>
 <?php foreach ($rss as $id=>$name):?>
-    <?php $subcats = GlobalTable::doFetchSelection('Category', '*', array('*'), array('type'=>$type,'parentId'=>$id))?>
+    <?php $subcats = CategoryTable::getInstance()->doFetchSelection('name', array('*'), array('type'=>$type,'parentId'=>$id))?>
     <?php foreach ($subcats as $k=>$v):?>
         <label>
             <input type="checkbox" class="checkbox" value="<?php echo $k?>" name="cat_permissions[]" <?php if(in_array($k, $checkedArray)) echo 'checked'?>/>

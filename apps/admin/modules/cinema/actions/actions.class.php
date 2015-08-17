@@ -20,11 +20,11 @@ class cinemaActions extends sfActions
 	      $params['isAcrive'] = 'all';
 	      if($request->getParameter('cinema')) $params['cinema'] = $request->getParameter('cinema');
         if($request->getParameter('s')) $params['sCinema'] = $request->getParameter('s');
-	      $this->pager = GlobalTable::getPager('Cinema', array('*'), $params, $request->getParameter('page'));
+	      $this->pager = CinemaTable::getInstance()->getPager(array('*'), $params, $request->getParameter('page'));
 	  }
 	  
 	  public function executeItemsOptions(sfWebRequest $request) {
-	  		$this->rss = GlobalTable::doFetchSelectionItem('Item', array('sItem'=>$request->getParameter('s')));
+	  		$this->rss = ItemTable::getInstance()->doFetchSelectionItem(array('sItem'=>$request->getParameter('s')));
 	  		$this->itemId = $request->getParameter('itemId');
 	      $this->setLayout(false);
 	  }

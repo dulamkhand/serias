@@ -19,7 +19,7 @@ class studioActions extends sfActions
       $params = array();
       $params['isActive'] = 'all';
       if($request->getParameter('sStudio')) $params['s'] = $request->getParameter('s');
-      $this->pager = GlobalTable::getPager('Studio', array('*'), $params, $request->getParameter('page'));
+      $this->pager = StudioTable::getInstance()->getPager(array('*'), $params, $request->getParameter('page'));
   }
   
   

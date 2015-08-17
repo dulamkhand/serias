@@ -17,9 +17,9 @@ class ItemTable extends Doctrine_Table
         return Doctrine_Core::getTable('Item');
     }
     
-    private static function params($tableName, $q, $params = array())
+    private static function params($q, $params = array())
     {
-        $q->from($tableName);
+        $q->from('Item');
 
         # id
         if(isset($params['id']) && $params['id'] != null)
@@ -42,7 +42,7 @@ class ItemTable extends Doctrine_Table
 				# best.type
         if(isset($params['bestType']) && $params['bestType'] != null)
             $q->andWhere('best_type = ?', $params['bestType']);
-            
+
         # image., rate. objectType, objectId
         if(isset($params['objectType']) && $params['objectType'] != null)
             $q->andWhere('object_type = ?', $params['objectType']);
@@ -136,26 +136,26 @@ class ItemTable extends Doctrine_Table
     }
     
 
-    public static function doExecute($tableName, $columns = array(), $params = array())
+    public static function doExecute($columns = array(), $params = array())
     {
         $q = Doctrine_Query::create()->select(join(',', $columns));
-        $q = self::params($tableName, $q, $params);
+        $q = self::params($q, $params);
         return $q->execute();
     }
     
   
-    public static function doFetchArray($tableName, $columns = array(), $params = array())
+    public static function doFetchArray($columns = array(), $params = array())
     {
         $q = Doctrine_Query::create()->select(join(',', $columns));
-        $q = self::params($tableName, $q, $params);
+        $q = self::params($q, $params);
         return $q->fetchArray();
     }
     
     
-    public static function doFetchSelection($tableName, $fieldName, $columns = array(), $params = array())
+    public static function doFetchSelection($fieldName, $columns = array(), $params = array())
     {
         $res = array();
-        $rss = self::doFetchArray($tableName, $columns, $params);
+        $rss = self::doFetchArray($columns, $params);
         foreach ($rss as $rs) 
         {
             $res[$rs['id']] = $rs[$fieldName];
@@ -163,31 +163,31 @@ class ItemTable extends Doctrine_Table
         return $res;
     }
   
-    public static function doFetchSelectionItem($tableName, $params = array())
+    public static function doFetchSelectionItem($params = array())
     {
         $res = array();
-        $rss = self::doFetchArray($tableName, array('id, title, year'), $params);
+        $rss = self::doFetchArray(array('id, title, year'), $params);
         foreach ($rss as $rs) {
             $res[$rs['id']] = $rs['title'].' ('.$rs['year'].')';
         }
         return $res;
     }
     
-    public static function doFetchOne($tableName, $columns = array(), $params = array())
+    public static function doFetchOne($columns = array(), $params = array())
     {
         $q = Doctrine_Query::create()->select(join(',', $columns));
         $params['limit'] = 1;
-        $q = self::params($tableName, $q, $params);
+        $q = self::params($q, $params);
         return $q->fetchOne();
     }
     
     
-    public static function getPager($tableName, $columns = array(), $params = array(), $page=1)
+    public static function getPager($columns = array(), $params = array(), $page=1)
     {
         $q = Doctrine_Query::create()->select(join(',', $columns));
-        $q = self::params($tableName, $q, $params);
+        $q = self::params($q, $params);
 
-        $pager = new sfDoctrinePager($tableName, sfConfig::get('app_pager', 30));
+        $pager = new sfDoctrinePager(sfConfig::get('app_pager', 30));
         $pager->setPage($page);
         $pager->setQuery($q);
         $pager->init();
@@ -195,10 +195,10 @@ class ItemTable extends Doctrine_Table
         return $pager;
     }
     
-    public static function doCount($tableName, $params = array())
+    public static function doCount($params = array())
     {
         $q = Doctrine_Query::create()->select('count(id)');
-        $q = self::params($tableName, $q, $params);
+        $q = self::params($q, $params);
         return $q->count();
     }
     

@@ -19,7 +19,7 @@ class newsActions extends sfActions
         $params = array();
         $params['isActive'] = 'all';
         if($request->getParameter('s')) $params['sNews'] = $request->getParameter('s');
-        $this->pager = GlobalTable::getPager('News', $params, $request->getParameter('page'));
+        $this->pager = NewsTable::getInstance()->getPager($params, $request->getParameter('page'));
         
     }
   

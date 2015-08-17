@@ -8,5 +8,4 @@
 class GlobalTable extends Doctrine_Table
 {
     
-    
 }

@@ -17,7 +17,7 @@ class Item extends BaseItem
   }
   
   public function getNbImages() {
-      return GlobalTable::doCount('Image', array('objectId'=>$this->getId(), 'objectType'=>'item', 'isActive'=>'all'));
+      return 0; //ImageTable::getInstance()->doCount(array('objectId'=>$this->getId(), 'objectType'=>'item', 'isActive'=>'all'));
   }
   
 }
