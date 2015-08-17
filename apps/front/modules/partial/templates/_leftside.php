@@ -3,7 +3,7 @@
 	<?php include_partial('partial/socials', array());?>
 	<br clear="all">
     <ul id="mainmenu">
-		<li><a style="color:#fff;background:#bb3300;font-weight:bold;">ЦЭС</a></li>
+		<li><a style="color:#fff;background:#a53000;font-weight:bold;padding:0 15px;">ЦЭС</a></li>
         <?php $rss = GlobalLib::getArray('type_mn')?>
         <?php foreach ($rss as $k=>$v):?>
             <li><a href="<?php echo url_for('page/index?type='.$k)?>" class="<?php echo ($k == $sf_params->get('type')) ? 'active' : ''?>">
@@ -12,7 +12,7 @@
         <?php endforeach;?>
     </ul>
     <ul id="mainmenu">
-		<li><a style="color:#fff;background:#bb3300;font-weight:bold;">ТӨРӨЛ</a></li>
+		<li><a style="color:#fff;background:#a53000;font-weight:bold;padding:0 15px;">ТӨРӨЛ</a></li>
         <?php $rss = GlobalLib::getArray('genre_mn')?>
         <?php foreach ($rss as $k=>$v):?>
             <li><a href="<?php echo url_for('page/index?g='.$k)?>" class="<?php echo ($k == $sf_params->get('g')) ? 'active' : ''?>">
@@ -21,7 +21,7 @@
         <?php endforeach;?>
     </ul>
 	<ul id="mainmenu">
-		<li><a style="color:#fff;background:#bb3300;font-weight:bold;">МЭДЭЭЛЭЛ</a></li>        
+		<li><a style="color:#fff;background:#a53000;font-weight:bold;padding:0 15px;">МЭДЭЭЛЭЛ</a></li>        
 		<li><a href="<?php '#'//echo url_for('page/index?g='.$k)?>">ЖҮЖИГЧИН</a></li>
 		<li><a href="<?php '#'//echo url_for('page/index?g='.$k)?>">НАЙРУУЛАГЧ</a></li>
 		<li><a href="<?php '#'//echo url_for('page/index?g='.$k)?>">ЗОХИОЛЧ</a></li>

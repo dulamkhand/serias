@@ -972,7 +972,14 @@ Item:
       notnull: true
       autoincrement: false
     boxoffice:
-      type: boolean
+      type: integer(2)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    boxoffice_mn:
+      type: integer(2)
       fixed: false
       unsigned: false
       primary: false

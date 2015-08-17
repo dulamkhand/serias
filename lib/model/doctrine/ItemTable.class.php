@@ -35,23 +35,9 @@ class ItemTable extends Doctrine_Table
         if(isset($params['route']) && $params['route'] != null)
             $q->andWhere('route= ?', $params['route']);
 
-        # page.type
+        # type
         if(isset($params['type']) && $params['type'] != null)
             $q->andWhere('type= ?', $params['type']);
-            
-				# best.type
-        if(isset($params['bestType']) && $params['bestType'] != null)
-            $q->andWhere('best_type = ?', $params['bestType']);
-
-        # image., rate. objectType, objectId
-        if(isset($params['objectType']) && $params['objectType'] != null)
-            $q->andWhere('object_type = ?', $params['objectType']);
-        if(isset($params['objectId']) && $params['objectId'] != null)
-            $q->andWhere('object_id = ?', $params['objectId']);
-            
-        # banner.position
-        if(isset($params['position']) && $params['position'] != null)
-            $q->andWhere('position = ?', $params['position']);
             
         # genres
         if(isset($params['genres']) && $params['genres'] != null && sizeof($params['genres'])) {
@@ -59,18 +45,6 @@ class ItemTable extends Doctrine_Table
                 $q->orWhere('genre LIKE ?', '%'.$genre.'%');
             }
         }
-
-        # itemId
-        if(isset($params['itemId']) && $params['itemId'] != null)
-            $q->andWhere('item_id = ? ', $params['itemId']);
-
-        # userId
-        if(isset($params['userId']) && $params['userId'] != null)
-            $q->andWhere('user_id = ? ', $params['userId']);
-            
-        # fullname
-        if(isset($params['fullname']) && $params['fullname'] != null)
-            $q->andWhere('fullname = ? ', $params['fullname']);
 
         # filters
         if(isset($params['y']) && $params['y'] != null)
@@ -80,12 +54,24 @@ class ItemTable extends Doctrine_Table
         if(isset($params['l']) && $params['l'] != null)
             $q->andWhere('title like ?', $params['l'].'%');
             
+        # is_watch_online, is_torrent_download, is_mongolian_language
+				if(isset($params['isWatchOnline'])) 
+            $q->andWhere('is_watch_online = ?', 1);
+				if(isset($params['isTorrentDownload'])) 
+		        $q->andWhere('is_torrent_download = ?', 1);
+				if(isset($params['isMongolianLanguage'])) 
+		        $q->andWhere('is_mongolian_language = ?', 1);
+        # rightside
         if(isset($params['rightside']) && $params['rightside'] != null)
-            $q->andWhere('boxoffice > 0 OR thisweek > 0 OR comingsoon > 0');
+            $q->andWhere('boxoffice > 0 OR boxoffice_mn > 0 OR thisweek > 0 OR comingsoon > 0');
 
-		# createdAid
-		if(isset($params['createdAid']) && $params['createdAid'] != null)
+				# createdAid
+				if(isset($params['createdAid']) && $params['createdAid'] != null)
             $q->andWhere('created_aid = ? ', array($params['createdAid']));
+            	
+        # keyword
+        if(isset($params['s']) && $params['s'] != null)
+            $q->andWhere('title LIKE ? ', array('%'.$params['sItem'].'%'));
 
         # isActive
         if(isset($params['isActive'])) {
@@ -102,22 +88,6 @@ class ItemTable extends Doctrine_Table
             $q->andWhere('is_top = ?', 1);
         if(isset($params['isNew']) && in_array($params['isNew'], array('0', '1'))) 
             $q->andWhere('is_new = ?', 1);
-		
-				# item: is_watch_online, is_torrent_download, is_mongolian_language
-				if(isset($params['isWatchOnline']) && in_array($params['isWatchOnline'], array('0', '1'))) 
-		            $q->andWhere('is_watch_online = ?', 1);
-				if(isset($params['isTorrentDownload']) && in_array($params['isTorrentDownload'], array('0', '1'))) 
-		            $q->andWhere('is_torrent_download = ?', 1);
-				if(isset($params['isMongolianLanguage']) && in_array($params['isMongolianLanguage'], array('0', '1'))) 
-		            $q->andWhere('is_mongolian_language = ?', 1);
-		
-        # keyword
-        if(isset($params['sItem']) && $params['sItem'] != null)
-            $q->andWhere('title LIKE ? ', array('%'.$params['sItem'].'%'));
-        if(isset($params['sBests']) && $params['sBests'] != null)
-            $q->andWhere('title LIKE ? ', array('%'.$params['sBests'].'%'));
-        if(isset($params['sNews']) && $params['sNews'] != null)
-            $q->andWhere('title LIKE ? OR summary LIKE ? OR body LIKE ?', array('%'.$params['sNews'].'%','%'.$params['sNews'].'%','%'.$params['sNews'].'%'));
 
         # group, order, limit
         if(isset($params['groupBy']) && $params['groupBy']) 

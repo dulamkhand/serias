@@ -2,7 +2,7 @@
 <?php if($rs && $rs['path']) { ?>
 	<?php $id = rand()?>
 	<?php if(!isset($close) || $close):?>
-			<a onclick="$('.b<?php echo $id?>').hide();" class="right b<?php echo $id?>" style="cursor:pointer;">Сурталчилгаа хаах</a>
+			<a onclick="$('.b<?php echo $id?>').hide();" class="timestamp right b<?php echo $id?>" style="cursor:pointer;">Сурталчилгаа хаах</a>
 	<?php endif?>
 	<a <?php if($rs['link']) echo 'href="'.$rs['link'].'"'?> <?php if($rs['target']) echo 'target="_blank"'?> class="b<?php echo $id?>">
 		    <?php if($rs['ext'] == 'swf') { ?>

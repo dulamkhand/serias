@@ -9,20 +9,20 @@
 }(document, 'script', 'facebook-jssdk'));</script>
 
 <div id="header">
-	<!--logo-->
-	<a href="<?php echo url_for('@homepage')?>" class="left" style="margin:8px 0 0 0;">
+		<!--logo-->
+		<a href="<?php echo url_for('@homepage')?>" class="left" style="margin:8px 0 0 0;">
         <?php echo image_tag('logo-200x100.png', array('style'=>'max-width:150px;'))?>
     </a>
     <!--banner-->
     <div class="left">
-    		<?php $rs = ItemTable::getInstance()->doFetchOne(array('path', 'ext', 'link', 'target'), array('position'=>'top'));?>
-				<?php include_partial("partial/banner", array('rs'=>$rs, 'width'=>750, 'height'=>90));?>
+    		<?php $rs = BannerTable::getInstance()->doFetchOne(array('path', 'ext', 'link', 'target'), array('position'=>'top'));?>
+				<?php include_partial("partial/banner", array('rs'=>$rs, 'width'=>750, 'height'=>90, 'close'=>false));?>
     </div>
-	<!--bar-->
-	<div id="bar">
-		<?php include_partial("partial/search", array());?>		
-		<?php include_partial('user/login', array())?>
-	</div>
+		<!--bar-->
+		<div id="bar">
+			<?php include_partial("partial/search", array());?>		
+			<?php include_partial('user/login', array())?>
+		</div>
 </div>
 
 <script type="text/javascript">

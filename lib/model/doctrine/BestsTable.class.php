@@ -20,6 +20,10 @@ class BestsTable extends Doctrine_Table
     private static function params($q, $params = array())
     {
         $q->from('Bests');
+
+        # best_type
+        if(isset($params['bestType']) && $params['bestType'] != null)
+            $q->andWhere('best_type = ?', $params['bestType']);
             
         # isActive
         if(isset($params['isActive'])) {
@@ -35,7 +39,7 @@ class BestsTable extends Doctrine_Table
 		
         # keyword
         if(isset($params['s']) && $params['s'] != null)
-            $q->andWhere('position LIKE ?', array('%'.$params['s'].'%'));
+            $q->andWhere('title LIKE ?', array('%'.$params['s'].'%'));
 
         # group, offset, limit, order
         if(isset($params['groupBy']) && $params['groupBy']) 

@@ -1,5 +1,5 @@
 <h1>Монгол хэлээр</h1>
-<?php $rss = ItemTable::getInstance()->doFetchArray(array('type, route, folder, image, title, year'), array('limit'=>10, 'isMongolianLanguage'=>'1'))?>
+<?php $rss = ItemTable::getInstance()->doFetchArray(array('route, folder, image, title, year'), array('limit'=>10, 'isMongolianLanguage'=>'1'))?>
 <ul class="">
     <?php foreach ($rss as $rs):?>
 		<li style="float:left;margin:0 5px 5px 0;width:140px;height:240px;">
@@ -12,3 +12,4 @@
 </ul>
 <br clear="all">
 <a href="<?php echo url_for('page/index?isMongolianLanguage=1')?>" class="more">Цааш</a>
+<br clear="all">

@@ -48,7 +48,8 @@ Doctrine_Manager::getInstance()->bindComponent('Item', 'doctrine');
  * @property boolean $is_watch_online
  * @property boolean $is_torrent_download
  * @property boolean $is_mongolian_language
- * @property boolean $boxoffice
+ * @property integer $boxoffice
+ * @property integer $boxoffice_mn
  * @property boolean $thisweek
  * @property boolean $comingsoon
  * @property string $source
@@ -102,6 +103,7 @@ Doctrine_Manager::getInstance()->bindComponent('Item', 'doctrine');
  * @method boolean             getIsTorrentDownload() Returns the current record's "is_torrent_download" value
  * @method boolean             getIsMongolianLanguage() Returns the current record's "is_mongolian_language" value
  * @method boolean             getBoxoffice()         Returns the current record's "boxoffice" value
+ * @method boolean             getBoxofficeMn()       Returns the current record's "boxoffice_mn" value
  * @method boolean             getThisweek()          Returns the current record's "thisweek" value
  * @method boolean             getComingsoon()        Returns the current record's "comingsoon" value
  * @method string              getSource()            Returns the current record's "source" value
@@ -154,6 +156,7 @@ Doctrine_Manager::getInstance()->bindComponent('Item', 'doctrine');
  * @method Item                setIsTorrentDownload() Sets the current record's "is_torrent_download" value
  * @method Item                setIsMongolianLanguage() Sets the current record's "is_mongolian_language" value
  * @method Item                setBoxoffice()         Sets the current record's "boxoffice" value
+ * @method Item                setBoxofficeMn()       Sets the current record's "boxoffice_mn" value
  * @method Item                setThisweek()          Sets the current record's "thisweek" value
  * @method Item                setComingsoon()        Sets the current record's "comingsoon" value
  * @method Item                setSource()            Sets the current record's "source" value
@@ -538,7 +541,15 @@ abstract class BaseItem extends sfDoctrineRecord
              'notnull' => true,
              'autoincrement' => false,
              ));
-        $this->hasColumn('boxoffice', 'boolean', null, array(
+        $this->hasColumn('boxoffice', 'integer', 2, array(
+             'type' => 'boolean',
+             'fixed' => 0,
+             'unsigned' => false,
+             'primary' => false,
+             'notnull' => true,
+             'autoincrement' => false,
+             ));
+        $this->hasColumn('boxoffice_mn', 'integer', 2, array(
              'type' => 'boolean',
              'fixed' => 0,
              'unsigned' => false,

@@ -20,6 +20,12 @@ class ImageTable extends Doctrine_Table
     private static function params($q, $params = array())
     {
         $q->from('Image');
+        
+        # objectType, objectId
+        if(isset($params['objectType']) && $params['objectType'] != null)
+            $q->andWhere('object_type = ?', $params['objectType']);
+        if(isset($params['objectId']) && $params['objectId'] != null)
+            $q->andWhere('object_id = ?', $params['objectId']);
             
         # isActive
         if(isset($params['isActive'])) {

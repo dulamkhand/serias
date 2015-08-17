@@ -20,6 +20,10 @@ class BannerTable extends Doctrine_Table
     private static function params($q, $params = array())
     {
         $q->from('Banner');
+
+        # position
+        if(isset($params['position']))
+            $q->where('position = ?', array($params['position']));
             
         # isActive
         if(isset($params['isActive'])) {

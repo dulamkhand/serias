@@ -24,6 +24,18 @@ class UserTable extends Doctrine_Table
         # email
         if(isset($params['email']) && $params['email'] != null)
             $q->andWhere('email =?', $params['email']);
+            
+        # fullname
+        if(isset($params['fullname']) && $params['fullname'] != null)
+            $q->andWhere('fullname = ? ', $params['fullname']);
+            
+        # userId
+        if(isset($params['userId']) && $params['userId'] != null)
+            $q->andWhere('user_id = ? ', $params['userId']);
+            
+        # itemId
+        if(isset($params['itemId']) && $params['itemId'] != null)
+            $q->andWhere('item_id = ? ', $params['itemId']);
 
         # isActive
         if(isset($params['isActive'])) {
