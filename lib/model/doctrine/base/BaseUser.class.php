@@ -23,6 +23,8 @@ Doctrine_Manager::getInstance()->bindComponent('User', 'doctrine');
  * @property timestamp $logged_at
  * @property string $activation_code
  * @property string $ip
+ * @property Admin $Admin
+ * @property Admin $Admin_2
  * 
  * @method integer   getId()              Returns the current record's "id" value
  * @method string    getPassword()        Returns the current record's "password" value
@@ -40,6 +42,8 @@ Doctrine_Manager::getInstance()->bindComponent('User', 'doctrine');
  * @method timestamp getLoggedAt()        Returns the current record's "logged_at" value
  * @method string    getActivationCode()  Returns the current record's "activation_code" value
  * @method string    getIp()              Returns the current record's "ip" value
+ * @method Admin     getAdmin()           Returns the current record's "Admin" value
+ * @method Admin     getAdmin2()          Returns the current record's "Admin_2" value
  * @method User      setId()              Sets the current record's "id" value
  * @method User      setPassword()        Sets the current record's "password" value
  * @method User      setFirstname()       Sets the current record's "firstname" value
@@ -56,6 +60,8 @@ Doctrine_Manager::getInstance()->bindComponent('User', 'doctrine');
  * @method User      setLoggedAt()        Sets the current record's "logged_at" value
  * @method User      setActivationCode()  Sets the current record's "activation_code" value
  * @method User      setIp()              Sets the current record's "ip" value
+ * @method User      setAdmin()           Sets the current record's "Admin" value
+ * @method User      setAdmin2()          Sets the current record's "Admin_2" value
  * 
  * @package    imdb
  * @subpackage model
@@ -217,6 +223,12 @@ abstract class BaseUser extends sfDoctrineRecord
     public function setUp()
     {
         parent::setUp();
-        
+        $this->hasOne('Admin', array(
+             'local' => 'updated_aid',
+             'foreign' => 'id'));
+
+        $this->hasOne('Admin as Admin_2', array(
+             'local' => 'created_aid',
+             'foreign' => 'id'));
     }
 }

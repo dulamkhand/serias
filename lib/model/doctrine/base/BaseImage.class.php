@@ -20,6 +20,10 @@ Doctrine_Manager::getInstance()->bindComponent('Image', 'doctrine');
  * @property timestamp $updated_at
  * @property integer $created_aid
  * @property integer $updated_aid
+ * @property Admin $Admin
+ * @property Admin $Admin_2
+ * @property Admin $Admin_3
+ * @property Admin $Admin_4
  * 
  * @method integer   getId()          Returns the current record's "id" value
  * @method string    getObjectType()  Returns the current record's "object_type" value
@@ -34,6 +38,10 @@ Doctrine_Manager::getInstance()->bindComponent('Image', 'doctrine');
  * @method timestamp getUpdatedAt()   Returns the current record's "updated_at" value
  * @method integer   getCreatedAid()  Returns the current record's "created_aid" value
  * @method integer   getUpdatedAid()  Returns the current record's "updated_aid" value
+ * @method Admin     getAdmin()       Returns the current record's "Admin" value
+ * @method Admin     getAdmin2()      Returns the current record's "Admin_2" value
+ * @method Admin     getAdmin3()      Returns the current record's "Admin_3" value
+ * @method Admin     getAdmin4()      Returns the current record's "Admin_4" value
  * @method Image     setId()          Sets the current record's "id" value
  * @method Image     setObjectType()  Sets the current record's "object_type" value
  * @method Image     setObjectId()    Sets the current record's "object_id" value
@@ -47,6 +55,10 @@ Doctrine_Manager::getInstance()->bindComponent('Image', 'doctrine');
  * @method Image     setUpdatedAt()   Sets the current record's "updated_at" value
  * @method Image     setCreatedAid()  Sets the current record's "created_aid" value
  * @method Image     setUpdatedAid()  Sets the current record's "updated_aid" value
+ * @method Image     setAdmin()       Sets the current record's "Admin" value
+ * @method Image     setAdmin2()      Sets the current record's "Admin_2" value
+ * @method Image     setAdmin3()      Sets the current record's "Admin_3" value
+ * @method Image     setAdmin4()      Sets the current record's "Admin_4" value
  * 
  * @package    imdb
  * @subpackage model
@@ -180,6 +192,20 @@ abstract class BaseImage extends sfDoctrineRecord
     public function setUp()
     {
         parent::setUp();
-        
+        $this->hasOne('Admin', array(
+             'local' => 'updated_aid',
+             'foreign' => 'id'));
+
+        $this->hasOne('Admin as Admin_2', array(
+             'local' => 'created_aid',
+             'foreign' => 'id'));
+
+        $this->hasOne('Admin as Admin_3', array(
+             'local' => 'updated_aid',
+             'foreign' => 'id'));
+
+        $this->hasOne('Admin as Admin_4', array(
+             'local' => 'created_aid',
+             'foreign' => 'id'));
     }
 }

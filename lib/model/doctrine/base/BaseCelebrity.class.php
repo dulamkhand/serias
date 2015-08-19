@@ -31,6 +31,8 @@ Doctrine_Manager::getInstance()->bindComponent('Celebrity', 'doctrine');
  * @property integer $updated_aid
  * @property timestamp $created_at
  * @property timestamp $updated_at
+ * @property Admin $Admin
+ * @property Admin $Admin_2
  * 
  * @method integer   getId()          Returns the current record's "id" value
  * @method string    getFullname()    Returns the current record's "fullname" value
@@ -56,6 +58,8 @@ Doctrine_Manager::getInstance()->bindComponent('Celebrity', 'doctrine');
  * @method integer   getUpdatedAid()  Returns the current record's "updated_aid" value
  * @method timestamp getCreatedAt()   Returns the current record's "created_at" value
  * @method timestamp getUpdatedAt()   Returns the current record's "updated_at" value
+ * @method Admin     getAdmin()       Returns the current record's "Admin" value
+ * @method Admin     getAdmin2()      Returns the current record's "Admin_2" value
  * @method Celebrity setId()          Sets the current record's "id" value
  * @method Celebrity setFullname()    Sets the current record's "fullname" value
  * @method Celebrity setFullnameMn()  Sets the current record's "fullname_mn" value
@@ -80,6 +84,8 @@ Doctrine_Manager::getInstance()->bindComponent('Celebrity', 'doctrine');
  * @method Celebrity setUpdatedAid()  Sets the current record's "updated_aid" value
  * @method Celebrity setCreatedAt()   Sets the current record's "created_at" value
  * @method Celebrity setUpdatedAt()   Sets the current record's "updated_at" value
+ * @method Celebrity setAdmin()       Sets the current record's "Admin" value
+ * @method Celebrity setAdmin2()      Sets the current record's "Admin_2" value
  * 
  * @package    imdb
  * @subpackage model
@@ -312,6 +318,12 @@ abstract class BaseCelebrity extends sfDoctrineRecord
     public function setUp()
     {
         parent::setUp();
-        
+        $this->hasOne('Admin', array(
+             'local' => 'updated_aid',
+             'foreign' => 'id'));
+
+        $this->hasOne('Admin as Admin_2', array(
+             'local' => 'created_aid',
+             'foreign' => 'id'));
     }
 }

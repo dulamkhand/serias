@@ -21,35 +21,44 @@ Doctrine_Manager::getInstance()->bindComponent('Poll', 'doctrine');
  * @property timestamp $updated_at
  * @property integer $created_aid
  * @property integer $updated_aid
+ * @property Admin $Admin
+ * @property Admin $Admin_2
+ * @property Doctrine_Collection $PollOption
  * 
- * @method integer   getId()              Returns the current record's "id" value
- * @method integer   getItemId()          Returns the current record's "item_id" value
- * @method string    getTitle()           Returns the current record's "title" value
- * @method string    getRoute()           Returns the current record's "route" value
- * @method string    getBody()            Returns the current record's "body" value
- * @method integer   getOptionsAddable()  Returns the current record's "options_addable" value
- * @method integer   getMultipleChoice()  Returns the current record's "multiple_choice" value
- * @method integer   getSort()            Returns the current record's "sort" value
- * @method integer   getIsActive()        Returns the current record's "is_active" value
- * @method integer   getIsFeatured()      Returns the current record's "is_featured" value
- * @method timestamp getCreatedAt()       Returns the current record's "created_at" value
- * @method timestamp getUpdatedAt()       Returns the current record's "updated_at" value
- * @method integer   getCreatedAid()      Returns the current record's "created_aid" value
- * @method integer   getUpdatedAid()      Returns the current record's "updated_aid" value
- * @method Poll      setId()              Sets the current record's "id" value
- * @method Poll      setItemId()          Sets the current record's "item_id" value
- * @method Poll      setTitle()           Sets the current record's "title" value
- * @method Poll      setRoute()           Sets the current record's "route" value
- * @method Poll      setBody()            Sets the current record's "body" value
- * @method Poll      setOptionsAddable()  Sets the current record's "options_addable" value
- * @method Poll      setMultipleChoice()  Sets the current record's "multiple_choice" value
- * @method Poll      setSort()            Sets the current record's "sort" value
- * @method Poll      setIsActive()        Sets the current record's "is_active" value
- * @method Poll      setIsFeatured()      Sets the current record's "is_featured" value
- * @method Poll      setCreatedAt()       Sets the current record's "created_at" value
- * @method Poll      setUpdatedAt()       Sets the current record's "updated_at" value
- * @method Poll      setCreatedAid()      Sets the current record's "created_aid" value
- * @method Poll      setUpdatedAid()      Sets the current record's "updated_aid" value
+ * @method integer             getId()              Returns the current record's "id" value
+ * @method integer             getItemId()          Returns the current record's "item_id" value
+ * @method string              getTitle()           Returns the current record's "title" value
+ * @method string              getRoute()           Returns the current record's "route" value
+ * @method string              getBody()            Returns the current record's "body" value
+ * @method integer             getOptionsAddable()  Returns the current record's "options_addable" value
+ * @method integer             getMultipleChoice()  Returns the current record's "multiple_choice" value
+ * @method integer             getSort()            Returns the current record's "sort" value
+ * @method integer             getIsActive()        Returns the current record's "is_active" value
+ * @method integer             getIsFeatured()      Returns the current record's "is_featured" value
+ * @method timestamp           getCreatedAt()       Returns the current record's "created_at" value
+ * @method timestamp           getUpdatedAt()       Returns the current record's "updated_at" value
+ * @method integer             getCreatedAid()      Returns the current record's "created_aid" value
+ * @method integer             getUpdatedAid()      Returns the current record's "updated_aid" value
+ * @method Admin               getAdmin()           Returns the current record's "Admin" value
+ * @method Admin               getAdmin2()          Returns the current record's "Admin_2" value
+ * @method Doctrine_Collection getPollOption()      Returns the current record's "PollOption" collection
+ * @method Poll                setId()              Sets the current record's "id" value
+ * @method Poll                setItemId()          Sets the current record's "item_id" value
+ * @method Poll                setTitle()           Sets the current record's "title" value
+ * @method Poll                setRoute()           Sets the current record's "route" value
+ * @method Poll                setBody()            Sets the current record's "body" value
+ * @method Poll                setOptionsAddable()  Sets the current record's "options_addable" value
+ * @method Poll                setMultipleChoice()  Sets the current record's "multiple_choice" value
+ * @method Poll                setSort()            Sets the current record's "sort" value
+ * @method Poll                setIsActive()        Sets the current record's "is_active" value
+ * @method Poll                setIsFeatured()      Sets the current record's "is_featured" value
+ * @method Poll                setCreatedAt()       Sets the current record's "created_at" value
+ * @method Poll                setUpdatedAt()       Sets the current record's "updated_at" value
+ * @method Poll                setCreatedAid()      Sets the current record's "created_aid" value
+ * @method Poll                setUpdatedAid()      Sets the current record's "updated_aid" value
+ * @method Poll                setAdmin()           Sets the current record's "Admin" value
+ * @method Poll                setAdmin2()          Sets the current record's "Admin_2" value
+ * @method Poll                setPollOption()      Sets the current record's "PollOption" collection
  * 
  * @package    imdb
  * @subpackage model
@@ -192,6 +201,16 @@ abstract class BasePoll extends sfDoctrineRecord
     public function setUp()
     {
         parent::setUp();
-        
+        $this->hasOne('Admin', array(
+             'local' => 'updated_aid',
+             'foreign' => 'id'));
+
+        $this->hasOne('Admin as Admin_2', array(
+             'local' => 'created_aid',
+             'foreign' => 'id'));
+
+        $this->hasMany('PollOption', array(
+             'local' => 'id',
+             'foreign' => 'poll_id'));
     }
 }

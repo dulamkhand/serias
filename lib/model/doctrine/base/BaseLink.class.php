@@ -21,6 +21,10 @@ Doctrine_Manager::getInstance()->bindComponent('Link', 'doctrine');
  * @property integer $updated_aid
  * @property timestamp $created_at
  * @property timestamp $updated_at
+ * @property Admin $Admin
+ * @property Admin $Admin_2
+ * @property Admin $Admin_3
+ * @property Admin $Admin_4
  * 
  * @method integer   getId()          Returns the current record's "id" value
  * @method integer   getItemId()      Returns the current record's "item_id" value
@@ -36,6 +40,10 @@ Doctrine_Manager::getInstance()->bindComponent('Link', 'doctrine');
  * @method integer   getUpdatedAid()  Returns the current record's "updated_aid" value
  * @method timestamp getCreatedAt()   Returns the current record's "created_at" value
  * @method timestamp getUpdatedAt()   Returns the current record's "updated_at" value
+ * @method Admin     getAdmin()       Returns the current record's "Admin" value
+ * @method Admin     getAdmin2()      Returns the current record's "Admin_2" value
+ * @method Admin     getAdmin3()      Returns the current record's "Admin_3" value
+ * @method Admin     getAdmin4()      Returns the current record's "Admin_4" value
  * @method Link      setId()          Sets the current record's "id" value
  * @method Link      setItemId()      Sets the current record's "item_id" value
  * @method Link      setTitle()       Sets the current record's "title" value
@@ -50,6 +58,10 @@ Doctrine_Manager::getInstance()->bindComponent('Link', 'doctrine');
  * @method Link      setUpdatedAid()  Sets the current record's "updated_aid" value
  * @method Link      setCreatedAt()   Sets the current record's "created_at" value
  * @method Link      setUpdatedAt()   Sets the current record's "updated_at" value
+ * @method Link      setAdmin()       Sets the current record's "Admin" value
+ * @method Link      setAdmin2()      Sets the current record's "Admin_2" value
+ * @method Link      setAdmin3()      Sets the current record's "Admin_3" value
+ * @method Link      setAdmin4()      Sets the current record's "Admin_4" value
  * 
  * @package    imdb
  * @subpackage model
@@ -192,6 +204,20 @@ abstract class BaseLink extends sfDoctrineRecord
     public function setUp()
     {
         parent::setUp();
-        
+        $this->hasOne('Admin', array(
+             'local' => 'updated_aid',
+             'foreign' => 'id'));
+
+        $this->hasOne('Admin as Admin_2', array(
+             'local' => 'created_aid',
+             'foreign' => 'id'));
+
+        $this->hasOne('Admin as Admin_3', array(
+             'local' => 'updated_aid',
+             'foreign' => 'id'));
+
+        $this->hasOne('Admin as Admin_4', array(
+             'local' => 'created_aid',
+             'foreign' => 'id'));
     }
 }

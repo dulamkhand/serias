@@ -30,6 +30,8 @@ Doctrine_Manager::getInstance()->bindComponent('Studio', 'doctrine');
  * @property integer $updated_aid
  * @property timestamp $created_at
  * @property timestamp $updated_at
+ * @property Admin $Admin
+ * @property Admin $Admin_2
  * 
  * @method integer   getId()             Returns the current record's "id" value
  * @method string    getName()           Returns the current record's "name" value
@@ -54,6 +56,8 @@ Doctrine_Manager::getInstance()->bindComponent('Studio', 'doctrine');
  * @method integer   getUpdatedAid()     Returns the current record's "updated_aid" value
  * @method timestamp getCreatedAt()      Returns the current record's "created_at" value
  * @method timestamp getUpdatedAt()      Returns the current record's "updated_at" value
+ * @method Admin     getAdmin()          Returns the current record's "Admin" value
+ * @method Admin     getAdmin2()         Returns the current record's "Admin_2" value
  * @method Studio    setId()             Sets the current record's "id" value
  * @method Studio    setName()           Sets the current record's "name" value
  * @method Studio    setNameMn()         Sets the current record's "name_mn" value
@@ -77,6 +81,8 @@ Doctrine_Manager::getInstance()->bindComponent('Studio', 'doctrine');
  * @method Studio    setUpdatedAid()     Sets the current record's "updated_aid" value
  * @method Studio    setCreatedAt()      Sets the current record's "created_at" value
  * @method Studio    setUpdatedAt()      Sets the current record's "updated_at" value
+ * @method Studio    setAdmin()          Sets the current record's "Admin" value
+ * @method Studio    setAdmin2()         Sets the current record's "Admin_2" value
  * 
  * @package    imdb
  * @subpackage model
@@ -300,6 +306,12 @@ abstract class BaseStudio extends sfDoctrineRecord
     public function setUp()
     {
         parent::setUp();
-        
+        $this->hasOne('Admin', array(
+             'local' => 'updated_aid',
+             'foreign' => 'id'));
+
+        $this->hasOne('Admin as Admin_2', array(
+             'local' => 'created_aid',
+             'foreign' => 'id'));
     }
 }

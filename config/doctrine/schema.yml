@@ -94,12 +94,131 @@ Admin:
       notnull: true
       autoincrement: false
   relations:
-    News:
+    Admin:
       local: id
       foreign: updated_aid
       type: many
+    Admin_2:
+      class: Admin
+      local: id
+      foreign: created_aid
+      type: many
+    Banner:
+      local: id
+      foreign: updated_aid
+      type: many
+    Banner_2:
+      class: Banner
+      local: id
+      foreign: created_aid
+      type: many
+    Bests:
+      local: id
+      foreign: updated_aid
+      type: many
+    Bests_2:
+      class: Bests
+      local: id
+      foreign: created_aid
+      type: many
+    Celebrity:
+      local: id
+      foreign: updated_aid
+      type: many
+    Celebrity_2:
+      class: Celebrity
+      local: id
+      foreign: created_aid
+      type: many
+    Cinema:
+      local: id
+      foreign: updated_aid
+      type: many
+    Cinema_2:
+      class: Cinema
+      local: id
+      foreign: created_aid
+      type: many
+    Feedback:
+      local: id
+      foreign: updated_aid
+      type: many
+    Feedback_2:
+      class: Feedback
+      local: id
+      foreign: created_aid
+      type: many
+    Image:
+      local: id
+      foreign: updated_aid
+      type: many
+    Image_2:
+      class: Image
+      local: id
+      foreign: created_aid
+      type: many
+    Image_3:
+      class: Image
+      local: id
+      foreign: updated_aid
+      type: many
+    Image_4:
+      class: Image
+      local: id
+      foreign: created_aid
+      type: many
+    Item:
+      local: id
+      foreign: updated_aid
+      type: many
+    Item_2:
+      class: Item
+      local: id
+      foreign: created_aid
+      type: many
+    Link:
+      local: id
+      foreign: updated_aid
+      type: many
+    Link_2:
+      class: Link
+      local: id
+      foreign: created_aid
+      type: many
+    Link_3:
+      class: Link
+      local: id
+      foreign: updated_aid
+      type: many
+    Link_4:
+      class: Link
+      local: id
+      foreign: created_aid
+      type: many
+    Love:
+      local: id
+      foreign: updated_aid
+      type: many
+    Love_2:
+      class: Love
+      local: id
+      foreign: created_aid
+      type: many
+    News:
+      local: id
+      foreign: created_aid
+      type: many
     News_2:
       class: News
+      local: id
+      foreign: updated_aid
+      type: many
+    NewsItem:
+      local: id
+      foreign: updated_aid
+      type: many
+    NewsItem_4:
+      class: NewsItem
       local: id
       foreign: created_aid
       type: many
@@ -111,6 +230,51 @@ Admin:
       class: Page
       local: id
       foreign: updated_aid
+      type: many
+    Poll:
+      local: id
+      foreign: updated_aid
+      type: many
+    Poll_2:
+      class: Poll
+      local: id
+      foreign: created_aid
+      type: many
+    PollOption:
+      local: id
+      foreign: created_aid
+      type: many
+    PollOption_3:
+      class: PollOption
+      local: id
+      foreign: updated_aid
+      type: many
+    Rating:
+      local: id
+      foreign: updated_aid
+      type: many
+    Rating_2:
+      class: Rating
+      local: id
+      foreign: created_aid
+      type: many
+    Studio:
+      local: id
+      foreign: updated_aid
+      type: many
+    Studio_2:
+      class: Studio
+      local: id
+      foreign: created_aid
+      type: many
+    User:
+      local: id
+      foreign: updated_aid
+      type: many
+    User_2:
+      class: User
+      local: id
+      foreign: created_aid
       type: many
 Banner:
   connection: doctrine
@@ -235,6 +399,16 @@ Banner:
       primary: false
       notnull: true
       autoincrement: false
+  relations:
+    Admin:
+      local: updated_aid
+      foreign: id
+      type: one
+    Admin_2:
+      class: Admin
+      local: created_aid
+      foreign: id
+      type: one
 Bests:
   connection: doctrine
   tableName: bests
@@ -302,6 +476,16 @@ Bests:
       primary: false
       notnull: true
       autoincrement: false
+  relations:
+    Admin:
+      local: updated_aid
+      foreign: id
+      type: one
+    Admin_2:
+      class: Admin
+      local: created_aid
+      foreign: id
+      type: one
 Celebrity:
   connection: doctrine
   tableName: celebrity
@@ -474,6 +658,16 @@ Celebrity:
       default: '0000-00-00 00:00:00'
       notnull: true
       autoincrement: false
+  relations:
+    Admin:
+      local: updated_aid
+      foreign: id
+      type: one
+    Admin_2:
+      class: Admin
+      local: created_aid
+      foreign: id
+      type: one
 Cinema:
   connection: doctrine
   tableName: cinema
@@ -541,6 +735,16 @@ Cinema:
       primary: false
       notnull: true
       autoincrement: false
+  relations:
+    Admin:
+      local: updated_aid
+      foreign: id
+      type: one
+    Admin_2:
+      class: Admin
+      local: created_aid
+      foreign: id
+      type: one
 Feedback:
   connection: doctrine
   tableName: feedback
@@ -593,6 +797,32 @@ Feedback:
       primary: false
       notnull: true
       autoincrement: false
+    created_aid:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: false
+      default: '1'
+      notnull: true
+      autoincrement: false
+    updated_aid:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: false
+      default: '1'
+      notnull: true
+      autoincrement: false
+  relations:
+    Admin:
+      local: updated_aid
+      foreign: id
+      type: one
+    Admin_2:
+      class: Admin
+      local: created_aid
+      foreign: id
+      type: one
 Image:
   connection: doctrine
   tableName: image
@@ -688,6 +918,26 @@ Image:
       primary: false
       notnull: true
       autoincrement: false
+  relations:
+    Admin:
+      local: updated_aid
+      foreign: id
+      type: one
+    Admin_2:
+      class: Admin
+      local: created_aid
+      foreign: id
+      type: one
+    Admin_3:
+      class: Admin
+      local: updated_aid
+      foreign: id
+      type: one
+    Admin_4:
+      class: Admin
+      local: created_aid
+      foreign: id
+      type: one
 Item:
   connection: doctrine
   tableName: item
@@ -1042,6 +1292,20 @@ Item:
       default: '0000-00-00 00:00:00'
       notnull: true
       autoincrement: false
+  relations:
+    Admin:
+      local: updated_aid
+      foreign: id
+      type: one
+    Admin_2:
+      class: Admin
+      local: created_aid
+      foreign: id
+      type: one
+    NewsItem:
+      local: id
+      foreign: item_id
+      type: many
 Link:
   connection: doctrine
   tableName: link
@@ -1144,6 +1408,26 @@ Link:
       default: '0000-00-00 00:00:00'
       notnull: true
       autoincrement: false
+  relations:
+    Admin:
+      local: updated_aid
+      foreign: id
+      type: one
+    Admin_2:
+      class: Admin
+      local: created_aid
+      foreign: id
+      type: one
+    Admin_3:
+      class: Admin
+      local: updated_aid
+      foreign: id
+      type: one
+    Admin_4:
+      class: Admin
+      local: created_aid
+      foreign: id
+      type: one
 Love:
   connection: doctrine
   tableName: love
@@ -1197,6 +1481,32 @@ Love:
       primary: false
       notnull: true
       autoincrement: false
+    created_aid:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: false
+      default: '1'
+      notnull: true
+      autoincrement: false
+    updated_aid:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: false
+      default: '1'
+      notnull: true
+      autoincrement: false
+  relations:
+    Admin:
+      local: updated_aid
+      foreign: id
+      type: one
+    Admin_2:
+      class: Admin
+      local: created_aid
+      foreign: id
+      type: one
 News:
   connection: doctrine
   tableName: news
@@ -1249,6 +1559,13 @@ News:
       primary: false
       notnull: true
       autoincrement: false
+    nb_views:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
     created_at:
       type: timestamp(25)
       fixed: false
@@ -1280,10 +1597,70 @@ News:
       autoincrement: false
   relations:
     Admin:
-      local: updated_aid
+      local: created_aid
       foreign: id
       type: one
     Admin_2:
+      class: Admin
+      local: updated_aid
+      foreign: id
+      type: one
+    NewsItem:
+      local: id
+      foreign: news_id
+      type: many
+NewsItem:
+  connection: doctrine
+  tableName: news_item
+  columns:
+    id:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: true
+      autoincrement: true
+    news_id:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    item_id:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    created_aid:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    updated_aid:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+  relations:
+    Admin:
+      local: updated_aid
+      foreign: id
+      type: one
+    News:
+      local: news_id
+      foreign: id
+      type: one
+    Item:
+      local: item_id
+      foreign: id
+      type: one
+    Admin_4:
       class: Admin
       local: created_aid
       foreign: id
@@ -1488,6 +1865,20 @@ Poll:
       primary: false
       notnull: true
       autoincrement: false
+  relations:
+    Admin:
+      local: updated_aid
+      foreign: id
+      type: one
+    Admin_2:
+      class: Admin
+      local: created_aid
+      foreign: id
+      type: one
+    PollOption:
+      local: id
+      foreign: poll_id
+      type: many
 PollOption:
   connection: doctrine
   tableName: poll_option
@@ -1576,6 +1967,20 @@ PollOption:
       primary: false
       notnull: true
       autoincrement: false
+  relations:
+    Poll:
+      local: poll_id
+      foreign: id
+      type: one
+    Admin:
+      local: created_aid
+      foreign: id
+      type: one
+    Admin_3:
+      class: Admin
+      local: updated_aid
+      foreign: id
+      type: one
 Rating:
   connection: doctrine
   tableName: rating
@@ -1636,6 +2041,32 @@ Rating:
       primary: false
       notnull: true
       autoincrement: false
+    created_aid:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: false
+      default: '1'
+      notnull: true
+      autoincrement: false
+    updated_aid:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: false
+      default: '1'
+      notnull: true
+      autoincrement: false
+  relations:
+    Admin:
+      local: updated_aid
+      foreign: id
+      type: one
+    Admin_2:
+      class: Admin
+      local: created_aid
+      foreign: id
+      type: one
 Studio:
   connection: doctrine
   tableName: studio
@@ -1801,6 +2232,16 @@ Studio:
       default: '0000-00-00 00:00:00'
       notnull: true
       autoincrement: false
+  relations:
+    Admin:
+      local: updated_aid
+      foreign: id
+      type: one
+    Admin_2:
+      class: Admin
+      local: created_aid
+      foreign: id
+      type: one
 User:
   connection: doctrine
   tableName: user
@@ -1918,3 +2359,13 @@ User:
       primary: false
       notnull: true
       autoincrement: false
+  relations:
+    Admin:
+      local: updated_aid
+      foreign: id
+      type: one
+    Admin_2:
+      class: Admin
+      local: created_aid
+      foreign: id
+      type: one

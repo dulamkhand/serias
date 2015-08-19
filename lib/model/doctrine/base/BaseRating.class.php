@@ -15,6 +15,10 @@ Doctrine_Manager::getInstance()->bindComponent('Rating', 'doctrine');
  * @property timestamp $updated_at
  * @property integer $user_id
  * @property string $ip_address
+ * @property integer $created_aid
+ * @property integer $updated_aid
+ * @property Admin $Admin
+ * @property Admin $Admin_2
  * 
  * @method integer   getId()          Returns the current record's "id" value
  * @method string    getObjectType()  Returns the current record's "object_type" value
@@ -24,6 +28,10 @@ Doctrine_Manager::getInstance()->bindComponent('Rating', 'doctrine');
  * @method timestamp getUpdatedAt()   Returns the current record's "updated_at" value
  * @method integer   getUserId()      Returns the current record's "user_id" value
  * @method string    getIpAddress()   Returns the current record's "ip_address" value
+ * @method integer   getCreatedAid()  Returns the current record's "created_aid" value
+ * @method integer   getUpdatedAid()  Returns the current record's "updated_aid" value
+ * @method Admin     getAdmin()       Returns the current record's "Admin" value
+ * @method Admin     getAdmin2()      Returns the current record's "Admin_2" value
  * @method Rating    setId()          Sets the current record's "id" value
  * @method Rating    setObjectType()  Sets the current record's "object_type" value
  * @method Rating    setObjectId()    Sets the current record's "object_id" value
@@ -32,6 +40,10 @@ Doctrine_Manager::getInstance()->bindComponent('Rating', 'doctrine');
  * @method Rating    setUpdatedAt()   Sets the current record's "updated_at" value
  * @method Rating    setUserId()      Sets the current record's "user_id" value
  * @method Rating    setIpAddress()   Sets the current record's "ip_address" value
+ * @method Rating    setCreatedAid()  Sets the current record's "created_aid" value
+ * @method Rating    setUpdatedAid()  Sets the current record's "updated_aid" value
+ * @method Rating    setAdmin()       Sets the current record's "Admin" value
+ * @method Rating    setAdmin2()      Sets the current record's "Admin_2" value
  * 
  * @package    imdb
  * @subpackage model
@@ -115,11 +127,37 @@ abstract class BaseRating extends sfDoctrineRecord
              'autoincrement' => false,
              'length' => 15,
              ));
+        $this->hasColumn('created_aid', 'integer', 4, array(
+             'type' => 'integer',
+             'fixed' => 0,
+             'unsigned' => false,
+             'primary' => false,
+             'default' => '1',
+             'notnull' => true,
+             'autoincrement' => false,
+             'length' => 4,
+             ));
+        $this->hasColumn('updated_aid', 'integer', 4, array(
+             'type' => 'integer',
+             'fixed' => 0,
+             'unsigned' => false,
+             'primary' => false,
+             'default' => '1',
+             'notnull' => true,
+             'autoincrement' => false,
+             'length' => 4,
+             ));
     }
 
     public function setUp()
     {
         parent::setUp();
-        
+        $this->hasOne('Admin', array(
+             'local' => 'updated_aid',
+             'foreign' => 'id'));
+
+        $this->hasOne('Admin as Admin_2', array(
+             'local' => 'created_aid',
+             'foreign' => 'id'));
     }
 }

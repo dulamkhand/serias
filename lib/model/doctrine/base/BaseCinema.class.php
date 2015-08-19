@@ -16,6 +16,8 @@ Doctrine_Manager::getInstance()->bindComponent('Cinema', 'doctrine');
  * @property timestamp $updated_at
  * @property integer $created_aid
  * @property integer $updated_aid
+ * @property Admin $Admin
+ * @property Admin $Admin_2
  * 
  * @method integer   getId()          Returns the current record's "id" value
  * @method string    getCinema()      Returns the current record's "cinema" value
@@ -26,6 +28,8 @@ Doctrine_Manager::getInstance()->bindComponent('Cinema', 'doctrine');
  * @method timestamp getUpdatedAt()   Returns the current record's "updated_at" value
  * @method integer   getCreatedAid()  Returns the current record's "created_aid" value
  * @method integer   getUpdatedAid()  Returns the current record's "updated_aid" value
+ * @method Admin     getAdmin()       Returns the current record's "Admin" value
+ * @method Admin     getAdmin2()      Returns the current record's "Admin_2" value
  * @method Cinema    setId()          Sets the current record's "id" value
  * @method Cinema    setCinema()      Sets the current record's "cinema" value
  * @method Cinema    setDetails()     Sets the current record's "details" value
@@ -35,6 +39,8 @@ Doctrine_Manager::getInstance()->bindComponent('Cinema', 'doctrine');
  * @method Cinema    setUpdatedAt()   Sets the current record's "updated_at" value
  * @method Cinema    setCreatedAid()  Sets the current record's "created_aid" value
  * @method Cinema    setUpdatedAid()  Sets the current record's "updated_aid" value
+ * @method Cinema    setAdmin()       Sets the current record's "Admin" value
+ * @method Cinema    setAdmin2()      Sets the current record's "Admin_2" value
  * 
  * @package    imdb
  * @subpackage model
@@ -132,6 +138,12 @@ abstract class BaseCinema extends sfDoctrineRecord
     public function setUp()
     {
         parent::setUp();
-        
+        $this->hasOne('Admin', array(
+             'local' => 'updated_aid',
+             'foreign' => 'id'));
+
+        $this->hasOne('Admin as Admin_2', array(
+             'local' => 'created_aid',
+             'foreign' => 'id'));
     }
 }
