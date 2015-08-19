@@ -20,13 +20,6 @@
     </tfoot>
     <tbody>
       <?php echo $form->renderGlobalErrors() ?>
-      <tr>
-        <th><?php echo $form['object_type']->renderLabel() ?></th>
-        <td>
-          <?php echo $form['object_type']->renderError() ?>
-          <?php echo $form['object_type'] ?>
-        </td>
-      </tr>
       <tr>          
         <th><?php echo $form['title']->renderLabel() ?></th>
         <td>
@@ -35,17 +28,24 @@
         </td>
       </tr>
       <tr>          
-        <th><?php echo $form['summary']->renderLabel() ?></th>
+        <th><?php echo $form['intro']->renderLabel() ?></th>
         <td>
-          <?php echo $form['summary']->renderError() ?>
-          <?php echo $form['summary'] ?>
+          <?php echo $form['intro']->renderError() ?>
+          <?php echo $form['intro'] ?>
+        </td>
+      </tr>
+            <tr>
+        <th><?php echo $form['image']->renderLabel() ?></th>
+        <td>
+          <?php echo $form['image']->renderError() ?>
+          <?php echo $form['image'] ?>
         </td>
       </tr>
       <tr>
-        <th><?php echo $form['body']->renderLabel() ?></th>
+        <th><?php echo $form['content']->renderLabel() ?></th>
         <td>
-          <?php echo $form['body']->renderError() ?>
-          <?php echo $form['body'] ?>
+          <?php echo $form['content']->renderError() ?>
+          <?php echo $form['content'] ?>
         </td>
       </tr>
       <tr>

@@ -12,5 +12,7 @@
  */
 class News extends BaseNews
 {
-
+	public function __toString() {
+			return $this->getTitle();
+	}
 }

@@ -19,16 +19,6 @@ CREATE TABLE IF NOT EXISTS `news` (
 
 
 
-DROP TABLE IF EXISTS `news_item`;
-CREATE TABLE IF NOT EXISTS `news_item` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `news_id` int(11) NOT NULL,
-  `item_id` int(11) NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `news_id` (`news_id`),
-  KEY `item_id` (`item_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1;
-
 
 DROP TABLE IF EXISTS `boxoffice`;
 CREATE TABLE IF NOT EXISTS `boxoffice` (

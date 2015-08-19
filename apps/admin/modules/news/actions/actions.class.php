@@ -19,7 +19,7 @@ class newsActions extends sfActions
         $params = array();
         $params['isActive'] = 'all';
         if($request->getParameter('s')) $params['sNews'] = $request->getParameter('s');
-        $this->pager = NewsTable::getInstance()->getPager($params, $request->getParameter('page'));
+        $this->pager = NewsTable::getInstance()->getPager(array('*'), $params, $request->getParameter('page'));
         
     }
   
@@ -71,12 +71,6 @@ class newsActions extends sfActions
         if ($form->isValid())
         {
             $rs = $form->save();
-            
-            if($rs->getTitle()) {
-                $rs->setRoute(GlobalLib::mn2en($rs->getTitle()));
-                $rs->save();
-            }
-
             $this->getUser()->setFlash('flash', 'Successfully saved.', true);
             $this->redirect('news/index');
         }

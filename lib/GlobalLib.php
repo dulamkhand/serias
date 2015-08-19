@@ -128,8 +128,19 @@ class GlobalLib
                   'feedback'=>'feedback', 'banner'=>'banner', 'news'=>'news', 'page'=>'page', 'poll'=>'poll', 
                   'subs'=>'subscriber', 'user'=>'user', 'admin'=>'admin');
 
-	public static $cinema = array('tengis'=>'Тэнгис кино театр', 'urgoo'=>'Өргөө кино театр', 'od'=>'Od кино театр');
-				  
+		public static $cinema = array('tengis'=>'Тэнгис кино театр', 'urgoo'=>'Өргөө кино театр', 'od'=>'Od кино театр');
+
+		public static $page_type = array(
+                  'about'          => 'About', 
+                  'advertisement'  => 'Advertisement', 
+                  'privacy'    		 => 'Privace',
+                  'terms'    		 	 => 'Terms',
+                  'contact'    		 => 'Contact',
+                  'cooperate'    	 => 'Cooperate',
+                  'howtorate'    	 => 'How to rate',
+                  'copyright'      => 'Copyright'
+    );
+     
     public static function getArray($type)
     {
         switch ($type) {
@@ -147,6 +158,7 @@ class GlobalLib
           	case 'profession': return self::$profession;
           	case 'profession_mn': return self::$profession_mn;
           	case 'cinema': return self::$cinema;
+          	case 'page_type': return self::$page_type;
         }
        return array();
     }

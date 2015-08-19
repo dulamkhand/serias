@@ -33,7 +33,7 @@
 		                  <?php echo link_to('bests', 'bests/index')?>
 		                </li>
                 <?php endif?>
-				<?php if($sf_user->hasCredential('cinema')):?>
+								<?php if($sf_user->hasCredential('cinema')):?>
                 		<li <?php echo $tab == 'cinema' ? 'class="current"' : '' ?>>
 		                  <?php echo link_to('cinema', 'cinema/index')?>
 		                </li>
@@ -57,6 +57,11 @@
                 <?php if($sf_user->hasCredential('poll')):?>
                 		<li <?php echo $tab == 'poll' ? 'class="current"' : '' ?>>
 		                  <?php echo link_to('poll', 'poll/index')?>
+		                </li>
+                <?php endif?>
+                <?php if($sf_user->hasCredential('page')):?>
+                		<li <?php echo $tab == 'page' ? 'class="current"' : '' ?>>
+		                  <?php echo link_to('page', 'page/index')?>
 		                </li>
                 <?php endif?>
                 <?php if($sf_user->hasCredential('feedback')):?>

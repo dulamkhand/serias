@@ -13,6 +13,7 @@
       <th>News</th>
       <th></th>
       <th></th>
+      <th></th>
     </tr>
   </thead>
   <tbody>
@@ -21,7 +22,10 @@
         <td><?php echo ++$i?></td>
         <td>
             <a href="<?php echo url_for('news/edit?id='.$rs->getId())?>" class="action"><b><?php echo $rs->getTitle() ?></b></a><br>
-            <?php echo $rs->getSummary() ?>            
+            <?php echo $rs->getIntro() ?>            
+        </td>
+        <td>
+            <?php if($rs->getImage()) echo image_tag('/u/page/'.$rs->getImage(), array('style'=>'max-width:300px;max-height:400px;')) ?>
         </td>
         <td>
             <b>View: </b><?php echo $rs->getNbViews() ?><br/>

@@ -13,7 +13,6 @@ $ITEM_COLUMNS = array('type', 'route', 'folder', 'image', 'title', 'year');
 class mainActions extends sfActions
 { 
     
-
     public function preExecute()
     {
     }
@@ -47,26 +46,73 @@ class mainActions extends sfActions
         return $this->renderPartial('partial/searchResult', array('arr'=>$arr));
     }
     
-    public function executeContact(sfWebRequest $request)
+    # BEGIN OF PAGE
+    public function executeAbout(sfWebRequest $request)
     {	
+        $this->page = PageTable::getInstance()->doFetchOne(array('*'), array('type'=>'about'));
+    }
+    
+    public function executeAdvertisement(sfWebRequest $request)
+    {	
+        $this->page = PageTable::getInstance()->doFetchOne(array('*'), array('type'=>'advertisement'));
+    }
+		
+    public function executePrivacy(sfWebRequest $request)
+    {	
+        $this->page = PageTable::getInstance()->doFetchOne(array('*'), array('type'=>'privacy'));
+    }
+    
+    public function executeTerms(sfWebRequest $request)
+    {	
+        $this->page = PageTable::getInstance()->doFetchOne(array('*'), array('type'=>'terms'));
+    }
+    
+    public function executeHowtorate(sfWebRequest $request)
+    {	
+        $this->page = PageTable::getInstance()->doFetchOne(array('*'), array('type'=>'howtorate'));
+    }
+    
+    public function executeCopyright(sfWebRequest $request)
+    {	
+        $this->page = PageTable::getInstance()->doFetchOne(array('*'), array('type'=>'copyright'));
+    }
+    
+    public function executeCooperate(sfWebRequest $request)
+    {	
+        $this->page = PageTable::getInstance()->doFetchOne(array('*'), array('type'=>'cooperate'));
+    }
+        
+    public function executeContact(sfWebRequest $request)
+    {
     		$form = new FeedbackForm();
     		if($request->isMethod(sfRequest::POST)) {
     				$form->bind($request->getParameter($form->getName()), $request->getFiles($form->getName()));
 			      if ($form->isValid()) {
-			          $feedback = $form->save();
-			          // send mail to hello@mmdb.mn
-    					  $body = $this->getPartial("mail/feedback", array('rs'=>$feedback));
-    					  $message = $this->getMailer()->compose($feedback->getEmail(), sfConfig::get('app_feedbackmail'), 'mmdb.mn feedback', $body);
-    					  $this->getMailer()->send($message);
-                //$this->sendMail(sfConfig::get('app_feedbackmail'), 'mmdb.mn feedback', $body);
+                $feedback = new Feedback();
+			          $feedback->setOrganization(GlobalLib::clearOutput($form->getValue('organization')));
+			          $feedback->setName(GlobalLib::clearOutput($form->getValue('name')));
+			          $feedback->setEmail(GlobalLib::clearOutput($form->getValue('email')));
+			          $feedback->setPhone(GlobalLib::clearOutput($form->getValue('phone')));
+			          $feedback->setMessage(GlobalLib::clearOutput($form->getValue('message')));
+			          $feedback->save();
+    					  $body = $this->getPartial("partial/mailFeedback", array('rs'=>$feedback));
+    					  $message = $this->getMailer()->compose(
+    					  						$feedback->getEmail(), 
+    					  						sfConfig::get('app_feedback_mail'), 
+    					  						sfConfig::get('app_domain').' ~ feedback', 
+    					  						$body);
+    					  try {
+		    					  $this->getMailer()->send($message);
+    					  } catch (Exception $e) {}
 			          $this->getUser()->setFlash('flash', 'Таны захидлыг амжилттай илгээлээ.', true);
-			          $this->redirect('page/contact');
+			          $this->redirect('main/contact');
 			      }
     		} else {
             $this->getResponse()->setTitle(sfConfig::get('app_webname').' | Холбоо барих');
     		}
 			  $this->form = $form;
     }
+    # EO PAGE
     
     public function execute404(sfWebRequest $request)
     {
