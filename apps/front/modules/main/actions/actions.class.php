@@ -21,13 +21,13 @@ class mainActions extends sfActions
     {
         global $ITEM_COLUMNS;
     		$arr = array();
-    		$arr['movie']  		 = ItemTable::getInstance()->doFetchArray(array($ITEM_COLUMNS), array('type'=>'movie', 'limit'=>15));
-    		$arr['soap'] 		 = ItemTable::getInstance()->doFetchArray(array($ITEM_COLUMNS), array('type'=>'soap', 'limit'=>15));
-    		$arr['series'] 		 = ItemTable::getInstance()->doFetchArray(array($ITEM_COLUMNS), array('type'=>'series', 'limit'=>15));
-    		$arr['tvshow'] 		 = ItemTable::getInstance()->doFetchArray(array($ITEM_COLUMNS), array('type'=>'tvshow', 'limit'=>15));
-    		$arr['mn']     		 = ItemTable::getInstance()->doFetchArray(array($ITEM_COLUMNS), array('type'=>'mn', 'limit'=>15));
-    		$arr['nonfiction']   = ItemTable::getInstance()->doFetchArray(array($ITEM_COLUMNS), array('type'=>'nonfiction', 'limit'=>15));
-    		$arr['game'] 		 = ItemTable::getInstance()->doFetchArray(array($ITEM_COLUMNS), array('type'=>'game', 'limit'=>15));
+    		$arr['movie']  		 = ItemTable::getInstance()->doFetchArray(array($ITEM_COLUMNS), array('type'=>'movie', 'limit'=>12));
+    		$arr['soap'] 		 = ItemTable::getInstance()->doFetchArray(array($ITEM_COLUMNS), array('type'=>'soap', 'limit'=>12));
+    		$arr['series'] 		 = ItemTable::getInstance()->doFetchArray(array($ITEM_COLUMNS), array('type'=>'series', 'limit'=>12));
+    		$arr['tvshow'] 		 = ItemTable::getInstance()->doFetchArray(array($ITEM_COLUMNS), array('type'=>'tvshow', 'limit'=>12));
+    		$arr['mn']     		 = ItemTable::getInstance()->doFetchArray(array($ITEM_COLUMNS), array('type'=>'mn', 'limit'=>12));
+    		$arr['nonfiction']   = ItemTable::getInstance()->doFetchArray(array($ITEM_COLUMNS), array('type'=>'nonfiction', 'limit'=>12));
+    		$arr['game'] 		 = ItemTable::getInstance()->doFetchArray(array($ITEM_COLUMNS), array('type'=>'game', 'limit'=>12));
         $this->arr = $arr;
     }   
     
@@ -36,14 +36,9 @@ class mainActions extends sfActions
     {
         global $ITEM_COLUMNS;
         $s = GlobalLib::clearInput($request->getParameter('search'));
-        $arr = array();
-        $arr['movie']  		 = ItemTable::getInstance()->doFetchArray(array($ITEM_COLUMNS), array('sItem'=>$s, 'type'=>'movie', 'limit'=>15));
-    		$arr['series'] 		 = ItemTable::getInstance()->doFetchArray(array($ITEM_COLUMNS), array('sItem'=>$s, 'type'=>'series', 'limit'=>15));
-    		$arr['tvshow'] 		 = ItemTable::getInstance()->doFetchArray(array($ITEM_COLUMNS), array('sItem'=>$s, 'type'=>'tvshow', 'limit'=>15));
-    		$arr['mn']     		 = ItemTable::getInstance()->doFetchArray(array($ITEM_COLUMNS), array('sItem'=>$s, 'type'=>'mn', 'limit'=>15));
-    		$arr['nonfiction'] = ItemTable::getInstance()->doFetchArray(array($ITEM_COLUMNS), array('sItem'=>$s, 'type'=>'nonfiction', 'limit'=>15));
     		$this->setLayout(false);
-        return $this->renderPartial('partial/searchResult', array('arr'=>$arr));
+        $rss  		 = ItemTable::getInstance()->doFetchArray(array($ITEM_COLUMNS), array('s'=>$s, 'limit'=>20));
+        return $this->renderPartial('partial/searchResult', array('rss'=>$rss));
     }
     
     # BEGIN OF PAGE

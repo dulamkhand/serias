@@ -34,8 +34,7 @@ input#search{float:left;background:#fff;width:300px;height:24px;padding:0 5px;co
 input#search:focus, textarea#search:focus{border:none;}
 
 /* global */
-input {padding:0 5px;height:26px;border:1px solid #dedede;width:300px;margin:0 0 3px 0;
-       border-radius:1px;-moz-border-radius:1px;-webkit-border-radius:1px;-o-border-radius:1px;}
+input {padding:0 5px;height:26px;border:1px solid #dedede;width:300px;margin:0 0 3px 0;}
 input[type=submit], input[type=button]{cursor:pointer;font-weight:bold;background:#FF6600;color:#fff;
         border:1px solid #dedede;padding:5px 10px;text-decoration:none;}
 input[type=checkbox]{margin:-2px 5px 0 0;width:16px;padding:0;float:left;}
@@ -126,7 +125,10 @@ strong,b{font-weight:bold!important;}
 
 .box-home{float:left;}
 .box-home a.toggle{float:right;margin:-6px -6px 0 0;}
-.box-s{float:left;margin:0 6px 5px 0;width:140px;height:244px;overflow:hidden;}
+.box-s{float:left;margin:0 6px 5px 0;width:140px;height:252px;overflow:hidden;}
+.box-s a{line-height:17px;}
+.box-xs{float:left;margin:0 6px 5px 0;width:100px;height:200px;overflow:hidden;}
+.box-xs a{line-height:10px;}
 
 .pager {margin:0;padding:0;width:100%;}
 .pager a {float:left;margin:1px;padding:5px 12px;border:1px solid #dedede;border-radius:2px;}

@@ -1,6 +1,3 @@
-<!-- contents -->
-<?php include_partial('partial/rek', array('position'=>'search', 'width'=>1000, 'limit'=>1));?>
-
 <?php include_partial('partial/search', array('width'=>400));?>
 <br clear="all">
 

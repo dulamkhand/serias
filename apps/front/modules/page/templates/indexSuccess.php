@@ -33,7 +33,11 @@
 </div>
 <br clear="all">
 
-<?php include_partial('page/boxcolor', array('rss'=>$pager->getResults(), 'width'=>140, 'height'=>250, 'loves'=>$loves));?>
+<?php 
+foreach ($rss as $rs) {
+		include_partial('page/box-s', array('rs'=>$rs));	
+}
+?>
 
 <br clear="all">
 <?php echo pager($pager, $uri.'y='.$y.'&l='.$l.'&g='.$g)?>

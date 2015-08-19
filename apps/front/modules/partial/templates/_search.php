@@ -2,8 +2,8 @@
 		<input type="text" name="search" id="search" autocomplete="off" value="<?php echo $sf_params->get('search') ? $sf_params->get('search') : 'ХАЙЛТ'?>"/>
 		<?php echo image_tag('icons/search-10-16.ico', array('style'=>'position:absolute;top:4px;right:6px;', 'id'=>'search-submit'))?>
 		<?php echo image_tag('icons/loading-colorful.gif', array('style'=>'margin:5px 0 0 3px;display:none;', 'id'=>'search-loader'))?>
-		<div id="search-result" style="display:none;position:absolute;z-index:1000;top:23px;left:0;padding:5px;
-		      max-height:500px;overflow-y:scroll;background:#fff;border:1px solid #dedede;border-top:0;width:616px;">
+		<div id="search-result" style="display:none;position:absolute;z-index:1000;top:24px;left:-1px;padding:5px;
+		      max-height:500px;overflow-y:scroll;background:#fff;border:1px solid #000;border-top:0;width:652px;">
 		</div>
 </div>
 
