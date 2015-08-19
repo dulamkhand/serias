@@ -15,7 +15,7 @@ Doctrine_Manager::getInstance()->bindComponent('User', 'doctrine');
  * @property string $email
  * @property string $mobile
  * @property string $avator
- * @property boolean $is_active
+ * @property integer $is_active
  * @property timestamp $created_at
  * @property timestamp $updated_at
  * @property integer $created_aid
@@ -23,8 +23,6 @@ Doctrine_Manager::getInstance()->bindComponent('User', 'doctrine');
  * @property timestamp $logged_at
  * @property string $activation_code
  * @property string $ip
- * @property Admin $Admin
- * @property Admin $Admin_2
  * 
  * @method integer   getId()              Returns the current record's "id" value
  * @method string    getPassword()        Returns the current record's "password" value
@@ -34,7 +32,7 @@ Doctrine_Manager::getInstance()->bindComponent('User', 'doctrine');
  * @method string    getEmail()           Returns the current record's "email" value
  * @method string    getMobile()          Returns the current record's "mobile" value
  * @method string    getAvator()          Returns the current record's "avator" value
- * @method boolean   getIsActive()        Returns the current record's "is_active" value
+ * @method integer   getIsActive()        Returns the current record's "is_active" value
  * @method timestamp getCreatedAt()       Returns the current record's "created_at" value
  * @method timestamp getUpdatedAt()       Returns the current record's "updated_at" value
  * @method integer   getCreatedAid()      Returns the current record's "created_aid" value
@@ -42,8 +40,6 @@ Doctrine_Manager::getInstance()->bindComponent('User', 'doctrine');
  * @method timestamp getLoggedAt()        Returns the current record's "logged_at" value
  * @method string    getActivationCode()  Returns the current record's "activation_code" value
  * @method string    getIp()              Returns the current record's "ip" value
- * @method Admin     getAdmin()           Returns the current record's "Admin" value
- * @method Admin     getAdmin2()          Returns the current record's "Admin_2" value
  * @method User      setId()              Sets the current record's "id" value
  * @method User      setPassword()        Sets the current record's "password" value
  * @method User      setFirstname()       Sets the current record's "firstname" value
@@ -60,8 +56,6 @@ Doctrine_Manager::getInstance()->bindComponent('User', 'doctrine');
  * @method User      setLoggedAt()        Sets the current record's "logged_at" value
  * @method User      setActivationCode()  Sets the current record's "activation_code" value
  * @method User      setIp()              Sets the current record's "ip" value
- * @method User      setAdmin()           Sets the current record's "Admin" value
- * @method User      setAdmin2()          Sets the current record's "Admin_2" value
  * 
  * @package    imdb
  * @subpackage model
@@ -144,13 +138,14 @@ abstract class BaseUser extends sfDoctrineRecord
              'autoincrement' => false,
              'length' => 255,
              ));
-        $this->hasColumn('is_active', 'boolean', null, array(
-             'type' => 'boolean',
+        $this->hasColumn('is_active', 'integer', 1, array(
+             'type' => 'integer',
              'fixed' => 0,
              'unsigned' => false,
              'primary' => false,
              'notnull' => true,
              'autoincrement' => false,
+             'length' => 1,
              ));
         $this->hasColumn('created_at', 'timestamp', 25, array(
              'type' => 'timestamp',
@@ -222,12 +217,6 @@ abstract class BaseUser extends sfDoctrineRecord
     public function setUp()
     {
         parent::setUp();
-        $this->hasOne('Admin', array(
-             'local' => 'updated_aid',
-             'foreign' => 'id'));
-
-        $this->hasOne('Admin as Admin_2', array(
-             'local' => 'created_aid',
-             'foreign' => 'id'));
+        
     }
 }

@@ -20,15 +20,15 @@ abstract class BasePollForm extends BaseFormDoctrine
       'title'           => new sfWidgetFormInputText(),
       'route'           => new sfWidgetFormInputText(),
       'body'            => new sfWidgetFormTextarea(),
-      'options_addable' => new sfWidgetFormInputCheckbox(),
-      'multiple_choice' => new sfWidgetFormInputCheckbox(),
+      'options_addable' => new sfWidgetFormInputText(),
+      'multiple_choice' => new sfWidgetFormInputText(),
       'sort'            => new sfWidgetFormInputText(),
-      'is_active'       => new sfWidgetFormInputCheckbox(),
-      'is_featured'     => new sfWidgetFormInputCheckbox(),
+      'is_active'       => new sfWidgetFormInputText(),
+      'is_featured'     => new sfWidgetFormInputText(),
       'created_at'      => new sfWidgetFormDateTime(),
       'updated_at'      => new sfWidgetFormDateTime(),
-      'created_aid'     => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('Admin'), 'add_empty' => false)),
-      'updated_aid'     => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('Admin_2'), 'add_empty' => false)),
+      'created_aid'     => new sfWidgetFormInputText(),
+      'updated_aid'     => new sfWidgetFormInputText(),
     ));
 
     $this->setValidators(array(
@@ -37,15 +37,15 @@ abstract class BasePollForm extends BaseFormDoctrine
       'title'           => new sfValidatorString(array('max_length' => 255)),
       'route'           => new sfValidatorString(array('max_length' => 255)),
       'body'            => new sfValidatorString(),
-      'options_addable' => new sfValidatorBoolean(),
-      'multiple_choice' => new sfValidatorBoolean(),
+      'options_addable' => new sfValidatorInteger(),
+      'multiple_choice' => new sfValidatorInteger(),
       'sort'            => new sfValidatorInteger(),
-      'is_active'       => new sfValidatorBoolean(),
-      'is_featured'     => new sfValidatorBoolean(),
+      'is_active'       => new sfValidatorInteger(),
+      'is_featured'     => new sfValidatorInteger(),
       'created_at'      => new sfValidatorDateTime(),
       'updated_at'      => new sfValidatorDateTime(array('required' => false)),
-      'created_aid'     => new sfValidatorDoctrineChoice(array('model' => $this->getRelatedModelName('Admin'))),
-      'updated_aid'     => new sfValidatorDoctrineChoice(array('model' => $this->getRelatedModelName('Admin_2'))),
+      'created_aid'     => new sfValidatorInteger(),
+      'updated_aid'     => new sfValidatorInteger(),
     ));
 
     $this->widgetSchema->setNameFormat('poll[%s]');

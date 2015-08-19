@@ -23,15 +23,13 @@ Doctrine_Manager::getInstance()->bindComponent('Studio', 'doctrine');
  * @property integer $sort
  * @property integer $nb_views
  * @property integer $nb_love
- * @property boolean $is_active
- * @property boolean $is_featured
+ * @property integer $is_active
+ * @property integer $is_featured
  * @property string $source
  * @property integer $created_aid
  * @property integer $updated_aid
  * @property timestamp $created_at
  * @property timestamp $updated_at
- * @property Admin $Admin
- * @property Admin $Admin_2
  * 
  * @method integer   getId()             Returns the current record's "id" value
  * @method string    getName()           Returns the current record's "name" value
@@ -49,15 +47,13 @@ Doctrine_Manager::getInstance()->bindComponent('Studio', 'doctrine');
  * @method integer   getSort()           Returns the current record's "sort" value
  * @method integer   getNbViews()        Returns the current record's "nb_views" value
  * @method integer   getNbLove()         Returns the current record's "nb_love" value
- * @method boolean   getIsActive()       Returns the current record's "is_active" value
- * @method boolean   getIsFeatured()     Returns the current record's "is_featured" value
+ * @method integer   getIsActive()       Returns the current record's "is_active" value
+ * @method integer   getIsFeatured()     Returns the current record's "is_featured" value
  * @method string    getSource()         Returns the current record's "source" value
  * @method integer   getCreatedAid()     Returns the current record's "created_aid" value
  * @method integer   getUpdatedAid()     Returns the current record's "updated_aid" value
  * @method timestamp getCreatedAt()      Returns the current record's "created_at" value
  * @method timestamp getUpdatedAt()      Returns the current record's "updated_at" value
- * @method Admin     getAdmin()          Returns the current record's "Admin" value
- * @method Admin     getAdmin2()         Returns the current record's "Admin_2" value
  * @method Studio    setId()             Sets the current record's "id" value
  * @method Studio    setName()           Sets the current record's "name" value
  * @method Studio    setNameMn()         Sets the current record's "name_mn" value
@@ -81,8 +77,6 @@ Doctrine_Manager::getInstance()->bindComponent('Studio', 'doctrine');
  * @method Studio    setUpdatedAid()     Sets the current record's "updated_aid" value
  * @method Studio    setCreatedAt()      Sets the current record's "created_at" value
  * @method Studio    setUpdatedAt()      Sets the current record's "updated_at" value
- * @method Studio    setAdmin()          Sets the current record's "Admin" value
- * @method Studio    setAdmin2()         Sets the current record's "Admin_2" value
  * 
  * @package    imdb
  * @subpackage model
@@ -237,21 +231,23 @@ abstract class BaseStudio extends sfDoctrineRecord
              'autoincrement' => false,
              'length' => 4,
              ));
-        $this->hasColumn('is_active', 'boolean', null, array(
-             'type' => 'boolean',
+        $this->hasColumn('is_active', 'integer', 1, array(
+             'type' => 'integer',
              'fixed' => 0,
              'unsigned' => false,
              'primary' => false,
              'notnull' => true,
              'autoincrement' => false,
+             'length' => 1,
              ));
-        $this->hasColumn('is_featured', 'boolean', null, array(
-             'type' => 'boolean',
+        $this->hasColumn('is_featured', 'integer', 1, array(
+             'type' => 'integer',
              'fixed' => 0,
              'unsigned' => false,
              'primary' => false,
              'notnull' => true,
              'autoincrement' => false,
+             'length' => 1,
              ));
         $this->hasColumn('source', 'string', 1000, array(
              'type' => 'string',
@@ -304,12 +300,6 @@ abstract class BaseStudio extends sfDoctrineRecord
     public function setUp()
     {
         parent::setUp();
-        $this->hasOne('Admin', array(
-             'local' => 'created_aid',
-             'foreign' => 'id'));
-
-        $this->hasOne('Admin as Admin_2', array(
-             'local' => 'updated_aid',
-             'foreign' => 'id'));
+        
     }
 }

@@ -22,12 +22,12 @@ abstract class BaseImageForm extends BaseFormDoctrine
       'filename'    => new sfWidgetFormInputText(),
       'content'     => new sfWidgetFormTextarea(),
       'description' => new sfWidgetFormTextarea(),
-      'iscover'     => new sfWidgetFormInputCheckbox(),
+      'iscover'     => new sfWidgetFormInputText(),
       'sort'        => new sfWidgetFormInputText(),
       'created_at'  => new sfWidgetFormDateTime(),
       'updated_at'  => new sfWidgetFormDateTime(),
-      'created_aid' => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('Admin'), 'add_empty' => false)),
-      'updated_aid' => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('Admin_2'), 'add_empty' => false)),
+      'created_aid' => new sfWidgetFormInputText(),
+      'updated_aid' => new sfWidgetFormInputText(),
     ));
 
     $this->setValidators(array(
@@ -38,12 +38,12 @@ abstract class BaseImageForm extends BaseFormDoctrine
       'filename'    => new sfValidatorString(array('max_length' => 255)),
       'content'     => new sfValidatorString(),
       'description' => new sfValidatorString(),
-      'iscover'     => new sfValidatorBoolean(),
+      'iscover'     => new sfValidatorInteger(),
       'sort'        => new sfValidatorInteger(),
       'created_at'  => new sfValidatorDateTime(),
       'updated_at'  => new sfValidatorDateTime(array('required' => false)),
-      'created_aid' => new sfValidatorDoctrineChoice(array('model' => $this->getRelatedModelName('Admin'))),
-      'updated_aid' => new sfValidatorDoctrineChoice(array('model' => $this->getRelatedModelName('Admin_2'))),
+      'created_aid' => new sfValidatorInteger(),
+      'updated_aid' => new sfValidatorInteger(),
     ));
 
     $this->widgetSchema->setNameFormat('image[%s]');

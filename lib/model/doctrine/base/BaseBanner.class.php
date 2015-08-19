@@ -12,40 +12,36 @@ Doctrine_Manager::getInstance()->bindComponent('Banner', 'doctrine');
  * @property string $ext
  * @property string $link
  * @property string $route
- * @property boolean $target
+ * @property integer $target
  * @property string $position
  * @property date $start_date
  * @property date $end_date
  * @property integer $sort
  * @property integer $nb_views
- * @property boolean $is_active
- * @property boolean $is_featured
+ * @property integer $is_active
+ * @property integer $is_featured
  * @property timestamp $created_at
  * @property timestamp $updated_at
  * @property integer $created_aid
  * @property integer $updated_aid
- * @property Admin $Admin
- * @property Admin $Admin_2
  * 
  * @method integer   getId()          Returns the current record's "id" value
  * @method string    getPath()        Returns the current record's "path" value
  * @method string    getExt()         Returns the current record's "ext" value
  * @method string    getLink()        Returns the current record's "link" value
  * @method string    getRoute()       Returns the current record's "route" value
- * @method boolean   getTarget()      Returns the current record's "target" value
+ * @method integer   getTarget()      Returns the current record's "target" value
  * @method string    getPosition()    Returns the current record's "position" value
  * @method date      getStartDate()   Returns the current record's "start_date" value
  * @method date      getEndDate()     Returns the current record's "end_date" value
  * @method integer   getSort()        Returns the current record's "sort" value
  * @method integer   getNbViews()     Returns the current record's "nb_views" value
- * @method boolean   getIsActive()    Returns the current record's "is_active" value
- * @method boolean   getIsFeatured()  Returns the current record's "is_featured" value
+ * @method integer   getIsActive()    Returns the current record's "is_active" value
+ * @method integer   getIsFeatured()  Returns the current record's "is_featured" value
  * @method timestamp getCreatedAt()   Returns the current record's "created_at" value
  * @method timestamp getUpdatedAt()   Returns the current record's "updated_at" value
  * @method integer   getCreatedAid()  Returns the current record's "created_aid" value
  * @method integer   getUpdatedAid()  Returns the current record's "updated_aid" value
- * @method Admin     getAdmin()       Returns the current record's "Admin" value
- * @method Admin     getAdmin2()      Returns the current record's "Admin_2" value
  * @method Banner    setId()          Sets the current record's "id" value
  * @method Banner    setPath()        Sets the current record's "path" value
  * @method Banner    setExt()         Sets the current record's "ext" value
@@ -63,8 +59,6 @@ Doctrine_Manager::getInstance()->bindComponent('Banner', 'doctrine');
  * @method Banner    setUpdatedAt()   Sets the current record's "updated_at" value
  * @method Banner    setCreatedAid()  Sets the current record's "created_aid" value
  * @method Banner    setUpdatedAid()  Sets the current record's "updated_aid" value
- * @method Banner    setAdmin()       Sets the current record's "Admin" value
- * @method Banner    setAdmin2()      Sets the current record's "Admin_2" value
  * 
  * @package    imdb
  * @subpackage model
@@ -120,13 +114,14 @@ abstract class BaseBanner extends sfDoctrineRecord
              'autoincrement' => false,
              'length' => 255,
              ));
-        $this->hasColumn('target', 'boolean', null, array(
-             'type' => 'boolean',
+        $this->hasColumn('target', 'integer', 1, array(
+             'type' => 'integer',
              'fixed' => 0,
              'unsigned' => false,
              'primary' => false,
              'notnull' => true,
              'autoincrement' => false,
+             'length' => 1,
              ));
         $this->hasColumn('position', 'string', 255, array(
              'type' => 'string',
@@ -173,21 +168,23 @@ abstract class BaseBanner extends sfDoctrineRecord
              'autoincrement' => false,
              'length' => 4,
              ));
-        $this->hasColumn('is_active', 'boolean', null, array(
-             'type' => 'boolean',
+        $this->hasColumn('is_active', 'integer', 1, array(
+             'type' => 'integer',
              'fixed' => 0,
              'unsigned' => false,
              'primary' => false,
              'notnull' => true,
              'autoincrement' => false,
+             'length' => 1,
              ));
-        $this->hasColumn('is_featured', 'boolean', null, array(
-             'type' => 'boolean',
+        $this->hasColumn('is_featured', 'integer', 1, array(
+             'type' => 'integer',
              'fixed' => 0,
              'unsigned' => false,
              'primary' => false,
              'notnull' => true,
              'autoincrement' => false,
+             'length' => 1,
              ));
         $this->hasColumn('created_at', 'timestamp', 25, array(
              'type' => 'timestamp',
@@ -231,12 +228,6 @@ abstract class BaseBanner extends sfDoctrineRecord
     public function setUp()
     {
         parent::setUp();
-        $this->hasOne('Admin', array(
-             'local' => 'created_aid',
-             'foreign' => 'id'));
-
-        $this->hasOne('Admin as Admin_2', array(
-             'local' => 'updated_aid',
-             'foreign' => 'id'));
+        
     }
 }

@@ -43,8 +43,8 @@ Doctrine_Manager::getInstance()->bindComponent('Item', 'doctrine');
  * @property integer $sort
  * @property integer $nb_views
  * @property integer $nb_love
- * @property boolean $is_active
- * @property boolean $is_featured
+ * @property integer $is_active
+ * @property integer $is_featured
  * @property integer $is_watch_online
  * @property integer $is_torrent_download
  * @property integer $is_mongolian_language
@@ -57,116 +57,107 @@ Doctrine_Manager::getInstance()->bindComponent('Item', 'doctrine');
  * @property integer $updated_aid
  * @property timestamp $created_at
  * @property timestamp $updated_at
- * @property Admin $Admin
- * @property Admin $Admin_2
- * @property Doctrine_Collection $Bests
  * 
- * @method integer             getId()                Returns the current record's "id" value
- * @method string              getType()              Returns the current record's "type" value
- * @method string              getGenre()             Returns the current record's "genre" value
- * @method string              getTitle()             Returns the current record's "title" value
- * @method string              getTitleMn()           Returns the current record's "title_mn" value
- * @method string              getRoute()             Returns the current record's "route" value
- * @method string              getFolder()            Returns the current record's "folder" value
- * @method string              getImage()             Returns the current record's "image" value
- * @method string              getCover()             Returns the current record's "cover" value
- * @method integer             getYear()              Returns the current record's "year" value
- * @method integer             getYearEnd()           Returns the current record's "year_end" value
- * @method string              getSummary()           Returns the current record's "summary" value
- * @method string              getBody()              Returns the current record's "body" value
- * @method string              getSummaryMn()         Returns the current record's "summary_mn" value
- * @method string              getBodyMn()            Returns the current record's "body_mn" value
- * @method string              getTrailer()           Returns the current record's "trailer" value
- * @method string              getRating()            Returns the current record's "rating" value
- * @method integer             getDuration()          Returns the current record's "duration" value
- * @method integer             getAge()               Returns the current record's "age" value
- * @method string              getStudios()           Returns the current record's "studios" value
- * @method string              getDirector()          Returns the current record's "director" value
- * @method string              getWriter()            Returns the current record's "writer" value
- * @method integer             getNbSeasons()         Returns the current record's "nb_seasons" value
- * @method integer             getNbEpisodes()        Returns the current record's "nb_episodes" value
- * @method string              getOfficialLink1()     Returns the current record's "official_link1" value
- * @method string              getOfficialLink2()     Returns the current record's "official_link2" value
- * @method date                getReleaseDate()       Returns the current record's "release_date" value
- * @method string              getCasts()             Returns the current record's "casts" value
- * @method string              getKickass()           Returns the current record's "kickass" value
- * @method string              getTorrentz()          Returns the current record's "torrentz" value
- * @method string              getExtratorrent()      Returns the current record's "extratorrent" value
- * @method string              getFreetvvideoonline() Returns the current record's "freetvvideoonline" value
- * @method string              getYoutube()           Returns the current record's "youtube" value
- * @method integer             getSort()              Returns the current record's "sort" value
- * @method integer             getNbViews()           Returns the current record's "nb_views" value
- * @method integer             getNbLove()            Returns the current record's "nb_love" value
- * @method boolean             getIsActive()          Returns the current record's "is_active" value
- * @method boolean             getIsFeatured()        Returns the current record's "is_featured" value
- * @method integer             getIsWatchOnline()     Returns the current record's "is_watch_online" value
- * @method integer             getIsTorrentDownload() Returns the current record's "is_torrent_download" value
- * @method integer             getIsMongolianLanguage() Returns the current record's "is_mongolian_language" value
- * @method boolean             getBoxoffice()         Returns the current record's "boxoffice" value
- * @method boolean             getBoxofficeMn()       Returns the current record's "boxoffice_mn" value
- * @method integer             getThisweek()          Returns the current record's "thisweek" value
- * @method integer             getComingsoon()        Returns the current record's "comingsoon" value
- * @method string              getSource()            Returns the current record's "source" value
- * @method integer             getCreatedAid()        Returns the current record's "created_aid" value
- * @method integer             getUpdatedAid()        Returns the current record's "updated_aid" value
- * @method timestamp           getCreatedAt()         Returns the current record's "created_at" value
- * @method timestamp           getUpdatedAt()         Returns the current record's "updated_at" value
- * @method Admin               getAdmin()             Returns the current record's "Admin" value
- * @method Admin               getAdmin2()            Returns the current record's "Admin_2" value
- * @method Doctrine_Collection getBests()             Returns the current record's "Bests" collection
- * @method Item                setId()                Sets the current record's "id" value
- * @method Item                setType()              Sets the current record's "type" value
- * @method Item                setGenre()             Sets the current record's "genre" value
- * @method Item                setTitle()             Sets the current record's "title" value
- * @method Item                setTitleMn()           Sets the current record's "title_mn" value
- * @method Item                setRoute()             Sets the current record's "route" value
- * @method Item                setFolder()            Sets the current record's "folder" value
- * @method Item                setImage()             Sets the current record's "image" value
- * @method Item                setCover()             Sets the current record's "cover" value
- * @method Item                setYear()              Sets the current record's "year" value
- * @method Item                setYearEnd()           Sets the current record's "year_end" value
- * @method Item                setSummary()           Sets the current record's "summary" value
- * @method Item                setBody()              Sets the current record's "body" value
- * @method Item                setSummaryMn()         Sets the current record's "summary_mn" value
- * @method Item                setBodyMn()            Sets the current record's "body_mn" value
- * @method Item                setTrailer()           Sets the current record's "trailer" value
- * @method Item                setRating()            Sets the current record's "rating" value
- * @method Item                setDuration()          Sets the current record's "duration" value
- * @method Item                setAge()               Sets the current record's "age" value
- * @method Item                setStudios()           Sets the current record's "studios" value
- * @method Item                setDirector()          Sets the current record's "director" value
- * @method Item                setWriter()            Sets the current record's "writer" value
- * @method Item                setNbSeasons()         Sets the current record's "nb_seasons" value
- * @method Item                setNbEpisodes()        Sets the current record's "nb_episodes" value
- * @method Item                setOfficialLink1()     Sets the current record's "official_link1" value
- * @method Item                setOfficialLink2()     Sets the current record's "official_link2" value
- * @method Item                setReleaseDate()       Sets the current record's "release_date" value
- * @method Item                setCasts()             Sets the current record's "casts" value
- * @method Item                setKickass()           Sets the current record's "kickass" value
- * @method Item                setTorrentz()          Sets the current record's "torrentz" value
- * @method Item                setExtratorrent()      Sets the current record's "extratorrent" value
- * @method Item                setFreetvvideoonline() Sets the current record's "freetvvideoonline" value
- * @method Item                setYoutube()           Sets the current record's "youtube" value
- * @method Item                setSort()              Sets the current record's "sort" value
- * @method Item                setNbViews()           Sets the current record's "nb_views" value
- * @method Item                setNbLove()            Sets the current record's "nb_love" value
- * @method Item                setIsActive()          Sets the current record's "is_active" value
- * @method Item                setIsFeatured()        Sets the current record's "is_featured" value
- * @method Item                setIsWatchOnline()     Sets the current record's "is_watch_online" value
- * @method Item                setIsTorrentDownload() Sets the current record's "is_torrent_download" value
- * @method Item                setIsMongolianLanguage() Sets the current record's "is_mongolian_language" value
- * @method Item                setBoxoffice()         Sets the current record's "boxoffice" value
- * @method Item                setBoxofficeMn()       Sets the current record's "boxoffice_mn" value
- * @method Item                setThisweek()          Sets the current record's "thisweek" value
- * @method Item                setComingsoon()        Sets the current record's "comingsoon" value
- * @method Item                setSource()            Sets the current record's "source" value
- * @method Item                setCreatedAid()        Sets the current record's "created_aid" value
- * @method Item                setUpdatedAid()        Sets the current record's "updated_aid" value
- * @method Item                setCreatedAt()         Sets the current record's "created_at" value
- * @method Item                setUpdatedAt()         Sets the current record's "updated_at" value
- * @method Item                setAdmin()             Sets the current record's "Admin" value
- * @method Item                setAdmin2()            Sets the current record's "Admin_2" value
- * @method Item                setBests()             Sets the current record's "Bests" collection
+ * @method integer   getId()                    Returns the current record's "id" value
+ * @method string    getType()                  Returns the current record's "type" value
+ * @method string    getGenre()                 Returns the current record's "genre" value
+ * @method string    getTitle()                 Returns the current record's "title" value
+ * @method string    getTitleMn()               Returns the current record's "title_mn" value
+ * @method string    getRoute()                 Returns the current record's "route" value
+ * @method string    getFolder()                Returns the current record's "folder" value
+ * @method string    getImage()                 Returns the current record's "image" value
+ * @method string    getCover()                 Returns the current record's "cover" value
+ * @method integer   getYear()                  Returns the current record's "year" value
+ * @method integer   getYearEnd()               Returns the current record's "year_end" value
+ * @method string    getSummary()               Returns the current record's "summary" value
+ * @method string    getBody()                  Returns the current record's "body" value
+ * @method string    getSummaryMn()             Returns the current record's "summary_mn" value
+ * @method string    getBodyMn()                Returns the current record's "body_mn" value
+ * @method string    getTrailer()               Returns the current record's "trailer" value
+ * @method string    getRating()                Returns the current record's "rating" value
+ * @method integer   getDuration()              Returns the current record's "duration" value
+ * @method integer   getAge()                   Returns the current record's "age" value
+ * @method string    getStudios()               Returns the current record's "studios" value
+ * @method string    getDirector()              Returns the current record's "director" value
+ * @method string    getWriter()                Returns the current record's "writer" value
+ * @method integer   getNbSeasons()             Returns the current record's "nb_seasons" value
+ * @method integer   getNbEpisodes()            Returns the current record's "nb_episodes" value
+ * @method string    getOfficialLink1()         Returns the current record's "official_link1" value
+ * @method string    getOfficialLink2()         Returns the current record's "official_link2" value
+ * @method date      getReleaseDate()           Returns the current record's "release_date" value
+ * @method string    getCasts()                 Returns the current record's "casts" value
+ * @method string    getKickass()               Returns the current record's "kickass" value
+ * @method string    getTorrentz()              Returns the current record's "torrentz" value
+ * @method string    getExtratorrent()          Returns the current record's "extratorrent" value
+ * @method string    getFreetvvideoonline()     Returns the current record's "freetvvideoonline" value
+ * @method string    getYoutube()               Returns the current record's "youtube" value
+ * @method integer   getSort()                  Returns the current record's "sort" value
+ * @method integer   getNbViews()               Returns the current record's "nb_views" value
+ * @method integer   getNbLove()                Returns the current record's "nb_love" value
+ * @method integer   getIsActive()              Returns the current record's "is_active" value
+ * @method integer   getIsFeatured()            Returns the current record's "is_featured" value
+ * @method integer   getIsWatchOnline()         Returns the current record's "is_watch_online" value
+ * @method integer   getIsTorrentDownload()     Returns the current record's "is_torrent_download" value
+ * @method integer   getIsMongolianLanguage()   Returns the current record's "is_mongolian_language" value
+ * @method integer   getBoxoffice()             Returns the current record's "boxoffice" value
+ * @method integer   getBoxofficeMn()           Returns the current record's "boxoffice_mn" value
+ * @method integer   getThisweek()              Returns the current record's "thisweek" value
+ * @method integer   getComingsoon()            Returns the current record's "comingsoon" value
+ * @method string    getSource()                Returns the current record's "source" value
+ * @method integer   getCreatedAid()            Returns the current record's "created_aid" value
+ * @method integer   getUpdatedAid()            Returns the current record's "updated_aid" value
+ * @method timestamp getCreatedAt()             Returns the current record's "created_at" value
+ * @method timestamp getUpdatedAt()             Returns the current record's "updated_at" value
+ * @method Item      setId()                    Sets the current record's "id" value
+ * @method Item      setType()                  Sets the current record's "type" value
+ * @method Item      setGenre()                 Sets the current record's "genre" value
+ * @method Item      setTitle()                 Sets the current record's "title" value
+ * @method Item      setTitleMn()               Sets the current record's "title_mn" value
+ * @method Item      setRoute()                 Sets the current record's "route" value
+ * @method Item      setFolder()                Sets the current record's "folder" value
+ * @method Item      setImage()                 Sets the current record's "image" value
+ * @method Item      setCover()                 Sets the current record's "cover" value
+ * @method Item      setYear()                  Sets the current record's "year" value
+ * @method Item      setYearEnd()               Sets the current record's "year_end" value
+ * @method Item      setSummary()               Sets the current record's "summary" value
+ * @method Item      setBody()                  Sets the current record's "body" value
+ * @method Item      setSummaryMn()             Sets the current record's "summary_mn" value
+ * @method Item      setBodyMn()                Sets the current record's "body_mn" value
+ * @method Item      setTrailer()               Sets the current record's "trailer" value
+ * @method Item      setRating()                Sets the current record's "rating" value
+ * @method Item      setDuration()              Sets the current record's "duration" value
+ * @method Item      setAge()                   Sets the current record's "age" value
+ * @method Item      setStudios()               Sets the current record's "studios" value
+ * @method Item      setDirector()              Sets the current record's "director" value
+ * @method Item      setWriter()                Sets the current record's "writer" value
+ * @method Item      setNbSeasons()             Sets the current record's "nb_seasons" value
+ * @method Item      setNbEpisodes()            Sets the current record's "nb_episodes" value
+ * @method Item      setOfficialLink1()         Sets the current record's "official_link1" value
+ * @method Item      setOfficialLink2()         Sets the current record's "official_link2" value
+ * @method Item      setReleaseDate()           Sets the current record's "release_date" value
+ * @method Item      setCasts()                 Sets the current record's "casts" value
+ * @method Item      setKickass()               Sets the current record's "kickass" value
+ * @method Item      setTorrentz()              Sets the current record's "torrentz" value
+ * @method Item      setExtratorrent()          Sets the current record's "extratorrent" value
+ * @method Item      setFreetvvideoonline()     Sets the current record's "freetvvideoonline" value
+ * @method Item      setYoutube()               Sets the current record's "youtube" value
+ * @method Item      setSort()                  Sets the current record's "sort" value
+ * @method Item      setNbViews()               Sets the current record's "nb_views" value
+ * @method Item      setNbLove()                Sets the current record's "nb_love" value
+ * @method Item      setIsActive()              Sets the current record's "is_active" value
+ * @method Item      setIsFeatured()            Sets the current record's "is_featured" value
+ * @method Item      setIsWatchOnline()         Sets the current record's "is_watch_online" value
+ * @method Item      setIsTorrentDownload()     Sets the current record's "is_torrent_download" value
+ * @method Item      setIsMongolianLanguage()   Sets the current record's "is_mongolian_language" value
+ * @method Item      setBoxoffice()             Sets the current record's "boxoffice" value
+ * @method Item      setBoxofficeMn()           Sets the current record's "boxoffice_mn" value
+ * @method Item      setThisweek()              Sets the current record's "thisweek" value
+ * @method Item      setComingsoon()            Sets the current record's "comingsoon" value
+ * @method Item      setSource()                Sets the current record's "source" value
+ * @method Item      setCreatedAid()            Sets the current record's "created_aid" value
+ * @method Item      setUpdatedAid()            Sets the current record's "updated_aid" value
+ * @method Item      setCreatedAt()             Sets the current record's "created_at" value
+ * @method Item      setUpdatedAt()             Sets the current record's "updated_at" value
  * 
  * @package    imdb
  * @subpackage model
@@ -249,7 +240,7 @@ abstract class BaseItem extends sfDoctrineRecord
              'autoincrement' => false,
              'length' => 1000,
              ));
-		$this->hasColumn('cover', 'string', 1000, array(
+        $this->hasColumn('cover', 'string', 1000, array(
              'type' => 'string',
              'fixed' => 0,
              'unsigned' => false,
@@ -501,77 +492,86 @@ abstract class BaseItem extends sfDoctrineRecord
              'autoincrement' => false,
              'length' => 4,
              ));
-        $this->hasColumn('is_active', 'boolean', null, array(
-             'type' => 'boolean',
+        $this->hasColumn('is_active', 'integer', 1, array(
+             'type' => 'integer',
              'fixed' => 0,
              'unsigned' => false,
              'primary' => false,
              'notnull' => true,
              'autoincrement' => false,
+             'length' => 1,
              ));
-        $this->hasColumn('is_featured', 'boolean', null, array(
-             'type' => 'boolean',
+        $this->hasColumn('is_featured', 'integer', 1, array(
+             'type' => 'integer',
              'fixed' => 0,
              'unsigned' => false,
              'primary' => false,
              'notnull' => true,
              'autoincrement' => false,
+             'length' => 1,
              ));
-		$this->hasColumn('is_watch_online', 'integer', 3, array(
-             'type' => 'boolean',
+        $this->hasColumn('is_watch_online', 'integer', 1, array(
+             'type' => 'integer',
              'fixed' => 0,
              'unsigned' => false,
              'primary' => false,
              'notnull' => true,
              'autoincrement' => false,
+             'length' => 1,
              ));
-		$this->hasColumn('is_torrent_download', 'integer', 3, array(
-             'type' => 'boolean',
+        $this->hasColumn('is_torrent_download', 'integer', 1, array(
+             'type' => 'integer',
              'fixed' => 0,
              'unsigned' => false,
              'primary' => false,
              'notnull' => true,
              'autoincrement' => false,
+             'length' => 1,
              ));
-		$this->hasColumn('is_mongolian_language', 'integer', 3, array(
-             'type' => 'boolean',
+        $this->hasColumn('is_mongolian_language', 'integer', 1, array(
+             'type' => 'integer',
              'fixed' => 0,
              'unsigned' => false,
              'primary' => false,
              'notnull' => true,
              'autoincrement' => false,
+             'length' => 1,
              ));
-        $this->hasColumn('boxoffice', 'integer', 3, array(
-             'type' => 'boolean',
+        $this->hasColumn('boxoffice', 'integer', 1, array(
+             'type' => 'integer',
              'fixed' => 0,
              'unsigned' => false,
              'primary' => false,
              'notnull' => true,
              'autoincrement' => false,
+             'length' => 1,
              ));
-        $this->hasColumn('boxoffice_mn', 'integer', 3, array(
-             'type' => 'boolean',
+        $this->hasColumn('boxoffice_mn', 'integer', 1, array(
+             'type' => 'integer',
              'fixed' => 0,
              'unsigned' => false,
              'primary' => false,
              'notnull' => true,
              'autoincrement' => false,
+             'length' => 1,
              ));
-        $this->hasColumn('thisweek', 'integer', 3, array(
-             'type' => 'boolean',
+        $this->hasColumn('thisweek', 'integer', 1, array(
+             'type' => 'integer',
              'fixed' => 0,
              'unsigned' => false,
              'primary' => false,
              'notnull' => true,
              'autoincrement' => false,
+             'length' => 1,
              ));
-        $this->hasColumn('comingsoon', 'integer', 3, array(
-             'type' => 'boolean',
+        $this->hasColumn('comingsoon', 'integer', 1, array(
+             'type' => 'integer',
              'fixed' => 0,
              'unsigned' => false,
              'primary' => false,
              'notnull' => true,
              'autoincrement' => false,
+             'length' => 1,
              ));
         $this->hasColumn('source', 'string', 1000, array(
              'type' => 'string',
@@ -624,16 +624,6 @@ abstract class BaseItem extends sfDoctrineRecord
     public function setUp()
     {
         parent::setUp();
-        $this->hasOne('Admin', array(
-             'local' => 'created_aid',
-             'foreign' => 'id'));
-
-        $this->hasOne('Admin as Admin_2', array(
-             'local' => 'updated_aid',
-             'foreign' => 'id'));
-
-        $this->hasMany('Bests', array(
-             'local' => 'id',
-             'foreign' => 'item_id'));
+        
     }
 }

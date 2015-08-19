@@ -13,14 +13,12 @@ Doctrine_Manager::getInstance()->bindComponent('PollOption', 'doctrine');
  * @property integer $nb_vote
  * @property integer $user_id
  * @property string $ip
- * @property boolean $is_active
+ * @property integer $is_active
  * @property integer $sort
  * @property timestamp $created_at
  * @property timestamp $updated_at
  * @property integer $created_aid
  * @property integer $updated_aid
- * @property Admin $Admin
- * @property Admin $Admin_2
  * 
  * @method integer    getId()          Returns the current record's "id" value
  * @method integer    getPollId()      Returns the current record's "poll_id" value
@@ -28,14 +26,12 @@ Doctrine_Manager::getInstance()->bindComponent('PollOption', 'doctrine');
  * @method integer    getNbVote()      Returns the current record's "nb_vote" value
  * @method integer    getUserId()      Returns the current record's "user_id" value
  * @method string     getIp()          Returns the current record's "ip" value
- * @method boolean    getIsActive()    Returns the current record's "is_active" value
+ * @method integer    getIsActive()    Returns the current record's "is_active" value
  * @method integer    getSort()        Returns the current record's "sort" value
  * @method timestamp  getCreatedAt()   Returns the current record's "created_at" value
  * @method timestamp  getUpdatedAt()   Returns the current record's "updated_at" value
  * @method integer    getCreatedAid()  Returns the current record's "created_aid" value
  * @method integer    getUpdatedAid()  Returns the current record's "updated_aid" value
- * @method Admin      getAdmin()       Returns the current record's "Admin" value
- * @method Admin      getAdmin2()      Returns the current record's "Admin_2" value
  * @method PollOption setId()          Sets the current record's "id" value
  * @method PollOption setPollId()      Sets the current record's "poll_id" value
  * @method PollOption setBody()        Sets the current record's "body" value
@@ -48,8 +44,6 @@ Doctrine_Manager::getInstance()->bindComponent('PollOption', 'doctrine');
  * @method PollOption setUpdatedAt()   Sets the current record's "updated_at" value
  * @method PollOption setCreatedAid()  Sets the current record's "created_aid" value
  * @method PollOption setUpdatedAid()  Sets the current record's "updated_aid" value
- * @method PollOption setAdmin()       Sets the current record's "Admin" value
- * @method PollOption setAdmin2()      Sets the current record's "Admin_2" value
  * 
  * @package    imdb
  * @subpackage model
@@ -114,13 +108,14 @@ abstract class BasePollOption extends sfDoctrineRecord
              'autoincrement' => false,
              'length' => 50,
              ));
-        $this->hasColumn('is_active', 'boolean', null, array(
-             'type' => 'boolean',
+        $this->hasColumn('is_active', 'integer', 1, array(
+             'type' => 'integer',
              'fixed' => 0,
              'unsigned' => false,
              'primary' => false,
              'notnull' => true,
              'autoincrement' => false,
+             'length' => 1,
              ));
         $this->hasColumn('sort', 'integer', 4, array(
              'type' => 'integer',
@@ -173,12 +168,6 @@ abstract class BasePollOption extends sfDoctrineRecord
     public function setUp()
     {
         parent::setUp();
-        $this->hasOne('Admin', array(
-             'local' => 'created_aid',
-             'foreign' => 'id'));
-
-        $this->hasOne('Admin as Admin_2', array(
-             'local' => 'updated_aid',
-             'foreign' => 'id'));
+        
     }
 }
