@@ -51,14 +51,14 @@ Admin:
       notnull: true
       autoincrement: false
     is_active:
-      type: boolean
+      type: integer(1)
       fixed: false
       unsigned: false
       primary: false
       notnull: true
       autoincrement: false
     is_featured:
-      type: boolean
+      type: integer(1)
       fixed: false
       unsigned: false
       primary: false
@@ -94,95 +94,23 @@ Admin:
       notnull: true
       autoincrement: false
   relations:
-    Banner:
-      local: id
-      foreign: created_aid
-      type: many
-    Banner_2:
-      class: Banner
+    News:
       local: id
       foreign: updated_aid
       type: many
-    Bests:
+    News_2:
+      class: News
       local: id
       foreign: created_aid
       type: many
-    Bests_3:
-      class: Bests
-      local: id
-      foreign: updated_aid
-      type: many
-    Celebrity:
+    Page:
       local: id
       foreign: created_aid
       type: many
-    Celebrity_2:
-      class: Celebrity
+    Page_2:
+      class: Page
       local: id
       foreign: updated_aid
-      type: many
-    Image:
-      local: id
-      foreign: created_aid
-      type: many
-    Image_2:
-      class: Image
-      local: id
-      foreign: updated_aid
-      type: many
-    Item:
-      local: id
-      foreign: created_aid
-      type: many
-    Item_2:
-      class: Item
-      local: id
-      foreign: updated_aid
-      type: many
-    Link:
-      local: id
-      foreign: created_aid
-      type: many
-    Link_2:
-      class: Link
-      local: id
-      foreign: updated_aid
-      type: many
-    Poll:
-      local: id
-      foreign: created_aid
-      type: many
-    Poll_2:
-      class: Poll
-      local: id
-      foreign: updated_aid
-      type: many
-    PollOption:
-      local: id
-      foreign: created_aid
-      type: many
-    PollOption_2:
-      class: PollOption
-      local: id
-      foreign: updated_aid
-      type: many
-    Studio:
-      local: id
-      foreign: created_aid
-      type: many
-    Studio_2:
-      class: Studio
-      local: id
-      foreign: updated_aid
-      type: many
-    User:
-      local: id
-      foreign: updated_aid
-      type: many
-    User_2:
-      class: User
-      local: id
-      foreign: created_aid
       type: many
 Banner:
   connection: doctrine
@@ -223,7 +151,7 @@ Banner:
       notnull: true
       autoincrement: false
     target:
-      type: boolean
+      type: integer(1)
       fixed: false
       unsigned: false
       primary: false
@@ -265,14 +193,14 @@ Banner:
       notnull: true
       autoincrement: false
     is_active:
-      type: boolean
+      type: integer(1)
       fixed: false
       unsigned: false
       primary: false
       notnull: true
       autoincrement: false
     is_featured:
-      type: boolean
+      type: integer(1)
       fixed: false
       unsigned: false
       primary: false
@@ -307,16 +235,6 @@ Banner:
       primary: false
       notnull: true
       autoincrement: false
-  relations:
-    Admin:
-      local: created_aid
-      foreign: id
-      type: one
-    Admin_2:
-      class: Admin
-      local: updated_aid
-      foreign: id
-      type: one
 Bests:
   connection: doctrine
   tableName: bests
@@ -349,7 +267,7 @@ Bests:
       notnull: true
       autoincrement: false
     is_active:
-      type: boolean
+      type: integer(1)
       fixed: false
       unsigned: false
       primary: false
@@ -384,20 +302,6 @@ Bests:
       primary: false
       notnull: true
       autoincrement: false
-  relations:
-    Item:
-      local: item_id
-      foreign: id
-      type: one
-    Admin:
-      local: created_aid
-      foreign: id
-      type: one
-    Admin_2:
-      class: Admin
-      local: updated_aid
-      foreign: id
-      type: one
 Celebrity:
   connection: doctrine
   tableName: celebrity
@@ -521,14 +425,14 @@ Celebrity:
       notnull: true
       autoincrement: false
     is_active:
-      type: boolean
+      type: integer(1)
       fixed: false
       unsigned: false
       primary: false
       notnull: true
       autoincrement: false
     is_featured:
-      type: boolean
+      type: integer(1)
       fixed: false
       unsigned: false
       primary: false
@@ -570,16 +474,73 @@ Celebrity:
       default: '0000-00-00 00:00:00'
       notnull: true
       autoincrement: false
-  relations:
-    Admin:
-      local: created_aid
-      foreign: id
-      type: one
-    Admin_2:
-      class: Admin
-      local: updated_aid
-      foreign: id
-      type: one
+Cinema:
+  connection: doctrine
+  tableName: cinema
+  columns:
+    id:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: true
+      autoincrement: true
+    cinema:
+      type: string(50)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    details:
+      type: string(500)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    item_id:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    is_active:
+      type: integer(1)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    created_at:
+      type: timestamp(25)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    updated_at:
+      type: timestamp(25)
+      fixed: false
+      unsigned: false
+      primary: false
+      default: '0000-00-00 00:00:00'
+      notnull: true
+      autoincrement: false
+    created_aid:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    updated_aid:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
 Feedback:
   connection: doctrine
   tableName: feedback
@@ -685,7 +646,7 @@ Image:
       notnull: true
       autoincrement: false
     iscover:
-      type: boolean
+      type: integer(1)
       fixed: false
       unsigned: false
       primary: false
@@ -727,16 +688,6 @@ Image:
       primary: false
       notnull: true
       autoincrement: false
-  relations:
-    Admin:
-      local: created_aid
-      foreign: id
-      type: one
-    Admin_2:
-      class: Admin
-      local: updated_aid
-      foreign: id
-      type: one
 Item:
   connection: doctrine
   tableName: item
@@ -796,6 +747,13 @@ Item:
       primary: false
       notnull: true
       autoincrement: false
+    cover:
+      type: string(1000)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
     year:
       type: integer(8)
       fixed: false
@@ -811,7 +769,7 @@ Item:
       notnull: true
       autoincrement: false
     summary:
-      type: string(1000)
+      type: string()
       fixed: false
       unsigned: false
       primary: false
@@ -825,7 +783,7 @@ Item:
       notnull: true
       autoincrement: false
     summary_mn:
-      type: string(1000)
+      type: string()
       fixed: false
       unsigned: false
       primary: false
@@ -839,14 +797,14 @@ Item:
       notnull: true
       autoincrement: false
     trailer:
-      type: string(1000)
+      type: string()
       fixed: false
       unsigned: false
       primary: false
       notnull: true
       autoincrement: false
     rating:
-      type: string(1000)
+      type: string()
       fixed: false
       unsigned: false
       primary: false
@@ -930,7 +888,35 @@ Item:
       notnull: true
       autoincrement: false
     kickass:
-      type: string(1000)
+      type: string()
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    torrentz:
+      type: string()
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    extratorrent:
+      type: string()
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    freetvvideoonline:
+      type: string()
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    youtube:
+      type: string()
       fixed: false
       unsigned: false
       primary: false
@@ -958,42 +944,63 @@ Item:
       notnull: true
       autoincrement: false
     is_active:
-      type: boolean
+      type: integer(1)
       fixed: false
       unsigned: false
       primary: false
       notnull: true
       autoincrement: false
     is_featured:
-      type: boolean
+      type: integer(1)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    is_watch_online:
+      type: integer(1)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    is_torrent_download:
+      type: integer(1)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    is_mongolian_language:
+      type: integer(1)
       fixed: false
       unsigned: false
       primary: false
       notnull: true
       autoincrement: false
     boxoffice:
-      type: integer(2)
+      type: integer(1)
       fixed: false
       unsigned: false
       primary: false
       notnull: true
       autoincrement: false
     boxoffice_mn:
-      type: integer(2)
+      type: integer(1)
       fixed: false
       unsigned: false
       primary: false
       notnull: true
       autoincrement: false
     thisweek:
-      type: boolean
+      type: integer(1)
       fixed: false
       unsigned: false
       primary: false
       notnull: true
       autoincrement: false
     comingsoon:
-      type: boolean
+      type: integer(1)
       fixed: false
       unsigned: false
       primary: false
@@ -1035,20 +1042,6 @@ Item:
       default: '0000-00-00 00:00:00'
       notnull: true
       autoincrement: false
-  relations:
-    Admin:
-      local: created_aid
-      foreign: id
-      type: one
-    Admin_2:
-      class: Admin
-      local: updated_aid
-      foreign: id
-      type: one
-    Bests:
-      local: id
-      foreign: item_id
-      type: many
 Link:
   connection: doctrine
   tableName: link
@@ -1109,14 +1102,14 @@ Link:
       notnull: true
       autoincrement: false
     is_active:
-      type: boolean
+      type: integer(1)
       fixed: false
       unsigned: false
       primary: false
       notnull: true
       autoincrement: false
     is_featured:
-      type: boolean
+      type: integer(1)
       fixed: false
       unsigned: false
       primary: false
@@ -1151,16 +1144,6 @@ Link:
       default: '0000-00-00 00:00:00'
       notnull: true
       autoincrement: false
-  relations:
-    Admin:
-      local: created_aid
-      foreign: id
-      type: one
-    Admin_2:
-      class: Admin
-      local: updated_aid
-      foreign: id
-      type: one
 Love:
   connection: doctrine
   tableName: love
@@ -1214,9 +1197,9 @@ Love:
       primary: false
       notnull: true
       autoincrement: false
-Poll:
+News:
   connection: doctrine
-  tableName: poll
+  tableName: news
   columns:
     id:
       type: integer(4)
@@ -1224,13 +1207,6 @@ Poll:
       unsigned: false
       primary: true
       autoincrement: true
-    item_id:
-      type: integer(4)
-      fixed: false
-      unsigned: false
-      primary: false
-      notnull: true
-      autoincrement: false
     title:
       type: string(255)
       fixed: false
@@ -1238,29 +1214,29 @@ Poll:
       primary: false
       notnull: true
       autoincrement: false
-    route:
+    intro:
+      type: string(1000)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    image:
       type: string(255)
       fixed: false
       unsigned: false
       primary: false
       notnull: true
       autoincrement: false
-    body:
+    content:
       type: string()
       fixed: false
       unsigned: false
       primary: false
       notnull: true
       autoincrement: false
-    options_addable:
-      type: boolean
-      fixed: false
-      unsigned: false
-      primary: false
-      notnull: true
-      autoincrement: false
-    multiple_choice:
-      type: boolean
+    is_active:
+      type: integer(1)
       fixed: false
       unsigned: false
       primary: false
@@ -1273,15 +1249,99 @@ Poll:
       primary: false
       notnull: true
       autoincrement: false
-    is_active:
-      type: boolean
+    created_at:
+      type: timestamp(25)
       fixed: false
       unsigned: false
       primary: false
       notnull: true
       autoincrement: false
-    is_featured:
-      type: boolean
+    updated_at:
+      type: timestamp(25)
+      fixed: false
+      unsigned: false
+      primary: false
+      default: '0000-00-00 00:00:00'
+      notnull: true
+      autoincrement: false
+    created_aid:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    updated_aid:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+  relations:
+    Admin:
+      local: updated_aid
+      foreign: id
+      type: one
+    Admin_2:
+      class: Admin
+      local: created_aid
+      foreign: id
+      type: one
+Page:
+  connection: doctrine
+  tableName: page
+  columns:
+    id:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: true
+      autoincrement: true
+    type:
+      type: string(255)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    title:
+      type: string(255)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    intro:
+      type: string(1000)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    image:
+      type: string(255)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    content:
+      type: string()
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    is_active:
+      type: integer(1)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    sort:
+      type: integer(4)
       fixed: false
       unsigned: false
       primary: false
@@ -1326,6 +1386,108 @@ Poll:
       local: updated_aid
       foreign: id
       type: one
+Poll:
+  connection: doctrine
+  tableName: poll
+  columns:
+    id:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: true
+      autoincrement: true
+    item_id:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    title:
+      type: string(255)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    route:
+      type: string(255)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    body:
+      type: string()
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    options_addable:
+      type: integer(1)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    multiple_choice:
+      type: integer(1)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    sort:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    is_active:
+      type: integer(1)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    is_featured:
+      type: integer(1)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    created_at:
+      type: timestamp(25)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    updated_at:
+      type: timestamp(25)
+      fixed: false
+      unsigned: false
+      primary: false
+      default: '0000-00-00 00:00:00'
+      notnull: true
+      autoincrement: false
+    created_aid:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    updated_aid:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
 PollOption:
   connection: doctrine
   tableName: poll_option
@@ -1372,7 +1534,7 @@ PollOption:
       notnull: true
       autoincrement: false
     is_active:
-      type: boolean
+      type: integer(1)
       fixed: false
       unsigned: false
       primary: false
@@ -1414,16 +1576,6 @@ PollOption:
       primary: false
       notnull: true
       autoincrement: false
-  relations:
-    Admin:
-      local: created_aid
-      foreign: id
-      type: one
-    Admin_2:
-      class: Admin
-      local: updated_aid
-      foreign: id
-      type: one
 Rating:
   connection: doctrine
   tableName: rating
@@ -1600,14 +1752,14 @@ Studio:
       notnull: true
       autoincrement: false
     is_active:
-      type: boolean
+      type: integer(1)
       fixed: false
       unsigned: false
       primary: false
       notnull: true
       autoincrement: false
     is_featured:
-      type: boolean
+      type: integer(1)
       fixed: false
       unsigned: false
       primary: false
@@ -1649,16 +1801,6 @@ Studio:
       default: '0000-00-00 00:00:00'
       notnull: true
       autoincrement: false
-  relations:
-    Admin:
-      local: created_aid
-      foreign: id
-      type: one
-    Admin_2:
-      class: Admin
-      local: updated_aid
-      foreign: id
-      type: one
 User:
   connection: doctrine
   tableName: user
@@ -1719,7 +1861,7 @@ User:
       notnull: true
       autoincrement: false
     is_active:
-      type: boolean
+      type: integer(1)
       fixed: false
       unsigned: false
       primary: false
@@ -1776,13 +1918,3 @@ User:
       primary: false
       notnull: true
       autoincrement: false
-  relations:
-    Admin:
-      local: updated_aid
-      foreign: id
-      type: one
-    Admin_2:
-      class: Admin
-      local: created_aid
-      foreign: id
-      type: one
