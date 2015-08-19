@@ -22,6 +22,8 @@ abstract class BaseFeedbackForm extends BaseFormDoctrine
       'phone'        => new sfWidgetFormInputText(),
       'message'      => new sfWidgetFormTextarea(),
       'created_at'   => new sfWidgetFormDateTime(),
+      'created_aid'  => new sfWidgetFormInputText(),
+      'updated_at'   => new sfWidgetFormInputText(),
     ));
 
     $this->setValidators(array(
@@ -32,6 +34,8 @@ abstract class BaseFeedbackForm extends BaseFormDoctrine
       'phone'        => new sfValidatorString(array('max_length' => 255)),
       'message'      => new sfValidatorString(),
       'created_at'   => new sfValidatorDateTime(),
+      'created_aid'  => new sfValidatorInteger(),
+      'updated_at'   => new sfValidatorInteger(),
     ));
 
     $this->widgetSchema->setNameFormat('feedback[%s]');
