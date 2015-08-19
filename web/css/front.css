@@ -16,8 +16,7 @@ body{background:#fff;position:relative;}
           border-right:1px solid #ccc;box-shadow:0 3px 5px #ededed;}
 #rightside{float:left;background:#fff;width:180px;min-height:600px;position:relative;border:0;padding:5px 0 0 0;}
 #center{float:left;width:730px;padding:10px;}
-#footer{position:fixed;bottom:0;left:0;width:100%;background:rgba(0,0,0,0.8);padding:0px;}
-#footer *{color:#fff;}
+#footer{position:relative;padding:20px 0;border-top:3px solid #000;border-bottom:1px solid #000;margin:20px 0;}
 
 ul#mainmenu {list-style-type:none;margin:0;padding:0;width:150px;border-top:1px solid #ccc;}
 ul#mainmenu li a{text-transform:uppercase;line-height:24px;margin:0;padding:2px 15px;color:#000;
@@ -50,19 +49,18 @@ select option{text-transform:;padding:2px 0px;background:#FFF;}
 a{text-decoration:none;}
 a img{border:0;}
 ul{list-style-type:none;}
+ul li{list-style-type:none;}
 
 hr{border:0;border-bottom:1px solid #ccc;}
 hr.dotted{border:0;border-bottom:1px dotted #ccc;}
 
 ol.none, ul.none{list-style-type:none;padding:0;margin:0;}
 
-h1, .h1{color:#222;text-transform:uppercase;font-size:25px;line-height:30px;margin:0;padding:0 0 15px 0;font-weight:bold;}
-h2, .h2{color:#fff;text-transform:uppercase;font-size:18px;line-height:23px;
-   			font-weight:normal;margin:0 0 5px 0;}
+h1, .h1{color:#000;text-transform:uppercase;font-size:25px;line-height:30px;margin:0;padding:0 0 15px 0;font-weight:bold;}
+h2, .h2{text-transform:uppercase;font-size:18px;line-height:23px;margin:0 0 5px 0;font-weight:normal;}
 h3, .h3{color:#a53000;text-transform:uppercase;margin:5px 0 5px 0;padding:0 0 5px;line-height:20px;
 				cursor:pointer;font-weight:bold;border-bottom:1px solid #a53000;}
-   
-h6, .h6{font-size:22px;text-transform:uppercase;margin:0 0 10px 0;float:left;}
+h6, .h6{text-transform:uppercase;margin:0 0 10px 0;float:left;}
 
 cufon {height:17px!important;}
 
@@ -123,10 +121,12 @@ strong,b{font-weight:bold!important;}
 .radius4 {border-radius:4px;-moz-border-radius:4px;-webkit-border-radius:4px;-o-border-radius:4px;}
 
 .timestamp{color:#aaa;font-size:12px;text-transform:uppercase;line-height:18px;}
-.more{background:#a53000;color:#fff;text-transform:uppercase;}
+.more1{float:right;color:#fff;text-transform:uppercase;text-decoration:none;line-height:20px;display:block;width:60px;height:19px;
+			 background:url(../images/icons/more1.png) no-repeat;padding:0 0 0 5px;margin:10px;}
 
 .box-home{float:left;}
 .box-home a.toggle{float:right;margin:-6px -6px 0 0;}
+.box-s{float:left;margin:0 6px 5px 0;width:140px;height:244px;overflow:hidden;}
 
 .pager {margin:0;padding:0;width:100%;}
 .pager a {float:left;margin:1px;padding:5px 12px;border:1px solid #dedede;border-radius:2px;}

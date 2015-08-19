@@ -5,7 +5,6 @@ class GlobalLib
   
     public static $type   = array('movie'=>'Movie',   'series'=>'Series',  'soap'=>'Soap opera', 'tvshow'=>'TV show', 'mn'=>'MN films',    'nonfiction'=>'Non fiction',   'game'=>'Game');
     public static $type_mn = array('movie'=>'Кино',   'series'=>'Цуврал',  'soap'=>'Олон ангит', 'tvshow'=>'ТВ Шоу',  'mn'=>'Монгол кино', 'nonfiction'=>'Баримтат кино', 'game'=>'Тоглоом');
-    public static $colors = array('movie'=>'#067FF9', 'series'=>'#4D9804', 'soap'=>'#5F1DCB',    'tvshow'=>'#CB1D6B', 'mn'=>'#FA3F06',     'nonfiction'=>'#80482C', 			'game'=>'red');
     public static $genre  = array(
                   'action'       => 'Action', 
                   'adventure'    => 'Adventure', 
@@ -109,10 +108,12 @@ class GlobalLib
     public static $alpha_mn = array('A'=>'A','Б'=>'Б','В'=>'В','Г'=>'Г','Д'=>'Д','Е'=>'Е','Ё'=>'Ё','Ж'=>'Ж','З'=>'З','И'=>'И',
                   'Й'=>'Й','К'=>'К','Л'=>'Л','М'=>'М','Н'=>'Н','О'=>'О','Ө'=>'Ө','П'=>'П','Р'=>'Р','С'=>'С','Т'=>'Т','У'=>'У',
                   'Ү'=>'Ү','Х'=>'Х','Ц'=>'Ц','Ч'=>'Ч','Ш'=>'Ш','Щ'=>'Щ','Ъ'=>'Ъ','Ь'=>'Ь','Э'=>'Э','Ю'=>'Ю','Я'=>'Я');
+
     public static $years = array(2014=>2014,2013=>2013,2011=>2011,2010=>2010,
                   2009=>2009,2008=>2008,2007=>2007,2006=>2006,2005=>2005,
                   2004=>2004,2003=>2003,2002=>2002,2001=>2001,2000=>2000,
                   1990=>1990,1980=>1980,1970=>1970,1960=>'1960-с өмнө');
+
     public static $days = array(1=>1,2=>2,3=>3,4=>4,5=>5,6=>6,7=>7,8=>8,9=>9,10=>10,11=>11,12=>12,13=>13,14=>14,15=>15,16=>16,
             17=>17,18=>18,19=>19,20=>20,21=>21,22=>22,23=>23,24=>24,25=>25,26=>26,27=>27,28=>28,29=>29,30=>30,31=>31);
 
@@ -124,7 +125,7 @@ class GlobalLib
     );
 
     public static $mod_permissions = array('item'=>'item', 'link'=>'link', 'bests'=>'bests', 'cinema'=>'cinema',
-                  'feedback'=>'feedback', 'banner'=>'banner', 'news'=>'news', 'poll'=>'poll', 
+                  'feedback'=>'feedback', 'banner'=>'banner', 'news'=>'news', 'page'=>'page', 'poll'=>'poll', 
                   'subs'=>'subscriber', 'user'=>'user', 'admin'=>'admin');
 
 	public static $cinema = array('tengis'=>'Тэнгис кино театр', 'urgoo'=>'Өргөө кино театр', 'od'=>'Od кино театр');
@@ -132,7 +133,6 @@ class GlobalLib
     public static function getArray($type)
     {
         switch ($type) {
-            case 'colors': return self::$colors;
           	case 'type'  : return self::$type;
           	case 'type_mn'  : return self::$type_mn;
           	case 'genre': return self::$genre;
@@ -168,7 +168,6 @@ class GlobalLib
     }
     
     
-
     ################################################################################################################################################################
     
     public static function getNumbers($min=1, $max=1000)

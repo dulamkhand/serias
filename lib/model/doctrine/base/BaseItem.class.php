@@ -45,13 +45,13 @@ Doctrine_Manager::getInstance()->bindComponent('Item', 'doctrine');
  * @property integer $nb_love
  * @property boolean $is_active
  * @property boolean $is_featured
- * @property boolean $is_watch_online
- * @property boolean $is_torrent_download
- * @property boolean $is_mongolian_language
+ * @property integer $is_watch_online
+ * @property integer $is_torrent_download
+ * @property integer $is_mongolian_language
  * @property integer $boxoffice
  * @property integer $boxoffice_mn
- * @property boolean $thisweek
- * @property boolean $comingsoon
+ * @property integer $thisweek
+ * @property integer $comingsoon
  * @property string $source
  * @property integer $created_aid
  * @property integer $updated_aid
@@ -99,13 +99,13 @@ Doctrine_Manager::getInstance()->bindComponent('Item', 'doctrine');
  * @method integer             getNbLove()            Returns the current record's "nb_love" value
  * @method boolean             getIsActive()          Returns the current record's "is_active" value
  * @method boolean             getIsFeatured()        Returns the current record's "is_featured" value
- * @method boolean             getIsWatchOnline()     Returns the current record's "is_watch_online" value
- * @method boolean             getIsTorrentDownload() Returns the current record's "is_torrent_download" value
- * @method boolean             getIsMongolianLanguage() Returns the current record's "is_mongolian_language" value
+ * @method integer             getIsWatchOnline()     Returns the current record's "is_watch_online" value
+ * @method integer             getIsTorrentDownload() Returns the current record's "is_torrent_download" value
+ * @method integer             getIsMongolianLanguage() Returns the current record's "is_mongolian_language" value
  * @method boolean             getBoxoffice()         Returns the current record's "boxoffice" value
  * @method boolean             getBoxofficeMn()       Returns the current record's "boxoffice_mn" value
- * @method boolean             getThisweek()          Returns the current record's "thisweek" value
- * @method boolean             getComingsoon()        Returns the current record's "comingsoon" value
+ * @method integer             getThisweek()          Returns the current record's "thisweek" value
+ * @method integer             getComingsoon()        Returns the current record's "comingsoon" value
  * @method string              getSource()            Returns the current record's "source" value
  * @method integer             getCreatedAid()        Returns the current record's "created_aid" value
  * @method integer             getUpdatedAid()        Returns the current record's "updated_aid" value
@@ -517,7 +517,7 @@ abstract class BaseItem extends sfDoctrineRecord
              'notnull' => true,
              'autoincrement' => false,
              ));
-		$this->hasColumn('is_watch_online', 'boolean', null, array(
+		$this->hasColumn('is_watch_online', 'integer', 3, array(
              'type' => 'boolean',
              'fixed' => 0,
              'unsigned' => false,
@@ -525,7 +525,7 @@ abstract class BaseItem extends sfDoctrineRecord
              'notnull' => true,
              'autoincrement' => false,
              ));
-		$this->hasColumn('is_torrent_download', 'boolean', null, array(
+		$this->hasColumn('is_torrent_download', 'integer', 3, array(
              'type' => 'boolean',
              'fixed' => 0,
              'unsigned' => false,
@@ -533,7 +533,7 @@ abstract class BaseItem extends sfDoctrineRecord
              'notnull' => true,
              'autoincrement' => false,
              ));
-		$this->hasColumn('is_mongolian_language', 'boolean', null, array(
+		$this->hasColumn('is_mongolian_language', 'integer', 3, array(
              'type' => 'boolean',
              'fixed' => 0,
              'unsigned' => false,
@@ -541,7 +541,7 @@ abstract class BaseItem extends sfDoctrineRecord
              'notnull' => true,
              'autoincrement' => false,
              ));
-        $this->hasColumn('boxoffice', 'integer', 2, array(
+        $this->hasColumn('boxoffice', 'integer', 3, array(
              'type' => 'boolean',
              'fixed' => 0,
              'unsigned' => false,
@@ -549,7 +549,7 @@ abstract class BaseItem extends sfDoctrineRecord
              'notnull' => true,
              'autoincrement' => false,
              ));
-        $this->hasColumn('boxoffice_mn', 'integer', 2, array(
+        $this->hasColumn('boxoffice_mn', 'integer', 3, array(
              'type' => 'boolean',
              'fixed' => 0,
              'unsigned' => false,
@@ -557,7 +557,7 @@ abstract class BaseItem extends sfDoctrineRecord
              'notnull' => true,
              'autoincrement' => false,
              ));
-        $this->hasColumn('thisweek', 'boolean', null, array(
+        $this->hasColumn('thisweek', 'integer', 3, array(
              'type' => 'boolean',
              'fixed' => 0,
              'unsigned' => false,
@@ -565,7 +565,7 @@ abstract class BaseItem extends sfDoctrineRecord
              'notnull' => true,
              'autoincrement' => false,
              ));
-        $this->hasColumn('comingsoon', 'boolean', null, array(
+        $this->hasColumn('comingsoon', 'integer', 3, array(
              'type' => 'boolean',
              'fixed' => 0,
              'unsigned' => false,

@@ -7,20 +7,13 @@
 	<?php include_partial("partial/header", array());?>  
 	<?php include_partial("partial/leftside", array());?>  
 	<div id="center">
-		<!--flash message-->
-		<?php if ($sf_user->hasFlash('flash')): ?>
-			<div class="flash"><?php echo $sf_user->getFlash('flash')?></div>
-		<?php endif; ?> 
+			<?php include_partial("partial/flash", array());?>
 			<?php echo $sf_content ?>		
 	</div><!--center-->
 	<?php include_partial("partial/rightside", array());?>
+	<br clear="all">
+	<?php include_partial("partial/footer", array());?>  
 </div>
-
-<br clear="all">
-<?php include_partial("partial/bannerFooter", array());?>
-<br clear="all">
-<br clear="all">
-<?php include_partial("partial/footer", array());?>  
 
 <div style="display:none;">
     <?php include_partial("user/boxLogin", array('form'=>new LoginForm()))?>

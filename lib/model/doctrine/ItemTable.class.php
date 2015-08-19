@@ -54,15 +54,12 @@ class ItemTable extends Doctrine_Table
         if(isset($params['l']) && $params['l'] != null)
             $q->andWhere('title like ?', $params['l'].'%');
             
-        # is_watch_online, is_torrent_download, is_mongolian_language
-				if(isset($params['isWatchOnline'])) 
-            $q->andWhere('is_watch_online = ?', 1);
-				if(isset($params['isTorrentDownload'])) 
-		        $q->andWhere('is_torrent_download = ?', 1);
-				if(isset($params['isMongolianLanguage'])) 
-		        $q->andWhere('is_mongolian_language = ?', 1);
+		    # homepage
+        if(isset($params['homepage']))
+            $q->andWhere('is_watch_online > 0 OR is_torrent_download > 0 OR is_mongolian_language > 0');
+
         # rightside
-        if(isset($params['rightside']) && $params['rightside'] != null)
+        if(isset($params['rightside']))
             $q->andWhere('boxoffice > 0 OR boxoffice_mn > 0 OR thisweek > 0 OR comingsoon > 0');
 
 				# createdAid

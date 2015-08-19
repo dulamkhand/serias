@@ -5,7 +5,7 @@
   <ul class="slides">
     <?php foreach ($rss as $rs):?>
 		<li><a href="<?php echo url_for('page/show?route='.$rs['route'])?>">
-			<?php echo image_tag('/u/'.$rs['folder'].'/'.$rs['image'], array('style'=>'float:left;box-shadow:0 0 4px #666;width:140px;height:200px;'))?>
+			<?php echo image_tag('/u/'.$rs['folder'].'/'.$rs['image'], array('style'=>'float:left;width:140px;height:200px;'))?>
 			<!--<?php //echo $rs['title']?> (<?php //echo $rs['year']?>)-->
 		</a></li>
     <?php endforeach;?>

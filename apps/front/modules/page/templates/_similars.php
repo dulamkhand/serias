@@ -1,6 +1,13 @@
-<h3 style="margin:0 0 15px 0">Төстэй кино</h3>
+<h3>Төстэй кино</h3>
+<br clear="all">
+
 <?php 
 $rss = ItemTable::getInstance()->doFetchArray(array('type', 'route', 'folder', 'image', 'title', 'year'), 
               array('idO'=>$rs->getId(), 'type'=>$rs->getType(), 'genres'=>explode(";", $rs->getGenre()), 'limit'=>14));
-include_partial('page/boxwhite', array('rss'=>$rss, 'type'=>$rs->getType(), 'width'=>90, 'height'=>205));
+if(!sizeof($rss))  {
+		echo 'Олдсонгүй.';
+}
+foreach ($rss as $rs) {
+		include_partial('page/box-s', array('rs'=>$rs));	
+}
 ?>

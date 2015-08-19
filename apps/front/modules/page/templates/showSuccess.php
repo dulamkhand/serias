@@ -1,7 +1,8 @@
 <?php $host = sfConfig::get('app_host')?>
 <!--title-->
 <div>
-    <span class="left h1" style="margin:0;"><?php echo $rs?> <?php if($rs->getTitleMn()) echo '/'.$rs->getTitleMn().'/'?></span>
+		<br clear="all">
+    <span class="left h1"><?php echo $rs?> <?php if($rs->getTitleMn()) echo '/'.$rs->getTitleMn().'/'?></span>
     <!--love-->
     <?php $isLoved = LoveTable::getInstance()->doFetchOne(array('id'), array('objectType'=>'item', 'objectId'=>$rs->getId(), 'isActive'=>-1));?>
     <?php echo image_tag('icons/'.( $isLoved ? 'love24.ico' : 'unlove24.ico'), 
@@ -27,14 +28,16 @@
 	<?php include_partial('page/info', array('rs'=>$rs))?>
 </div>
 
-<div class="left" style="background:#fff6e4;width:491px;padding:5px 15px 15px 15px;border-radius:3px;">
-		<h6 class="left"><?php echo $rs->getAge();?>+</h6>
-		<h6 class="right" style="margin:0 0 0 10px;width:70px;text-align:right;">
-				<?php echo image_tag('icons/time.ico', array('class'=>'left', 'style'=>'margin:3px 0 0 0;'))?>
+<div class="left" style="background:#fff6e4;width:491px;min-height:500px;padding:5px 15px 15px 15px;border-radius:3px;">		
+		<h6 class="right" style="margin:0 0 0 10px;">
+				<?php echo image_tag('icons/clock.png', array('class'=>'left', 'style'=>'margin:7px 5px 0 0;'))?>
 				<?php echo $rs->getDuration();?><span class="lower">min</span>
 		</h6>
-		<h6 class="right">
-				Нээлт хийсэн: <span style="font-size:22px;"><?php echo $rs->getReleaseDate()?></span>
+		<h6 class="right" style="margin:0 0 0 10px">
+				Нээлт хийсэн: <span style="font-size:18px;"><?php echo $rs->getReleaseDate()?></span>
+		</h6>
+		<h6 class="right" style="margin:0 0 0 10px">
+				Насны ангилал: <span style="font-size:18px;"><?php echo $rs->getAge()?>+</span>
 		</h6>
 		<br clear="all">
 
@@ -87,7 +90,6 @@
 <!--links-->
 <?php //include_partial('links', array('rs'=>$rs));?>
 <div class="fb-comments" data-href="<?php echo $host."/page/show?route=".$rs->getRoute()?>" data-numposts="10" data-colorscheme="light" data-width="560"></div>
-<br clear="all">
 <br clear="all">
 
 <!--similars-->

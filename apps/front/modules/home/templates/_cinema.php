@@ -6,7 +6,7 @@
 		<?php $item = $rs->getItem()?>
 		<li style="position:relative;">
 			<a href="<?php echo url_for('page/show?route='.$item['route'])?>">
-				<?php echo image_tag('/u/'.$item['folder'].'/'.$item['image'], array('style'=>'float:left;box-shadow:0 0 4px #666;width:500px;height:200px;'))?>
+				<?php echo image_tag('/u/'.$item['folder'].'/'.$item['image'], array('style'=>'float:left;width:500px;height:200px;'))?>
 			</a>
 			<span class="left" style="margin:0 0 0 10px;width:220px;height:200px;">
 				<a href="<?php echo url_for('page/show?route='.$item['route'])?>">
