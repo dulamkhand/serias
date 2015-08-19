@@ -593,20 +593,6 @@ Feedback:
       primary: false
       notnull: true
       autoincrement: false
-    created_aid:
-      type: integer(4)
-      fixed: false
-      unsigned: false
-      primary: false
-      notnull: true
-      autoincrement: false
-    updated_at:
-      type: integer(4)
-      fixed: false
-      unsigned: false
-      primary: false
-      notnull: true
-      autoincrement: false
 Image:
   connection: doctrine
   tableName: image
