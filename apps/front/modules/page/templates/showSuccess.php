@@ -17,79 +17,76 @@
 </div>
 
 <!--image-->
-<?php echo image_tag('/u/'.$rs->getFolder().'/'.$rs->getCover(), array('style'=>'width:1081px;height:300px;'))?>
-<?php //echo image_tag('/u/'.$rs->getFolder().'/'.$rs->getImage(), array('style'=>'width:700px;'))?>
+<?php echo image_tag('/u/'.$rs->getFolder().'/'.$rs->getCover(), array('style'=>'width:1081px;max-height:400px;'))?>
 <br clear="all">
 
 <!--trailer -->
-<div style="float:left;margin:0;width:560px;">
+<div style="float:left;width:560px;">
 	<?php echo $rs->getTrailer();?>
-	<!--info-->
-	<?php include_partial('page/info', array('rs'=>$rs))?>
 </div>
 
-<div class="left" style="background:#fff6e4;width:491px;min-height:500px;padding:5px 15px 15px 15px;border-radius:3px;">		
-		<h6 class="right" style="margin:0 0 0 10px;">
-				<?php echo image_tag('icons/clock.png', array('class'=>'left', 'style'=>'margin:7px 5px 0 0;'))?>
-				<?php echo $rs->getDuration();?><span class="lower">min</span>
-		</h6>
-		<h6 class="right" style="margin:0 0 0 10px">
-				Нээлт хийсэн: <span style="font-size:18px;"><?php echo $rs->getReleaseDate()?></span>
-		</h6>
-		<h6 class="right" style="margin:0 0 0 10px">
-				Насны ангилал: <span style="font-size:18px;"><?php echo $rs->getAge()?>+</span>
-		</h6>
+<div class="left" style="width:511px;padding:10px 0 10px 10px;">		
+		<div class="left" style="width:250px;">
+				<h6>
+						<?php echo image_tag('icons/clock.png', array('class'=>'left', 'style'=>'margin:7px 5px 0 0;'))?>
+						<?php echo $rs->getDuration();?><span class="lower">min</span>
+						<br clear="all">
+						Насны ангилал: <span style="font-size:18px;"><?php echo $rs->getAge()?>+</span>
+						<br clear="all">
+						Нээлт хийсэн: <span style="font-size:18px;"><?php echo $rs->getReleaseDate()?></span>
+				</h6>		
+		</div>
+		<div class="right" style="width:120px;">
+				<!--rating-->
+				<?php include_partial('page/rating', array('rs'=>$rs));?>
+		</div>
 		<br clear="all">
 
 		<!--summary-->
 		<?php echo $rs->getSummaryMn();?>
 		<br clear="all">
-		
-		<!--rating-->
-		<?php include_partial('page/rating', array('rs'=>$rs));?>
+		<br clear="all">
 		
 		<!--genres-->
 		<?php $type = $rs->getType();?>
 		<?php $ks = explode(";", $rs->getGenre()); $i=0?>
 		<?php foreach ($ks as $k):?>
-			<a href="<?php echo url_for('page/index?type='.$type.'&g='.$k)?>" class="italic">
+			<a href="<?php echo url_for('page/index?type='.$type.'&g='.$k)?>" class="italic" style="text-transform:uppercase;">
 					<?php echo GlobalLib::getValue('genre_mn', $k)?><?php echo ++$i == sizeof($ks) ? '' : ' / ';?>
 			</a>
 		<?php endforeach?>
 		<br clear="all">
 		<br clear="all">
-		
-		<!--photos
-		<h6 style="width:45px;">Зураг</h6>
-		<hr class="left" style="border:0;border-top:1px double #aaa;width:400px;margin:15px 0 0 0;">
-		<br clear="all">
-		<?php //$images = ImageTable::getInstance()->doFetchArray(array('folder', 'filename'), array('isActive'=>'all', 'limit'=>8, 'objectType'=>'item', 'objectId'=>$rs->getId()))?>
-		<?php //foreach ($images as $image) {?>
-			<div class="left" style="width:100px;height:80px;margin:2px 2px 0 0;overflow:hidden;">
-				<?php //echo image_tag('/u/'.$image['folder'].'/t120-'.$image['filename'], array('style'=>'width:105px;height:80px;'));?>
-			</div>
-		<?php //}?>
-		<br clear="all">
-		<br clear="all">-->
-		
-		<!--body-->
-    <?php if($tmp = $rs->getBodyMn()):?>
-		    <h6 style="width:90px;">Үйл явдал</h6>
-				<hr class="left" style="border:0;border-top:1px double #aaa;width:390px;margin:15px 0 0 0;">
-				<br clear="all">
-		    <div style="text-align:justify;">
-		        <?php echo $tmp;?>
-		    </div>
-		<?php endif?>
-
-		<?php //include_partial('page/share', array('url'=>$host."/page/show?route=".$rs->getRoute(), 'title'=>$rs));?>
+		<?php //include_partial('page/photos', array('rs'=>$rs));?>
+		<?php include_partial('page/share', array('url'=>$host."/page/show?route=".$rs->getRoute(), 'title'=>$rs));?>
 		<br clear="all">
 </div>
 <br clear="all">
 
+<div style="float:left;width:560px;">
+	<!--info-->
+	<?php include_partial('page/info', array('rs'=>$rs))?>
+</div>
+
+<div style="float:left;width:501px;background:#fff6e4;padding:10px;">
+		<!--body-->
+		<?php if($tmp = $rs->getBodyMn()):?>
+		  <h6 style="width:70px;margin:0;">Үйл явдал</h6>
+			<hr class="left" style="border:0;border-top:1px double #aaa;width:430px;margin:14px 0 0 0;">
+		  <div style="text-align:justify;clear:both;">
+		      <?php echo $tmp;?>
+		  </div>
+		<?php endif?>
+</div>
+<br clear="all">
+<br clear="all">
+
 <!--links-->
 <?php //include_partial('links', array('rs'=>$rs));?>
-<div class="fb-comments" data-href="<?php echo $host."/page/show?route=".$rs->getRoute()?>" data-numposts="10" data-colorscheme="light" data-width="560"></div>
+
+<!--comments-->
+<div class="fb-comments" data-href="<?php echo $host."/page/show?route=".$rs->getRoute()?>" data-numposts="10" data-colorscheme="light" data-width="1081"></div>
+<br clear="all">
 <br clear="all">
 
 <!--similars-->

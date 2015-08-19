@@ -131,7 +131,7 @@ strong,b{font-weight:bold!important;}
 .box-xs a{line-height:10px;}
 
 .pager {margin:0;padding:0;width:100%;}
-.pager a {float:left;margin:1px;padding:5px 12px;border:1px solid #dedede;border-radius:2px;}
+.pager a {float:left;margin:1px;padding:3px 12px;border:1px solid #dedede;border-radius:2px;}
 .pager a:hover {background:#dedede;color:#000;}
 .pager a.selected {background:#dedede;color:#000;font-weight:bold;}
 .pager .total{float:right;margin:5px 0 0 0;font-style:italic;}

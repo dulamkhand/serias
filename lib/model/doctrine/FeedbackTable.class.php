@@ -44,7 +44,7 @@ class FeedbackTable extends Doctrine_Table
         if(isset($params['offset']) && $params['offset'])
             $q->offset($params['offset']);
         
-        $limit = isset($params['limit']) ? $params['limit'] : sfConfig::get('app_limit', 30);
+        $limit = isset($params['limit']) ? $params['limit'] : sfConfig::get('app_pager', 30);
         $q->limit($limit);
   
         $order = isset($params['orderBy']) ? $params['orderBy'] : 'created_at DESC';
@@ -95,7 +95,7 @@ class FeedbackTable extends Doctrine_Table
         $q = Doctrine_Query::create()->select(join(',', $columns));
         $q = self::params($q, $params);
 
-        $pager = new sfDoctrinePager(sfConfig::get('app_pager', 30));
+        $pager = new sfDoctrinePager(isset($params['limit']) ? $params['limit'] : sfConfig::get('app_pager', 30));
         $pager->setPage($page);
         $pager->setQuery($q);
         $pager->init();

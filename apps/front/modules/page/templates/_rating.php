@@ -1,6 +1,6 @@
 <?php $host = sfConfig::get('app_host')?>
 <!--mmdb rating-->
-<div id="rating" class="left" style="margin:15px 0 15px 40px;width:280px;">
+<div id="rating" style="margin:0;">
     <?php $rates = RatingTable::getInstance()->doFetchArray(array('rate'), 
     							 array('objectType'=>'item', 'objectId'=>$rs->getId(), 'isActive'=>'all'));
     $sum = 0;
@@ -10,10 +10,10 @@
     $avgRate = number_format($sum/sizeof($rates), 1);
     ?>
     
-    <h6 style="font-size:36px;color:#ff6600;font-weight:bold;margin:0 0 5px 39px;">
-        <?php echo $avgRate?>
-    </h6>
-    <br clear="all">
+    <!--<h6 style="font-size:36px;color:#ff6600;font-weight:bold;margin:0 0 5px 39px;">
+        <?php //echo $avgRate?>
+    </h6>-->
+    <!--<br clear="all">-->
     <div class="rating-f">
     	  <select id="rate-select" name="rating">
     	      <option value="1">1</option>
@@ -23,15 +23,13 @@
     	      <option value="5">5</option>
     	  </select>
     </div>
-    <div class="upper left" style="margin:0 0 0 15px;">
-        <span id="nbRate" style="color:#666;"><?php echo sizeof($rates);?></span> УДАА ҮНЭЛСЭН
-    </div>
-	<div class="upper left" id="rateResult" style="color:red;height:27px;margin:0 0 0 10px"></div>
-</div>
-
+    <!--<div class="upper left" style="margin:0 0 0 15px;">
+        <span id="nbRate" style="color:#666;"><?php //echo sizeof($rates);?></span> УДАА ҮНЭЛСЭН
+    </div>-->
+		<!--<div class="upper left" id="rateResult" style="color:red;height:27px;margin:0 0 0 10px"></div>-->
+</div><!--rating-->
 <!--imdb rating-->
-<div class="left" style="margin:38px 0 0 0;"><?php echo $rs->getRating();?></div>
-<br clear="all">
+<div style="float:right;margin:5px 7px 0 0;"><?php echo $rs->getRating();?></div>
 
 <script type="text/javascript">
 $(document).ready(function () {

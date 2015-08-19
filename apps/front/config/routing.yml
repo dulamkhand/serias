@@ -1,37 +1,14 @@
 # You can find more information about this file on the symfony website:
 # http://www.symfony-project.org/reference/1_4/en/10-Routing
 
-contact:
-  url:   /contact.htm
-  param: { module: page, action: contact }
-about:
-  url:   /about.htm
-  param: { module: page, action: contact }
-help:
-  url:   /help.htm
-  param: { module: page, action: help }
-sitemap:
-  url:   /sitemap.htm
-  param: { module: page, action: sitemap }
-contribute:
-  url:   /contribute.htm
-  param: { module: page, action: contribute }
-promote:
-  url:   /promote.htm
-  param: { module: page, action: promote }
-post:
-  url:   /post.htm
-  param: { module: page, action: post }
-
 # page
 index:
-  url:   /i/:type.html/:page
+  url:   /i/:type.html
   param: { module: page, action: index }
   
 show:
   url:   /s/:route.html
   param: { module: page, action: show }
-
 
 # main
 404:
@@ -43,12 +20,10 @@ homepage:
   url:   /
   param: { module: main, action: home }
 
-# generic rules
-# please, remove them by adding more specific rules
 default_index:
-  url:   /:module.htm
+  url:   /:module
   param: { action: index }
-
+  
 default:
   url:   /:module/:action/*
 

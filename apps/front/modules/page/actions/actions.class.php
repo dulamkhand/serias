@@ -21,6 +21,7 @@ class pageActions extends sfActions
     {
         global $ITEM_COLUMNS;
         $params = array();
+        $params['limit'] = 40;
         $params['type'] = $request->getParameter('type');
         $params['y'] = $request->getParameter('y');
         $params['l'] = $request->getParameter('l');

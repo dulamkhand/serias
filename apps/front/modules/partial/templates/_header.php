@@ -26,5 +26,5 @@
 </div>
 
 <script type="text/javascript">
-		$("#bar").sticky({topSpacing:0});
+		//$("#bar").sticky({topSpacing:0});
 </script>
