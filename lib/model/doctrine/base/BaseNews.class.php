@@ -13,6 +13,7 @@ Doctrine_Manager::getInstance()->bindComponent('News', 'doctrine');
  * @property string $image
  * @property string $content
  * @property integer $is_active
+ * @property integer $is_featured
  * @property integer $sort
  * @property integer $nb_views
  * @property timestamp $created_at
@@ -29,6 +30,7 @@ Doctrine_Manager::getInstance()->bindComponent('News', 'doctrine');
  * @method string              getImage()       Returns the current record's "image" value
  * @method string              getContent()     Returns the current record's "content" value
  * @method integer             getIsActive()    Returns the current record's "is_active" value
+ * @method integer             getIsFeatured()  Returns the current record's "is_featured" value
  * @method integer             getSort()        Returns the current record's "sort" value
  * @method integer             getNbViews()     Returns the current record's "nb_views" value
  * @method timestamp           getCreatedAt()   Returns the current record's "created_at" value
@@ -44,6 +46,7 @@ Doctrine_Manager::getInstance()->bindComponent('News', 'doctrine');
  * @method News                setImage()       Sets the current record's "image" value
  * @method News                setContent()     Sets the current record's "content" value
  * @method News                setIsActive()    Sets the current record's "is_active" value
+ * @method Item                setIsFeatured()  Sets the current record's "is_featured" value
  * @method News                setSort()        Sets the current record's "sort" value
  * @method News                setNbViews()     Sets the current record's "nb_views" value
  * @method News                setCreatedAt()   Sets the current record's "created_at" value
@@ -109,6 +112,15 @@ abstract class BaseNews extends sfDoctrineRecord
              'length' => '',
              ));
         $this->hasColumn('is_active', 'integer', 1, array(
+             'type' => 'integer',
+             'fixed' => 0,
+             'unsigned' => false,
+             'primary' => false,
+             'notnull' => true,
+             'autoincrement' => false,
+             'length' => 1,
+             ));
+        $this->hasColumn('is_featured', 'integer', 1, array(
              'type' => 'integer',
              'fixed' => 0,
              'unsigned' => false,

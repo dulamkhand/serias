@@ -1,13 +1,13 @@
 <h3>Төстэй кино</h3>
-<br clear="all">
-
 <?php 
 $rss = ItemTable::getInstance()->doFetchArray(array('type', 'route', 'folder', 'image', 'title', 'year'), 
-              array('idO'=>$rs->getId(), 'type'=>$rs->getType(), 'genres'=>explode(";", $rs->getGenre()), 'limit'=>14));
+              array('idO'=>$rs->getId(), 'type'=>$rs->getType(), 'genres'=>explode(";", $rs->getGenre()), 'limit'=>10));
 if(!sizeof($rss))  {
 		echo 'Олдсонгүй.';
-}
-foreach ($rss as $rs) {
-		include_partial('page/box-s', array('rs'=>$rs));	
-}
-?>
+}?>
+
+<ul class="box-xs">
+		<?php foreach ($rss as $rs) {
+				include_partial('page/box-xs', array('rs'=>$rs));	
+		}?>
+</ul>

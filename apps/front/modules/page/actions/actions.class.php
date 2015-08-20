@@ -41,7 +41,6 @@ class pageActions extends sfActions
   
     public function executeShow(sfWebRequest $request)
     {
-        //$this->rs = $rs = Doctrine::getTable('Item')->findOneBy('route', $request->getParameter('route'));
         $this->rs = $rs = ItemTable::getInstance()->doFetchOne(array('*'), array('route'=>$request->getParameter('route')));
         $this->forward404Unless($rs);
         
@@ -50,6 +49,11 @@ class pageActions extends sfActions
         $rs->save();
         
         //$this->loves = ItemTable::getInstance()->doFetchSelection('object_id', array('object_id'), array('objectType'=>'item', 'isActive'=>-1));
+        
+        // add to viewed movies in the session
+        $vieweds = $this->getUser()->getAttribute('viewed-movies-'.$this->getUser()->getId(), array());
+        $vieweds[$rs->getId()] = $rs;
+        $this->getUser()->setAttribute('viewed-movies-'.$this->getUser()->getId(), $vieweds);
         
         // META
         $meta = sfConfig::get('app_webname').' | '.$rs;

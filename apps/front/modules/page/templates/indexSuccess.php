@@ -33,11 +33,11 @@
 </div>
 <br clear="all">
 
-<?php
-foreach ($pager->getResults() as $rs) {
-		include_partial('page/box-s', array('rs'=>$rs));	
-}
-?>
+<ul class="box-s">
+		<?php foreach ($pager->getResults() as $rs) {
+				include_partial('page/box-s', array('rs'=>$rs));	
+		}?>
+</ul>
 
 <br clear="all">
 <br clear="all">

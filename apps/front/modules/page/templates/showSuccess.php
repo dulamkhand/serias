@@ -25,7 +25,7 @@
 	<?php echo $rs->getTrailer();?>
 </div>
 
-<div class="left" style="width:511px;padding:10px 0 10px 10px;">		
+<div class="left" style="width:511px;padding:10px 0 10px 10px;">
 		<div class="left" style="width:250px;">
 				<h6>
 						<?php echo image_tag('icons/clock.png', array('class'=>'left', 'style'=>'margin:7px 5px 0 0;'))?>
@@ -64,13 +64,13 @@
 </div>
 <br clear="all">
 
+<!--info-->
 <div style="float:left;width:560px;">
-	<!--info-->
-	<?php include_partial('page/info', array('rs'=>$rs))?>
+		<?php include_partial('page/info', array('rs'=>$rs))?>
 </div>
 
+<!--body-->
 <div style="float:left;width:501px;background:#fff6e4;padding:10px;">
-		<!--body-->
 		<?php if($tmp = $rs->getBodyMn()):?>
 		  <h6 style="width:70px;margin:0;">Үйл явдал</h6>
 			<hr class="left" style="border:0;border-top:1px double #aaa;width:430px;margin:14px 0 0 0;">
@@ -93,7 +93,33 @@
 <!--similars-->
 <?php include_partial('similars', array('rs'=>$rs));?>
 <br clear="all">
+<br clear="all">
 
+<!--news-->
+<div class="left" style="width:482px;">
+		<h3>Холбоотой мэдээлэл</h3>
+		<ul class="news-s">
+				<?php $newss = NewsTable::getInstance()->doFetchArray(array('id, image, title, intro'), array('limit'=>2, 'itemId'=>$rs->getId()));
+				foreach ($newss as $news){
+						include_partial('partial1/news-s', array('rs'=>$news));
+				}?>
+		</ul>
+		<!--<a href="<?php //echo url_for('partial1/newsIndex')?>" class="more1">Цааш</a>-->
+</div>
+
+<!--banner-->
+<div class="left" style="width:599px;">
+		<h3 style="margin-left:60px;">Биднийг дагана уу.</h3>
+		<div style="border-left:1px solid #dedede;margin:0 0 0 30px;padding:0 0 0 30px;">
+				<?php $rs = BannerTable::getInstance()->doFetchOne(array('path', 'ext', 'link', 'target'), array('position'=>'detail'));?>
+				<?php include_partial("partial/banner", array('rs'=>$rs, 'width'=>537, 'height'=>190, 'close'=>false));?>		
+		</div>
+</div>
+<br clear="all">
+<br clear="all">
+
+<!--viewed-->
+<?php include_partial('user/viewed');?>
 
 <script type="text/javascript">
 function iframe(link)

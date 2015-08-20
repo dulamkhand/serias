@@ -121,7 +121,8 @@ class GlobalLib
                   'top'          =>'Top 931 x 90', 
                   'left'         =>'Left 150 x 300', 
                   'right'    		 =>'Right 180 x 300',
-                  'footer'       =>'Footer 1081 x 150'
+                  'footer'       =>'Footer 1081 x 150',
+                  'detail'       =>'Detail 537 x 190'
     );
 
     public static $mod_permissions = array(
