@@ -35,7 +35,7 @@ class CinemaTable extends Doctrine_Table
 		
         # keyword
         if(isset($params['s']) && $params['s'] != null)
-            $q->andWhere('position LIKE ?', array('%'.$params['s'].'%'));
+            $q->andWhere('cinema LIKE ? OR details LIKE ?', array('%'.$params['s'].'%', '%'.$params['s'].'%'));
 
         # group, offset, limit, order
         if(isset($params['groupBy']) && $params['groupBy']) 

@@ -41,7 +41,7 @@ class LoveTable extends Doctrine_Table
 		
         # keyword
         if(isset($params['s']) && $params['s'] != null)
-            $q->andWhere('position LIKE ?', array('%'.$params['s'].'%'));
+            $q->andWhere(' LIKE ?', array('%'.$params['s'].'%'));
 
         # group, offset, limit, order
         if(isset($params['groupBy']) && $params['groupBy']) 

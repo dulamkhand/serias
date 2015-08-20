@@ -21,6 +21,10 @@ class StudioTable extends Doctrine_Table
     private static function params($q, $params = array())
     {
         $q->from('Studio');
+        
+        # route
+        if(isset($params['route']) && $params['route'] != null)
+            $q->andWhere('route =?', array($params['route']));
             
         # isActive
         if(isset($params['isActive'])) {
@@ -36,7 +40,8 @@ class StudioTable extends Doctrine_Table
 		
         # keyword
         if(isset($params['s']) && $params['s'] != null)
-            $q->andWhere('position LIKE ?', array('%'.$params['s'].'%'));
+            //$q->andWhere('name LIKE ?', array('%'.$params['s'].'%'));
+            $q->andWhere('name LIKE ?', array($params['s']));
 
         # group, offset, limit, order
         if(isset($params['groupBy']) && $params['groupBy']) 

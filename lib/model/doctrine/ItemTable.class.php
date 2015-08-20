@@ -68,7 +68,7 @@ class ItemTable extends Doctrine_Table
             	
         # keyword
         if(isset($params['s']) && $params['s'] != null)
-            $q->andWhere('title LIKE ? ', array('%'.$params['sItem'].'%'));
+            $q->andWhere('title LIKE ? ', array('%'.$params['s'].'%'));
 
         # isActive
         if(isset($params['isActive'])) {

@@ -35,7 +35,8 @@ class FeedbackTable extends Doctrine_Table
 		
         # keyword
         if(isset($params['s']) && $params['s'] != null)
-            $q->andWhere('position LIKE ?', array('%'.$params['s'].'%'));
+            $q->andWhere('organization LIKE ? OR name LIKE ? OR email LIKE ? OR phone LIKE ? OR message LIKE ?', 
+            array('%'.$params['s'].'%', '%'.$params['s'].'%', '%'.$params['s'].'%', '%'.$params['s'].'%', '%'.$params['s'].'%'));
 
         # group, offset, limit, order
         if(isset($params['groupBy']) && $params['groupBy']) 

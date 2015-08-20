@@ -101,31 +101,15 @@ class itemActions extends sfActions
             $rs->setSource(trim($rs->getSource()));
             $rs->save();
             
-            // casts         
+            // casts
             $rs->setCasts(trim($rs->getCasts()));
             $tmp = explode(',', $rs->getCasts());
             foreach($tmp as $t) {
                 $t = explode('(', $t);
                 $route = GlobalLib::slugify(GlobalLib::mn2en(trim($t[0])));
-            		if(!CelebrityTable::getInstance()->doFetchOne(array('id'), array('route'=>$route))) {
+            		if($route && !CelebrityTable::getInstance()->doFetchOne(array('id'), array('route'=>$route, 'isActive'=>'all'))) {
             				$c = new Celebrity();
             				$c->setFullname(trim($t[0]));
-            				$c->setRoute($route);
-            				$c->setCreatedAid($this->getUser()->getId());
-            				$c->setUpdatedAid($this->getUser()->getId());
-            				$c->setUpdatedAt(date('Y-m-d  H:i:s'));
-            				$c->save();
-            		}
-            }
-            // studio
-            $rs->setStudios(trim($rs->getStudios()));
-            $tmp = explode(',', $rs->getStudios());
-            foreach($tmp as $t) {
-                $t = explode('(', $t);
-                $route = GlobalLib::slugify(GlobalLib::mn2en(trim($t[0])));
-            		if(!StudioTable::getInstance()->doFetchOne(array('id'), array('route'=>$route))) {
-            				$c = new Studio();
-            				$c->setName(trim($t[0]));
             				$c->setRoute($route);
             				$c->setCreatedAid($this->getUser()->getId());
             				$c->setUpdatedAid($this->getUser()->getId());
@@ -139,7 +123,7 @@ class itemActions extends sfActions
             foreach($tmp as $t) {
                 $t = explode('(', $t);
                 $route = GlobalLib::slugify(GlobalLib::mn2en(trim($t[0])));
-            		if(!CelebrityTable::getInstance()->doFetchOne(array('id'), array('route'=>$route))) {
+            		if($route && !CelebrityTable::getInstance()->doFetchOne(array('id'), array('route'=>$route, 'isActive'=>'all'))) {
             				$c = new Celebrity();
             				$c->setFullname(trim($t[0]));
             				$c->setRoute($route);
@@ -155,9 +139,25 @@ class itemActions extends sfActions
             foreach($tmp as $t) {
                 $t = explode('(', $t);
                 $route = GlobalLib::slugify(GlobalLib::mn2en(trim($t[0])));
-            		if(!CelebrityTable::getInstance()->doFetchOne(array('id'), array('route'=>$route))) {
+            		if($route && !CelebrityTable::getInstance()->doFetchOne(array('id'), array('route'=>$route, 'isActive'=>'all'))) {
             				$c = new Celebrity();
             				$c->setFullname(trim($t[0]));
+            				$c->setRoute($route);
+            				$c->setCreatedAid($this->getUser()->getId());
+            				$c->setUpdatedAid($this->getUser()->getId());
+            				$c->setUpdatedAt(date('Y-m-d  H:i:s'));
+            				$c->save();
+            		}
+            }
+            // studio
+            $rs->setStudios(trim($rs->getStudios()));
+            $tmp = explode(',', $rs->getStudios());
+            foreach($tmp as $t) {
+                $t = explode('(', $t);
+                $route = GlobalLib::slugify(GlobalLib::mn2en(trim($t[0])));
+            		if($route && !StudioTable::getInstance()->doFetchOne(array('id'), array('route'=>$route, 'isActive'=>'all'))) {
+            				$c = new Studio();
+            				$c->setName(trim($t[0]));
             				$c->setRoute($route);
             				$c->setCreatedAid($this->getUser()->getId());
             				$c->setUpdatedAid($this->getUser()->getId());

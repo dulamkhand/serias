@@ -20,6 +20,11 @@ class CelebrityTable extends Doctrine_Table
     private static function params($q, $params = array())
     {
         $q->from('Celebrity');
+        
+        # route
+        if(isset($params['route']) && $params['route'] != null)
+            $q->andWhere('route =?', array($params['route']));
+            
             
         # isActive
         if(isset($params['isActive'])) {
@@ -35,7 +40,8 @@ class CelebrityTable extends Doctrine_Table
 		
         # keyword
         if(isset($params['s']) && $params['s'] != null)
-            $q->andWhere('position LIKE ?', array('%'.$params['s'].'%'));
+            $q->andWhere('fullname LIKE ? OR fullname_mn LIKE ? OR nickname LIKE ? OR about LIKE ?',
+             array('%'.$params['s'].'%', '%'.$params['s'].'%', '%'.$params['s'].'%', '%'.$params['s'].'%'));
 
         # group, offset, limit, order
         if(isset($params['groupBy']) && $params['groupBy']) 

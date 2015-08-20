@@ -28,7 +28,7 @@ class AdminTable extends Doctrine_Table
             $q->andWhere('email = ?', $params['email']);
 
         if(isset($params['s']) && $params['s'] != null)
-            $q->andWhere('email LIKE ?', array('%'.$params['keyword'].'%'));
+            $q->andWhere('email LIKE ?', array('%'.$params['s'].'%'));
             
         # isActive
         if(isset($params['isActive'])) {
