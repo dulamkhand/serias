@@ -32,12 +32,6 @@ class pageActions extends sfActions
         $this->pager = ItemTable::getInstance()->getPager($ITEM_COLUMNS, $params, $request->getParameter('page'));
         //$this->loves = LoveTable::getInstance()->doFetchSelection('object_id', array('object_id'), array('objectType'=>'item', 'isActive'=>-1));
     }
-    
-    public function executeBests(sfWebRequest $request)
-    {
-    		$this->bestType = $bestType = $request->getParameter('bestType');
-    		$this->rss = $rss = BestsTable::getInstance()->doExecute(array('*'), array('bestType'=>$bestType, 'orderBy'=>'number asc'));
-    }
   
     public function executeShow(sfWebRequest $request)
     {

@@ -14,5 +14,5 @@
 <?php endforeach;?>    
 
 <br clear="all">
-<?php echo pager($pager, 'main/search?keyword='.$sf_params->get('keyword'))?>
+<?php echo pager($pager, 'main/search?s='.$sf_params->get('s'))?>
 <br clear="all">

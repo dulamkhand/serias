@@ -9,6 +9,6 @@ all:
       #username: a5097976_root
       #password: mongolia$
       
-      dsn:      mysql:host=localhost;dbname=mmdb
+      dsn:      mysql:host=localhost;dbname=imdb
       username: root
       password: 

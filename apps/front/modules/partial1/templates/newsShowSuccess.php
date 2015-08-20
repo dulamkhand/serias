@@ -1,4 +1,4 @@
-<h3>
+<h3 style="color:#000;border-color:#000;">
 		<?php echo $rs?>
 		<div class="timestamp right">
 				<?php echo time_ago($rs->getCreatedAt())?> &nbsp; | &nbsp;

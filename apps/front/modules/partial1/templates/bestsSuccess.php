@@ -1,4 +1,4 @@
-<h3><?php echo GlobalLib::getValue('bests', $bestType)?></h3>
+<h3 style="color:#000;border-color:#000;"><?php echo GlobalLib::getValue('bests', $bestType)?></h3>
 <div class="box-home">
     <?php foreach($rss as $rs):?>
         <div>

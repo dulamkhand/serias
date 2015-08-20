@@ -44,37 +44,37 @@ class mainActions extends sfActions
     # BEGIN OF PAGE
     public function executeAbout(sfWebRequest $request)
     {	
-        $this->page = PageTable::getInstance()->doFetchOne(array('*'), array('type'=>'about'));
+        $this->rs = PageTable::getInstance()->doFetchOne(array('*'), array('type'=>'about'));
     }
     
     public function executeAdvertisement(sfWebRequest $request)
     {	
-        $this->page = PageTable::getInstance()->doFetchOne(array('*'), array('type'=>'advertisement'));
+        $this->rs = PageTable::getInstance()->doFetchOne(array('*'), array('type'=>'advertisement'));
     }
 		
     public function executePrivacy(sfWebRequest $request)
     {	
-        $this->page = PageTable::getInstance()->doFetchOne(array('*'), array('type'=>'privacy'));
+        $this->rs = PageTable::getInstance()->doFetchOne(array('*'), array('type'=>'privacy'));
     }
     
     public function executeTerms(sfWebRequest $request)
     {	
-        $this->page = PageTable::getInstance()->doFetchOne(array('*'), array('type'=>'terms'));
+        $this->rs = PageTable::getInstance()->doFetchOne(array('*'), array('type'=>'terms'));
     }
     
     public function executeHowtorate(sfWebRequest $request)
     {	
-        $this->page = PageTable::getInstance()->doFetchOne(array('*'), array('type'=>'howtorate'));
+        $this->rs = PageTable::getInstance()->doFetchOne(array('*'), array('type'=>'howtorate'));
     }
     
     public function executeCopyright(sfWebRequest $request)
     {	
-        $this->page = PageTable::getInstance()->doFetchOne(array('*'), array('type'=>'copyright'));
+        $this->rs = PageTable::getInstance()->doFetchOne(array('*'), array('type'=>'copyright'));
     }
     
     public function executeCooperate(sfWebRequest $request)
     {	
-        $this->page = PageTable::getInstance()->doFetchOne(array('*'), array('type'=>'cooperate'));
+        $this->rs = PageTable::getInstance()->doFetchOne(array('*'), array('type'=>'cooperate'));
     }
         
     public function executeContact(sfWebRequest $request)

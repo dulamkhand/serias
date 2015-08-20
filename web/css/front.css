@@ -59,6 +59,8 @@ h1, .h1{color:#000;text-transform:uppercase;font-size:25px;line-height:30px;marg
 h2, .h2{text-transform:uppercase;font-size:18px;line-height:23px;margin:0 0 5px 0;font-weight:normal;}
 h3, .h3{color:#a53000;text-transform:uppercase;margin:5px 0 10px 0;padding:0 0 5px;line-height:22px;
 				cursor:pointer;font-weight:bold;border-bottom:1px solid #a53000;}
+h4, .h4{color:#000;text-transform:uppercase;margin:5px 0 10px 0;padding:0 0 5px;line-height:22px;
+				cursor:pointer;font-weight:bold;border-bottom:1px solid #a53000;}
 h6, .h6{text-transform:uppercase;margin:0 0 10px 0;float:left;}
 
 cufon {height:17px!important;}

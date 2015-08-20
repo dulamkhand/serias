@@ -1,16 +1,10 @@
-<h3><?php echo $page?></h3>
+<h3 style="color:#000;border-color:#000;"><?php echo $rs?></h3>
 
-<?php echo GlobalLib::clearOutput($page->getIntro())?>
+<?php if($rs->getImage()) {
+    echo image_tag('/u/page/'.$rs->getImage(), array('title'=>$rs, 'alt'=>$rs, 'style'=>'float:left;margin:10px 10px 10px 0;max-width:350px;'));
+}?>
+
+<?php echo GlobalLib::clearOutput($rs->getIntro())?>
+<hr style="border:0;border-top:2px dotted #ededed;margin:15px 0 10px 0;">
+<?php echo GlobalLib::clearOutput($rs->getContent())?>
 <br clear="all">
-<br clear="all">
-<hr style="border:0;border-top:2px dotted #ededed;">
-<br clear="all">
-<?php echo GlobalLib::clearOutput($page->getContent())?>
-<br clear="all">
-<br clear="all">
-<?php 
-	if($page->getImage()) {
-	    echo image_tag('/u/page/'.$page->getImage(), array('title'=>$page, 'alt'=>$page, 'style'=>'max-width:830px;'));
-	    echo '<br clear="all">';
-	}
-?>

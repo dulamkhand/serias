@@ -1,1 +1,1 @@
-<?php include_partial('main/page', array('page'=>$page));?>
+<?php include_partial('main/page', array('rs'=>$rs));?>

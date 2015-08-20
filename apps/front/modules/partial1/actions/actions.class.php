@@ -35,4 +35,16 @@ class partial1Actions extends sfActions
       $this->getResponse()->addMeta('keywords', $meta);
   }
 
+  public function executeBests(sfWebRequest $request)
+  {
+  		$this->bestType = $bestType = $request->getParameter('bestType');
+  		$this->rss = $rss = BestsTable::getInstance()->doExecute(array('*'), array('bestType'=>$bestType, 'orderBy'=>'number asc'));
+  		
+  		// META
+      $meta = sfConfig::get('app_webname').' | '.GlobalLib::getValue('bests', $bestType);
+      $this->getResponse()->setTitle($meta);
+      $this->getResponse()->addMeta('description', $meta);
+      $this->getResponse()->addMeta('keywords', $meta);
+  }
+  
 }	
