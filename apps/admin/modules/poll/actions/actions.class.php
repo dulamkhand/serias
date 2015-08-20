@@ -11,39 +11,16 @@
 class pollActions extends sfActions
 {
     function preExecute() {
-      $this->forwardUnless($this->getUser()->hasCredential('poll'), 'admin', 'perm');  
+      	$this->forwardUnless($this->getUser()->hasCredential('poll'), 'admin', 'perm');  
     }
 
     public function executeIndex(sfWebRequest $request)
     {
         $params = array();
         $params['isActive'] = 'all';
-        if($request->getParameter('keyword')) $params['keyword'] = $request->getParameter('keyword');
-        $this->pager = Doctrine_Core::getTable('Poll')->getPager($params, $request->getParameter('page'));
-    }
-  
-    public function executeActivate(sfWebRequest $request)
-    {
-        $this->forward404Unless($rs = Doctrine::getTable('Poll')->find($request->getParameter('id')));
-        $this->forward404Unless(in_array($cmd = $request->getParameter('cmd'), array(0,1)));
-    
-        $rs->setIsActive($cmd);
-        $rs->save();
-        $this->getUser()->setFlash('flash', 'Successfully saved.', true);
-        $this->redirect($request->getReferer() ? $request->getReferer() : 'poll/index');
-    }
-    
-    public function executeFeaturate(sfWebRequest $request)
-    {
-        $this->forward404Unless($rs = Doctrine::getTable('Poll')->find($request->getParameter('id')));
-        $this->forward404Unless(in_array($cmd = $request->getParameter('cmd'), array(0,1)));
-    
-        $rs->setIsFeatured($cmd);
-        $rs->save();
-        $this->getUser()->setFlash('flash', 'Successfully saved.', true);
-        $this->redirect($request->getReferer() ? $request->getReferer() : 'poll/index');
-    }
-
+        $params['s'] = $request->getParameter('s');
+        $this->pager = PollTable::getInstance()->getPager(array('*'), $params, $request->getParameter('page'));
+    }    
   
     public function executeNew(sfWebRequest $request)
     {
@@ -86,6 +63,28 @@ class pollActions extends sfActions
         $this->redirect('poll/index');
     }
     
+		public function executeActivate(sfWebRequest $request)
+    {
+        $this->forward404Unless($rs = Doctrine::getTable('Poll')->find($request->getParameter('id')));
+        $this->forward404Unless(in_array($cmd = $request->getParameter('cmd'), array(0,1)));
+    
+        $rs->setIsActive($cmd);
+        $rs->save();
+        $this->getUser()->setFlash('flash', 'Successfully saved.', true);
+        $this->redirect($request->getReferer() ? $request->getReferer() : 'poll/index');
+    }
+    
+    public function executeFeaturate(sfWebRequest $request)
+    {
+        $this->forward404Unless($rs = Doctrine::getTable('Poll')->find($request->getParameter('id')));
+        $this->forward404Unless(in_array($cmd = $request->getParameter('cmd'), array(0,1)));
+    
+        $rs->setIsFeatured($cmd);
+        $rs->save();
+
+        $this->getUser()->setFlash('flash', 'Successfully saved.', true);
+        $this->redirect($request->getReferer() ? $request->getReferer() : 'poll/index');
+    }
 
     protected function processForm(sfWebRequest $request, sfForm $form)
     {
@@ -94,6 +93,7 @@ class pollActions extends sfActions
         {
             $rs = $form->save();            
             $rs->setRoute(myTools::slugify(myTools::mn2en($rs->getTitle())));
+            $rs->setUpdatedAt(date('Y-m-d H:i:s'));
             $rs->save();
             
             $this->getUser()->setFlash('flash', 'Successfully saved.', true);

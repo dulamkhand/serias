@@ -16,7 +16,7 @@ class subscriberActions extends sfActions
 
   public function executeIndex(sfWebRequest $request)
   {
-      $this->pager = Doctrine_Core::getTable('subscriber')->getPager(array('keyword'=>$request->getParameter('keyword')), $request->getParameter('page'));
+      $this->pager = Doctrine_Core::getTable('subscriber')->getPager(array('*'), array('s'=>$request->getParameter('s')), $request->getParameter('page'));
   }
 
   public function executeNew(sfWebRequest $request)

@@ -16,6 +16,20 @@
     <tbody>
       <?php echo $form->renderGlobalErrors() ?>
        <tr>
+        <th><?php echo $form['firstname']->renderLabel() ?></th>
+        <td>
+          <?php echo $form['firstname']->renderError() ?>
+          <?php echo $form['firstname'] ?>
+        </td>
+       </tr>
+       <tr>
+        <th><?php echo $form['lastname']->renderLabel() ?></th>
+        <td>
+          <?php echo $form['lastname']->renderError() ?>
+          <?php echo $form['lastname'] ?>
+        </td>
+       </tr>
+       <tr>
         <th><?php echo $form['email']->renderLabel() ?></th>
         <td>
           <?php echo $form['email']->renderError() ?>
@@ -27,20 +41,6 @@
         <td>
           <?php echo $form['password']->renderError() ?>
           <?php echo $form['password'] ?>
-        </td>
-      </tr>
-      <tr>
-        <th><?php echo $form['fullname']->renderLabel() ?></th>
-        <td>
-          <?php echo $form['fullname']->renderError() ?>
-          <?php echo $form['fullname'] ?>
-        </td>
-      </tr>
-      <tr>
-        <th><?php echo $form['about']->renderLabel() ?></th>
-        <td>
-          <?php echo $form['about']->renderError() ?>
-          <?php echo $form['about'] ?>
         </td>
       </tr>
       <tr>
@@ -58,25 +58,10 @@
         </td>
       </tr>
       <tr>
-        <th><?php echo $form['image']->renderLabel() ?></th>
-        <td>
-          <?php echo $form['image']->renderError() ?>
-          <?php echo $form['image'] ?>
-        </td>
-      </tr>
-      <tr>
         <th><?php echo $form['is_active']->renderLabel() ?></th>
         <td>
           <?php echo $form['is_active']->renderError() ?>
           <?php echo $form['is_active'] ?>
-        </td>
-      </tr>
-      <tr>
-        <th><?php echo $form['is_admin']->renderLabel() ?></th>
-        <td>
-          <?php echo $form['is_admin']->renderError() ?>
-          <?php echo $form['is_admin'] ?>
-          <div class="description"><?php echo $form['is_admin']->renderHelp() ?></div>
         </td>
       </tr>
     </tbody>

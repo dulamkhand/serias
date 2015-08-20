@@ -19,25 +19,25 @@
   </thead>
   <tbody>
     <?php $i=0; foreach ($pager->getResults() as $rs): ?>
-        <?php $id = $rs->getId()?>
-        <tr <?php if($i%2 != 0) echo 'class="odd"'?> style="<?php if(!$rs->getIsActive()) echo 'background:#cdcdcd;'?>">
-          <td><?php echo ++$i?></td>
-          <td>
-              <a href="<?php echo url_for('page/edit?id='.$id)?>" title="Edit" class="action">
-                  <?php echo $rs ?>
-              </a>
-          </td>
-          <td>
-              <?php if($rs->getImage()) echo image_tag('/u/page/'.$rs->getImage(), array('style'=>'max-width:300px;max-height:400px;')) ?>
-          </td>
-          <td><?php echo $rs->getIntro()?></td>
-          <?php include_partial('partial/sortDateAdmin', array('rs'=>$rs));?>
-          <td nowrap width="20%">
-              <?php include_partial('partial/isActive', array('module'=>'page', 'rs'=>$rs));?>
-              <?php include_partial('partial/edit', array('module'=>'page', 'id'=>$rs->getId()));?>
-          </td>
-        </tr>
+      <?php $id = $rs->getId()?>
+      <tr <?php if($i%2 != 0) echo 'class="odd"'?> style="<?php if(!$rs->getIsActive()) echo 'background:#cdcdcd;'?>">
+        <td><?php echo ++$i?></td>
+        <td>
+            <a href="<?php echo url_for('page/edit?id='.$id)?>" title="Edit" class="action">
+                <?php echo $rs ?>
+            </a>
+        </td>
+        <td>
+            <?php if($rs->getImage()) echo image_tag('/u/page/'.$rs->getImage(), array('style'=>'max-width:300px;max-height:400px;')) ?>
+        </td>
+        <td><?php echo $rs->getIntro()?></td>
+        <?php include_partial('partial/sortDateAdmin', array('rs'=>$rs));?>
+        <td nowrap width="20%">
+            <?php include_partial('partial/isActive', array('module'=>'page', 'rs'=>$rs));?>
+            <?php include_partial('partial/edit', array('module'=>'page', 'id'=>$rs->getId()));?>
+        </td>
+      </tr>
     <?php endforeach; ?>
-    <tr><td colspan="10"><?php echo pager($pager, 'page/index?s='.$sf_params->get('s'))?></td></tr>
   </tbody>
 </table>
+<?php echo pager($pager, 'page/index?s='.$sf_params->get('s'))?>

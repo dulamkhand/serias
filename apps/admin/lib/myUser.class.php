@@ -5,6 +5,8 @@ class myUser extends sfBasicSecurityUser
     public function signIn($admin)
     {
         $this->setAuthenticated(true);
+        $admin->setLoggedAt(date('Y-m-d h:i:s'));
+        $admin->save();
         
         // module credentials
         $rss = explode(";", $admin->getModPermissions());
@@ -12,7 +14,7 @@ class myUser extends sfBasicSecurityUser
             $this->addCredential($rs);  
         }
         $this->setAttribute('id', $admin->getId());
-        $this->setAttribute('email', $admin->getEmail());
+        $this->setAttribute('email', $admin->getEmail());        
     }
   
     public function signOut()

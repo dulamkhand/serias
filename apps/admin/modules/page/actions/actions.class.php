@@ -18,7 +18,7 @@ class pageActions extends sfActions
     {
         $params = array();
         $params['isActive'] = 'all';
-        if($request->getParameter('s')) $params['sPage'] = $request->getParameter('s');
+        $params['s'] = $request->getParameter('s');
         $this->pager = PageTable::getInstance()->getPager(array('*'), $params, $request->getParameter('page'));
     }
   
@@ -58,15 +58,16 @@ class pageActions extends sfActions
     }
     
     public function executeActivate(sfWebRequest $request)
-      {
-          $this->forward404Unless($content = Doctrine::getTable('Page')->find($request->getParameter('id')));
-          $this->forward404Unless(in_array($cmd = $request->getParameter('cmd'), array(0,1)));
-          $content->setIsActive($cmd);
-          $content->save();
-          $this->getUser()->setFlash('flash', 'Successfully saved.', true);
-          $this->redirect($request->getReferer() ? $request->getReferer() : 'page/index');
-      }
-  
+    {
+        $this->forward404Unless($content = Doctrine::getTable('Page')->find($request->getParameter('id')));
+        $this->forward404Unless(in_array($cmd = $request->getParameter('cmd'), array(0,1)));
+
+        $content->setIsActive($cmd);
+        $content->save();
+
+        $this->getUser()->setFlash('flash', 'Successfully saved.', true);
+        $this->redirect($request->getReferer() ? $request->getReferer() : 'page/index');
+    }
   
     protected function processForm(sfWebRequest $request, sfForm $form)
     {
@@ -76,6 +77,7 @@ class pageActions extends sfActions
             $page = $form->save();
             $page->setUpdatedAt(date('Y-m-d H:i:s'));
             $page->save();
+
             $this->getUser()->setFlash('flash', 'Successfully saved.', true);
             $this->redirect('page/index');
         }

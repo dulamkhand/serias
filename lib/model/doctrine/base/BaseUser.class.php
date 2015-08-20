@@ -11,11 +11,11 @@ Doctrine_Manager::getInstance()->bindComponent('User', 'doctrine');
  * @property string $password
  * @property string $firstname
  * @property string $lastname
- * @property string $fullname
  * @property string $email
  * @property string $mobile
  * @property string $avator
  * @property integer $is_active
+ * @property integer $sort
  * @property timestamp $created_at
  * @property timestamp $updated_at
  * @property integer $created_aid
@@ -30,11 +30,11 @@ Doctrine_Manager::getInstance()->bindComponent('User', 'doctrine');
  * @method string    getPassword()        Returns the current record's "password" value
  * @method string    getFirstname()       Returns the current record's "firstname" value
  * @method string    getLastname()        Returns the current record's "lastname" value
- * @method string    getFullname()        Returns the current record's "fullname" value
  * @method string    getEmail()           Returns the current record's "email" value
  * @method string    getMobile()          Returns the current record's "mobile" value
  * @method string    getAvator()          Returns the current record's "avator" value
  * @method integer   getIsActive()        Returns the current record's "is_active" value
+ * @method integer   getSort()        		Returns the current record's "sort" value
  * @method timestamp getCreatedAt()       Returns the current record's "created_at" value
  * @method timestamp getUpdatedAt()       Returns the current record's "updated_at" value
  * @method integer   getCreatedAid()      Returns the current record's "created_aid" value
@@ -48,11 +48,11 @@ Doctrine_Manager::getInstance()->bindComponent('User', 'doctrine');
  * @method User      setPassword()        Sets the current record's "password" value
  * @method User      setFirstname()       Sets the current record's "firstname" value
  * @method User      setLastname()        Sets the current record's "lastname" value
- * @method User      setFullname()        Sets the current record's "fullname" value
  * @method User      setEmail()           Sets the current record's "email" value
  * @method User      setMobile()          Sets the current record's "mobile" value
  * @method User      setAvator()          Sets the current record's "avator" value
  * @method User      setIsActive()        Sets the current record's "is_active" value
+ * @method News      setSort()        		Sets the current record's "sort" value
  * @method User      setCreatedAt()       Sets the current record's "created_at" value
  * @method User      setUpdatedAt()       Sets the current record's "updated_at" value
  * @method User      setCreatedAid()      Sets the current record's "created_aid" value
@@ -108,15 +108,6 @@ abstract class BaseUser extends sfDoctrineRecord
              'autoincrement' => false,
              'length' => 255,
              ));
-        $this->hasColumn('fullname', 'string', 255, array(
-             'type' => 'string',
-             'fixed' => 0,
-             'unsigned' => false,
-             'primary' => false,
-             'notnull' => true,
-             'autoincrement' => false,
-             'length' => 255,
-             ));
         $this->hasColumn('email', 'string', 255, array(
              'type' => 'string',
              'fixed' => 0,
@@ -152,6 +143,15 @@ abstract class BaseUser extends sfDoctrineRecord
              'notnull' => true,
              'autoincrement' => false,
              'length' => 1,
+             ));
+        $this->hasColumn('sort', 'integer', 4, array(
+             'type' => 'integer',
+             'fixed' => 0,
+             'unsigned' => false,
+             'primary' => false,
+             'notnull' => true,
+             'autoincrement' => false,
+             'length' => 4,
              ));
         $this->hasColumn('created_at', 'timestamp', 25, array(
              'type' => 'timestamp',

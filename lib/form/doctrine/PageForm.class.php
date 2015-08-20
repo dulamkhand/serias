@@ -12,15 +12,19 @@ class PageForm extends BasePageForm
 {
   public function configure()
   {
-      $host = sfConfig::get('app_host');
-      
       // WIDGETS
       $choices = GlobalLib::getArray('page_type');
       $this->widgetSchema['type']        = new sfWidgetFormInputHidden();
       $this->widgetSchema['title']       = new sfWidgetFormInputText(array(), array());
+      $this->widgetSchema['image']       = new sfWidgetFormInputFile(array(), array());
+      $this->widgetSchema['intro']    	 = new sfWidgetFormTextarea(array(), array());
       $this->widgetSchema['content']     = new sfWidgetFormTextarea(array(), array());
 
       // VALIDATORS
-      $this->validatorSchema['content']	   = new sfValidatorPass();
+      $this->validatorSchema['type']	   = new sfValidatorString();
+      $this->validatorSchema['title']	   = new sfValidatorString();
+      $this->validatorSchema['image']    = new sfValidatorFile($this->getFileAttrs('page'), $this->getFileOpts());
+      $this->validatorSchema['intro']	   = new sfValidatorPass();
+      $this->validatorSchema['content']	 = new sfValidatorPass();
   }
 }

@@ -1,5 +1,5 @@
 <form action="<?php echo url_for('feedback/index')?>" method="GET">
-    <?php include_partial('global/search', array());?>
+    <?php include_partial('partial/search', array());?>
 </form>
 
 <br clear="all">
@@ -32,6 +32,6 @@
       </td>
     </tr>
     <?php endforeach; ?>
-    <tr><td colspan="10"><?php echo pager($pager, 'feedback/index?keyword='.$sf_params->get('keyword'))?></td></tr>
   </tbody>
 </table>
+<?php echo pager($pager, 'feedback/index?s='.$sf_params->get('s'))?>

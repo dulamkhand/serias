@@ -18,7 +18,7 @@ class feedbackActions extends sfActions
   
   public function executeIndex(sfWebRequest $request)
   {
-      $this->pager = FeedbackTable::getInstance()->getPager(array('isActive'=>'all', 'orderBy'=>'created_at DESC', 'keyword'=>$request->getParameter('keyword')), $request->getParameter('page'));
+      $this->pager = FeedbackTable::getInstance()->getPager(array('*'), array('isActive'=>'all', 'orderBy'=>'created_at DESC', 's'=>$request->getParameter('s')), $request->getParameter('page'));
   }
 
   public function executeDelete(sfWebRequest $request)

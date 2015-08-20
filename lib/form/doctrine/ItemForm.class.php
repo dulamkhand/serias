@@ -54,11 +54,11 @@ class ItemForm extends BaseItemForm
       	$this->widgetSchema['official_link1'] = new sfWidgetFormInputText(array(), array());
       	$this->widgetSchema['official_link2'] = new sfWidgetFormInputText(array(), array());
 		
-		$this->widgetSchema['kickass']           = new sfWidgetFormInputText(array(), array());
-		$this->widgetSchema['torrentz']          = new sfWidgetFormInputText(array(), array());
-		$this->widgetSchema['extratorrent']      = new sfWidgetFormInputText(array(), array());
-		$this->widgetSchema['freetvvideoonline'] = new sfWidgetFormInputText(array(), array());
-		$this->widgetSchema['youtube']           = new sfWidgetFormInputText(array(), array());
+				$this->widgetSchema['kickass']           = new sfWidgetFormInputText(array(), array());
+				$this->widgetSchema['torrentz']          = new sfWidgetFormInputText(array(), array());
+				$this->widgetSchema['extratorrent']      = new sfWidgetFormInputText(array(), array());
+				$this->widgetSchema['freetvvideoonline'] = new sfWidgetFormInputText(array(), array());
+				$this->widgetSchema['youtube']           = new sfWidgetFormInputText(array(), array());
       	
       	  	
       	# VALIDATORS

@@ -118,15 +118,28 @@ class GlobalLib
             17=>17,18=>18,19=>19,20=>20,21=>21,22=>22,23=>23,24=>24,25=>25,26=>26,27=>27,28=>28,29=>29,30=>30,31=>31);
 
     public static $banner_position = array(
-                  'top'          =>'Top 750 x 100', 
+                  'top'          =>'Top 931 x 90', 
                   'left'         =>'Left 150 x 300', 
                   'right'    		 =>'Right 180 x 300',
-                  'footer'       =>'Footer 1100 x 100'
+                  'footer'       =>'Footer 1081 x 150'
     );
 
-    public static $mod_permissions = array('item'=>'item', 'link'=>'link', 'bests'=>'bests', 'cinema'=>'cinema',
-                  'feedback'=>'feedback', 'banner'=>'banner', 'news'=>'news', 'page'=>'page', 'poll'=>'poll', 
-                  'subs'=>'subscriber', 'user'=>'user', 'admin'=>'admin');
+    public static $mod_permissions = array(
+    							'admin'			=>'admin',
+    							'banner'		=>'banner',
+    							'bests'			=>'bests',
+    							'celebrity'	=>'celebrity',
+    							'cinema'		=>'cinema',
+    							'feedback'	=>'feedback',
+    							'item'			=>'item', 
+    							'link'			=>'link',  
+                  'news'			=>'news',
+                  'page'			=>'page',
+                  'poll'			=>'poll', 
+                  'studio'		=>'studio', 
+                  'subscriber'=>'subscriber', 
+                  'user'			=>'user'
+		);
 
 		public static $cinema = array('tengis'=>'Тэнгис кино театр', 'urgoo'=>'Өргөө кино театр', 'od'=>'Od кино театр');
 

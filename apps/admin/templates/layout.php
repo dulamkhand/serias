@@ -22,12 +22,14 @@
             		<li <?php echo $tab == 'item' ? 'class="current"' : '' ?>>
                   <?php echo link_to('item', 'item/index')?>
                 </li>                
-                <li <?php echo $tab == 'image' ? 'class="current"' : '' ?>>
-                  <?php echo link_to('image', 'image/index')?>
-                </li>
                 <li <?php echo $tab == 'link' ? 'class="current"' : '' ?>>
                   <?php echo link_to('link', 'link/index')?>
                 </li>
+                <?php if($sf_user->hasCredential('banner')):?>
+                		<li <?php echo $tab == 'banner' ? 'class="current"' : '' ?>>
+		                  <?php echo link_to('banner', 'banner/index')?>
+		                </li>
+                <?php endif?>                
                 <?php if($sf_user->hasCredential('bests')):?>
                 		<li <?php echo $tab == 'bests' ? 'class="current"' : '' ?>>
 		                  <?php echo link_to('bests', 'bests/index')?>
@@ -38,15 +40,14 @@
 		                  <?php echo link_to('cinema', 'cinema/index')?>
 		                </li>
                 <?php endif?>
-                <li <?php echo $tab == 'celebrity' ? 'class="current"' : '' ?>>
-                  <?php echo link_to('celebrity', 'celebrity/index')?>
-                </li>
-                <li <?php echo $tab == 'studio' ? 'class="current"' : '' ?>>
-                  <?php echo link_to('studio', 'studio/index')?>
-                </li>
-                <?php if($sf_user->hasCredential('banner')):?>
-                		<li <?php echo $tab == 'banner' ? 'class="current"' : '' ?>>
-		                  <?php echo link_to('banner', 'banner/index')?>
+                <?php if($sf_user->hasCredential('celebrity')):?>
+		                <li <?php echo $tab == 'celebrity' ? 'class="current"' : '' ?>>
+		                  <?php echo link_to('celebrity', 'celebrity/index')?>
+		                </li>
+		            <?php endif?>
+		            <?php if($sf_user->hasCredential('studio')):?>
+		                <li <?php echo $tab == 'studio' ? 'class="current"' : '' ?>>
+		                  <?php echo link_to('studio', 'studio/index')?>
 		                </li>
                 <?php endif?>
                 <?php if($sf_user->hasCredential('news')):?>

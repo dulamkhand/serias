@@ -12,11 +12,10 @@ abstract class BaseFormDoctrine extends sfFormDoctrine
 {
     public function setup()
     {
-          unset($this['id'],$this['route'],$this['nb_views'],$this['nb_love'],$this['sort'],
-          $this['created_at'],$this['updated_at'],$this['created_aid'],$this['updated_aid']);
+          unset($this['id'],$this['route'],$this['nb_views'],$this['nb_love'],$this['created_at']);
           
           # WIDGETS
-          $choices = GlobalLib::getNumbers(100, 1);
+          $choices = GlobalLib::getNumbers(1, 100);
           $this->widgetSchema['sort']        = new sfWidgetFormChoice(array('choices'=>$choices), array('style'=>'width:50px;'));
           $this->widgetSchema['is_active']   = new sfWidgetFormInputCheckbox(array(), array('value'=>1));
           $this->widgetSchema['is_featured'] = new sfWidgetFormInputCheckbox(array(), array('value'=>1));

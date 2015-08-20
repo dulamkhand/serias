@@ -43,23 +43,24 @@
 		<br clear="all">
 
 		<!--summary-->
-		<?php echo $rs->getSummaryMn();?>
-		<br clear="all">
-		<br clear="all">
+		<?php if($tmp = $rs->getSummaryMn()):?>
+				<?php echo $rs->getSummaryMn();?>
+				<br clear="all">
+		<?php endif?>
 		
 		<!--genres-->
-		<?php $type = $rs->getType();?>
-		<?php $ks = explode(";", $rs->getGenre()); $i=0?>
-		<?php foreach ($ks as $k):?>
-			<a href="<?php echo url_for('page/index?type='.$type.'&g='.$k)?>" class="italic" style="text-transform:uppercase;">
-					<?php echo GlobalLib::getValue('genre_mn', $k)?><?php echo ++$i == sizeof($ks) ? '' : ' / ';?>
-			</a>
-		<?php endforeach?>
-		<br clear="all">
-		<br clear="all">
+		<div style="margin:15px 0 20px 0;">
+				<?php $type = $rs->getType();?>
+				<?php $ks = explode(";", $rs->getGenre()); $i=0?>
+				<?php foreach ($ks as $k):?>
+					<a href="<?php echo url_for('page/index?type='.$type.'&g='.$k)?>" class="italic" style="text-transform:uppercase;">
+							<?php echo GlobalLib::getValue('genre_mn', $k)?><?php echo ++$i == sizeof($ks) ? '' : ' / ';?>
+					</a>
+				<?php endforeach?>
+		</div>
+		
 		<?php //include_partial('page/photos', array('rs'=>$rs));?>
-		<?php include_partial('page/share', array('url'=>$host."/page/show?route=".$rs->getRoute(), 'title'=>$rs));?>
-		<br clear="all">
+		<?php include_partial('page/share', array('url'=>$host."/page/show?route=".$rs->getRoute(), 'title'=>$rs));?>		
 </div>
 <br clear="all">
 

@@ -11,14 +11,14 @@
 class studioActions extends sfActions
 {
   function preExecute() {
-      //$this->forwardUnless($this->getUser()->hasCredential('studio'), 'admin', 'perm');  
+      $this->forwardUnless($this->getUser()->hasCredential('studio'), 'admin', 'perm');  
   }
   
   public function executeIndex(sfWebRequest $request)
   {
       $params = array();
       $params['isActive'] = 'all';
-      if($request->getParameter('sStudio')) $params['s'] = $request->getParameter('s');
+      $params['s'] = $request->getParameter('s');
       $this->pager = StudioTable::getInstance()->getPager(array('*'), $params, $request->getParameter('page'));
   }
   
@@ -73,10 +73,8 @@ class studioActions extends sfActions
   public function executeDelete(sfWebRequest $request)
   {
     $this->forward404Unless($studio = Doctrine::getTable('Studio')->find(array($request->getParameter('id'))), sprintf('Object studio does not exist (%s).', $request->getParameter('id')));
-    try {
-      $studio->delete();
-      $this->getUser()->setFlash('flash', 'Successfully deleted.', true);
-    }catch (Exception $e){}
+    $studio->delete();
+    $this->getUser()->setFlash('flash', 'Successfully deleted.', true);
     $this->redirect('studio/index');
   }
 

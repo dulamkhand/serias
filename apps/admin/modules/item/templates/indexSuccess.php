@@ -59,8 +59,8 @@
             </a>
         </td>
         <td><?php echo $rs->getNbViews()?></td>
-        <?php include_partial('partial/td_active_featured', array('rs'=>$rs))?>
-        <?php include_partial('partial/td_sort_date_admin', array('rs'=>$rs))?>
+        <?php include_partial('partial/activeFeatured', array('rs'=>$rs))?>
+        <?php include_partial('partial/sortDateAdmin', array('rs'=>$rs))?>
         <td nowrap>
             <a href="<?php echo url_for('image/new?objectType=item&objectId='.$rs->getId())?>" title="Images" class="action">Images (<?php echo $rs->getNbImages()?>)</a>
             <br clear="all">

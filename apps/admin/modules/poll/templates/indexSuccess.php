@@ -1,6 +1,6 @@
 <?php $host = sfConfig::get('app_host')?>
-<form action="<?php echo url_for('pollOption/index')?>" method="GET">
-    <?php include_partial('global/search', array());?>
+<form action="<?php echo url_for('poll/index')?>" method="GET">
+    <?php include_partial('partial/search', array());?>
 </form>
 
 <br clear="all">
@@ -11,40 +11,35 @@
       <th>#</th>
       <th>Poll</th>
       <th>Details</th>
+      <th>Sort</th>
+      <th>Date</th>
+      <th>Admin</th>
       <th></th>
     </tr>
   </thead>
   <tbody>
     <?php $i = 0;?>
     <?php foreach ($pager->getResults() as $rs): ?>
-    <tr <?php if($i%2 != 0) echo 'class="odd"'?> style="<?php if(!$rs->getIsActive()) echo 'background:#cdcdcd;'?>">
+    	<tr <?php if($i%2 != 0) echo 'class="odd"'?> style="<?php if(!$rs->getIsActive()) echo 'background:#cdcdcd;'?>">
         <td><?php echo ++$i?></td>
         <td>
             <a href="<?php echo url_for('poll/edit?id='.$rs->getId())?>" class="action"><b><?php echo $rs->getTitle() ?></b></a><br>
             <?php echo $rs->getBody() ?>
         </td>
-        <!--details-->
         <td nowrap>
             <?php if($rs->getMultipleChoice()) echo image_tag('icons/valid.png', array('align'=>'absmiddle')) ?> Multiple choices<br>
-            <?php if($rs->getOptionsAddable()) echo image_tag('icons/valid.png', array('align'=>'absmiddle')) ?> Options addable<br>
-            <?php if($rs->getIsFeatured()) echo image_tag('icons/valid.png', array('align'=>'absmiddle')) ?> Featured<br>
-            <?php if($rs->getIsActive()) echo image_tag('icons/valid.png', array('align'=>'absmiddle')) ?> Active<br>
-            Created at: <?php echo $rs->getCreatedAt() ?><br>
-            Sort: <?php echo $rs->getSort() ?>
+            <?php if($rs->getOptionsAddable()) echo image_tag('icons/valid.png', array('align'=>'absmiddle')) ?> Options addable
         </td>
-        <td nowrap>
-            <a href="<?php echo url_for('pollOption/index?pollId='.$rs->getId())?>" class="action">Options</a> | 
+        <?php include_partial('partial/sortDateAdmin', array('rs'=>$rs));?>
+        <td nowrap width="20%">
+        		<a href="<?php echo url_for('pollOption/index?pollId='.$rs->getId())?>" class="action">Options</a> | 
             <a href="<?php echo url_for('pollOption/new?pollId='.$rs->getId())?>" class="action">Add option</a>
             <br clear="all">
-            
-            <?php include_partial('global/featurate', array('module'=>'poll', 'rs'=>$rs));?>
-            <?php include_partial('global/activate', array('module'=>'poll', 'rs'=>$rs));?>
-            <br clear="all">
-  
-            <?php include_partial('global/actions', array('module'=>'poll', 'id'=>$rs->getId()));?>
-        </td> 
-    </tr>
+            <?php include_partial('partial/isActive', array('module'=>'poll', 'rs'=>$rs));?>
+            <?php include_partial('partial/edit', array('module'=>'poll', 'id'=>$rs->getId()));?>
+        </td>
+	    </tr>
     <?php endforeach; ?>
   </tbody>
 </table>
-<?php echo pager($pager, 'poll/index?keyword='.$sf_params->get('keyword'))?>
+<?php echo pager($pager, 'poll/index?s='.$sf_params->get('s'))?>
