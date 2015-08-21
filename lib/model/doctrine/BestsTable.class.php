@@ -100,6 +100,7 @@ class BestsTable extends Doctrine_Table
         $q = self::params($q, $params);
 
         $pager = new sfDoctrinePager(isset($params['limit']) ? $params['limit'] : sfConfig::get('app_pager', 30));
+        $pager->setMaxPerPage(isset($params['limit']) ? $params['limit'] : sfConfig::get('app_pager', 30));
         $pager->setPage($page);
         $pager->setQuery($q);
         $pager->init();
