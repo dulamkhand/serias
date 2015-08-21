@@ -16,7 +16,7 @@ class itemActions extends sfActions
         $params['isActive'] = 'all';
         if($request->getParameter('type')) $params['type'] = $request->getParameter('type');        
         if($request->getParameter('caid')) $params['createdAid'] = trim($request->getParameter('caid'));
-        if($request->getParameter('s')) $params['sItem'] = trim($request->getParameter('s'));
+        $params['s'] = trim($request->getParameter('s'));
         $this->pager = ItemTable::getInstance()->getPager(array('*'), $params, $request->getParameter('page'));
         
     }

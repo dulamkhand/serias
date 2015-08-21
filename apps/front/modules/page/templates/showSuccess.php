@@ -17,12 +17,15 @@
 </div>
 
 <!--image-->
-<?php echo image_tag('/u/'.$rs->getFolder().'/'.$rs->getCover(), array('style'=>'width:1081px;max-height:400px;'))?>
-<br clear="all">
+<?php if($rs->getCover()) echo image_tag('/u/'.$rs->getFolder().'/'.$rs->getCover(), array('style'=>'width:1081px;max-height:400px;')).'<br clear="all">'?>
 
 <!--trailer -->
 <div style="float:left;width:560px;">
-	<?php echo $rs->getTrailer();?>
+	<?php if(strpos($rs->getTrailer(), 'iframe') > 0):?>
+			<?php echo $rs->getTrailer();?>
+	<?php else:?>
+			<iframe width="560" height="315" src="<?php echo $rs->getTrailer();?>" frameborder="0" allowfullscreen></iframe>		
+	<?php endif?>	
 </div>
 
 <div class="left" style="width:511px;padding:10px 0 10px 10px;">

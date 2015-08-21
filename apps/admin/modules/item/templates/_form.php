@@ -29,7 +29,7 @@
         <td>
             <?php $params = $sf_params->get('genres') ? $sf_params->get('genres') : explode(";", $form->getObject()->getGenre());?>
             <?php $choices = GlobalLib::getArray('genre');?>
-            <select id="item_genre" name="genres[]" style="height:300px;width:250px;" multiple="1">
+            <select id="item_genre" name="genres[]" style="height:200px;width:250px;" multiple="1">
                 <?php foreach ($choices as $k=>$v):?>
                     <option value="<?php echo $k?>" <?php echo in_array($k, $params) ? 'selected': ''?>><?php echo $v?></option>
                 <?php endforeach;?>
@@ -114,17 +114,25 @@
       </tr>
       <tr><td colspan="2" style="color:#FF6600;"><?php echo str_repeat('-', 100)?></td></tr>
       <tr>
-        <th><?php echo $form['studios']->renderLabel() ?></th>
+        <th><?php echo $form['sort']->renderLabel() ?></th>
         <td>
-          <?php echo $form['studios']->renderError() ?>
-          <?php echo $form['studios'] ?>
+          <?php echo $form['sort']->renderError() ?>
+          <?php echo $form['sort'] ?>
+          <?php echo $form['sort']->renderHelp() ?>
         </td>
       </tr>
       <tr>
-        <th><?php echo $form['rating']->renderLabel() ?></th>
+        <th><?php echo $form['is_featured']->renderLabel() ?></th>
         <td>
-          <?php echo $form['rating']->renderError() ?>
-          <?php echo $form['rating'] ?>
+          <?php echo $form['is_featured']->renderError() ?>
+          <?php echo $form['is_featured'] ?>
+        </td>
+      </tr>
+      <tr>
+        <th><?php echo $form['is_active']->renderLabel() ?></th>
+        <td>
+          <?php echo $form['is_active']->renderError() ?>
+          <?php echo $form['is_active'] ?>
         </td>
       </tr>
     </tbody>
@@ -153,7 +161,7 @@
           <?php echo $form['director']->renderError() ?>
           <?php echo $form['director'] ?>
         </td>
-      </tr>
+      </tr>      
       <tr>
         <th><?php echo $form['writer']->renderLabel() ?></th>
         <td>
@@ -169,27 +177,28 @@
           <?php echo $form['casts']->renderHelp() ?>
         </td>
       </tr>
-			<tr><td colspan="2" style="color:#FF6600;"><?php echo str_repeat('-', 100)?></td></tr>
       <tr>
-        <th><?php echo $form['nb_seasons']->renderLabel() ?></th>
+        <th><?php echo $form['studios']->renderLabel() ?></th>
         <td>
-          <?php echo $form['nb_seasons']->renderError() ?>
-          <?php echo $form['nb_seasons'] ?>
+          <?php echo $form['studios']->renderError() ?>
+          <?php echo $form['studios'] ?>
         </td>
       </tr>
-      <tr>
-        <th><?php echo $form['nb_episodes']->renderLabel() ?></th>
-        <td>
-          <?php echo $form['nb_episodes']->renderError() ?>
-          <?php echo $form['nb_episodes'] ?>
-        </td>
-      </tr>
+			<tr><td colspan="2" style="color:#FF6600;"><?php echo str_repeat('-', 100)?></td></tr>      
       <tr>
         <th><?php echo $form['boxoffice']->renderLabel() ?></th>
         <td>
           <?php echo $form['boxoffice']->renderError() ?>
           <?php echo $form['boxoffice'] ?>
           <?php echo $form['boxoffice']->renderHelp() ?>
+        </td>
+      </tr>
+      <tr>
+        <th><?php echo $form['boxoffice_mn']->renderLabel() ?></th>
+        <td>
+          <?php echo $form['boxoffice_mn']->renderError() ?>
+          <?php echo $form['boxoffice_mn'] ?>
+          <?php echo $form['boxoffice_mn']->renderHelp() ?>
         </td>
       </tr>
       <tr>
@@ -206,7 +215,42 @@
           <?php echo $form['comingsoon'] ?>
         </td>
       </tr>
+      <tr>
+        <th><?php echo $form['is_watch_online']->renderLabel() ?></th>
+        <td>
+          <?php echo $form['is_watch_online']->renderError() ?>
+          <?php echo $form['is_watch_online'] ?>
+        </td>
+      </tr>
+		  <tr>
+        <th><?php echo $form['is_torrent_download']->renderLabel() ?></th>
+        <td>
+          <?php echo $form['is_torrent_download']->renderError() ?>
+          <?php echo $form['is_torrent_download'] ?>
+        </td>
+      </tr>
+		  <tr>
+        <th><?php echo $form['is_mongolian_language']->renderLabel() ?></th>
+        <td>
+          <?php echo $form['is_mongolian_language']->renderError() ?>
+          <?php echo $form['is_mongolian_language'] ?>
+        </td>
+      </tr>
       <tr><td colspan="2" style="color:#FF6600;"><?php echo str_repeat('-', 100)?></td></tr>
+      <tr>
+        <th><?php echo $form['nb_seasons']->renderLabel() ?></th>
+        <td>
+          <?php echo $form['nb_seasons']->renderError() ?>
+          <?php echo $form['nb_seasons'] ?>
+        </td>
+      </tr>
+      <tr>
+        <th><?php echo $form['nb_episodes']->renderLabel() ?></th>
+        <td>
+          <?php echo $form['nb_episodes']->renderError() ?>
+          <?php echo $form['nb_episodes'] ?>
+        </td>
+      </tr>
       <tr>
         <th><?php echo $form['official_link1']->renderLabel() ?></th>
         <td>
@@ -222,22 +266,28 @@
         </td>
       </tr>
       <tr>
+        <th><?php echo $form['rating']->renderLabel() ?></th>
+        <td>
+          <?php echo $form['rating']->renderError() ?>
+          <?php echo $form['rating'] ?>
+        </td>
+      </tr>
+      <tr>
         <th><?php echo $form['trailer']->renderLabel() ?></th>
         <td>
           <?php echo $form['trailer']->renderError() ?>
           <?php echo $form['trailer'] ?>
         </td>
       </tr>
-	  <tr><td colspan="2" style="color:#FF6600;"><?php echo str_repeat('-', 100)?></td></tr>
       <tr>
         <th><?php echo $form['kickass']->renderLabel() ?></th>
         <td>
           <?php echo $form['kickass']->renderError() ?>
           <?php echo $form['kickass'] ?>
-		  <?php echo $form['kickass']->renderHelp() ?>
+		  		<?php echo $form['kickass']->renderHelp() ?>
         </td>
       </tr>
-	  <tr>
+	  	<tr>
         <th><?php echo $form['torrentz']->renderLabel() ?></th>
         <td>
           <?php echo $form['torrentz']->renderError() ?>
@@ -245,7 +295,7 @@
 		  <?php echo $form['torrentz']->renderHelp() ?>
         </td>
       </tr>
-	  <tr>
+	  	<tr>
         <th><?php echo $form['extratorrent']->renderLabel() ?></th>
         <td>
           <?php echo $form['extratorrent']->renderError() ?>
@@ -253,7 +303,7 @@
 		  <?php echo $form['extratorrent']->renderHelp() ?>
         </td>
       </tr>
-	  <tr>
+	  	<tr>
         <th><?php echo $form['freetvvideoonline']->renderLabel() ?></th>
         <td>
           <?php echo $form['freetvvideoonline']->renderError() ?>
@@ -261,57 +311,13 @@
 		  <?php echo $form['freetvvideoonline']->renderHelp() ?>
         </td>
       </tr>
-	  <tr>
+	  	<tr>
         <th><?php echo $form['youtube']->renderLabel() ?></th>
         <td>
           <?php echo $form['youtube']->renderError() ?>
           <?php echo $form['youtube'] ?>
 		  <?php echo $form['youtube']->renderHelp() ?>
         </td>
-      </tr>
-      <tr><td colspan="2" style="color:#FF6600;"><?php echo str_repeat('-', 100)?></td></tr>
-      <tr>
-        <th><?php echo $form['sort']->renderLabel() ?></th>
-        <td>
-          <?php echo $form['sort']->renderError() ?>
-          <?php echo $form['sort'] ?>
-          <?php echo $form['sort']->renderHelp() ?>
-        </td>
-      </tr>
-      <tr>
-        <th><?php echo $form['is_featured']->renderLabel() ?></th>
-        <td>
-          <?php echo $form['is_featured']->renderError() ?>
-          <?php echo $form['is_featured'] ?>
-        </td>
-      </tr>
-      <tr>
-        <th><?php echo $form['is_active']->renderLabel() ?></th>
-        <td>
-          <?php echo $form['is_active']->renderError() ?>
-          <?php echo $form['is_active'] ?>
-        </td>
-      </tr>
-	  <tr>
-        <th><?php echo $form['is_watch_online']->renderLabel() ?></th>
-        <td>
-          <?php echo $form['is_watch_online']->renderError() ?>
-          <?php echo $form['is_watch_online'] ?>
-        </td>
-      </tr>
-	  <tr>
-        <th><?php echo $form['is_torrent_download']->renderLabel() ?></th>
-        <td>
-          <?php echo $form['is_torrent_download']->renderError() ?>
-          <?php echo $form['is_torrent_download'] ?>
-        </td>
-      </tr>
-	  <tr>
-        <th><?php echo $form['is_mongolian_language']->renderLabel() ?></th>
-        <td>
-          <?php echo $form['is_mongolian_language']->renderError() ?>
-          <?php echo $form['is_mongolian_language'] ?>
-        </td>
-      </tr>
+      </tr>      
   </table>
 </form>

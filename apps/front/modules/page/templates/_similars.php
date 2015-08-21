@@ -1,7 +1,10 @@
 <h3>Төстэй кино</h3>
 <?php 
-$rss = ItemTable::getInstance()->doFetchArray(array('type', 'route', 'folder', 'image', 'title', 'year'), 
-              array('idO'=>$rs->getId(), 'type'=>$rs->getType(), 'genres'=>explode(";", $rs->getGenre()), 'limit'=>10));
+$rss = ItemTable::getInstance()->doFetchArray(array('route', 'folder', 'image', 'title', 'year'), 
+        array('andWhere'=>'id <> '.$rs->getId().' 
+						        			 and year > '.($rs->getYear()-3).' and year <= '.($rs->getYear()+3).' 
+						        			 and genre like "%'.$rs->getGenre().'%"',
+              'type'=>$rs->getType(), 'limit'=>10));
 if(!sizeof($rss))  {
 		echo 'Олдсонгүй.';
 }?>

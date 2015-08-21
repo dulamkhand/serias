@@ -21,16 +21,6 @@ class ItemTable extends Doctrine_Table
     {
         $q->from('Item');
 
-        # id
-        if(isset($params['id']) && $params['id'] != null)
-            $q->andWhere('id = ?', $params['id']);
-        if(isset($params['idO']) && $params['idO'] != null)
-            $q->andWhere('id <> ?', $params['idO']);
-        if(isset($params['ids']) && sizeof($params['ids']))
-            $q->andWhereIn('id', $params['ids']);
-        if(isset($params['idsO']) && sizeof($params['idsO']))
-            $q->andWhereNotIn('id', $params['idsO']);
-            
         # route
         if(isset($params['route']) && $params['route'] != null)
             $q->andWhere('route= ?', $params['route']);
@@ -38,13 +28,6 @@ class ItemTable extends Doctrine_Table
         # type
         if(isset($params['type']) && $params['type'] != null)
             $q->andWhere('type= ?', $params['type']);
-            
-        # genres
-        if(isset($params['genres']) && $params['genres'] != null && sizeof($params['genres'])) {
-            foreach($params['genres'] as $genre) {
-                $q->orWhere('genre LIKE ?', '%'.$genre.'%');
-            }
-        }
 
         # filters
         if(isset($params['y']) && $params['y'] != null)
@@ -85,6 +68,10 @@ class ItemTable extends Doctrine_Table
             $q->andWhere('is_top = ?', 1);
         if(isset($params['isNew']) && in_array($params['isNew'], array('0', '1'))) 
             $q->andWhere('is_new = ?', 1);
+            
+        # custom conditions
+        if(isset($params['andWhere']) && $params['andWhere'] != null)
+            $q->andWhere($params['andWhere']);
 
         # group, order, limit
         if(isset($params['groupBy']) && $params['groupBy']) 
