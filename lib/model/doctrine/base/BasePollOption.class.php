@@ -19,9 +19,9 @@ Doctrine_Manager::getInstance()->bindComponent('PollOption', 'doctrine');
  * @property timestamp $updated_at
  * @property integer $created_aid
  * @property integer $updated_aid
- * @property Poll $Poll
  * @property Admin $Admin
- * @property Admin $Admin_3
+ * @property Admin $Admin_2
+ * @property Poll $Poll
  * 
  * @method integer    getId()          Returns the current record's "id" value
  * @method integer    getPollId()      Returns the current record's "poll_id" value
@@ -35,9 +35,9 @@ Doctrine_Manager::getInstance()->bindComponent('PollOption', 'doctrine');
  * @method timestamp  getUpdatedAt()   Returns the current record's "updated_at" value
  * @method integer    getCreatedAid()  Returns the current record's "created_aid" value
  * @method integer    getUpdatedAid()  Returns the current record's "updated_aid" value
- * @method Poll       getPoll()        Returns the current record's "Poll" value
  * @method Admin      getAdmin()       Returns the current record's "Admin" value
- * @method Admin      getAdmin3()      Returns the current record's "Admin_3" value
+ * @method Admin      getAdmin2()      Returns the current record's "Admin_2" value
+ * @method Poll       getPoll()        Returns the current record's "Poll" value
  * @method PollOption setId()          Sets the current record's "id" value
  * @method PollOption setPollId()      Sets the current record's "poll_id" value
  * @method PollOption setBody()        Sets the current record's "body" value
@@ -50,9 +50,9 @@ Doctrine_Manager::getInstance()->bindComponent('PollOption', 'doctrine');
  * @method PollOption setUpdatedAt()   Sets the current record's "updated_at" value
  * @method PollOption setCreatedAid()  Sets the current record's "created_aid" value
  * @method PollOption setUpdatedAid()  Sets the current record's "updated_aid" value
- * @method PollOption setPoll()        Sets the current record's "Poll" value
  * @method PollOption setAdmin()       Sets the current record's "Admin" value
- * @method PollOption setAdmin3()      Sets the current record's "Admin_3" value
+ * @method PollOption setAdmin2()      Sets the current record's "Admin_2" value
+ * @method PollOption setPoll()        Sets the current record's "Poll" value
  * 
  * @package    imdb
  * @subpackage model
@@ -177,16 +177,16 @@ abstract class BasePollOption extends sfDoctrineRecord
     public function setUp()
     {
         parent::setUp();
-        $this->hasOne('Poll', array(
-             'local' => 'poll_id',
-             'foreign' => 'id'));
-
         $this->hasOne('Admin', array(
              'local' => 'created_aid',
              'foreign' => 'id'));
 
-        $this->hasOne('Admin as Admin_3', array(
+        $this->hasOne('Admin as Admin_2', array(
              'local' => 'updated_aid',
+             'foreign' => 'id'));
+
+        $this->hasOne('Poll', array(
+             'local' => 'poll_id',
              'foreign' => 'id'));
     }
 }

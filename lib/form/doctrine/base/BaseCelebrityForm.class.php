@@ -35,8 +35,8 @@ abstract class BaseCelebrityForm extends BaseFormDoctrine
       'is_active'   => new sfWidgetFormInputText(),
       'is_featured' => new sfWidgetFormInputText(),
       'source'      => new sfWidgetFormTextarea(),
-      'created_aid' => new sfWidgetFormInputText(),
-      'updated_aid' => new sfWidgetFormInputText(),
+      'created_aid' => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('Admin'), 'add_empty' => false)),
+      'updated_aid' => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('Admin_2'), 'add_empty' => false)),
       'created_at'  => new sfWidgetFormDateTime(),
       'updated_at'  => new sfWidgetFormDateTime(),
     ));
@@ -62,8 +62,8 @@ abstract class BaseCelebrityForm extends BaseFormDoctrine
       'is_active'   => new sfValidatorInteger(),
       'is_featured' => new sfValidatorInteger(),
       'source'      => new sfValidatorString(array('max_length' => 1000)),
-      'created_aid' => new sfValidatorInteger(),
-      'updated_aid' => new sfValidatorInteger(),
+      'created_aid' => new sfValidatorDoctrineChoice(array('model' => $this->getRelatedModelName('Admin'))),
+      'updated_aid' => new sfValidatorDoctrineChoice(array('model' => $this->getRelatedModelName('Admin_2'))),
       'created_at'  => new sfValidatorDateTime(),
       'updated_at'  => new sfValidatorDateTime(array('required' => false)),
     ));

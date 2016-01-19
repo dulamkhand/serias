@@ -22,6 +22,8 @@ abstract class BaseLoveForm extends BaseFormDoctrine
       'updated_at'  => new sfWidgetFormDateTime(),
       'user_id'     => new sfWidgetFormInputText(),
       'ip_address'  => new sfWidgetFormInputText(),
+      'created_aid' => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('Admin'), 'add_empty' => false)),
+      'updated_aid' => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('Admin_2'), 'add_empty' => false)),
     ));
 
     $this->setValidators(array(
@@ -32,6 +34,8 @@ abstract class BaseLoveForm extends BaseFormDoctrine
       'updated_at'  => new sfValidatorDateTime(array('required' => false)),
       'user_id'     => new sfValidatorInteger(),
       'ip_address'  => new sfValidatorString(array('max_length' => 15)),
+      'created_aid' => new sfValidatorDoctrineChoice(array('model' => $this->getRelatedModelName('Admin'), 'required' => false)),
+      'updated_aid' => new sfValidatorDoctrineChoice(array('model' => $this->getRelatedModelName('Admin_2'), 'required' => false)),
     ));
 
     $this->widgetSchema->setNameFormat('love[%s]');

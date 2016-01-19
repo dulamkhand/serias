@@ -34,7 +34,7 @@ Doctrine_Manager::getInstance()->bindComponent('User', 'doctrine');
  * @method string    getMobile()          Returns the current record's "mobile" value
  * @method string    getAvator()          Returns the current record's "avator" value
  * @method integer   getIsActive()        Returns the current record's "is_active" value
- * @method integer   getSort()        		Returns the current record's "sort" value
+ * @method integer   getSort()            Returns the current record's "sort" value
  * @method timestamp getCreatedAt()       Returns the current record's "created_at" value
  * @method timestamp getUpdatedAt()       Returns the current record's "updated_at" value
  * @method integer   getCreatedAid()      Returns the current record's "created_aid" value
@@ -52,7 +52,7 @@ Doctrine_Manager::getInstance()->bindComponent('User', 'doctrine');
  * @method User      setMobile()          Sets the current record's "mobile" value
  * @method User      setAvator()          Sets the current record's "avator" value
  * @method User      setIsActive()        Sets the current record's "is_active" value
- * @method News      setSort()        		Sets the current record's "sort" value
+ * @method User      setSort()            Sets the current record's "sort" value
  * @method User      setCreatedAt()       Sets the current record's "created_at" value
  * @method User      setUpdatedAt()       Sets the current record's "updated_at" value
  * @method User      setCreatedAid()      Sets the current record's "created_aid" value
@@ -224,11 +224,11 @@ abstract class BaseUser extends sfDoctrineRecord
     {
         parent::setUp();
         $this->hasOne('Admin', array(
-             'local' => 'updated_aid',
+             'local' => 'created_aid',
              'foreign' => 'id'));
 
         $this->hasOne('Admin as Admin_2', array(
-             'local' => 'created_aid',
+             'local' => 'updated_aid',
              'foreign' => 'id'));
     }
 }

@@ -18,24 +18,24 @@ abstract class BaseBestsForm extends BaseFormDoctrine
       'id'          => new sfWidgetFormInputHidden(),
       'best_type'   => new sfWidgetFormInputText(),
       'number'      => new sfWidgetFormInputText(),
-      'item_id'     => new sfWidgetFormInputText(),
+      'item_id'     => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('Item'), 'add_empty' => false)),
       'is_active'   => new sfWidgetFormInputText(),
       'created_at'  => new sfWidgetFormDateTime(),
       'updated_at'  => new sfWidgetFormDateTime(),
-      'created_aid' => new sfWidgetFormInputText(),
-      'updated_aid' => new sfWidgetFormInputText(),
+      'created_aid' => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('Admin'), 'add_empty' => false)),
+      'updated_aid' => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('Admin_2'), 'add_empty' => false)),
     ));
 
     $this->setValidators(array(
       'id'          => new sfValidatorChoice(array('choices' => array($this->getObject()->get('id')), 'empty_value' => $this->getObject()->get('id'), 'required' => false)),
       'best_type'   => new sfValidatorString(array('max_length' => 50)),
       'number'      => new sfValidatorInteger(),
-      'item_id'     => new sfValidatorInteger(),
+      'item_id'     => new sfValidatorDoctrineChoice(array('model' => $this->getRelatedModelName('Item'))),
       'is_active'   => new sfValidatorInteger(),
       'created_at'  => new sfValidatorDateTime(),
       'updated_at'  => new sfValidatorDateTime(array('required' => false)),
-      'created_aid' => new sfValidatorInteger(),
-      'updated_aid' => new sfValidatorInteger(),
+      'created_aid' => new sfValidatorDoctrineChoice(array('model' => $this->getRelatedModelName('Admin'))),
+      'updated_aid' => new sfValidatorDoctrineChoice(array('model' => $this->getRelatedModelName('Admin_2'))),
     ));
 
     $this->widgetSchema->setNameFormat('bests[%s]');

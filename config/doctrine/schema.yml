@@ -96,113 +96,113 @@ Admin:
   relations:
     Admin:
       local: id
-      foreign: updated_aid
+      foreign: created_aid
       type: many
     Admin_2:
       class: Admin
       local: id
-      foreign: created_aid
+      foreign: updated_aid
       type: many
     Banner:
       local: id
-      foreign: updated_aid
+      foreign: created_aid
       type: many
     Banner_2:
       class: Banner
       local: id
-      foreign: created_aid
+      foreign: updated_aid
       type: many
     Bests:
       local: id
-      foreign: updated_aid
+      foreign: created_aid
       type: many
     Bests_2:
       class: Bests
       local: id
-      foreign: created_aid
+      foreign: updated_aid
       type: many
     Celebrity:
       local: id
-      foreign: updated_aid
+      foreign: created_aid
       type: many
     Celebrity_2:
       class: Celebrity
       local: id
-      foreign: created_aid
+      foreign: updated_aid
       type: many
     Cinema:
       local: id
-      foreign: updated_aid
+      foreign: created_aid
       type: many
     Cinema_2:
       class: Cinema
       local: id
-      foreign: created_aid
+      foreign: updated_aid
       type: many
     Feedback:
       local: id
-      foreign: updated_aid
+      foreign: created_aid
       type: many
     Feedback_2:
       class: Feedback
       local: id
-      foreign: created_aid
+      foreign: updated_aid
       type: many
     Image:
       local: id
-      foreign: updated_aid
+      foreign: created_aid
       type: many
     Image_2:
       class: Image
       local: id
-      foreign: created_aid
+      foreign: updated_aid
       type: many
     Image_3:
       class: Image
       local: id
-      foreign: updated_aid
+      foreign: created_aid
       type: many
     Image_4:
       class: Image
       local: id
-      foreign: created_aid
+      foreign: updated_aid
       type: many
     Item:
       local: id
-      foreign: updated_aid
+      foreign: created_aid
       type: many
     Item_2:
       class: Item
       local: id
-      foreign: created_aid
+      foreign: updated_aid
       type: many
     Link:
       local: id
-      foreign: updated_aid
+      foreign: created_aid
       type: many
     Link_2:
       class: Link
       local: id
-      foreign: created_aid
+      foreign: updated_aid
       type: many
     Link_3:
       class: Link
       local: id
-      foreign: updated_aid
+      foreign: created_aid
       type: many
     Link_4:
       class: Link
       local: id
-      foreign: created_aid
+      foreign: updated_aid
       type: many
     Love:
       local: id
-      foreign: updated_aid
+      foreign: created_aid
       type: many
     Love_2:
       class: Love
       local: id
-      foreign: created_aid
+      foreign: updated_aid
       type: many
     News:
       local: id
@@ -215,12 +215,12 @@ Admin:
       type: many
     NewsItem:
       local: id
-      foreign: updated_aid
+      foreign: created_aid
       type: many
     NewsItem_4:
       class: NewsItem
       local: id
-      foreign: created_aid
+      foreign: updated_aid
       type: many
     Page:
       local: id
@@ -233,48 +233,57 @@ Admin:
       type: many
     Poll:
       local: id
-      foreign: updated_aid
+      foreign: created_aid
       type: many
     Poll_2:
       class: Poll
       local: id
-      foreign: created_aid
+      foreign: updated_aid
       type: many
     PollOption:
       local: id
       foreign: created_aid
       type: many
-    PollOption_3:
+    PollOption_2:
       class: PollOption
       local: id
       foreign: updated_aid
       type: many
     Rating:
       local: id
-      foreign: updated_aid
+      foreign: created_aid
       type: many
     Rating_2:
       class: Rating
       local: id
-      foreign: created_aid
+      foreign: updated_aid
       type: many
     Studio:
       local: id
-      foreign: updated_aid
+      foreign: created_aid
       type: many
     Studio_2:
       class: Studio
       local: id
+      foreign: updated_aid
+      type: many
+    Subscriber:
+      local: id
       foreign: created_aid
+      type: many
+    Subscriber_2:
+      class: Subscriber
+      local: id
+      foreign: updated_aid
       type: many
     User:
       local: id
-      foreign: updated_aid
+      foreign: created_aid
       type: many
     User_2:
       class: User
       local: id
-      foreign: created_aid
+      foreign: updated_aid
       type: many
 Banner:
   connection: doctrine
@@ -401,12 +410,12 @@ Banner:
       autoincrement: false
   relations:
     Admin:
-      local: updated_aid
+      local: created_aid
       foreign: id
       type: one
     Admin_2:
       class: Admin
-      local: created_aid
+      local: updated_aid
       foreign: id
       type: one
 Bests:
@@ -478,12 +487,16 @@ Bests:
       autoincrement: false
   relations:
     Admin:
-      local: updated_aid
+      local: created_aid
       foreign: id
       type: one
     Admin_2:
       class: Admin
-      local: created_aid
+      local: updated_aid
+      foreign: id
+      type: one
+    Item:
+      local: item_id
       foreign: id
       type: one
 Celebrity:
@@ -660,12 +673,12 @@ Celebrity:
       autoincrement: false
   relations:
     Admin:
-      local: updated_aid
+      local: created_aid
       foreign: id
       type: one
     Admin_2:
       class: Admin
-      local: created_aid
+      local: updated_aid
       foreign: id
       type: one
 Cinema:
@@ -737,12 +750,16 @@ Cinema:
       autoincrement: false
   relations:
     Admin:
-      local: updated_aid
+      local: created_aid
       foreign: id
       type: one
     Admin_2:
       class: Admin
-      local: created_aid
+      local: updated_aid
+      foreign: id
+      type: one
+    Item:
+      local: item_id
       foreign: id
       type: one
 Feedback:
@@ -815,12 +832,12 @@ Feedback:
       autoincrement: false
   relations:
     Admin:
-      local: updated_aid
+      local: created_aid
       foreign: id
       type: one
     Admin_2:
       class: Admin
-      local: created_aid
+      local: updated_aid
       foreign: id
       type: one
 Image:
@@ -920,22 +937,22 @@ Image:
       autoincrement: false
   relations:
     Admin:
-      local: updated_aid
+      local: created_aid
       foreign: id
       type: one
     Admin_2:
       class: Admin
-      local: created_aid
+      local: updated_aid
       foreign: id
       type: one
     Admin_3:
       class: Admin
-      local: updated_aid
+      local: created_aid
       foreign: id
       type: one
     Admin_4:
       class: Admin
-      local: created_aid
+      local: updated_aid
       foreign: id
       type: one
 Item:
@@ -1294,14 +1311,22 @@ Item:
       autoincrement: false
   relations:
     Admin:
-      local: updated_aid
+      local: created_aid
       foreign: id
       type: one
     Admin_2:
       class: Admin
-      local: created_aid
+      local: updated_aid
       foreign: id
       type: one
+    Bests:
+      local: id
+      foreign: item_id
+      type: many
+    Cinema:
+      local: id
+      foreign: item_id
+      type: many
     NewsItem:
       local: id
       foreign: item_id
@@ -1410,22 +1435,22 @@ Link:
       autoincrement: false
   relations:
     Admin:
-      local: updated_aid
+      local: created_aid
       foreign: id
       type: one
     Admin_2:
       class: Admin
-      local: created_aid
+      local: updated_aid
       foreign: id
       type: one
     Admin_3:
       class: Admin
-      local: updated_aid
+      local: created_aid
       foreign: id
       type: one
     Admin_4:
       class: Admin
-      local: created_aid
+      local: updated_aid
       foreign: id
       type: one
 Love:
@@ -1499,12 +1524,12 @@ Love:
       autoincrement: false
   relations:
     Admin:
-      local: updated_aid
+      local: created_aid
       foreign: id
       type: one
     Admin_2:
       class: Admin
-      local: created_aid
+      local: updated_aid
       foreign: id
       type: one
 News:
@@ -1546,6 +1571,13 @@ News:
       notnull: true
       autoincrement: false
     is_active:
+      type: integer(1)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    is_featured:
       type: integer(1)
       fixed: false
       unsigned: false
@@ -1648,10 +1680,6 @@ NewsItem:
       notnull: true
       autoincrement: false
   relations:
-    Admin:
-      local: updated_aid
-      foreign: id
-      type: one
     News:
       local: news_id
       foreign: id
@@ -1660,9 +1688,13 @@ NewsItem:
       local: item_id
       foreign: id
       type: one
+    Admin:
+      local: created_aid
+      foreign: id
+      type: one
     Admin_4:
       class: Admin
-      local: created_aid
+      local: updated_aid
       foreign: id
       type: one
 Page:
@@ -1867,12 +1899,12 @@ Poll:
       autoincrement: false
   relations:
     Admin:
-      local: updated_aid
+      local: created_aid
       foreign: id
       type: one
     Admin_2:
       class: Admin
-      local: created_aid
+      local: updated_aid
       foreign: id
       type: one
     PollOption:
@@ -1968,17 +2000,17 @@ PollOption:
       notnull: true
       autoincrement: false
   relations:
-    Poll:
-      local: poll_id
-      foreign: id
-      type: one
     Admin:
       local: created_aid
       foreign: id
       type: one
-    Admin_3:
+    Admin_2:
       class: Admin
       local: updated_aid
+      foreign: id
+      type: one
+    Poll:
+      local: poll_id
       foreign: id
       type: one
 Rating:
@@ -2059,12 +2091,12 @@ Rating:
       autoincrement: false
   relations:
     Admin:
-      local: updated_aid
+      local: created_aid
       foreign: id
       type: one
     Admin_2:
       class: Admin
-      local: created_aid
+      local: updated_aid
       foreign: id
       type: one
 Studio:
@@ -2234,12 +2266,84 @@ Studio:
       autoincrement: false
   relations:
     Admin:
-      local: updated_aid
+      local: created_aid
       foreign: id
       type: one
     Admin_2:
       class: Admin
+      local: updated_aid
+      foreign: id
+      type: one
+Subscriber:
+  connection: doctrine
+  tableName: subscriber
+  columns:
+    id:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: true
+      autoincrement: true
+    email:
+      type: string(255)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    sort:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    is_active:
+      type: integer(1)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    created_at:
+      type: timestamp(25)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    updated_at:
+      type: timestamp(25)
+      fixed: false
+      unsigned: false
+      primary: false
+      default: '0000-00-00 00:00:00'
+      notnull: true
+      autoincrement: false
+    created_aid:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: false
+      default: '1'
+      notnull: true
+      autoincrement: false
+    updated_aid:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: false
+      default: '1'
+      notnull: true
+      autoincrement: false
+  relations:
+    Admin:
       local: created_aid
+      foreign: id
+      type: one
+    Admin_2:
+      class: Admin
+      local: updated_aid
       foreign: id
       type: one
 User:
@@ -2273,13 +2377,6 @@ User:
       primary: false
       notnull: true
       autoincrement: false
-    fullname:
-      type: string(255)
-      fixed: false
-      unsigned: false
-      primary: false
-      notnull: true
-      autoincrement: false
     email:
       type: string(255)
       fixed: false
@@ -2303,6 +2400,13 @@ User:
       autoincrement: false
     is_active:
       type: integer(1)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    sort:
+      type: integer(4)
       fixed: false
       unsigned: false
       primary: false
@@ -2361,11 +2465,11 @@ User:
       autoincrement: false
   relations:
     Admin:
-      local: updated_aid
+      local: created_aid
       foreign: id
       type: one
     Admin_2:
       class: Admin
-      local: created_aid
+      local: updated_aid
       foreign: id
       type: one

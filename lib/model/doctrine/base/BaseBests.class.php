@@ -18,6 +18,7 @@ Doctrine_Manager::getInstance()->bindComponent('Bests', 'doctrine');
  * @property integer $updated_aid
  * @property Admin $Admin
  * @property Admin $Admin_2
+ * @property Item $Item
  * 
  * @method integer   getId()          Returns the current record's "id" value
  * @method string    getBestType()    Returns the current record's "best_type" value
@@ -30,6 +31,7 @@ Doctrine_Manager::getInstance()->bindComponent('Bests', 'doctrine');
  * @method integer   getUpdatedAid()  Returns the current record's "updated_aid" value
  * @method Admin     getAdmin()       Returns the current record's "Admin" value
  * @method Admin     getAdmin2()      Returns the current record's "Admin_2" value
+ * @method Item      getItem()        Returns the current record's "Item" value
  * @method Bests     setId()          Sets the current record's "id" value
  * @method Bests     setBestType()    Sets the current record's "best_type" value
  * @method Bests     setNumber()      Sets the current record's "number" value
@@ -41,6 +43,7 @@ Doctrine_Manager::getInstance()->bindComponent('Bests', 'doctrine');
  * @method Bests     setUpdatedAid()  Sets the current record's "updated_aid" value
  * @method Bests     setAdmin()       Sets the current record's "Admin" value
  * @method Bests     setAdmin2()      Sets the current record's "Admin_2" value
+ * @method Bests     setItem()        Sets the current record's "Item" value
  * 
  * @package    imdb
  * @subpackage model
@@ -139,11 +142,15 @@ abstract class BaseBests extends sfDoctrineRecord
     {
         parent::setUp();
         $this->hasOne('Admin', array(
-             'local' => 'updated_aid',
+             'local' => 'created_aid',
              'foreign' => 'id'));
 
         $this->hasOne('Admin as Admin_2', array(
-             'local' => 'created_aid',
+             'local' => 'updated_aid',
+             'foreign' => 'id'));
+
+        $this->hasOne('Item', array(
+             'local' => 'item_id',
              'foreign' => 'id'));
     }
 }

@@ -59,6 +59,8 @@ Doctrine_Manager::getInstance()->bindComponent('Item', 'doctrine');
  * @property timestamp $updated_at
  * @property Admin $Admin
  * @property Admin $Admin_2
+ * @property Doctrine_Collection $Bests
+ * @property Doctrine_Collection $Cinema
  * @property Doctrine_Collection $NewsItem
  * 
  * @method integer             getId()                    Returns the current record's "id" value
@@ -113,6 +115,8 @@ Doctrine_Manager::getInstance()->bindComponent('Item', 'doctrine');
  * @method timestamp           getUpdatedAt()             Returns the current record's "updated_at" value
  * @method Admin               getAdmin()                 Returns the current record's "Admin" value
  * @method Admin               getAdmin2()                Returns the current record's "Admin_2" value
+ * @method Doctrine_Collection getBests()                 Returns the current record's "Bests" collection
+ * @method Doctrine_Collection getCinema()                Returns the current record's "Cinema" collection
  * @method Doctrine_Collection getNewsItem()              Returns the current record's "NewsItem" collection
  * @method Item                setId()                    Sets the current record's "id" value
  * @method Item                setType()                  Sets the current record's "type" value
@@ -166,6 +170,8 @@ Doctrine_Manager::getInstance()->bindComponent('Item', 'doctrine');
  * @method Item                setUpdatedAt()             Sets the current record's "updated_at" value
  * @method Item                setAdmin()                 Sets the current record's "Admin" value
  * @method Item                setAdmin2()                Sets the current record's "Admin_2" value
+ * @method Item                setBests()                 Sets the current record's "Bests" collection
+ * @method Item                setCinema()                Sets the current record's "Cinema" collection
  * @method Item                setNewsItem()              Sets the current record's "NewsItem" collection
  * 
  * @package    imdb
@@ -634,12 +640,20 @@ abstract class BaseItem extends sfDoctrineRecord
     {
         parent::setUp();
         $this->hasOne('Admin', array(
-             'local' => 'updated_aid',
+             'local' => 'created_aid',
              'foreign' => 'id'));
 
         $this->hasOne('Admin as Admin_2', array(
-             'local' => 'created_aid',
+             'local' => 'updated_aid',
              'foreign' => 'id'));
+
+        $this->hasMany('Bests', array(
+             'local' => 'id',
+             'foreign' => 'item_id'));
+
+        $this->hasMany('Cinema', array(
+             'local' => 'id',
+             'foreign' => 'item_id'));
 
         $this->hasMany('NewsItem', array(
              'local' => 'id',

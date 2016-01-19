@@ -46,7 +46,7 @@ Doctrine_Manager::getInstance()->bindComponent('News', 'doctrine');
  * @method News                setImage()       Sets the current record's "image" value
  * @method News                setContent()     Sets the current record's "content" value
  * @method News                setIsActive()    Sets the current record's "is_active" value
- * @method Item                setIsFeatured()  Sets the current record's "is_featured" value
+ * @method News                setIsFeatured()  Sets the current record's "is_featured" value
  * @method News                setSort()        Sets the current record's "sort" value
  * @method News                setNbViews()     Sets the current record's "nb_views" value
  * @method News                setCreatedAt()   Sets the current record's "created_at" value

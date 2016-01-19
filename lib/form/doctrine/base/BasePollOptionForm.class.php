@@ -16,7 +16,7 @@ abstract class BasePollOptionForm extends BaseFormDoctrine
   {
     $this->setWidgets(array(
       'id'          => new sfWidgetFormInputHidden(),
-      'poll_id'     => new sfWidgetFormInputText(),
+      'poll_id'     => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('Poll'), 'add_empty' => false)),
       'body'        => new sfWidgetFormTextarea(),
       'nb_vote'     => new sfWidgetFormInputText(),
       'user_id'     => new sfWidgetFormInputText(),
@@ -25,13 +25,13 @@ abstract class BasePollOptionForm extends BaseFormDoctrine
       'sort'        => new sfWidgetFormInputText(),
       'created_at'  => new sfWidgetFormDateTime(),
       'updated_at'  => new sfWidgetFormDateTime(),
-      'created_aid' => new sfWidgetFormInputText(),
-      'updated_aid' => new sfWidgetFormInputText(),
+      'created_aid' => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('Admin'), 'add_empty' => false)),
+      'updated_aid' => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('Admin_2'), 'add_empty' => false)),
     ));
 
     $this->setValidators(array(
       'id'          => new sfValidatorChoice(array('choices' => array($this->getObject()->get('id')), 'empty_value' => $this->getObject()->get('id'), 'required' => false)),
-      'poll_id'     => new sfValidatorInteger(),
+      'poll_id'     => new sfValidatorDoctrineChoice(array('model' => $this->getRelatedModelName('Poll'))),
       'body'        => new sfValidatorString(),
       'nb_vote'     => new sfValidatorInteger(),
       'user_id'     => new sfValidatorInteger(),
@@ -40,8 +40,8 @@ abstract class BasePollOptionForm extends BaseFormDoctrine
       'sort'        => new sfValidatorInteger(),
       'created_at'  => new sfValidatorDateTime(),
       'updated_at'  => new sfValidatorDateTime(array('required' => false)),
-      'created_aid' => new sfValidatorInteger(),
-      'updated_aid' => new sfValidatorInteger(),
+      'created_aid' => new sfValidatorDoctrineChoice(array('model' => $this->getRelatedModelName('Admin'))),
+      'updated_aid' => new sfValidatorDoctrineChoice(array('model' => $this->getRelatedModelName('Admin_2'))),
     ));
 
     $this->widgetSchema->setNameFormat('poll_option[%s]');

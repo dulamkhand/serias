@@ -53,11 +53,13 @@ Doctrine_Manager::getInstance()->bindComponent('Admin', 'doctrine');
  * @property Doctrine_Collection $Poll
  * @property Doctrine_Collection $Poll_2
  * @property Doctrine_Collection $PollOption
- * @property Doctrine_Collection $PollOption_3
+ * @property Doctrine_Collection $PollOption_2
  * @property Doctrine_Collection $Rating
  * @property Doctrine_Collection $Rating_2
  * @property Doctrine_Collection $Studio
  * @property Doctrine_Collection $Studio_2
+ * @property Doctrine_Collection $Subscriber
+ * @property Doctrine_Collection $Subscriber_2
  * @property Doctrine_Collection $User
  * @property Doctrine_Collection $User_2
  * 
@@ -107,11 +109,13 @@ Doctrine_Manager::getInstance()->bindComponent('Admin', 'doctrine');
  * @method Doctrine_Collection getPoll()            Returns the current record's "Poll" collection
  * @method Doctrine_Collection getPoll2()           Returns the current record's "Poll_2" collection
  * @method Doctrine_Collection getPollOption()      Returns the current record's "PollOption" collection
- * @method Doctrine_Collection getPollOption3()     Returns the current record's "PollOption_3" collection
+ * @method Doctrine_Collection getPollOption2()     Returns the current record's "PollOption_2" collection
  * @method Doctrine_Collection getRating()          Returns the current record's "Rating" collection
  * @method Doctrine_Collection getRating2()         Returns the current record's "Rating_2" collection
  * @method Doctrine_Collection getStudio()          Returns the current record's "Studio" collection
  * @method Doctrine_Collection getStudio2()         Returns the current record's "Studio_2" collection
+ * @method Doctrine_Collection getSubscriber()      Returns the current record's "Subscriber" collection
+ * @method Doctrine_Collection getSubscriber2()     Returns the current record's "Subscriber_2" collection
  * @method Doctrine_Collection getUser()            Returns the current record's "User" collection
  * @method Doctrine_Collection getUser2()           Returns the current record's "User_2" collection
  * @method Admin               setId()              Sets the current record's "id" value
@@ -160,11 +164,13 @@ Doctrine_Manager::getInstance()->bindComponent('Admin', 'doctrine');
  * @method Admin               setPoll()            Sets the current record's "Poll" collection
  * @method Admin               setPoll2()           Sets the current record's "Poll_2" collection
  * @method Admin               setPollOption()      Sets the current record's "PollOption" collection
- * @method Admin               setPollOption3()     Sets the current record's "PollOption_3" collection
+ * @method Admin               setPollOption2()     Sets the current record's "PollOption_2" collection
  * @method Admin               setRating()          Sets the current record's "Rating" collection
  * @method Admin               setRating2()         Sets the current record's "Rating_2" collection
  * @method Admin               setStudio()          Sets the current record's "Studio" collection
  * @method Admin               setStudio2()         Sets the current record's "Studio_2" collection
+ * @method Admin               setSubscriber()      Sets the current record's "Subscriber" collection
+ * @method Admin               setSubscriber2()     Sets the current record's "Subscriber_2" collection
  * @method Admin               setUser()            Sets the current record's "User" collection
  * @method Admin               setUser2()           Sets the current record's "User_2" collection
  * 
@@ -302,99 +308,99 @@ abstract class BaseAdmin extends sfDoctrineRecord
         parent::setUp();
         $this->hasMany('Admin', array(
              'local' => 'id',
-             'foreign' => 'updated_aid'));
+             'foreign' => 'created_aid'));
 
         $this->hasMany('Admin as Admin_2', array(
              'local' => 'id',
-             'foreign' => 'created_aid'));
+             'foreign' => 'updated_aid'));
 
         $this->hasMany('Banner', array(
              'local' => 'id',
-             'foreign' => 'updated_aid'));
+             'foreign' => 'created_aid'));
 
         $this->hasMany('Banner as Banner_2', array(
              'local' => 'id',
-             'foreign' => 'created_aid'));
+             'foreign' => 'updated_aid'));
 
         $this->hasMany('Bests', array(
              'local' => 'id',
-             'foreign' => 'updated_aid'));
+             'foreign' => 'created_aid'));
 
         $this->hasMany('Bests as Bests_2', array(
              'local' => 'id',
-             'foreign' => 'created_aid'));
+             'foreign' => 'updated_aid'));
 
         $this->hasMany('Celebrity', array(
              'local' => 'id',
-             'foreign' => 'updated_aid'));
+             'foreign' => 'created_aid'));
 
         $this->hasMany('Celebrity as Celebrity_2', array(
              'local' => 'id',
-             'foreign' => 'created_aid'));
+             'foreign' => 'updated_aid'));
 
         $this->hasMany('Cinema', array(
              'local' => 'id',
-             'foreign' => 'updated_aid'));
+             'foreign' => 'created_aid'));
 
         $this->hasMany('Cinema as Cinema_2', array(
              'local' => 'id',
-             'foreign' => 'created_aid'));
+             'foreign' => 'updated_aid'));
 
         $this->hasMany('Feedback', array(
              'local' => 'id',
-             'foreign' => 'updated_aid'));
+             'foreign' => 'created_aid'));
 
         $this->hasMany('Feedback as Feedback_2', array(
              'local' => 'id',
-             'foreign' => 'created_aid'));
+             'foreign' => 'updated_aid'));
 
         $this->hasMany('Image', array(
              'local' => 'id',
-             'foreign' => 'updated_aid'));
+             'foreign' => 'created_aid'));
 
         $this->hasMany('Image as Image_2', array(
              'local' => 'id',
-             'foreign' => 'created_aid'));
+             'foreign' => 'updated_aid'));
 
         $this->hasMany('Image as Image_3', array(
              'local' => 'id',
-             'foreign' => 'updated_aid'));
+             'foreign' => 'created_aid'));
 
         $this->hasMany('Image as Image_4', array(
              'local' => 'id',
-             'foreign' => 'created_aid'));
+             'foreign' => 'updated_aid'));
 
         $this->hasMany('Item', array(
              'local' => 'id',
-             'foreign' => 'updated_aid'));
+             'foreign' => 'created_aid'));
 
         $this->hasMany('Item as Item_2', array(
              'local' => 'id',
-             'foreign' => 'created_aid'));
+             'foreign' => 'updated_aid'));
 
         $this->hasMany('Link', array(
              'local' => 'id',
-             'foreign' => 'updated_aid'));
+             'foreign' => 'created_aid'));
 
         $this->hasMany('Link as Link_2', array(
              'local' => 'id',
-             'foreign' => 'created_aid'));
+             'foreign' => 'updated_aid'));
 
         $this->hasMany('Link as Link_3', array(
              'local' => 'id',
-             'foreign' => 'updated_aid'));
+             'foreign' => 'created_aid'));
 
         $this->hasMany('Link as Link_4', array(
              'local' => 'id',
-             'foreign' => 'created_aid'));
+             'foreign' => 'updated_aid'));
 
         $this->hasMany('Love', array(
              'local' => 'id',
-             'foreign' => 'updated_aid'));
+             'foreign' => 'created_aid'));
 
         $this->hasMany('Love as Love_2', array(
              'local' => 'id',
-             'foreign' => 'created_aid'));
+             'foreign' => 'updated_aid'));
 
         $this->hasMany('News', array(
              'local' => 'id',
@@ -406,11 +412,11 @@ abstract class BaseAdmin extends sfDoctrineRecord
 
         $this->hasMany('NewsItem', array(
              'local' => 'id',
-             'foreign' => 'updated_aid'));
+             'foreign' => 'created_aid'));
 
         $this->hasMany('NewsItem as NewsItem_4', array(
              'local' => 'id',
-             'foreign' => 'created_aid'));
+             'foreign' => 'updated_aid'));
 
         $this->hasMany('Page', array(
              'local' => 'id',
@@ -422,42 +428,50 @@ abstract class BaseAdmin extends sfDoctrineRecord
 
         $this->hasMany('Poll', array(
              'local' => 'id',
-             'foreign' => 'updated_aid'));
+             'foreign' => 'created_aid'));
 
         $this->hasMany('Poll as Poll_2', array(
              'local' => 'id',
-             'foreign' => 'created_aid'));
+             'foreign' => 'updated_aid'));
 
         $this->hasMany('PollOption', array(
              'local' => 'id',
              'foreign' => 'created_aid'));
 
-        $this->hasMany('PollOption as PollOption_3', array(
+        $this->hasMany('PollOption as PollOption_2', array(
              'local' => 'id',
              'foreign' => 'updated_aid'));
 
         $this->hasMany('Rating', array(
              'local' => 'id',
-             'foreign' => 'updated_aid'));
+             'foreign' => 'created_aid'));
 
         $this->hasMany('Rating as Rating_2', array(
              'local' => 'id',
-             'foreign' => 'created_aid'));
+             'foreign' => 'updated_aid'));
 
         $this->hasMany('Studio', array(
              'local' => 'id',
-             'foreign' => 'updated_aid'));
+             'foreign' => 'created_aid'));
 
         $this->hasMany('Studio as Studio_2', array(
              'local' => 'id',
+             'foreign' => 'updated_aid'));
+
+        $this->hasMany('Subscriber', array(
+             'local' => 'id',
              'foreign' => 'created_aid'));
 
-        $this->hasMany('User', array(
+        $this->hasMany('Subscriber as Subscriber_2', array(
              'local' => 'id',
              'foreign' => 'updated_aid'));
 
-        $this->hasMany('User as User_2', array(
+        $this->hasMany('User', array(
              'local' => 'id',
              'foreign' => 'created_aid'));
+
+        $this->hasMany('User as User_2', array(
+             'local' => 'id',
+             'foreign' => 'updated_aid'));
     }
 }

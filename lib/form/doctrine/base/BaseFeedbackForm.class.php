@@ -22,6 +22,8 @@ abstract class BaseFeedbackForm extends BaseFormDoctrine
       'phone'        => new sfWidgetFormInputText(),
       'message'      => new sfWidgetFormTextarea(),
       'created_at'   => new sfWidgetFormDateTime(),
+      'created_aid'  => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('Admin'), 'add_empty' => false)),
+      'updated_aid'  => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('Admin_2'), 'add_empty' => false)),
     ));
 
     $this->setValidators(array(
@@ -32,6 +34,8 @@ abstract class BaseFeedbackForm extends BaseFormDoctrine
       'phone'        => new sfValidatorString(array('max_length' => 255)),
       'message'      => new sfValidatorString(),
       'created_at'   => new sfValidatorDateTime(),
+      'created_aid'  => new sfValidatorDoctrineChoice(array('model' => $this->getRelatedModelName('Admin'), 'required' => false)),
+      'updated_aid'  => new sfValidatorDoctrineChoice(array('model' => $this->getRelatedModelName('Admin_2'), 'required' => false)),
     ));
 
     $this->widgetSchema->setNameFormat('feedback[%s]');

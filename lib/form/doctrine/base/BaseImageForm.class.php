@@ -26,8 +26,8 @@ abstract class BaseImageForm extends BaseFormDoctrine
       'sort'        => new sfWidgetFormInputText(),
       'created_at'  => new sfWidgetFormDateTime(),
       'updated_at'  => new sfWidgetFormDateTime(),
-      'created_aid' => new sfWidgetFormInputText(),
-      'updated_aid' => new sfWidgetFormInputText(),
+      'created_aid' => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('Admin'), 'add_empty' => false)),
+      'updated_aid' => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('Admin_2'), 'add_empty' => false)),
     ));
 
     $this->setValidators(array(
@@ -42,8 +42,8 @@ abstract class BaseImageForm extends BaseFormDoctrine
       'sort'        => new sfValidatorInteger(),
       'created_at'  => new sfValidatorDateTime(),
       'updated_at'  => new sfValidatorDateTime(array('required' => false)),
-      'created_aid' => new sfValidatorInteger(),
-      'updated_aid' => new sfValidatorInteger(),
+      'created_aid' => new sfValidatorDoctrineChoice(array('model' => $this->getRelatedModelName('Admin'))),
+      'updated_aid' => new sfValidatorDoctrineChoice(array('model' => $this->getRelatedModelName('Admin_2'))),
     ));
 
     $this->widgetSchema->setNameFormat('image[%s]');

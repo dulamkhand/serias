@@ -235,11 +235,11 @@ abstract class BaseBanner extends sfDoctrineRecord
     {
         parent::setUp();
         $this->hasOne('Admin', array(
-             'local' => 'updated_aid',
+             'local' => 'created_aid',
              'foreign' => 'id'));
 
         $this->hasOne('Admin as Admin_2', array(
-             'local' => 'created_aid',
+             'local' => 'updated_aid',
              'foreign' => 'id'));
     }
 }

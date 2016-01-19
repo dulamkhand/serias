@@ -37,8 +37,10 @@ class ItemForm extends BaseItemForm
       	$this->widgetSchema['casts']          = new sfWidgetFormInputText(array(), array());
 
       	$this->widgetSchema['duration']       = new sfWidgetFormInputText(array(), array('style'=>'width:40px;'));
+      	$this->setDefault('duration', 90);
       	$choices = GlobalLib::getNumbers(0, 50);
       	$this->widgetSchema['age']            = new sfWidgetFormInputText(array(), array('style'=>'width:40px;'));
+      	$this->setDefault('age', 13);
       	$this->widgetSchema['studios']        = new sfWidgetFormInputText(array(), array());
       	$this->widgetSchema['director']       = new sfWidgetFormInputText(array(), array());
       	$this->widgetSchema['writer']         = new sfWidgetFormInputText(array(), array());
@@ -99,7 +101,7 @@ class ItemForm extends BaseItemForm
       	$this->validatorSchema['nb_seasons']   = new sfValidatorPass();
       	$this->validatorSchema['nb_episodes']  = new sfValidatorPass();
       	$this->validatorSchema['official_link1'] = new sfValidatorUrl(array('required'=>false), array());
-      	$this->validatorSchema['official_link2'] = new sfValidatorUrl();
+      	$this->validatorSchema['official_link2'] = new sfValidatorUrl(array('required'=>false), array());
 				$this->validatorSchema['kickass']      = new sfValidatorPass();
       	$this->validatorSchema['torrentz']     = new sfValidatorPass();
       	$this->validatorSchema['extratorrent'] = new sfValidatorPass();

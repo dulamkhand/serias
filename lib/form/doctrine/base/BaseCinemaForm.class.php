@@ -18,24 +18,24 @@ abstract class BaseCinemaForm extends BaseFormDoctrine
       'id'          => new sfWidgetFormInputHidden(),
       'cinema'      => new sfWidgetFormInputText(),
       'details'     => new sfWidgetFormTextarea(),
-      'item_id'     => new sfWidgetFormInputText(),
+      'item_id'     => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('Item'), 'add_empty' => false)),
       'is_active'   => new sfWidgetFormInputText(),
       'created_at'  => new sfWidgetFormDateTime(),
       'updated_at'  => new sfWidgetFormDateTime(),
-      'created_aid' => new sfWidgetFormInputText(),
-      'updated_aid' => new sfWidgetFormInputText(),
+      'created_aid' => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('Admin'), 'add_empty' => false)),
+      'updated_aid' => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('Admin_2'), 'add_empty' => false)),
     ));
 
     $this->setValidators(array(
       'id'          => new sfValidatorChoice(array('choices' => array($this->getObject()->get('id')), 'empty_value' => $this->getObject()->get('id'), 'required' => false)),
       'cinema'      => new sfValidatorString(array('max_length' => 50)),
       'details'     => new sfValidatorString(array('max_length' => 500)),
-      'item_id'     => new sfValidatorInteger(),
+      'item_id'     => new sfValidatorDoctrineChoice(array('model' => $this->getRelatedModelName('Item'))),
       'is_active'   => new sfValidatorInteger(),
       'created_at'  => new sfValidatorDateTime(),
       'updated_at'  => new sfValidatorDateTime(array('required' => false)),
-      'created_aid' => new sfValidatorInteger(),
-      'updated_aid' => new sfValidatorInteger(),
+      'created_aid' => new sfValidatorDoctrineChoice(array('model' => $this->getRelatedModelName('Admin'))),
+      'updated_aid' => new sfValidatorDoctrineChoice(array('model' => $this->getRelatedModelName('Admin_2'))),
     ));
 
     $this->widgetSchema->setNameFormat('cinema[%s]');
