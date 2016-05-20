@@ -1,41 +1,30 @@
 <?php $host = sfConfig::get('app_host')?>
 
-<form action="#" method="post" id="formLogin" class="left" title="Нэвтрэх" style="padding:30px 70px 0px 70px;z-index:2;">
-    <div id="errorLogin"></div>
-    
-    <?php echo $form['email']->renderLabel() ?>
-    <br clear="all">
+<form action="<?php echo url_for('user/doLogin')?>" method="post" id="formLogin" class="left" title="Нэвтрэх" style="padding:0px;z-index:2;">
     <?php echo $form['email'] ?>
-    <br clear="all">
-    <?php echo $form['password']->renderLabel() ?>
-    <br clear="all">
     <?php echo $form['password'] ?>
-    
-    <br clear="all">
-    <button onclick="submitLoginForm();return false;" class="buttonOrange" 
-          style="width:262px;padding:2px 90px;cursor:pointer;">НЭВТРЭХ</button>
+    <button type="submit" class="left upper white" style="line-height:22px;cursor:pointer;z-index:1001;margin-right:5px;border:0;"/>НЭВТРЭХ</button>
 </form>
 
-
 <script type="text/javascript">
-function submitLoginForm()
-{
-  $.ajax({
-      url: "<?php echo url_for('user/doLogin')?>",
-      type : "POST",
-      data: $("#formLogin").serialize(),
-      beforeSend: function()
-      {
-          $('#errorLogin').html('<img src="<?php echo $host?>images/loading.gif" style="margin:0 120px;" />');
-      },
-      onLoading : function ()
-      {
-          $('#errorLogin').html('<img src="<?php echo $host?>images/loading.gif" style="margin:0 120px;"/>');
-      },
-      success: function(data)
-      {
-          $('#errorLogin').html(data);
-      }
-  });
-}
+$('#login-email').click(function(){
+    if($(this).val().trim() == "Имэйл хаяг"){
+        $(this).val('');
+    }
+}).blur(function() {
+    if($(this).val().trim() == ""){
+        $(this).val('Имэйл хаяг');
+    }
+});
+
+$('#login-password').val('Нууц үг');
+$('#login-password').click(function(){
+    if($(this).val().trim() == "Нууц үг"){
+        $(this).val('');
+    }
+}).blur(function() {
+    if($(this).val().trim() == ""){
+        $(this).val('Нууц үг');
+    }
+});
 </script>

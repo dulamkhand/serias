@@ -32,7 +32,7 @@ class AdminLoginForm extends BaseAdminForm
   
   public function validateEmail($validator, $value)
   {
-      $admin = Doctrine::getTable('Admin')->doFetchOne(array('id'), array('email'=>$value));
+      $admin = Doctrine::getTable('Admin')->doFetchOne('id', array('email'=>$value));
       if (!$admin)
       {
         
@@ -53,7 +53,5 @@ class AdminLoginForm extends BaseAdminForm
       }
       return $value;
   }
-  
-
 
 }

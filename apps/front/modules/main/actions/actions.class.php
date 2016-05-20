@@ -9,7 +9,7 @@
  * @version    SVN: $Id: actions.class.php 3335 2007-01-23 16:19:56Z fabien $
  */
 
-$ITEM_COLUMNS = array('type', 'route', 'folder', 'image', 'title', 'year');
+$ITEM_COLUMNS = 'type, route, folder, image, title, year';
 class mainActions extends sfActions
 { 
     
@@ -21,13 +21,13 @@ class mainActions extends sfActions
     {
         global $ITEM_COLUMNS;
     		$arr = array();
-    		$arr['movie']  		 = ItemTable::getInstance()->doFetchArray(array($ITEM_COLUMNS), array('type'=>'movie', 'limit'=>12));
-    		$arr['soap'] 		 = ItemTable::getInstance()->doFetchArray(array($ITEM_COLUMNS), array('type'=>'soap', 'limit'=>12));
-    		$arr['series'] 		 = ItemTable::getInstance()->doFetchArray(array($ITEM_COLUMNS), array('type'=>'series', 'limit'=>12));
-    		$arr['tvshow'] 		 = ItemTable::getInstance()->doFetchArray(array($ITEM_COLUMNS), array('type'=>'tvshow', 'limit'=>12));
-    		$arr['mn']     		 = ItemTable::getInstance()->doFetchArray(array($ITEM_COLUMNS), array('type'=>'mn', 'limit'=>12));
-    		$arr['nonfiction']   = ItemTable::getInstance()->doFetchArray(array($ITEM_COLUMNS), array('type'=>'nonfiction', 'limit'=>12));
-    		$arr['game'] 		 = ItemTable::getInstance()->doFetchArray(array($ITEM_COLUMNS), array('type'=>'game', 'limit'=>12));
+    		$arr['movie']  		 = ItemTable::getInstance()->doFetchArray($ITEM_COLUMNS, array('type'=>'movie', 'limit'=>12));
+    		$arr['soap'] 		 = ItemTable::getInstance()->doFetchArray($ITEM_COLUMNS, array('type'=>'soap', 'limit'=>12));
+    		$arr['series'] 		 = ItemTable::getInstance()->doFetchArray($ITEM_COLUMNS, array('type'=>'series', 'limit'=>12));
+    		$arr['tvshow'] 		 = ItemTable::getInstance()->doFetchArray($ITEM_COLUMNS, array('type'=>'tvshow', 'limit'=>12));
+    		$arr['mn']     		 = ItemTable::getInstance()->doFetchArray($ITEM_COLUMNS, array('type'=>'mn', 'limit'=>12));
+    		$arr['nonfiction']   = ItemTable::getInstance()->doFetchArray($ITEM_COLUMNS, array('type'=>'nonfiction', 'limit'=>12));
+    		$arr['game'] 		 = ItemTable::getInstance()->doFetchArray($ITEM_COLUMNS, array('type'=>'game', 'limit'=>12));
         $this->arr = $arr;
     }   
     
@@ -36,7 +36,7 @@ class mainActions extends sfActions
     {
         global $ITEM_COLUMNS;
         $s = GlobalLib::clearInput($request->getParameter('search'));
-        $rss  		 = ItemTable::getInstance()->doFetchArray(array($ITEM_COLUMNS), array('s'=>$s, 'limit'=>20));
+        $rss  		 = ItemTable::getInstance()->doFetchArray($ITEM_COLUMNS, array('s'=>$s, 'limit'=>20));
         $this->setLayout(false);
         return $this->renderPartial('partial/searchResult', array('rss'=>$rss));
     }
@@ -44,37 +44,37 @@ class mainActions extends sfActions
     # BEGIN OF PAGE
     public function executeAbout(sfWebRequest $request)
     {	
-        $this->rs = PageTable::getInstance()->doFetchOne(array('*'), array('type'=>'about'));
+        $this->rs = PageTable::getInstance()->doFetchOne('*', array('type'=>'about'));
     }
     
     public function executeAdvertisement(sfWebRequest $request)
     {	
-        $this->rs = PageTable::getInstance()->doFetchOne(array('*'), array('type'=>'advertisement'));
+        $this->rs = PageTable::getInstance()->doFetchOne('*', array('type'=>'advertisement'));
     }
 		
     public function executePrivacy(sfWebRequest $request)
     {	
-        $this->rs = PageTable::getInstance()->doFetchOne(array('*'), array('type'=>'privacy'));
+        $this->rs = PageTable::getInstance()->doFetchOne('*', array('type'=>'privacy'));
     }
     
     public function executeTerms(sfWebRequest $request)
     {	
-        $this->rs = PageTable::getInstance()->doFetchOne(array('*'), array('type'=>'terms'));
+        $this->rs = PageTable::getInstance()->doFetchOne('*', array('type'=>'terms'));
     }
     
     public function executeHowtorate(sfWebRequest $request)
     {	
-        $this->rs = PageTable::getInstance()->doFetchOne(array('*'), array('type'=>'howtorate'));
+        $this->rs = PageTable::getInstance()->doFetchOne('*', array('type'=>'howtorate'));
     }
     
     public function executeCopyright(sfWebRequest $request)
     {	
-        $this->rs = PageTable::getInstance()->doFetchOne(array('*'), array('type'=>'copyright'));
+        $this->rs = PageTable::getInstance()->doFetchOne('*', array('type'=>'copyright'));
     }
     
     public function executeCooperate(sfWebRequest $request)
     {	
-        $this->rs = PageTable::getInstance()->doFetchOne(array('*'), array('type'=>'cooperate'));
+        $this->rs = PageTable::getInstance()->doFetchOne('*', array('type'=>'cooperate'));
     }
         
     public function executeContact(sfWebRequest $request)

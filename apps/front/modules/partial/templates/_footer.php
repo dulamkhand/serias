@@ -5,7 +5,7 @@
 	        <?php echo image_tag('logo-200x100.png', array('style'=>'max-width:150px;'))?>
 	    </a>
 	    <!--pages-->
-	    <?php $rss = PageTable::getInstance()->doFetchArray(array('type', 'title'), array('limit'=>20));?>
+	    <?php $rss = PageTable::getInstance()->doFetchArray('type, title', array('limit'=>20));?>
       <ul class="left">
       		<?php $i=0; foreach ($rss as $rs):?>
 		      		<?php if($i++ < 4):?>
@@ -43,5 +43,5 @@
   <br clear="all">
 </div>
 
-<?php $rs = BannerTable::getInstance()->doFetchOne(array('path', 'ext', 'link', 'target'), array('position'=>'footer'));?>
+<?php $rs = BannerTable::getInstance()->doFetchOne('path, ext, link, target', array('position'=>'footer'));?>
 <?php if($rs) include_partial("partial/banner", array('rs'=>$rs, 'width'=>1081, 'height'=>100, 'close'=>false));?>

@@ -51,7 +51,7 @@ class ItemTable extends Doctrine_Table
             	
         # keyword
         if(isset($params['s']) && $params['s'] != null)
-            $q->andWhere('title LIKE ? ', array('%'.$params['s'].'%'));
+            $q->andWhere('title LIKE ? or title_mn LIKE ?', array('%'.$params['s'].'%', '%'.$params['s'].'%'));
 
         # isActive
         if(isset($params['isActive'])) {
@@ -90,23 +90,23 @@ class ItemTable extends Doctrine_Table
     }
     
 
-    public static function doExecute($columns = array(), $params = array())
+    public static function doExecute($columns, $params = array())
     {
-        $q = Doctrine_Query::create()->select(join(',', $columns));
+        $q = Doctrine_Query::create()->select($columns);
         $q = self::params($q, $params);
         return $q->execute();
     }
     
   
-    public static function doFetchArray($columns = array(), $params = array())
+    public static function doFetchArray($columns, $params = array())
     {
-        $q = Doctrine_Query::create()->select(join(',', $columns));
+        $q = Doctrine_Query::create()->select($columns);
         $q = self::params($q, $params);
         return $q->fetchArray();
     }
     
     
-    public static function doFetchSelection($fieldName, $columns = array(), $params = array())
+    public static function doFetchSelection($fieldName, $columns, $params = array())
     {
         $res = array();
         $rss = self::doFetchArray($columns, $params);
@@ -120,25 +120,25 @@ class ItemTable extends Doctrine_Table
     public static function doFetchSelectionItem($params = array())
     {
         $res = array();
-        $rss = self::doFetchArray(array('id, title, year'), $params);
+        $rss = self::doFetchArray('id, title, year', $params);
         foreach ($rss as $rs) {
             $res[$rs['id']] = $rs['title'].' ('.$rs['year'].')';
         }
         return $res;
     }
     
-    public static function doFetchOne($columns = array(), $params = array())
+    public static function doFetchOne($columns, $params = array())
     {
-        $q = Doctrine_Query::create()->select(join(',', $columns));
+        $q = Doctrine_Query::create()->select($columns);
         $params['limit'] = 1;
         $q = self::params($q, $params);
         return $q->fetchOne();
     }
     
     
-    public static function getPager($columns = array(), $params = array(), $page=1)
+    public static function getPager($columns, $params = array(), $page=1)
     {
-        $q = Doctrine_Query::create()->select(join(',', $columns));
+        $q = Doctrine_Query::create()->select($columns);
         $q = self::params($q, $params);
 
         $pager = new sfDoctrinePager(isset($params['limit']) ? $params['limit'] : sfConfig::get('app_pager', 30));

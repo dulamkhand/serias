@@ -10,7 +10,7 @@ class myUser extends sfBasicSecurityUser
       $this->setAttribute('email', $user->getEmail());
       $this->setAttribute('firstname', $user->getFirstname());
       $this->setAttribute('lastname', $user->getLastname());
-      $this->setAttribute('fullname', $user->getFullname());
+      $this->setAttribute('fullname', $user);
       $this->setAttribute('avator', $user->getAvator());
       $user->setLoggedAt(date('Y-m-d H:i:s'));
       $user->save();

@@ -1,11 +1,11 @@
 <div id="rightside">
 		<!--banner-->
-		<?php $bbs = BannerTable::getInstance()->doFetchArray(array('path', 'ext', 'link', 'target'), array('position'=>'right', 'limit'=>5));?>
+		<?php $bbs = BannerTable::getInstance()->doFetchArray('path, ext, link, target', array('position'=>'right', 'limit'=>5));?>
 		<?php if(isset($bbs[0])) include_partial("partial/banner", array('rs'=>$bbs[0], 'width'=>180, 'height'=>300));?>
 
 		<!--new-->
 	  <h3>Манай санд нэмэгдсэн</h3>
-		<?php $rss = ItemTable::getInstance()->doFetchArray(array('route, title, year'), array('limit'=>10))?>
+		<?php $rss = ItemTable::getInstance()->doFetchArray('route, title, year', array('limit'=>10))?>
 		<ul>
 	  <?php foreach ($rss as $rs):?>
 	  		<?php include_partial('page/box-xxs', array('rs'=>$rs));?>
@@ -19,7 +19,7 @@
 		<!--banner-->
 		<?php if(isset($bbs[1])) include_partial("partial/banner", array('rs'=>$bbs[1], 'width'=>180, 'height'=>300));?>
 		
-    <?php $rss = ItemTable::getInstance()->doFetchArray(array('route, title, year, boxoffice, boxoffice_mn, thisweek, comingsoon'), 
+    <?php $rss = ItemTable::getInstance()->doFetchArray('route, title, year, boxoffice, boxoffice_mn, thisweek, comingsoon', 
                  array('limit'=>80, 'rightside'=>1, 'orderBy'=>'boxoffice ASC, boxoffice_mn ASC, title ASC'))?>
     <h3>Box Office</h3>
     <ul>

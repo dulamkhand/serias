@@ -17,7 +17,7 @@ class linkActions extends sfActions
         $params['itemId'] = $request->getParameter('itemId');
         $params['orderBy'] = 'season ASC, episode ASC, created_at DESC, updated_at DESC';
         if($request->getParameter('s')) $params['sLink'] = $request->getParameter('s');
-        $this->pager = LinkTable::getInstance()->getPager($params, $request->getParameter('page'));
+        $this->pager = LinkTable::getInstance()->getPager('*', $params, $request->getParameter('page'));
         
     }
   

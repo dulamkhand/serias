@@ -19,7 +19,7 @@ class celebrityActions extends sfActions
       $params = array();
       $params['isActive'] = 'all';
       if($request->getParameter('sCelebrity')) $params['s'] = $request->getParameter('s');
-      $this->pager = CelebrityTable::getInstance()->getPager(array('*'), $params, $request->getParameter('page'));
+      $this->pager = CelebrityTable::getInstance()->getPager('*', $params, $request->getParameter('page'));
   }
   
   

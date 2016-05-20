@@ -13,7 +13,8 @@
 class Item extends BaseItem
 {
   public function __toString() {
-      return $this->getTitle().' ('.$this->getYear().')';
+      //return $this->getTitle().' <span style="font-size:28px;color:#000;">(</span>'.$this->getYear().'<span style="font-size:28px;color:#000;">)</span>';
+      return $this->getTitle();
   }
   
   public function getNbImages() {

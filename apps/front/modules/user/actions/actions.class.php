@@ -21,10 +21,10 @@ class userActions extends sfActions
         if($this->getUser()->getAttribute('id') ==  $id) {
             $id = $this->getUser()->getAttribute('id');
         }*/
-        $this->forward404Unless($this->user = $user = UserTable::getInstance()->doFetchOne(array('*'), 
-            array('email'=>$this->getUser()->getAttribute('email'))));
+        $this->forward404Unless($this->user = $user = UserTable::getInstance()->doFetchOne('*', 
+            			array('email'=>$this->getUser()->getAttribute('email'))));
             
-        $this->pager = LoveTable::getInstance()->getPager(array('*'), 
+        $this->pager = LoveTable::getInstance()->getPager('*', 
                   array('objectType'=>'item', 'userId'=>$this->getUser()->getId(), 'isActive'=>-1), 
                   $request->getParameter('page'));
     }
@@ -36,18 +36,16 @@ class userActions extends sfActions
     }
 
   
-    public function executeDoLogin(sfWebRequest $request)
+    public function executeDoLogin(sfWebRequest $request) 
     {
+    		sfContext::getInstance()->getConfiguration()->loadHelpers('Url');
         $form = new LoginForm();
         
-        if ($request->isMethod(sfRequest::POST))
-        {
-            $form->bind($request->getParameter($form->getName()));
-            if ($form->isValid())
-            {
+        if ($request->isMethod(sfRequest::POST)) {
+            $form->bind($request->getParameter($form->getName())); 
+            if ($form->isValid()) {
                 $user = $form->getObject1();
-                if($user instanceof User)
-                {
+                if($user instanceof User) {
                     // active user
                     if($user->getIsActive()) {
                         $this->getUser()->signIn($user);
@@ -65,18 +63,17 @@ class userActions extends sfActions
                         $this->getUser()->setFlash('flash', "Та бүртгэлээ идэвхижүүлээгүй байна. Идэвхижүүлэх линк таны и-мэйл хаягруу илгээгдлээ.", true);
                     }
                 }
-                
-                sfContext::getInstance()->getConfiguration()->loadHelpers('Url');
                 #$url = $request->getReferer() ? $request->getReferer() : url_for('user/profile');
                 $url = url_for('user/profile');
-                $str = "
-                    <script type='text/javascript'>
-                      window.location.href = '".$url."';
-                    </script>";
-                return $this->renderText($str);
-            }
-            echo $form['email']->renderError().$form['password']->renderError();
-            return sfView::NONE;
+						} else {
+								$url = url_for('user/login');
+								echo $form['email']->renderError().$form['password']->renderError();
+						}
+						$str = "
+                <script type='text/javascript'>
+                  window.location.href = '".$url."';
+                </script>";            
+            return $this->renderText($str);
         }
         return sfView::SUCCESS;
     }

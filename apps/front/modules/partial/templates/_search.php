@@ -9,19 +9,21 @@
 
 <script type="text/javascript">
 $('#search').keyup(function() {
-  $.ajax({
-    url: "<?php echo url_for('main/search')?>",
-    type: "POST",
-    data: {search:$('#search').val()},
-    beforeSend: function(){
-        $('#search-loader').show();
-    },
-    success: function(data) {
-        $('#search-loader').hide();
-        $("#search-result").html(data);
-        $("#search-result").slideDown();
-    }
-  });
+	if($('#search').val().length > 2) {
+			$.ajax({
+			    url: "<?php echo url_for('main/search')?>",
+			    type: "POST",
+			    data: {search:$('#search').val()},
+			    beforeSend: function(){
+			        $('#search-loader').show();
+			    },
+			    success: function(data) {
+			        $('#search-loader').hide();
+			        $("#search-result").html(data);
+			        $("#search-result").slideDown();
+			    }
+		  });
+	}
   return false;
 });
 

@@ -30,8 +30,12 @@ ul#mainmenu li a:hover{color:#a53000;font-weight:bold;}
 
 #scrollUp {background: url(../images/icons/scrollup.png) no-repeat;bottom:40px;right:20px;width:32px;height:32px;}
 
-input#search{float:left;background:#fff;width:300px;height:24px;padding:0 5px;color:#aaa;font-size:16px;border:none;}
+input#search{float:left;background:#fff;width:300px;height:24px;padding:0 5px;color:#888;font-size:16px;border:none;}
 input#search:focus, textarea#search:focus{border:none;}
+
+input.login{float:left;background:#fff;width:100px;height:20px;padding:0 3px;color:#888;font-size:14px;border:none;margin:2px 3px 0 0;line-height:20px;
+					  text-transform:uppercase;}
+input.login:focus, textarea#search:focus{border:none;}
 
 /* global */
 input {padding:0 5px;height:26px;border:1px solid #dedede;width:300px;margin:0 0 3px 0;}
@@ -121,7 +125,7 @@ strong,b{font-weight:bold!important;}
 .radius5 {border-radius:5px;-moz-border-radius:5px;-webkit-border-radius:5px;-o-border-radius:5px;}
 .radius4 {border-radius:4px;-moz-border-radius:4px;-webkit-border-radius:4px;-o-border-radius:4px;}
 
-.timestamp{color:#aaa;font-size:12px;text-transform:uppercase;line-height:18px;}
+.timestamp{color:#888;font-size:12px;text-transform:uppercase;line-height:18px;}
 .more1{float:right;color:#fff;text-transform:uppercase;text-decoration:none;line-height:20px;display:block;width:60px;height:19px;
 			 background:url(../images/icons/more1.png) no-repeat;padding:0 0 0 5px;margin:10px;}
 

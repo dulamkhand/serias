@@ -60,23 +60,23 @@ class StudioTable extends Doctrine_Table
     }
     
 
-    public static function doExecute($columns = array(), $params = array())
+    public static function doExecute($columns, $params = array())
     {
-        $q = Doctrine_Query::create()->select(join(',', $columns));
+        $q = Doctrine_Query::create()->select($columns);
         $q = self::params($q, $params);
         return $q->execute();
     }
     
   
-    public static function doFetchArray($columns = array(), $params = array())
+    public static function doFetchArray($columns, $params = array())
     {
-        $q = Doctrine_Query::create()->select(join(',', $columns));
+        $q = Doctrine_Query::create()->select($columns);
         $q = self::params($q, $params);
         return $q->fetchArray();
     }
     
     
-    public static function doFetchSelection($fieldName, $columns = array(), $params = array())
+    public static function doFetchSelection($fieldName, $columns, $params = array())
     {
         $res = array();
         $rss = self::doFetchArray($columns, $params);
@@ -87,18 +87,18 @@ class StudioTable extends Doctrine_Table
         return $res;
     }
   
-    public static function doFetchOne($columns = array(), $params = array())
+    public static function doFetchOne($columns, $params = array())
     {
-        $q = Doctrine_Query::create()->select(join(',', $columns));
+        $q = Doctrine_Query::create()->select($columns);
         $params['limit'] = 1;
         $q = self::params($q, $params);
         return $q->fetchOne();
     }
     
     
-    public static function getPager($columns = array(), $params = array(), $page=1)
+    public static function getPager($columns, $params = array(), $page=1)
     {
-        $q = Doctrine_Query::create()->select(join(',', $columns));
+        $q = Doctrine_Query::create()->select($columns);
         $q = self::params($q, $params);
 
         $pager = new sfDoctrinePager(isset($params['limit']) ? $params['limit'] : sfConfig::get('app_pager', 30));

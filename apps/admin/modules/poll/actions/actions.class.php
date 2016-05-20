@@ -19,7 +19,7 @@ class pollActions extends sfActions
         $params = array();
         $params['isActive'] = 'all';
         $params['s'] = $request->getParameter('s');
-        $this->pager = PollTable::getInstance()->getPager(array('*'), $params, $request->getParameter('page'));
+        $this->pager = PollTable::getInstance()->getPager('*', $params, $request->getParameter('page'));
     }    
   
     public function executeNew(sfWebRequest $request)

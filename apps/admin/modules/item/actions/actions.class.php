@@ -17,7 +17,7 @@ class itemActions extends sfActions
         if($request->getParameter('type')) $params['type'] = $request->getParameter('type');        
         if($request->getParameter('caid')) $params['createdAid'] = trim($request->getParameter('caid'));
         $params['s'] = trim($request->getParameter('s'));
-        $this->pager = ItemTable::getInstance()->getPager(array('*'), $params, $request->getParameter('page'));
+        $this->pager = ItemTable::getInstance()->getPager('*', $params, $request->getParameter('page'));
         
     }
   
@@ -107,7 +107,7 @@ class itemActions extends sfActions
             foreach($tmp as $t) {
                 $t = explode('(', $t);
                 $route = GlobalLib::slugify(GlobalLib::mn2en(trim($t[0])));
-            		if($route && !CelebrityTable::getInstance()->doFetchOne(array('id'), array('route'=>$route, 'isActive'=>'all'))) {
+            		if($route && !CelebrityTable::getInstance()->doFetchOne('id', array('route'=>$route, 'isActive'=>'all'))) {
             				$c = new Celebrity();
             				$c->setFullname(trim($t[0]));
             				$c->setRoute($route);
@@ -123,7 +123,7 @@ class itemActions extends sfActions
             foreach($tmp as $t) {
                 $t = explode('(', $t);
                 $route = GlobalLib::slugify(GlobalLib::mn2en(trim($t[0])));
-            		if($route && !CelebrityTable::getInstance()->doFetchOne(array('id'), array('route'=>$route, 'isActive'=>'all'))) {
+            		if($route && !CelebrityTable::getInstance()->doFetchOne('id', array('route'=>$route, 'isActive'=>'all'))) {
             				$c = new Celebrity();
             				$c->setFullname(trim($t[0]));
             				$c->setRoute($route);
@@ -139,7 +139,7 @@ class itemActions extends sfActions
             foreach($tmp as $t) {
                 $t = explode('(', $t);
                 $route = GlobalLib::slugify(GlobalLib::mn2en(trim($t[0])));
-            		if($route && !CelebrityTable::getInstance()->doFetchOne(array('id'), array('route'=>$route, 'isActive'=>'all'))) {
+            		if($route && !CelebrityTable::getInstance()->doFetchOne('id', array('route'=>$route, 'isActive'=>'all'))) {
             				$c = new Celebrity();
             				$c->setFullname(trim($t[0]));
             				$c->setRoute($route);
@@ -155,7 +155,7 @@ class itemActions extends sfActions
             foreach($tmp as $t) {
                 $t = explode('(', $t);
                 $route = GlobalLib::slugify(GlobalLib::mn2en(trim($t[0])));
-            		if($route && !StudioTable::getInstance()->doFetchOne(array('id'), array('route'=>$route, 'isActive'=>'all'))) {
+            		if($route && !StudioTable::getInstance()->doFetchOne('id', array('route'=>$route, 'isActive'=>'all'))) {
             				$c = new Studio();
             				$c->setName(trim($t[0]));
             				$c->setRoute($route);

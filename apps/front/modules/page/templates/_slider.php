@@ -1,4 +1,4 @@
-<?php $rss = ItemTable::getInstance()->doFetchArray(array('type, route, folder, image, title, year'), 
+<?php $rss = ItemTable::getInstance()->doFetchArray('type, route, folder, image, title, year', 
                                               array('limit'=>10))?>
 <div class="flexslider">
   <ul class="slides">

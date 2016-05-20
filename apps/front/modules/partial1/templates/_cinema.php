@@ -1,5 +1,5 @@
 <h1>Кино театрт</h1>
-<?php $rss = ItemTable::getInstance()->doExecute(array('*'), array());?>
+<?php $rss = ItemTable::getInstance()->doExecute('*', array());?>
 <div class="flexslider">
   <ul class="slides">
     <?php foreach ($rss as $rs):?>

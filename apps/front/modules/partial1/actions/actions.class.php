@@ -38,7 +38,7 @@ class partial1Actions extends sfActions
   public function executeBests(sfWebRequest $request)
   {
   		$this->bestType = $bestType = $request->getParameter('bestType');
-  		$this->rss = $rss = BestsTable::getInstance()->doExecute(array('*'), array('bestType'=>$bestType, 'orderBy'=>'number asc'));
+  		$this->rss = $rss = BestsTable::getInstance()->doExecute('*', array('bestType'=>$bestType, 'orderBy'=>'number asc'));
   		
   		// META
       $meta = sfConfig::get('app_webname').' | '.GlobalLib::getValue('bests', $bestType);

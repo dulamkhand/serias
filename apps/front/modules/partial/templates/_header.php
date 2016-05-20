@@ -15,7 +15,7 @@
     </a>
     <!--banner-->
     <div class="left">
-    		<?php $rs = BannerTable::getInstance()->doFetchOne(array('path', 'ext', 'link', 'target'), array('position'=>'top'));?>
+    		<?php $rs = BannerTable::getInstance()->doFetchOne('path, ext, link, target', array('position'=>'top'));?>
 				<?php include_partial("partial/banner", array('rs'=>$rs, 'width'=>931, 'height'=>90, 'close'=>false));?>
     </div>
 		<!--bar-->

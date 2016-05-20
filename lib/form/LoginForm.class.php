@@ -23,8 +23,11 @@ class LoginForm extends BaseUserForm
             $this['avator'],$this['logged_at'],$this['activation_code'],$this['ip']);
       
       // WIDGETS
-      $this->widgetSchema['email']        = new sfWidgetFormInputText(array(), array('style'=>'width:250px;'));
-      $this->widgetSchema['password']     = new sfWidgetFormInputPassword(array(), array('style'=>'width:250px;'));
+      $this->widgetSchema['email']        = new sfWidgetFormInputText(array(), array('class'=>'login', 'id'=>'login-email'));
+      $this->widgetSchema['password']     = new sfWidgetFormInputPassword(array(), array('class'=>'login', 'id'=>'login-password'));
+      
+      $this->setDefault('email', 'Имэйл хаяг');
+      $this->setDefault('password', 'Нууц үг');
       
       // VALIDATORS
       $this->validatorSchema['email']    = new sfValidatorCallback(array('required'=>true, 'callback' => array($this, 'validateEmail')), array('required'=> 'Имэйл хаягаа оруулна уу.'));

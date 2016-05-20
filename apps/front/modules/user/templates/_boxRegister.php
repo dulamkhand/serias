@@ -26,11 +26,11 @@ function submitRegisterForm()
       data: $("#formRegister").serialize(),
       beforeSend: function()
       {
-          $('#errorRegister').html('<img src="<?php echo $host?>images/loading.gif" style="margin:0 120px;" />');
+          $('#errorRegister').html('<img src="<?php echo $host?>images/icons/loading-colorful.gif" style="margin:0 120px;"/>');
       },
       onLoading : function ()
       {
-          $('#errorRegister').html('<img src="<?php echo $host?>images/loading.gif" style="margin:0 120px;" />');
+          $('#errorRegister').html('<img src="<?php echo $host?>images/icons/loading-colorful.gif" style="margin:0 120px;"/>');
       },
       success: function(data)
       {
@@ -38,4 +38,15 @@ function submitRegisterForm()
       }
   });
 }
+
+
+$('#register-email').click(function(){
+    if($(this).val().trim() == "Имэйл хаяг"){
+        $(this).val('');
+    }
+}).blur(function() {
+    if($(this).val().trim() == ""){
+        $(this).val('Имэйл хаяг');
+    }
+});
 </script>

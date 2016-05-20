@@ -1,6 +1,6 @@
 <h3>Төстэй кино</h3>
 <?php 
-$rss = ItemTable::getInstance()->doFetchArray(array('route', 'folder', 'image', 'title', 'year'), 
+$rss = ItemTable::getInstance()->doFetchArray('route, folder, image, title, year', 
         array('andWhere'=>'id <> '.$rs->getId().' 
 						        			 and year > '.($rs->getYear()-3).' and year <= '.($rs->getYear()+3).' 
 						        			 and genre like "%'.$rs->getGenre().'%"',

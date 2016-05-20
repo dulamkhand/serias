@@ -1,6 +1,6 @@
 <h3>Таны нээж үзсэн</h3>
 <?php 
-//$rss = ItemTable::getInstance()->doFetchArray(array('type', 'route', 'folder', 'image', 'title', 'year'), 
+//$rss = ItemTable::getInstance()->doFetchArray('type, route, folder, image, title, year', 
 //              array('idO'=>$rs->getId(), 'type'=>$rs->getType(), 'genres'=>explode(";", $rs->getGenre()), 'limit'=>10));
               
 $rss = $sf_user->getAttribute('viewed-movies-'.$sf_user->getId(), array());

@@ -4,7 +4,7 @@
 # default values
 all:
   #host: http://mmdb40.site40.net/
-  host: http://localhost/mmdb/trunk/web/
+  host: http://mmdb/
   webname: Монголын кино мэдээллийн нэгдсэн сан
   feedbackmail: mmdb.llc@gmail.com
   pager: 20

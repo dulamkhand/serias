@@ -9,7 +9,7 @@
  * @version    SVN: $Id: actions.class.php 3335 2007-01-23 16:19:56Z fabien $
  */
 
-$ITEM_COLUMNS = array('type', 'route', 'folder', 'image', 'title', 'year');
+$ITEM_COLUMNS = 'type, route, folder, image, title, year';
 class pageActions extends sfActions
 {
 
@@ -35,7 +35,7 @@ class pageActions extends sfActions
   
     public function executeShow(sfWebRequest $request)
     {
-        $this->rs = $rs = ItemTable::getInstance()->doFetchOne(array('*'), array('route'=>$request->getParameter('route')));
+        $this->rs = $rs = ItemTable::getInstance()->doFetchOne('*', array('route'=>$request->getParameter('route')));
         $this->forward404Unless($rs);
         
         // set nb_views

@@ -19,7 +19,7 @@ class cinemaActions extends sfActions
 	      $params = array();
 	      $params['isAcrive'] = 'all';
         $params['s'] = $request->getParameter('s');
-	      $this->pager = CinemaTable::getInstance()->getPager(array('*'), $params, $request->getParameter('page'));
+	      $this->pager = CinemaTable::getInstance()->getPager('*', $params, $request->getParameter('page'));
 	  }
 	  
 	  public function executeItemsOptions(sfWebRequest $request) 

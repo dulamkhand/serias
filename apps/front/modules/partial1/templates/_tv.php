@@ -1,5 +1,5 @@
 <h1>Телевизээр</h1>
-<?php $rss = ItemTable::getInstance()->doFetchArray(array('route, folder, image, title, year'), 
+<?php $rss = ItemTable::getInstance()->doFetchArray('route, folder, image, title, year', 
                                               array('limit'=>4, 'tv'=>array('mnb', '25', 'tv9', 'ubs')))?>
 <div class="flexsliderTv">
   <ul class="slides">

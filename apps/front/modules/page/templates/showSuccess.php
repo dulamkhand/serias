@@ -2,19 +2,12 @@
 <!--title-->
 <div>
 		<br clear="all">
-    <span class="left h1"><?php echo $rs?> <?php if($rs->getTitleMn()) echo '/'.$rs->getTitleMn().'/'?></span>
-    <!--love-->
-    <?php $isLoved = LoveTable::getInstance()->doFetchOne(array('id'), array('objectType'=>'item', 'objectId'=>$rs->getId(), 'isActive'=>-1));?>
-    <?php echo image_tag('icons/'.( $isLoved ? 'love24.ico' : 'unlove24.ico'), 
-              array('alt'=>($isLoved ? 'Unlove!' : 'Love!'),
-              'onclick'=>$sf_user->isAuthenticated() ? 
-                      "love({$rs->getId()}, 24);" 
-                    : "$('#formLogin').dialog({height:310, width:400});", 
-              'style'=>'margin:5px 0 0 5px;z-index:1;cursor:pointer;float:left;', 
-              'class'=>'love24', 'id'=>'love'.$rs->getId()))?>
-    <?php include_partial('love/js', array());?>
-    <br clear="all">
+    <span class="left h1">
+    		<?php echo $rs?> <?php if($rs->getTitleMn())?>
+    		<span style="font-size:28px;color:#000;">(</span><?php echo $rs->getYear()?><span style="font-size:28px;color:#000;">)</span>
+    </span>
 </div>
+<br clear="all">
 
 <!--image-->
 <?php if($rs->getCover()) echo image_tag('/u/'.$rs->getFolder().'/'.$rs->getCover(), array('style'=>'width:1081px;max-height:400px;')).'<br clear="all">'?>
@@ -37,14 +30,30 @@
 						Насны ангилал: <span style="font-size:18px;"><?php echo $rs->getAge()?>+</span>
 						<br clear="all">
 						Нээлт хийсэн: <span style="font-size:18px;"><?php echo $rs->getReleaseDate()?></span>
-				</h6>		
+				</h6>
 		</div>
 		<div class="right" style="width:120px;">
+				<!--love-->
+		    <?php $isLoved = LoveTable::getInstance()->doFetchOne('id', array('objectType'=>'item', 'objectId'=>$rs->getId(), 'isActive'=>-1));?>
+		    <?php echo image_tag('icons/'.( $isLoved ? 'love24.ico' : 'unlove24.ico'), 
+		              array('alt'=>($isLoved ? 'Unlove!' : 'Love!'),
+		              'onclick'=>$sf_user->isAuthenticated() ? 
+		                      "love({$rs->getId()}, 24);" 
+		                    : "$('#formLogin').dialog({height:310, width:400});", 
+		              'style'=>'margin:5px 0 0 5px;z-index:1;cursor:pointer;float:left;', 
+		              'class'=>'love24', 'id'=>'love'.$rs->getId()))?>
+		    <?php include_partial('love/js', array());?>
+		    <br clear="all">
+		    
 				<!--rating-->
 				<?php include_partial('page/rating', array('rs'=>$rs));?>
 		</div>
 		<br clear="all">
 
+		<h6 style="margin:0;">
+				<?php echo $rs->getTitleMn()?> <span style="font-size:20px;color:#000;">(</span><?php echo $rs->getYear()?><span style="font-size:20px;color:#000;">)</span>
+		</h6>
+		<br clear="all">
 		<!--summary-->
 		<?php if($tmp = $rs->getSummaryMn()):?>
 				<?php echo $rs->getSummaryMn();?>
@@ -102,7 +111,7 @@
 <div class="left" style="width:482px;">
 		<h3>Холбоотой мэдээлэл</h3>
 		<ul class="news-s">
-				<?php $newss = NewsTable::getInstance()->doFetchArray(array('id, image, title, intro'), array('limit'=>2, 'itemId'=>$rs->getId()));
+				<?php $newss = NewsTable::getInstance()->doFetchArray('id, image, title, intro', array('limit'=>2, 'itemId'=>$rs->getId()));
 				foreach ($newss as $news){
 						include_partial('partial1/news-s', array('rs'=>$news));
 				}?>
@@ -114,7 +123,7 @@
 <div class="left" style="width:599px;">
 		<h3 style="margin-left:60px;">Биднийг дагана уу.</h3>
 		<div style="border-left:1px solid #dedede;margin:0 0 0 30px;padding:0 0 0 30px;">
-				<?php $rs = BannerTable::getInstance()->doFetchOne(array('path', 'ext', 'link', 'target'), array('position'=>'detail'));?>
+				<?php $rs = BannerTable::getInstance()->doFetchOne('path, ext, link, target', array('position'=>'detail'));?>
 				<?php include_partial("partial/banner", array('rs'=>$rs, 'width'=>537, 'height'=>190, 'close'=>false));?>		
 		</div>
 </div>

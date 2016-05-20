@@ -11,12 +11,12 @@
 class subscriberActions extends sfActions
 {
   function preExecute() {
-      $this->forwardUnless($this->getUser()->hasCredential('subscriber'), 'admin', 'perm');  
+      $this->forwardUnless($this->getUser()->hasCredential('Subscriber'), 'admin', 'perm');  
   }
 
   public function executeIndex(sfWebRequest $request)
   {
-      $this->pager = Doctrine_Core::getTable('subscriber')->getPager(array('*'), array('s'=>$request->getParameter('s')), $request->getParameter('page'));
+      $this->pager = Doctrine_Core::getTable('Subscriber')->getPager('*', array('s'=>$request->getParameter('s')), $request->getParameter('page'));
   }
 
   public function executeNew(sfWebRequest $request)
@@ -37,14 +37,14 @@ class subscriberActions extends sfActions
 
   public function executeEdit(sfWebRequest $request)
   {
-      $this->forward404Unless($subscriber = Doctrine_Core::getTable('subscriber')->find(array($request->getParameter('id'))), sprintf('Object Subscriber does not exist (%s).', $request->getParameter('id')));
+      $this->forward404Unless($subscriber = Doctrine_Core::getTable('Subscriber')->find(array($request->getParameter('id'))), sprintf('Object Subscriber does not exist (%s).', $request->getParameter('id')));
       $this->form = new SubscriberForm($subscriber);
   }
 
   public function executeUpdate(sfWebRequest $request)
   {
       $this->forward404Unless($request->isMethod(sfRequest::POST) || $request->isMethod(sfRequest::PUT));
-      $this->forward404Unless($subscriber = Doctrine_Core::getTable('subscriber')->find(array($request->getParameter('id'))), sprintf('Object Subscriber does not exist (%s).', $request->getParameter('id')));
+      $this->forward404Unless($subscriber = Doctrine_Core::getTable('Subscriber')->find(array($request->getParameter('id'))), sprintf('Object Subscriber does not exist (%s).', $request->getParameter('id')));
       $this->form = new SubscriberForm($subscriber);
   
       $this->processForm($request, $this->form);
@@ -56,7 +56,7 @@ class subscriberActions extends sfActions
   {
     $request->checkCSRFProtection();
 
-    $this->forward404Unless($subscriber = Doctrine_Core::getTable('subscriber')->find(array($request->getParameter('id'))), sprintf('Object Subscriber does not exist (%s).', $request->getParameter('id')));
+    $this->forward404Unless($subscriber = Doctrine_Core::getTable('Subscriber')->find(array($request->getParameter('id'))), sprintf('Object Subscriber does not exist (%s).', $request->getParameter('id')));
     $subscriber->delete();
 
     $this->redirect('subscriber/index');

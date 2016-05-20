@@ -21,11 +21,11 @@ class bestsActions extends sfActions
 	      $params['isAcrive'] = 'all';
 	      if($request->getParameter('bestType')) $params['bestType'] = $request->getParameter('bestType');
         if($request->getParameter('s')) $params['sBests'] = $request->getParameter('s');
-	      $this->pager = BestsTable::getInstance()->getPager(array('*'), $params, $request->getParameter('page'));
+	      $this->pager = BestsTable::getInstance()->getPager('*', $params, $request->getParameter('page'));
 	  }
 	  
 	  public function executeItemsOptions(sfWebRequest $request) {
-	  		$this->rss = ItemTable::getInstance()->doFetchSelectionItem(array('sItem'=>$request->getParameter('s')));
+	  		$this->rss = ItemTable::getInstance()->doFetchSelectionItem(array('s'=>$request->getParameter('s')));
 	  		$this->itemId = $request->getParameter('itemId');
 	      $this->setLayout(false);
 	  }

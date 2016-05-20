@@ -1,5 +1,5 @@
 <?php $rss = ItemTable::getInstance()->doFetchArray(
-								array('route, folder, image, title, year, is_watch_online, is_torrent_download, is_mongolian_language'), 
+								'route, folder, image, title, year, is_watch_online, is_torrent_download, is_mongolian_language', 
 						 		array('limit'=>50, 'homepage'=>1, 'orderBy'=>'is_watch_online DESC, is_torrent_download DESC, is_mongolian_language DESC'))?>
 <?php //include_partial('partial1/cinema', array());?>
 <?php include_partial('partial1/guide', array());?>
@@ -49,7 +49,7 @@
 <!--news-->
 <h1>Мэдээ мэдээлэл</h1>
 <ul class="news-s">
-	<?php $rss = NewsTable::getInstance()->doFetchArray(array('id, image, title, intro'), array('limit'=>6, 'isFeatured'=>1));
+	<?php $rss = NewsTable::getInstance()->doFetchArray('id, image, title, intro', array('limit'=>6, 'isFeatured'=>1));
 	foreach ($rss as $rs){
 		include_partial('partial1/news-s', array('rs'=>$rs));
 	}?>

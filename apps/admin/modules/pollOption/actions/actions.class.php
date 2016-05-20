@@ -21,7 +21,7 @@ class pollOptionActions extends sfActions
         $params['isActive'] = 'all';
         if($request->getParameter('pollId')) $params['pollId'] = $request->getParameter('pollId');
         if($request->getParameter('keyword')) $params['keyword'] = $request->getParameter('keyword');
-        $this->pager = Doctrine_Core::getTable('PollOption')->getPager($params, $request->getParameter('page'));
+        $this->pager = Doctrine_Core::getTable('PollOption')->getPager('*', $params, $request->getParameter('page'));
     }  
     
     public function executePrint(sfWebRequest $request)
@@ -30,7 +30,7 @@ class pollOptionActions extends sfActions
             $this->getUser()->setFlash('flash', 'Please select the poll!');
             $this->forward('pollOption', 'index');
         }
-        $this->poll = Doctrine::getTable('Poll')->doFetchOne(array('id'=>$request->getParameter('pollId')));
+        $this->poll = Doctrine::getTable('Poll')->doFetchOne('*', array('id'=>$request->getParameter('pollId')));
 
         $params = array();
         $params['isActive'] = 'all';

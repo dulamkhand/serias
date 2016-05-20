@@ -19,7 +19,7 @@ class pageActions extends sfActions
         $params = array();
         $params['isActive'] = 'all';
         $params['s'] = $request->getParameter('s');
-        $this->pager = PageTable::getInstance()->getPager(array('*'), $params, $request->getParameter('page'));
+        $this->pager = PageTable::getInstance()->getPager('*', $params, $request->getParameter('page'));
     }
   
     public function executeNew(sfWebRequest $request)

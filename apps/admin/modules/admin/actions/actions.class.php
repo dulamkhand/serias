@@ -41,7 +41,7 @@ class adminActions extends sfActions
       $params = array();
       $params['isActive'] = 'all';
       $params['s'] = $request->getParameter('s');
-      $this->pager = Doctrine::getTable('Admin')->getPager(array('*'), $params, $request->getParameter('page'));
+      $this->pager = Doctrine::getTable('Admin')->getPager('*', $params, $request->getParameter('page'));
   }
   
 

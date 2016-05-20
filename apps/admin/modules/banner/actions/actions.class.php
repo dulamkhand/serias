@@ -16,7 +16,7 @@ class bannerActions extends sfActions
   
   public function executeIndex(sfWebRequest $request)
   {
-      $this->pager = BannerTable::getInstance()->getPager(array('*'), array('isActive'=>'all', 'position'=>$position, 'orderBy'=>'position ASC, sort DESC'), $request->getParameter('page'));
+      $this->pager = BannerTable::getInstance()->getPager('*', array('isActive'=>'all', 'position'=>$position, 'orderBy'=>'position ASC, sort DESC'), $request->getParameter('page'));
   }
   
   
