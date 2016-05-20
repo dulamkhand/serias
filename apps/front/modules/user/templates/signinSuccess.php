@@ -27,6 +27,8 @@ function doLoginFB() {
 
 <div style="margin:50px auto;width:350px;">
 
+	  <?php include_partial('user/signError', array('form'=>$form))?>
+
 		<div
 		  class="fb-like"
 		  data-share="true"
@@ -42,7 +44,6 @@ function doLoginFB() {
 				 <fb:login-button scope="public_profile,email,image" onlogin="checkLoginState();"></fb:login-button> 
 		</div>
 			
-		
 		<br clear="all">
   	<br clear="all">
 		эсвэл

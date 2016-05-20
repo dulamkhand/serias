@@ -23,27 +23,32 @@ class LoginForm extends BaseUserForm
             $this['avator'],$this['logged_at'],$this['activation_code'],$this['ip']);
       
       // WIDGETS
-      $this->widgetSchema['email']        = new sfWidgetFormInputText(array(), array('class'=>'login', 'id'=>'login-email'));
-      $this->widgetSchema['password']     = new sfWidgetFormInputPassword(array(), array('class'=>'login', 'id'=>'login-password'));
+      $this->widgetSchema['email'] 			  = new sfWidgetFormInputText(array(), array('id'=>'email'));
+      $this->widgetSchema['password']     = new sfWidgetFormInputPassword(array(), array());
       
-      $this->setDefault('email', 'Имэйл хаяг');
-      $this->setDefault('password', 'Нууц үг');
+      // DEFAULTS
+      $this->setDefault('email', 'Жш: '.sfConfig::get('app_sign_demo_email'));
+      $this->setDefault('password', '');
       
       // VALIDATORS
       $this->validatorSchema['email']    = new sfValidatorCallback(array('required'=>true, 'callback' => array($this, 'validateEmail')), array('required'=> 'Имэйл хаягаа оруулна уу.'));
       $this->validatorSchema['password'] = new sfValidatorCallback(array('required'=>true, 'callback' => array($this, 'validatePassword')), array('required'=>'Нууц үгээ оруулна уу.'));
-      
-      // LABELS
-      $this->widgetSchema->setLabel('email', 'Имэйл хаяг');
-      $this->widgetSchema->setLabel('password', 'Нууц үг');
   }
   
   
   public function validateEmail($validator, $value)
   {
+  		if(trim($value) == "Жш: ".sfConfig::get('app_sign_demo_email')) {
+  				throw new sfValidatorError($validator, 'Та бүртгэлтэй имэйл хаягаа оруулна уу.');
+  		}
+  		
+  		// TODO: invalid email address
+
+  		sfContext::getInstance()->getConfiguration()->loadHelpers('Url');
       $user = Doctrine::getTable('User')->findOneByEmail($value);
       if (!$user) {
-          throw new sfValidatorError($validator, 'Энэ имэйл хаяг бүртгэлгүй байна. Та бүртгүүлэхийг хүсвэл энд дарна уу.');
+          throw new sfValidatorError($validator, 'Имэйл хаяг бүртгэлгүй байна. Та бүртгүүлэхийг хүсвэл <a href="'.url_for('user/signup')
+          																				.'" style="text-decoration:underline;">энд</a> дарна уу.');
       }
       $this->_object = $user;
   

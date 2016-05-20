@@ -13,7 +13,6 @@ class userActions extends sfActions
     public function preExecute(){
         
     }
-  
     
     public function executeProfile(sfWebRequest $request)
     {      
@@ -29,16 +28,8 @@ class userActions extends sfActions
                   $request->getParameter('page'));
     }
   
-    
-    public function executeJoin(sfWebRequest $request)
+    public function executeSignin(sfWebRequest $request) 
     {
-        return sfView::SUCCESS;
-    }
-
-  
-    public function executeDoLogin(sfWebRequest $request) 
-    {
-    		sfContext::getInstance()->getConfiguration()->loadHelpers('Url');
         $form = new LoginForm();
         
         if ($request->isMethod(sfRequest::POST)) {
@@ -50,34 +41,22 @@ class userActions extends sfActions
                     if($user->getIsActive()) {
                         $this->getUser()->signIn($user);
                         $this->getUser()->setFlash('flash', 'Амжилттай нэвтэрлээ.', true); 
-                    }
-                    // inactive user
-                    else {
+                        $this->redirect($request->getReferer() ? $request->getReferer() : url_for('user/profile'));
+                    } else { // inactive user
                         if(!$user->getActivationCode()) {
                             $user->setActivationCode(md5(time()));
                             $user->save();  
                         }
-                        // send mail
+                        // send mail TODO
                         /* $mailBody = $this->getPartial("mail/confirmRegistration", array('fullname'=>$user->getFullname(), 'code'=>$user->getActivationCode()));
                         $this->sendMail($user->getEmail(), 'Та бүртгэлээ идэвхижүүлнэ үү.', $mailBody);*/
                         $this->getUser()->setFlash('flash', "Та бүртгэлээ идэвхижүүлээгүй байна. Идэвхижүүлэх линк таны и-мэйл хаягруу илгээгдлээ.", true);
                     }
                 }
-                #$url = $request->getReferer() ? $request->getReferer() : url_for('user/profile');
-                $url = url_for('user/profile');
-						} else {
-								$url = url_for('user/login');
-								echo $form['email']->renderError().$form['password']->renderError();
 						}
-						$str = "
-                <script type='text/javascript'>
-                  window.location.href = '".$url."';
-                </script>";            
-            return $this->renderText($str);
         }
-        return sfView::SUCCESS;
+        $this->form = $form;
     }
-    
     
     public function executeLogout(sfWebRequest $request)
     {
@@ -86,19 +65,15 @@ class userActions extends sfActions
         $this->redirect('@homepage');
     }  
     
-    // REGISTER
-    public function executeDoRegister(sfWebRequest $request)
+    public function executeSignup(sfWebRequest $request)
     {
         $form = new RegisterForm();
         
-        if ($request->isMethod(sfRequest::POST))
-        {
+        if ($request->isMethod(sfRequest::POST)) {
             $form->bind($request->getParameter($form->getName()));
-            
-            if ($form->isValid())
-            {
+            if ($form->isValid()){
                 $user = $form->save();
-  
+
                 $inputFilter = new InputFilter();
                 $user->setPassword(md5($user->getPassword()));
                 $user->setIp($request->getRemoteAddress());
@@ -107,24 +82,42 @@ class userActions extends sfActions
                 $user->setActivationCode($code);
                 $user->save();
                 
-                // send mail
+                // send mail TODO
                 /* $mailBody = $this->getPartial("mail/confirmRegistration", array('fullname'=>$user->getFullname(), 'code'=>$code));
                 $this->sendMail($user->getEmail(), 'Та бүртгэлээ идэвхижүүлнэ үү.', $mailBody);*/
                 $this->getUser()->setFlash('flash', 'Амжилттай бүртгүүллээ. Таны имэйл хаягруу илгээсэн линк дээр дарж бүртгэлээ идэвхижүүлээрэй.', true);
-                              
-                $str = <<<EOF
-                   <script type="text/javascript">
-                     window.location.reload();
-                   </script>
-EOF;
-                return $this->renderText($str);
+                $this->redirect($request->getReferer() ? $request->getReferer() : url_for('user/signin'));                
             }
-            echo $form['email']->renderError().$form['password']->renderError();
-            return sfView::NONE;
         }
-        return sfView::SUCCESS;
+        $this->form = $form;
     }
   
+    public function executeForgot(sfWebRequest $request)
+    {
+        $form = new ForgotForm();
+        
+        if ($request->isMethod(sfRequest::POST)) {
+            $form->bind($request->getParameter($form->getName()));
+            if ($form->isValid()){
+                $user = $form->save();
+
+                $inputFilter = new InputFilter();
+                $user->setPassword(md5($user->getPassword()));
+                $user->setIp($request->getRemoteAddress());
+                $user->setUpdatedAt(date('Y-m-d H:i:s'));
+                $code = md5(time());
+                $user->setActivationCode($code);
+                $user->save();
+                
+                // send mail TODO
+                /* $mailBody = $this->getPartial("mail/confirmRegistration", array('fullname'=>$user->getFullname(), 'code'=>$code));
+                $this->sendMail($user->getEmail(), 'Та бүртгэлээ идэвхижүүлнэ үү.', $mailBody);*/
+                $this->getUser()->setFlash('flash', 'Амжилттай бүртгүүллээ. Таны имэйл хаягруу илгээсэн линк дээр дарж бүртгэлээ идэвхижүүлээрэй.', true);
+                $this->redirect($request->getReferer() ? $request->getReferer() : url_for('user/signin'));                
+            }
+        }
+        $this->form = $form;
+    } 
     
     public function executeLoadmore(sfWebRequest $request)
     {

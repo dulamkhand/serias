@@ -1,12 +1,26 @@
 <body>
 <div id="fb-root"></div>
-<script>(function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) return;
-  js = d.createElement(s); js.id = id;
-  js.src = "//connect.facebook.net/en_GB/sdk.js#xfbml=1&appId=877037815640906&version=v2.0";
-  fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));</script>
+<script>
+window.fbAsyncInit = function() {
+  FB.init({
+    appId      : '275326106146140',// App - Mongolian Movie Database - mmdb.llc@gmail.com
+    xfbml      : true,
+    version    : 'v2.6'
+  });
+  FB.getLoginStatus(function(response) {
+	    statusChangeCallback(response);
+	});
+};
+
+// Load the SDK asynchronously
+(function(d, s, id){
+ var js, fjs = d.getElementsByTagName(s)[0];
+ if (d.getElementById(id)) {return;}
+ js = d.createElement(s); js.id = id;
+ js.src = "//connect.facebook.net/en_US/sdk.js";
+ fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));
+</script>
 
 <div id="header">
 		<!--logo-->
@@ -21,10 +35,10 @@
 		<!--bar-->
 		<div id="bar">
 			<?php include_partial("partial/search", array());?>		
-			<?php include_partial('user/login', array())?>
+			<?php include_partial('user/signHeader', array())?>
 		</div>
 </div>
 
 <script type="text/javascript">
-		//$("#bar").sticky({topSpacing:0});
+		$("#bar").sticky({topSpacing:0});
 </script>

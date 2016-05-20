@@ -1,6 +1,6 @@
 <div style="margin:50px auto;width:350px;">
 
-		<?php echo $form->renderGlobalErrors()?>
+		<?php include_partial('user/signError', array('form'=>$form))?>
 
 		<form action="<?php echo url_for('user/forgot')?>" method="post" id="sign-page" title="Сэргээх">
 				<span class="upper">Таны бүртгэлтэй имэйл хаяг</span><br>

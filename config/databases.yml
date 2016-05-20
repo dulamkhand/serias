@@ -7,7 +7,7 @@ all:
     param:      
       #dsn:      mysql:host=mysql3.000webhost.com;dbname=a5097976_mmdb
       #username: a5097976_root
-      #password: mongolia$
+      #password: mongolia4
       
       dsn:      mysql:host=localhost;dbname=mmdb
       username: root

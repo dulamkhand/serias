@@ -14,9 +14,9 @@ class ProjectConfiguration extends sfProjectConfiguration
       sfConfig::set('sf_upload_dir', 'C:\wamp\www\mmdb\trunk\web\u');
       sfConfig::set('rich_text_fck_js_dir', 'C:\wamp\www\mmdb\trunk\web\js');
 
-//      sfConfig::set('sf_web_dir', dirname(__FILE__).'/../..');
-//      sfConfig::set('sf_upload_dir', dirname(__FILE__).'/../../u');
-//      sfConfig::set('rich_text_fck_js_dir', dirname(__FILE__).'/../../js');
+      /*sfConfig::set('sf_web_dir', dirname(__FILE__).'/../..');
+      sfConfig::set('sf_upload_dir', dirname(__FILE__).'/../../u');
+      sfConfig::set('rich_text_fck_js_dir', dirname(__FILE__).'/../../js');*/
   }
 
 }

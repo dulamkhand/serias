@@ -1,4 +1,6 @@
 <div style="margin:50px auto;width:350px;">
+		
+		<?php include_partial('user/signError', array('form'=>$form))?>
 
 		<div
 		  class="fb-like"
@@ -21,7 +23,7 @@
 		<br clear="all">
 		<br clear="all">
 		
-		<form action="<?php echo url_for('user/login')?>" method="post" id="sign-page" title="Бүртгүүлэх">
+		<form action="<?php echo url_for('user/signup')?>" method="post" id="sign-page" title="Бүртгүүлэх">
 				<span class="upper">Нэр</span><br>
 		    <?php echo $form['firstname'] ?>
 		    <br clear="all">
@@ -49,5 +51,12 @@
 		    		Нэвтрэх <img width="25" src="/images/icons/more2.png">
 				</a>
 		</form>
+		
+		<br clear="all">
+		<br clear="all">
+		<br clear="all">
+		<br clear="all">
+		<div class="timestamp">Бүртгүүлэх товчийг дарснаар та Монголын кино мэдээллийн нэгдсэн сангийн <a href="<?php echo url_for('main/terms')?>">Үйлчилгээний нөхцөл</a>-г зөвшөөрч байгаа болно. 
+		Манай вэбсайтын <a href="<?php echo url_for('main/privacy')?>">Нууцлалын бодлого</a>-той танилцана уу.</div> <!--TODO: need open in fancybox?-->
 </div>
 <?php include_partial('user/signJs')?>
